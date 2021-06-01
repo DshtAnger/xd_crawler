@@ -7,6 +7,9 @@ import datetime
 import time
 from DB import *
 
+def get_current_time():
+    return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+
 update_date = (datetime.datetime.now()+datetime.timedelta(days=-121)).strftime("%Y-%m-%d")
 
 type_list = {
@@ -54,7 +57,7 @@ for type in input_type:
                 count = data.get('count')
                 end_page = int(count / 100) + 1 if count % 100 != 0 else int(count / 100)
             except:
-                print('[*] Get zb_zplb_pl aweme_comment_url count failed. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb, time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
+                print('[*] Get zb_zplb_pl aweme_comment_url count failed. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb, get_current_time()))
                 time.sleep(5)
             else:
                 break
@@ -68,7 +71,7 @@ for type in input_type:
                     rsp = requests.post(aweme_comment_url, headers=headers, data=json.dumps(post_data))
                     data_list = json.loads(rsp.text).get('data').get('list')
                 except:
-                    print('[*] Get zb_zplb_pl aweme_id_url data failed. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb, time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
+                    print('[*] Get zb_zplb_pl aweme_id_url data failed. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb, get_current_time()))
                     time.sleep(5)
                 else:
                     break
@@ -87,8 +90,8 @@ for type in input_type:
                 Table_obj.xin = str(item.get('digg_count'))
                 Table_obj.comment = item.get('text')
                 Table_obj.time_comment = item.get('create_time')
-                Table_obj.time_update = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+                Table_obj.time_update = get_current_time()
 
                 Table_obj.save()
 
-        print('[+]', type, 'zb_zplb_pl', one_record.num_zb, one_record.name_zb, aweme_id, 'Done %s update at'%update_date, time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+        print('[+]', type, 'zb_zplb_pl', one_record.num_zb, one_record.name_zb, aweme_id, "Done %s's update at"%update_date, get_current_time())

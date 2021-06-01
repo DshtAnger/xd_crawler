@@ -7,6 +7,9 @@ import datetime
 import time
 from DB import *
 
+def get_current_time():
+    return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+
 update_date = (datetime.datetime.now()+datetime.timedelta(days=-121)).strftime("%Y-%m-%d")
 
 type_list = {
@@ -51,7 +54,7 @@ for type in input_type:
                 rsp = requests.post(aweme_trend_url, headers=headers, data=json.dumps(post_data))
                 data = json.loads(rsp.text).get('data')
             except:
-                print('[*] Get zb_zplb_qsbx failed. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb, time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
+                print('[*] Get zb_zplb_qsbx failed. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb, get_current_time()))
                 time.sleep(5)
             else:
                 break
@@ -68,7 +71,7 @@ for type in input_type:
 
             Table_obj.support_works = digg.get('digg_count')
             Table_obj.time_support = digg.get('crawl_date')
-            Table_obj.time_update = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+            Table_obj.time_update = get_current_time()
 
             Table_obj.save()
 
@@ -84,7 +87,7 @@ for type in input_type:
 
             Table_obj.volume = comment.get('comment_count')
             Table_obj.time_volume = comment.get('crawl_date')
-            Table_obj.time_update = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+            Table_obj.time_update = get_current_time()
 
             Table_obj.save()
 
@@ -100,8 +103,8 @@ for type in input_type:
 
             Table_obj.share = _share.get('share_count')
             Table_obj.time_share = _share.get('crawl_date')
-            Table_obj.time_update = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+            Table_obj.time_update = get_current_time()
 
             Table_obj.save()
 
-        print('[+]', type, 'zb_zplb_qsbx', one_record.num_zb, one_record.name_zb, aweme_id, 'Done %s update at'%update_date, time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+        print('[+]', type, 'zb_zplb_qsbx', one_record.num_zb, one_record.name_zb, aweme_id, "Done %s's update at"%update_date, get_current_time())

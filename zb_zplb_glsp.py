@@ -7,6 +7,9 @@ import datetime
 import time
 from DB import *
 
+def get_current_time():
+    return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+
 update_date = (datetime.datetime.now()+datetime.timedelta(days=-121)).strftime("%Y-%m-%d")
 
 type_list = {
@@ -50,7 +53,7 @@ for type in input_type:
                 rsp = requests.post(aweme_product_goodList_url, headers=headers, data=json.dumps(post_data))
                 data = json.loads(rsp.text).get('data')
             except:
-                print('[*] Get zplb_glsp aweme_product_goodList_url faile. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb, time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
+                print('[*] Get zplb_glsp aweme_product_goodList_url failed. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb, get_current_time()))
                 time.sleep(5)
             else:
                 break
@@ -60,6 +63,7 @@ for type in input_type:
 
             product	= data.get('title')
             price = str(data.get('latestPrice')) if data.get('latestPrice') else '--'
+            sply = data.get('goodsSource') if data.get('goodsSource') else '--'
 
             while 1:
                 try:
@@ -67,7 +71,7 @@ for type in input_type:
                     rsp = requests.post(aweme_product_saleInfo_url, headers=headers, data=json.dumps(post_data))
                     data = json.loads(rsp.text).get('data').get('salesTrend')
                 except:
-                    print('[*] Get zb_zplb_glsp aweme_product_saleInfo_url failed. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb, time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
+                    print('[*] Get zb_zplb_glsp aweme_product_saleInfo_url failed. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb, get_current_time()))
                     time.sleep(5)
                 else:
                     break
@@ -86,7 +90,8 @@ for type in input_type:
                 Table_obj.sales = str(item.get('sales'))
                 Table_obj.time_sales = item.get('rankDate')
                 Table_obj.price = price
-                Table_obj.time_update = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+                Table_obj.sply = sply
+                Table_obj.time_update = get_current_time()
 
                 Table_obj.save()
         else:
@@ -99,11 +104,11 @@ for type in input_type:
             Table_obj.url_zb = one_record.url_zb
             Table_obj.url_works = one_record.url_works
 
-            Table_obj.product, Table_obj.sales, Table_obj.time_sales, Table_obj.price = ['--'] * 4
-            Table_obj.time_update = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+            Table_obj.product, Table_obj.sales, Table_obj.time_sales, Table_obj.price, Table_obj.sply = ['--'] * 5
+            Table_obj.time_update = get_current_time()
 
             Table_obj.save()
 
-        print('[+]', type, 'zb_zplb_glsp', one_record.num_zb, one_record.name_zb, aweme_id, 'Done %s update at'%update_date, time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+        print('[+]', type, 'zb_zplb_glsp', one_record.num_zb, one_record.name_zb, aweme_id, "Done %s's update at"%update_date, get_current_time())
 
 

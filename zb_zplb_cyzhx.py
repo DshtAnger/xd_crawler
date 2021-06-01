@@ -7,6 +7,9 @@ import datetime
 import time
 from DB import *
 
+def get_current_time():
+    return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+
 update_date = (datetime.datetime.now()+datetime.timedelta(days=-121)).strftime("%Y-%m-%d")
 
 type_list = {
@@ -51,7 +54,7 @@ for type in input_type:
                 rsp = requests.post(aweme_userinfo_url, headers=headers, data=json.dumps(post_data))
                 data = json.loads(rsp.text).get('data')
             except:
-                print('[*] Get zb_zplb_cyzhx failed. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb, time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
+                print('[*] Get zb_zplb_cyzhx failed. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb, get_current_time()))
                 time.sleep(5)
             else:
                 break
@@ -66,7 +69,7 @@ for type in input_type:
 
         if not data:
             Table_obj.female,Table_obj.male,Table_obj.eighteen, Table_obj.eighteentotwentythree, Table_obj.twentyfourtothirty, Table_obj.thirtyonetofourty, Table_obj.fourtyonetofifty, Table_obj.fifty = ['--'] * 8
-            Table_obj.time_update = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+            Table_obj.time_update = get_current_time()
             Table_obj.save()
             continue
 
@@ -92,8 +95,8 @@ for type in input_type:
             if age.get('key') == '>50':
                 Table_obj.fifty = age.get('rate')
 
-        Table_obj.time_update = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        Table_obj.time_update = get_current_time()
 
         Table_obj.save()
 
-        print('[+]', type, 'zb_zplb_cyzhx', one_record.num_zb, one_record.name_zb, aweme_id, 'Done %s update at'%update_date, time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+        print('[+]', type, 'zb_zplb_cyzhx', one_record.num_zb, one_record.name_zb, aweme_id, "Done %s's update at"%update_date, get_current_time())
