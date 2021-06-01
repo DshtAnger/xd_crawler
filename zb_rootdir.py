@@ -51,6 +51,8 @@ for type in input_type:
         id_search_error_tag = False
         name_search_error_tag = False
         #identify_search_error_tag = False
+        num_zb = str(douyin_id_list.index(id_zb) + 1) + type
+        name_zb = douyin_name_list[douyin_id_list.index(id_zb)]
         while 1:
             try:
                 searchAccount_url = 'https://gw.newrank.cn/api/xd/xdnphb/nr/cloud/douyin/searchAccountList'
@@ -67,6 +69,8 @@ for type in input_type:
                     search_name = douyin_name_list[douyin_id_list.index(id_zb)]
                     if '（' in search_name:
                         search_name = search_name.split('（')[0]
+                    if '（' in search_name:
+                        search_name = search_name.split('【')[0]
                     if '?' in search_name:
                         search_name = search_name.split('?')[0]
                     post_data.update({'keyword': search_name})
@@ -80,16 +84,24 @@ for type in input_type:
             else:
                 break
 
+        one_data = None
         if len(data) > 1:
+            #主播名匹配
+            for item in data:
+                if item.get('nickname')[:3] in name_zb:
+                    one_data = item
+                    break
+            if one_data == None:
+
+            #粉丝数匹配
             max_followers = max([int(i.get('mplatform_followers_count')) for i in data])
-            for i in data:
-                if int(i.get('mplatform_followers_count')) == max_followers:
-                    one_data = i
+            for item in data:
+                if int(item.get('mplatform_followers_count')) == max_followers:
+                    one_data = item
+                    break
         else:
             one_data = data[0]
 
-        num_zb = str(douyin_id_list.index(id_zb) + 1) + type
-        name_zb = douyin_name_list[douyin_id_list.index(id_zb)]
         url_zb = 'https://xd.newrank.cn/tiktok/detail/latest/%s' % one_data.get('uid')
         #首次建立不写入id_zb,待zbxx运行后再更新id_zb和name_zb
 
