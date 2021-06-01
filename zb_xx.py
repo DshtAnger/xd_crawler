@@ -7,6 +7,8 @@ import datetime
 import time
 from DB import *
 
+today_date = datetime.datetime.now().strftime("%Y-%m-%d")
+
 def get_current_time():
     return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
@@ -38,8 +40,20 @@ headers = {
 for type in input_type:
 
     for one_record in eval('list_' + type + '.select()'):
-        Table_obj = eval('list_' + type + '_zbxx' + '.create()')
 
+        query_cmd = "list_%s_zbxx.select().where(list_%s_zbxx.url_zb=='%s',list_%s_zbxx.time_update.startswith('%s'))" % (type, type, one_record.url_zb, type, today_date)
+        if eval(query_cmd):
+            print('[+]', type, 'zb_zbxx', one_record.num_zb, one_record.name_zb, 'Done at', get_current_time())
+            continue
+
+        # query_cmd = "list_%s_zbxx.select().where(list_%s_zbxx.url_zb=='%s',list_%s_zbxx.time_update.endswith('Error has occurred'))" % (type, type, one_record.url_zb, type)
+        # eval_result = eval(query_cmd)
+        # if eval_result:
+        #     Table_obj = eval_result[0]
+        # else:
+        #     pass
+
+        Table_obj = eval('list_' + type + '_zbxx' + '.create()')
         Table_obj.num_zb = one_record.num_zb
         Table_obj.url_zb = one_record.url_zb
 
@@ -65,7 +79,7 @@ for type in input_type:
             else:
                 break
         if continue_next_flag:
-            Table_obj.time_update = '%s [account_info_url Error has occurred]' % get_current_time()
+            Table_obj.time_update = '[%s] account_info_url Error has occurred' % get_current_time()
             Table_obj.save()
             continue
 
@@ -135,7 +149,7 @@ for type in input_type:
             else:
                 break
         if continue_next_flag:
-            Table_obj.time_update = '%s [xingtu_url Error has occurred]' % get_current_time()
+            Table_obj.time_update = '[%s] xingtu_url Error has occurred' % get_current_time()
             Table_obj.save()
             continue
 
@@ -174,7 +188,7 @@ for type in input_type:
                 else:
                     break
             if continue_next_flag:
-                Table_obj.time_update = '%s [mcn_url Error has occurred]' % get_current_time()
+                Table_obj.time_update = '[%s] mcn_url Error has occurred' % get_current_time()
                 Table_obj.save()
                 continue
 
@@ -186,4 +200,4 @@ for type in input_type:
         Table_obj.time_update = get_current_time()
         Table_obj.save()
 
-        print('[+]', type, 'zb_zbxx', Table_obj.num_zb, Table_obj.name_zb, 'Done at', get_current_time())
+        print('[+]', type, 'zb_zbxx', one_record.num_zb, one_record.name_zb, 'Done at', get_current_time())

@@ -5,12 +5,8 @@
 import requests
 import json
 import time
-import datetime
 import pandas
 from DB import *
-
-today_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-last_month_last_day = (datetime.date(datetime.date.today().year,datetime.date.today().month,1)-datetime.timedelta(1)).strftime("%Y-%m-%d")
 
 type_list = {
     'ms':'美食','ss':'时尚','kj':'科技',
@@ -95,13 +91,12 @@ for type in input_type:
         num_zb = str(douyin_id_list.index(id_zb) + 1) + type
         name_zb = douyin_name_list[douyin_id_list.index(id_zb)]
         url_zb = 'https://xd.newrank.cn/tiktok/detail/latest/%s' % one_data.get('uid')
+        #首次建立不写入id_zb,待zbxx运行后再更新id_zb和name_zb
 
         eval('list_' + type + '.create(num_zb=num_zb, id_zb="", name_zb=name_zb, url_zb=url_zb)')
 
         print("[+] %s %s Done." % (num_zb, name_zb))
     print("-" * 50)
-
-
 
 
 '''for type in input_type:
