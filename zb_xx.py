@@ -69,8 +69,8 @@ for type in input_type:
             try:
                 rsp = requests.post(account_info_url, headers=headers, data=json.dumps(post_data))
                 data = json.loads(rsp.text).get('data')
-                Retry_times -= 1
             except:
+                Retry_times -= 1
                 print('[*] Get zbxx account_info_url failed. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb, get_current_time()))
                 if Retry_times == 0:
                     continue_next_flag = True
@@ -139,8 +139,8 @@ for type in input_type:
             try:
                 rsp = requests.post(xingtu_url, headers=headers, data=json.dumps(post_data))
                 data = json.loads(rsp.text).get('data')
-                Retry_times -= 1
             except:
+                Retry_times -= 1
                 print('[*] Get zb_zbxx xingtu_url failed. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb, get_current_time()))
                 if Retry_times == 0:
                     continue_next_flag = True
@@ -178,8 +178,8 @@ for type in input_type:
                 try:
                     rsp = requests.post(mcn_url, headers=headers, data=json.dumps(post_data))
                     data = json.loads(rsp.text).get('data')
-                    Retry_times -= 1
                 except:
+                    Retry_times -= 1 
                     print('[*] Get zb_zbxx mcn_url failed. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb, get_current_time()))
                     if Retry_times == 0:
                         continue_next_flag = True

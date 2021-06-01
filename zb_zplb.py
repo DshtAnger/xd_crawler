@@ -82,6 +82,9 @@ for type in input_type:
             post_data.update(({'create_time_end': set_end}))
             page = 1
             new_time_period = True
+
+            Retry_times = 10
+            continue_next_flag = False
             while 1:
                 try:
                     post_data.update({'start': page})
@@ -137,7 +140,17 @@ for type in input_type:
                     new_time_period = False
                     page += 1
                 except:
-                    print('[*] Get zb_zplb aweme_id_list failed. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb, get_current_time()))
+                    Retry_times -= 1
+                    print('[*] Get zb_zplb aweme_id_url failed. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb, get_current_time()))
+                    if Retry_times == 0:
+                        continue_next_flag = True
+                        break
                     time.sleep(5)
+                else:
+                    break
+            if continue_next_flag:
+                Table_obj.time_update = '[%s] aweme_id_url Error has occurred' % get_current_time()
+                Table_obj.save()
+                continue
 
         print('[+]', type, 'zb_zplb', one_record.num_zb, one_record.name_zb, 'zp amount:%d'%zp_count, 'Done at', get_current_time())
