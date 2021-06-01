@@ -124,7 +124,7 @@ for type in input_type:
                             Table_obj.content = aweme_obj.get('aweme_desc')
                             Table_obj.duration = aweme_obj.get('duration')
                             Table_obj.time_release = aweme_obj.get('create_time')
-                            Table_obj.music = aweme_obj.get('music_info').get('title') if data.get('music_info') else '--'
+                            Table_obj.music = aweme_obj.get('music_info').get('title') if aweme_obj.get('music_info') else '--'
 
                             Table_obj.time_update = get_current_time()
                             Table_obj.save()

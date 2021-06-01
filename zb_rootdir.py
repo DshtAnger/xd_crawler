@@ -91,14 +91,14 @@ for type in input_type:
                 if item.get('nickname')[:3] in name_zb:
                     one_data = item
                     break
-            if one_data == None:
 
-            #粉丝数匹配
-            max_followers = max([int(i.get('mplatform_followers_count')) for i in data])
-            for item in data:
-                if int(item.get('mplatform_followers_count')) == max_followers:
-                    one_data = item
-                    break
+            if one_data == None:
+                #粉丝数匹配
+                max_followers = max([int(i.get('mplatform_followers_count')) for i in data])
+                for item in data:
+                    if int(item.get('mplatform_followers_count')) == max_followers:
+                        one_data = item
+                        break
         else:
             one_data = data[0]
 
