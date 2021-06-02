@@ -1,5 +1,6 @@
 # coding=utf-8
-# 从6月1日期开始每日更新，每天抓取昨天的数据（如6月1日抓取5月31日的）
+# 首日启动,什么都不做,轮空
+# 次日启动,每天抓取昨天的相应数据(如6月1日抓取5月31日的)
 
 import requests
 import websocket
@@ -8,6 +9,8 @@ import datetime
 import time
 from DB import *
 
+def get_current_time():
+    return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
 today_date = datetime.datetime.now().strftime("%Y-%m-%d")
 lastday_date = (datetime.datetime.now()+datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
@@ -44,6 +47,7 @@ for type in input_type:
     for one_record in eval(query_cmd):
 
         webcast_id = one_record.url_zbjl.split('/')[-1]
+
         buy_url = 'https://gw.newrank.cn/api/xd/xdnphb/nr/cloud/douyin/webcast/webDetail/buy'
         post_data = {
             "room_id": webcast_id
@@ -55,7 +59,7 @@ for type in input_type:
                 data_list = data.get('webcastBuyDTOS') if data else []
             except:
                 print(
-                    '[*] Get zbjl_zzgm buy_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl,time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
+                    '[*] Get zbjl_zzgm buy_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
                 time.sleep(5)
             else:
                 break
@@ -71,7 +75,7 @@ for type in input_type:
 
             Table_obj.purchase_time = '--'
             Table_obj.purchase = '--'
-            Table_obj.time_update = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+            Table_obj.time_update = get_current_time()
 
             Table_obj.save()
 
@@ -87,10 +91,10 @@ for type in input_type:
 
                 Table_obj.purchase_time = item.get('create_time')
                 Table_obj.purchase = item.get('purchase_cnt')
-                Table_obj.time_update = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+                Table_obj.time_update = get_current_time()
 
                 Table_obj.save()
 
 
 
-        print('[+]', type, 'zbjl_zzgm', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'Done at',time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+        print('[+]', type, 'zbjl_zzgm', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'Done at', get_current_time())

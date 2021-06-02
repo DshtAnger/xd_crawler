@@ -1,5 +1,6 @@
 # coding=utf-8
-# 从6月1日期开始每日更新，每天抓取昨天的数据（如6月1日抓取5月31日的）
+# 首日启动,什么都不做,轮空
+# 次日启动,每天抓取昨天的相应数据(如6月1日抓取5月31日的)
 
 import requests
 import websocket
@@ -8,6 +9,8 @@ import datetime
 import time
 from DB import *
 
+def get_current_time():
+    return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
 today_date = datetime.datetime.now().strftime("%Y-%m-%d")
 lastday_date = (datetime.datetime.now()+datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
@@ -44,6 +47,7 @@ for type in input_type:
     for one_record in eval(query_cmd):
 
         webcast_id = one_record.url_zbjl.split('/')[-1]
+
         trend_url = 'https://gw.newrank.cn/api/xd/xdnphb/nr/cloud/douyin/webcast/webDetail/trend'
         post_data = {
             "room_id": webcast_id
@@ -54,7 +58,7 @@ for type in input_type:
                 data_list = json.loads(rsp.text).get('data').get('webcastTrendList')
             except:
                 print(
-                    '[*] Get zbjl_ll-rc-yl-fst-dz-tlsc trend_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl,time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
+                    '[*] Get zbjl_ll-rc... trend_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
                 time.sleep(5)
             else:
                 break
@@ -73,7 +77,7 @@ for type in input_type:
             Table_obj_ll.livestraming_time = one_record.livestraming_time
             Table_obj_ll.traffic_time = crawl_time
             Table_obj_ll.renshu = item.get('user_count')
-            Table_obj_ll.time_update = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+            Table_obj_ll.time_update = get_current_time()
 
             Table_obj_rc = eval('list_' + type + '_zbjl_rc' + '.create()')
             Table_obj_rc.num_zb = one_record.num_zb
@@ -86,7 +90,7 @@ for type in input_type:
             Table_obj_rc.guanzhu = item.get('stats_user_composition_from_my_follow')
             Table_obj_rc.shipintuijian = item.get('stats_user_composition_from_video_detail')
             Table_obj_rc.zhiboguangchang = item.get('stats_user_composition_from_other')
-            Table_obj_rc.time_update = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+            Table_obj_rc.time_update = get_current_time()
 
             Table_obj_yl = eval('list_' + type + '_zbjl_yl' + '.create()')
             Table_obj_yl.num_zb = one_record.num_zb
@@ -96,7 +100,7 @@ for type in input_type:
             Table_obj_yl.livestraming_time = one_record.livestraming_time
             Table_obj_yl.yinlang_time = crawl_time
             Table_obj_yl.yinlang = item.get('stats_fan_ticket')
-            Table_obj_yl.time_update = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+            Table_obj_yl.time_update = get_current_time()
 
             Table_obj_fst = eval('list_' + type + '_zbjl_fst' + '.create()')
             Table_obj_fst.num_zb = one_record.num_zb
@@ -106,7 +110,7 @@ for type in input_type:
             Table_obj_fst.livestraming_time = one_record.livestraming_time
             Table_obj_fst.fans_time = crawl_time
             Table_obj_fst.fans_zb = item.get('club_info_total_fans_count')
-            Table_obj_fst.time_update = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+            Table_obj_fst.time_update = get_current_time()
 
             Table_obj_dz = eval('list_' + type + '_zbjl_dz' + '.create()')
             Table_obj_dz.num_zb = one_record.num_zb
@@ -116,7 +120,7 @@ for type in input_type:
             Table_obj_dz.livestraming_time = one_record.livestraming_time
             Table_obj_dz.support_time = crawl_time
             Table_obj_dz.support_zb = item.get('like_count')
-            Table_obj_dz.time_update = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+            Table_obj_dz.time_update = get_current_time()
 
             Table_obj_ll.save()
             Table_obj_rc.save()
@@ -138,8 +142,7 @@ for type in input_type:
                     rsp = requests.post(userAvgDuration_url, headers=headers, data=json.dumps(post_data))
                     data = json.loads(rsp.text)
                 except:
-                    print(
-                        '[*] Get zbjl_ll-rc-yl-fst-dz-tlsc userAvgDuration_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl,time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
+                    print('[*] Get zbjl_ll-rc... userAvgDuration_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
                     time.sleep(2)
                 else:
                     break
@@ -153,9 +156,9 @@ for type in input_type:
 
             Table_obj.timepoint = timepoint
             Table_obj.shichang = str(data.get('data'))
-            Table_obj.time_update = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+            Table_obj.time_update = get_current_time()
 
             Table_obj.save()
 
-        print('[+]', type, 'zbjl_ll-rc-yl-fst-dz-tlsc', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'Done at',time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+        print('[+]', type, 'zbjl_ll-rc...', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'Done at', get_current_time())
 

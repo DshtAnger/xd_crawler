@@ -1,5 +1,6 @@
 # coding=utf-8
-# 从6月1日期开始每日更新，每天抓取昨天的数据（如6月1日抓取5月31日的）
+# 首日启动,什么都不做,轮空
+# 次日启动,每天抓取昨天的相应数据(如6月1日抓取5月31日的)
 
 import requests
 import websocket
@@ -8,6 +9,8 @@ import datetime
 import time
 from DB import *
 
+def get_current_time():
+    return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
 today_date = datetime.datetime.now().strftime("%Y-%m-%d")
 lastday_date = (datetime.datetime.now()+datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
@@ -44,44 +47,9 @@ for type in input_type:
     for one_record in eval(query_cmd):
 
         webcast_id = one_record.url_zbjl.split('/')[-1]
-        websocket_url = 'wss://xd.newrank.cn/xdnphb/nr/cloud/douyin/websocket'
-        ws_data = {
-            "type": "webcast",
-            "data": {"room_id": webcast_id}
-        }
-        while 1:
-            try:
-                # time.sleep(1)
-                tipRank_data, commodity_data, detail_data = [None] * 3
-                ws = websocket.WebSocket()
-                ws.timeout = 10
-                ws.connect(websocket_url, cookie=cookie, origin="https://xd.newrank.cn", host="xd.newrank.cn")
-                ws.send(json.dumps(ws_data))
 
-                while 1:
-                    try:
-                        recv_data = json.loads(ws.recv())
-                        if recv_data.get('type') == 'tipRank':
-                            tipRank_data = recv_data.get('data')
-                        if recv_data.get('type') == 'commodity':
-                            commodity_data = recv_data.get('data')
-                        if recv_data.get('type') == 'detail':
-                            detail_data = recv_data.get('data')
-                        # data字段可能为[]
-                        if commodity_data != None and detail_data != None:
-                            break
-                    # except websocket.WebSocketTimeoutException:
-                    except:
-                        if commodity_data and detail_data:
-                            break
-                        else:
-                            raise Exception
-            except:
-                print('[*] Get zbjl_splb websocket data failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
-                time.sleep(5)
-            else:
-                break
-
+        with open('/root/xd_crawler/websocket_data/%s.commodity' % webcast_id, 'r') as f:
+            commodity_data = json.load(f)
 
         for product in commodity_data:
 
@@ -116,33 +84,6 @@ for type in input_type:
             product_id = product.get('product_id')
 
             staticitem_url = 'https://ec.snssdk.com/product/fxgajaxstaticitem?b_type_new=0&device_id=0&is_outside=1&id={0}&preview=0'.format(product_id)
-            # pseudo_header = {
-            #     ':authority': 'ec.snssdk.com',
-            #     ':method': 'GET',
-            #     ':path': '/product/fxgajaxstaticitem?b_type_new=0&device_id=0&is_outside=1&id=3482841797552662689&preview=0',
-            #     ':scheme': 'https',
-            #     'accept': 'application/json, text/plain, */*',
-            #     'accept-encoding': 'gzip, deflate, br',
-            #     'accept-language': 'zh-CN,zh;q=0.9',
-            #     'origin': 'https://haohuo.jinritemai.com',
-            #     'referer': 'https://haohuo.jinritemai.com/',
-            #     'sec-ch-ua':'" Not A;Brand";v="99", "Chromium";v="90", "Google Chrome";v="90"',
-            #     'sec-ch-ua-mobile':'?0',
-            #     'sec-fetch-dest':'empty',
-            #     'sec-fetch-mode':'cors',
-            #     'sec-fetch-site':'cross-site',
-            #     'user-agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36'
-            # }
-            # pseudo_header_2 = {
-            #     'Host': 'ec.snssdk.com',
-            #     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36',
-            #     'Accept': 'application/json, text/plain, */*',
-            #     'Accept-Language': 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
-            #     'Accept-Encoding': 'gzip, deflate, br',
-            #     'Origin': 'https://haohuo.jinritemai.com',
-            #     'Connection': 'keep-alive',
-            #     'Referer': 'https://haohuo.jinritemai.com/'
-            # }
             while 1:
                 try:
                     time.sleep(1)
@@ -151,7 +92,7 @@ for type in input_type:
                     #     raise Exception
                 except:
                     print(
-                        '[*] Get zbjl_splb staticitem_url faile. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl,time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
+                        '[*] Get zbjl_splb staticitem_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl,get_current_time()))
                     time.sleep(5)
                 else:
                     data = json.loads(rsp.text).get('data')
@@ -189,13 +130,13 @@ for type in input_type:
             Table_obj.shipping_experience = str(data.get('credit_score').get('logistics')) + pingjia_dic[str(data.get('credit_score').get('gap_logistics'))] if data.get('credit_score') else '--'
             Table_obj.tuijianyu = data.get('recommend_remark') if data else '--'
 
+            ajaxitem_url = 'https://ec.snssdk.com/product/ajaxitem?b_type_new=0&device_id=0&is_outside=1&id={0}&abParams=0'.format(product_id)
             while 1:
                 try:
-                    ajaxitem_url = 'https://ec.snssdk.com/product/ajaxitem?b_type_new=0&device_id=0&is_outside=1&id={0}&abParams=0'.format(product_id)
                     rsp = requests.get(ajaxitem_url, headers={'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36'})
                 except:
                     print(
-                        '[*] Get zbjl_splb ajaxitem_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl,time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
+                        '[*] Get zbjl_splb ajaxitem_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl,get_current_time()))
                     time.sleep(5)
                 else:
                     data = json.loads(rsp.text)
@@ -207,9 +148,8 @@ for type in input_type:
             else:
                 Table_obj.product_amount = str(data.get('data').get('shop_product_count')) if data.get('data') else '--'
 
-            Table_obj.time_update = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-            # print(livestraming_time,product_name,commodity_data.index(product))
+            Table_obj.time_update = get_current_time()
 
             Table_obj.save()
 
-        print('[+]', type, 'zbjl_splb', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'Done at',time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+        print('[+]', type, 'zbjl_splb', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'Done at', get_current_time())

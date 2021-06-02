@@ -15,7 +15,7 @@ def get_current_time():
 today_date = datetime.datetime.now().strftime("%Y-%m-%d")
 lastday_date = (datetime.datetime.now()+datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
 first_crawl_date = (datetime.datetime.now()+datetime.timedelta(days=-121)).strftime("%Y-%m-%d")
-FIRST_RUN_DATE = '2021-06-02'
+
 type_list = {
     'ms':'美食','ss':'时尚','kj':'科技',
     'yl':'娱乐','gx':'搞笑','cy':'才艺',
@@ -46,11 +46,11 @@ for type in input_type:
 
     for one_record in eval(query_cmd):
 
-        query_cmd = "list_%s_zbjl_sx.select().where(list_%s_zbjl_sx.url_zbjl=='%s',list_%s_zbjl_sx.time_update.startswith('%s'))" % (
-            type, type, one_record.url_zbjl, type, today_date)
+        webcast_id = one_record.url_zbjl.split('/')[-1]
+
+        query_cmd = "list_%s_zbjl_sx.select().where(list_%s_zbjl_sx.url_zbjl=='%s',list_%s_zbjl_sx.time_update.startswith('%s'))" % (type, type, one_record.url_zbjl, type, today_date)
         if eval(query_cmd):
-            print('[+]', type, 'zbjl_sx', one_record.num_zb, one_record.name_zb, one_record.url_zbjl.split('/')[-1],
-                  one_record.livestraming_time, 'Done at', time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+            print('[+]', type, 'zbjl_sx', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'Done at', get_current_time())
             continue
 
         Table_obj = eval('list_' + type + '_zbjl_sx' + '.create()')
@@ -60,45 +60,9 @@ for type in input_type:
         Table_obj.url_zbjl = one_record.url_zbjl
         Table_obj.livestraming_time = one_record.livestraming_time
 
-        webcast_id = one_record.url_zbjl.split('/')[-1]
-        websocket_url = 'wss://xd.newrank.cn/xdnphb/nr/cloud/douyin/websocket'
-        ws_data = {
-            "type": "webcast",
-            "data": {"room_id": webcast_id}
-        }
-        while 1:
-            try:
-                # time.sleep(1)
-                tipRank_data, commodity_data, detail_data = [None] * 3
-                ws = websocket.WebSocket()
-                ws.timeout = 10
-                ws.connect(websocket_url, cookie=cookie, origin="https://xd.newrank.cn", host="xd.newrank.cn")
-                ws.send(json.dumps(ws_data))
 
-                while 1:
-                    try:
-                        recv_data = json.loads(ws.recv())
-                        if recv_data.get('type') == 'tipRank':
-                            tipRank_data = recv_data.get('data')
-                        if recv_data.get('type') == 'commodity':
-                            commodity_data = recv_data.get('data')
-                        if recv_data.get('type') == 'detail':
-                            detail_data = recv_data.get('data')
-                        # data字段可能为[]
-                        if commodity_data != None and detail_data != None:
-                            break
-                    # except websocket.WebSocketTimeoutException:
-                    except:
-                        if commodity_data and detail_data:
-                            break
-                        else:
-                            raise Exception
-
-            except:
-                print('[*] Get zbjl_sx websocket data failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
-                time.sleep(5)
-            else:
-                break
+        with open('/root/xd_crawler/websocket_data/%s.detail' % webcast_id, 'r') as f:
+            detail_data = json.load(f)
 
         Table_obj.shipintuijian = detail_data.get('stats_user_count_composition').get('video_detail') if detail_data.get('stats_user_count_composition') else '--'
         Table_obj.guanzhu = detail_data.get('stats_user_count_composition').get('my_follow') if detail_data.get('stats_user_count_composition') else '--'
@@ -122,7 +86,7 @@ for type in input_type:
                 data = json.loads(rsp.text).get('data')
             except:
                 print(
-                    '[*] Get zbjl_sx city_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl,time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
+                    '[*] Get zbjl_sx city_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl,get_current_time()))
                 time.sleep(5)
             else:
                 break
@@ -162,8 +126,8 @@ for type in input_type:
         Table_obj.xianggang = ''.join([i.get('rate') for i in filter(lambda x: x.get('key') == '香港', data)]) if data!=None else '--'
         Table_obj.aomen = ''.join([i.get('rate') for i in filter(lambda x: x.get('key') == '澳门', data)]) if data!=None else '--'
 
-        Table_obj.time_update = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        Table_obj.time_update = get_current_time()
 
         Table_obj.save()
 
-        print('[+]', type, 'zbjl_sx', one_record.num_zb, one_record.name_zb, webcast_id, Table_obj.livestraming_time, 'Done at',time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+        print('[+]', type, 'zbjl_sx', one_record.num_zb, one_record.name_zb, webcast_id, Table_obj.livestraming_time, 'Done at', get_current_time())

@@ -1,5 +1,6 @@
 # coding=utf-8
-# 从6月1日期开始每日更新，每天抓取昨天的数据（如6月1日抓取5月31日的）
+# 首日启动,什么都不做,轮空
+# 次日启动,每天抓取昨天的相应数据(如6月1日抓取5月31日的)
 
 import requests
 import websocket
@@ -8,6 +9,8 @@ import datetime
 import time
 from DB import *
 
+def get_current_time():
+    return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
 today_date = datetime.datetime.now().strftime("%Y-%m-%d")
 lastday_date = (datetime.datetime.now()+datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
@@ -59,12 +62,12 @@ for type in input_type:
                 end_page = int(count / 100) + 1 if count % 100 != 0 else int(count / 100)
             except:
                 print(
-                    '[*] Get zbjl_pl comment_url count failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl,time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
+                    '[*] Get zbjl_pl comment_url count failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
                 time.sleep(5)
             else:
                 break
         if count == -1:
-            print('[No_pl_data]', type, 'zbjl_pl', one_record.num_zb, one_record.name_zb, webcast_id,one_record.livestraming_time, 'Done at', time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+            print('[No_pl_data]', type, 'zbjl_pl', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'Done at', get_current_time())
             continue
 
         for page in range(1, end_page + 1):
@@ -76,7 +79,7 @@ for type in input_type:
                     data = json.loads(rsp.text).get('data')
                     data_list = data.get('list') if data else []
                 except:
-                    print('[*] Get zbjl_pl comment_url data failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl,time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
+                    print('[*] Get zbjl_pl comment_url data failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
                     time.sleep(5)
                 else:
                     break
@@ -98,4 +101,4 @@ for type in input_type:
 
                 Table_obj.save()
 
-        print('[+]', type, 'zbjl_pl', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'Done at',time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+        print('[+]', type, 'zbjl_pl', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'Done at', get_current_time())
