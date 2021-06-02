@@ -1,6 +1,6 @@
 # coding=utf-8
-# 在5月31日抓全从1月31日到5月30日（累计4个月的）作品url的相关数据
-# 从6月1日期开始每日更新，每天抓取昨天的作品url等数据（如6月1日抓取5月31日的）
+# 首日启动,抓取过去累计4个月(121天)的作品url相关数据(如5月31日抓全从1月31日到5月30日)
+# 次日启动,每天抓取昨天的作品url数据(如6月1日抓取5月31日的)
 
 import requests
 import json
@@ -22,11 +22,11 @@ type_list = {
     'qy':'企业',
 }
 
-with open('./cookie','r') as f:
+with open('/root/xd_crawler/cookie','r') as f:
     cookie = f.read().strip()
-with open('./token','r') as f:
+with open('/root/xd_crawler/token','r') as f:
     token = f.read().strip()
-with open('./type','r') as f:
+with open('/root/xd_crawler/type','r') as f:
     input_type = f.read().strip().split()
 
 headers = {
@@ -153,4 +153,4 @@ for type in input_type:
                 Table_obj.save()
                 continue
 
-        print('[+]', type, 'zb_zplb', one_record.num_zb, one_record.name_zb, 'zp amount:%d'%zp_count, 'Done at', get_current_time())
+        print('[+]', type, 'zb_zplb', one_record.num_zb, one_record.name_zb, '[ zp amount: %d ]'%zp_count, 'Done at', get_current_time())

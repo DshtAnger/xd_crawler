@@ -2274,6 +2274,7 @@ class list_yl_zbjl(BaseModel):
     name_zb = CharField(max_length=256, null=False, index=True)
     url_zbjl = CharField(max_length=256, null=False, index=True)
     livestraming_time = CharField(max_length=256, null=False, index=True)
+    theme = CharField(max_length=256, null=False)
 
     duration = CharField(max_length=256, null=False)
     yinlangshouru = CharField(max_length=256, null=False)
@@ -2295,7 +2296,6 @@ class list_yl_zbjl(BaseModel):
     kedanjia = CharField(max_length=256, null=False)
     renjungoumaijiazhi = CharField(max_length=256, null=False)
     xiaoshouzhuanhualv = CharField(max_length=256, null=False)
-    theme = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_cy_zbjl(BaseModel):
@@ -2304,6 +2304,7 @@ class list_cy_zbjl(BaseModel):
     name_zb = CharField(max_length=256, null=False, index=True)
     url_zbjl = CharField(max_length=256, null=False, index=True)
     livestraming_time = CharField(max_length=256, null=False, index=True)
+    theme = CharField(max_length=256, null=False)
 
     duration = CharField(max_length=256, null=False)
     yinlangshouru = CharField(max_length=256, null=False)
@@ -2325,7 +2326,6 @@ class list_cy_zbjl(BaseModel):
     kedanjia = CharField(max_length=256, null=False)
     renjungoumaijiazhi = CharField(max_length=256, null=False)
     xiaoshouzhuanhualv = CharField(max_length=256, null=False)
-    theme = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_mc_zbjl(BaseModel):
@@ -2334,6 +2334,7 @@ class list_mc_zbjl(BaseModel):
     name_zb = CharField(max_length=256, null=False, index=True)
     url_zbjl = CharField(max_length=256, null=False, index=True)
     livestraming_time = CharField(max_length=256, null=False, index=True)
+    theme = CharField(max_length=256, null=False)
 
     duration = CharField(max_length=256, null=False)
     yinlangshouru = CharField(max_length=256, null=False)
@@ -2355,7 +2356,6 @@ class list_mc_zbjl(BaseModel):
     kedanjia = CharField(max_length=256, null=False)
     renjungoumaijiazhi = CharField(max_length=256, null=False)
     xiaoshouzhuanhualv = CharField(max_length=256, null=False)
-    theme = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_gs_zbjl(BaseModel):
@@ -2364,6 +2364,7 @@ class list_gs_zbjl(BaseModel):
     name_zb = CharField(max_length=256, null=False, index=True)
     url_zbjl = CharField(max_length=256, null=False, index=True)
     livestraming_time = CharField(max_length=256, null=False, index=True)
+    theme = CharField(max_length=256, null=False)
 
     duration = CharField(max_length=256, null=False)
     yinlangshouru = CharField(max_length=256, null=False)
@@ -2385,7 +2386,6 @@ class list_gs_zbjl(BaseModel):
     kedanjia = CharField(max_length=256, null=False)
     renjungoumaijiazhi = CharField(max_length=256, null=False)
     xiaoshouzhuanhualv = CharField(max_length=256, null=False)
-    theme = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_yx_zbjl(BaseModel):
@@ -2394,6 +2394,7 @@ class list_yx_zbjl(BaseModel):
     name_zb = CharField(max_length=256, null=False, index=True)
     url_zbjl = CharField(max_length=256, null=False, index=True)
     livestraming_time = CharField(max_length=256, null=False, index=True)
+    theme = CharField(max_length=256, null=False)
 
     duration = CharField(max_length=256, null=False)
     yinlangshouru = CharField(max_length=256, null=False)
@@ -2415,7 +2416,6 @@ class list_yx_zbjl(BaseModel):
     kedanjia = CharField(max_length=256, null=False)
     renjungoumaijiazhi = CharField(max_length=256, null=False)
     xiaoshouzhuanhualv = CharField(max_length=256, null=False)
-    theme = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_jj_zbjl(BaseModel):
@@ -2424,6 +2424,7 @@ class list_jj_zbjl(BaseModel):
     name_zb = CharField(max_length=256, null=False, index=True)
     url_zbjl = CharField(max_length=256, null=False, index=True)
     livestraming_time = CharField(max_length=256, null=False, index=True)
+    theme = CharField(max_length=256, null=False)
 
     duration = CharField(max_length=256, null=False)
     yinlangshouru = CharField(max_length=256, null=False)
@@ -2445,7 +2446,6 @@ class list_jj_zbjl(BaseModel):
     kedanjia = CharField(max_length=256, null=False)
     renjungoumaijiazhi = CharField(max_length=256, null=False)
     xiaoshouzhuanhualv = CharField(max_length=256, null=False)
-    theme = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ms_zbjl(BaseModel):
@@ -2454,6 +2454,7 @@ class list_ms_zbjl(BaseModel):
     name_zb = CharField(max_length=256, null=False, index=True)
     url_zbjl = CharField(max_length=256, null=False, index=True)
     livestraming_time = CharField(max_length=256, null=False, index=True)
+    theme = CharField(max_length=256, null=False)
 
     duration = CharField(max_length=256, null=False)
     yinlangshouru = CharField(max_length=256, null=False)
@@ -2475,7 +2476,6 @@ class list_ms_zbjl(BaseModel):
     kedanjia = CharField(max_length=256, null=False)
     renjungoumaijiazhi = CharField(max_length=256, null=False)
     xiaoshouzhuanhualv = CharField(max_length=256, null=False)
-    theme = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ly_zbjl(BaseModel):
@@ -2484,6 +2484,7 @@ class list_ly_zbjl(BaseModel):
     name_zb = CharField(max_length=256, null=False, index=True)
     url_zbjl = CharField(max_length=256, null=False, index=True)
     livestraming_time = CharField(max_length=256, null=False, index=True)
+    theme = CharField(max_length=256, null=False)
 
     duration = CharField(max_length=256, null=False)
     yinlangshouru = CharField(max_length=256, null=False)
@@ -2505,7 +2506,6 @@ class list_ly_zbjl(BaseModel):
     kedanjia = CharField(max_length=256, null=False)
     renjungoumaijiazhi = CharField(max_length=256, null=False)
     xiaoshouzhuanhualv = CharField(max_length=256, null=False)
-    theme = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_jk_zbjl(BaseModel):
@@ -2514,6 +2514,7 @@ class list_jk_zbjl(BaseModel):
     name_zb = CharField(max_length=256, null=False, index=True)
     url_zbjl = CharField(max_length=256, null=False, index=True)
     livestraming_time = CharField(max_length=256, null=False, index=True)
+    theme = CharField(max_length=256, null=False)
 
     duration = CharField(max_length=256, null=False)
     yinlangshouru = CharField(max_length=256, null=False)
@@ -2535,7 +2536,6 @@ class list_jk_zbjl(BaseModel):
     kedanjia = CharField(max_length=256, null=False)
     renjungoumaijiazhi = CharField(max_length=256, null=False)
     xiaoshouzhuanhualv = CharField(max_length=256, null=False)
-    theme = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_qc_zbjl(BaseModel):
@@ -2544,6 +2544,7 @@ class list_qc_zbjl(BaseModel):
     name_zb = CharField(max_length=256, null=False, index=True)
     url_zbjl = CharField(max_length=256, null=False, index=True)
     livestraming_time = CharField(max_length=256, null=False, index=True)
+    theme = CharField(max_length=256, null=False)
 
     duration = CharField(max_length=256, null=False)
     yinlangshouru = CharField(max_length=256, null=False)
@@ -2565,7 +2566,6 @@ class list_qc_zbjl(BaseModel):
     kedanjia = CharField(max_length=256, null=False)
     renjungoumaijiazhi = CharField(max_length=256, null=False)
     xiaoshouzhuanhualv = CharField(max_length=256, null=False)
-    theme = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ss_zbjl(BaseModel):
@@ -2574,6 +2574,7 @@ class list_ss_zbjl(BaseModel):
     name_zb = CharField(max_length=256, null=False, index=True)
     url_zbjl = CharField(max_length=256, null=False, index=True)
     livestraming_time = CharField(max_length=256, null=False, index=True)
+    theme = CharField(max_length=256, null=False)
 
     duration = CharField(max_length=256, null=False)
     yinlangshouru = CharField(max_length=256, null=False)
@@ -2595,7 +2596,6 @@ class list_ss_zbjl(BaseModel):
     kedanjia = CharField(max_length=256, null=False)
     renjungoumaijiazhi = CharField(max_length=256, null=False)
     xiaoshouzhuanhualv = CharField(max_length=256, null=False)
-    theme = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_sh_zbjl(BaseModel):
@@ -2604,6 +2604,7 @@ class list_sh_zbjl(BaseModel):
     name_zb = CharField(max_length=256, null=False, index=True)
     url_zbjl = CharField(max_length=256, null=False, index=True)
     livestraming_time = CharField(max_length=256, null=False, index=True)
+    theme = CharField(max_length=256, null=False)
 
     duration = CharField(max_length=256, null=False)
     yinlangshouru = CharField(max_length=256, null=False)
@@ -2625,7 +2626,6 @@ class list_sh_zbjl(BaseModel):
     kedanjia = CharField(max_length=256, null=False)
     renjungoumaijiazhi = CharField(max_length=256, null=False)
     xiaoshouzhuanhualv = CharField(max_length=256, null=False)
-    theme = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_kj_zbjl(BaseModel):
@@ -2634,6 +2634,7 @@ class list_kj_zbjl(BaseModel):
     name_zb = CharField(max_length=256, null=False, index=True)
     url_zbjl = CharField(max_length=256, null=False, index=True)
     livestraming_time = CharField(max_length=256, null=False, index=True)
+    theme = CharField(max_length=256, null=False)
 
     duration = CharField(max_length=256, null=False)
     yinlangshouru = CharField(max_length=256, null=False)
@@ -2655,7 +2656,6 @@ class list_kj_zbjl(BaseModel):
     kedanjia = CharField(max_length=256, null=False)
     renjungoumaijiazhi = CharField(max_length=256, null=False)
     xiaoshouzhuanhualv = CharField(max_length=256, null=False)
-    theme = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_qy_zbjl(BaseModel):
@@ -2664,6 +2664,7 @@ class list_qy_zbjl(BaseModel):
     name_zb = CharField(max_length=256, null=False, index=True)
     url_zbjl = CharField(max_length=256, null=False, index=True)
     livestraming_time = CharField(max_length=256, null=False, index=True)
+    theme = CharField(max_length=256, null=False)
 
     duration = CharField(max_length=256, null=False)
     yinlangshouru = CharField(max_length=256, null=False)
@@ -2685,7 +2686,6 @@ class list_qy_zbjl(BaseModel):
     kedanjia = CharField(max_length=256, null=False)
     renjungoumaijiazhi = CharField(max_length=256, null=False)
     xiaoshouzhuanhualv = CharField(max_length=256, null=False)
-    theme = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 '------------------------------------------------------------------------------------'

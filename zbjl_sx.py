@@ -1,5 +1,6 @@
 # coding=utf-8
-# 从6月1日期开始每日更新，每天抓取昨天的数据（如6月1日抓取5月31日的）
+# 首日启动,什么都不做,轮空
+# 次日启动,每天抓取昨天的相应数据(如6月1日抓取5月31日的)
 
 import requests
 import websocket
@@ -8,22 +9,24 @@ import datetime
 import time
 from DB import *
 
+def get_current_time():
+    return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
 today_date = datetime.datetime.now().strftime("%Y-%m-%d")
 lastday_date = (datetime.datetime.now()+datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
 first_crawl_date = (datetime.datetime.now()+datetime.timedelta(days=-121)).strftime("%Y-%m-%d")
-
+FIRST_RUN_DATE = '2021-06-02'
 type_list = {
     'ms':'美食','ss':'时尚','kj':'科技',
     'yl':'娱乐','gx':'搞笑','cy':'才艺',
     'qy':'企业',
 }
 
-with open('./cookie','r') as f:
+with open('/root/xd_crawler/cookie','r') as f:
     cookie = f.read().strip()
-with open('./token','r') as f:
+with open('/root/xd_crawler/token','r') as f:
     token = f.read().strip()
-with open('./type','r') as f:
+with open('/root/xd_crawler/type','r') as f:
     input_type = f.read().strip().split()
 
 headers = {

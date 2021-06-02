@@ -19,11 +19,11 @@ type_list = {
     'qy':'企业',
 }
 
-with open('./cookie','r') as f:
+with open('/root/xd_crawler/cookie','r') as f:
     cookie = f.read().strip()
-with open('./token','r') as f:
+with open('/root/xd_crawler/token','r') as f:
     token = f.read().strip()
-with open('./type','r') as f:
+with open('/root/xd_crawler/type','r') as f:
     input_type = f.read().strip().split()
 
 headers = {
