@@ -14,7 +14,7 @@ def get_current_time():
 today_date = datetime.datetime.now().strftime("%Y-%m-%d")
 lastday_date = (datetime.datetime.now()+datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
 first_crawl_date = (datetime.datetime.now()+datetime.timedelta(days=-121)).strftime("%Y-%m-%d")
-FIRST_RUN_DATE = '2021-06-01'
+FIRST_RUN_DATE = '2021-06-03'
 
 type_list = {
     'ms':'美食','ss':'时尚','kj':'科技',
@@ -146,8 +146,6 @@ for type in input_type:
                         continue_next_flag = True
                         break
                     time.sleep(5)
-                else:
-                    break
             if continue_next_flag:
                 Table_obj.time_update = '[%s] aweme_id_url Error has occurred' % get_current_time()
                 Table_obj.save()

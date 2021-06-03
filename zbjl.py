@@ -202,3 +202,10 @@ for type in input_type:
                 print('[+]', type, 'zbjl', one_record.num_zb, one_record.name_zb, webcast_id, Table_obj.livestraming_time, 'Done at', get_current_time())
 
         print('[+]', type, 'zbjl', one_record.num_zb, one_record.name_zb, '[ zbjl amount: %d ]'%zbjl_count, 'Done at', get_current_time())
+        print('-' * 100)
+print('[*******] websocket_use_count : %d' % websocket_use_count)
+
+today_left_access_times = 6800 - websocket_use_count
+single_type_times = today_left_access_times/3
+for type in input_type:
+    "list_%s_zbjl.select().where(list_%s_zbjl.url_zbjl=='%s',list_%s_zbjl.time_update.startswith('%s'))" % (type, type, url_zbjl, type, 'First_Established')
