@@ -14,7 +14,7 @@ def get_current_time():
 today_date = datetime.datetime.now().strftime("%Y-%m-%d")
 lastday_date = (datetime.datetime.now()+datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
 first_crawl_date = (datetime.datetime.now()+datetime.timedelta(days=-121)).strftime("%Y-%m-%d")
-FIRST_RUN_DATE = '2021-06-03'
+FIRST_RUN_DATE = '2021-06-04'
 
 type_list = {
     'ms':'美食','ss':'时尚','kj':'科技',
@@ -53,9 +53,10 @@ for type in input_type:
             update_date = datetime.datetime.strptime(lastday_date, "%Y-%m-%d")
 
         zp_count = 0
-        finish_get_awemeid_flag = True
         set_start = (datetime.datetime.now() + datetime.timedelta(days=0)).strftime("%Y-%m-%d")
-        while finish_get_awemeid_flag:
+        Time_period_loop = True
+        while Time_period_loop:
+            # 时间段循环
             post_data = {
                 "keyword": "",
                 "uid": uid,
@@ -81,32 +82,33 @@ for type in input_type:
             post_data.update(({'create_time_start':set_start}))
             post_data.update(({'create_time_end': set_end}))
             page = 1
-            new_time_period = True
 
             Retry_times = 10
-            continue_next_flag = False
-            while 1:
+            Turn_page_loop = True
+            while Turn_page_loop:
+                # 翻页循环
                 try:
                     post_data.update({'start': page})
                     rsp = requests.post(aweme_id_url, headers=headers, data=json.dumps(post_data))
-                    data = json.loads(rsp.text).get('data')
-                    data_list = data.get('list')
+                    data_ori = json.loads(rsp.text)
+                    data = data_ori.get('data')
 
-                    if (data_list == []) and new_time_period:
-                        #当前新时间周期里已经没有了新数据，结束时间周期搜索循环
-                        finish_get_awemeid_flag = False
-                        break
-
-                    if (data_list == []) and (page*100>data.get('count')):
-                        #翻页结束,进入下一个时间周期
-                        break
+                    if data_ori.get('code') == 4014 and data == None:
+                        import sys, re
+                        error_msg = '|'.join(re.search(r'<div class="xd_noauth_wrap"><div class="xd_noauth_title">(.*)</div><div class="xd_noauth_subtitle">(.*)<span class="xd_noauth_count">(.*)</span>(.*)</div></div>',data_ori.get('msg')).groups())
+                        print('[*] %s' % error_msg, one_record.num_zb, one_record.name_zb, 'at', get_current_time())
+                        sys.exit(0)
+                    else:
+                         data_list = data.get('list')
+                    #'{\n\t"msg":"<div class=\\"xd_noauth_wrap\\"><div class=\\"xd_noauth_title\\">今日访问次数已达上限</div><div class=\\"xd_noauth_subtitle\\">您当前为超级全家桶，该页面访问次数为<span class=\\"xd_noauth_count\\">8000</span>次/天</div></div>",\n\t"data":null,\n\t"code":4014\n}'
 
                     for aweme_obj in data_list:
 
                         zp_create_time = datetime.datetime.strptime(aweme_obj.get('create_time').split(' ')[0], "%Y-%m-%d")
 
                         if zp_create_time < update_date:
-                            finish_get_awemeid_flag = False
+                            Turn_page_loop = False
+                            Time_period_loop = False
                             break
                         else:
                             aweme_id = aweme_obj.get('aweme_id')
@@ -134,21 +136,23 @@ for type in input_type:
 
                             zp_count += 1
 
-                    if set_end == set_start:
-                        finish_get_awemeid_flag = False
+                    if ( len(data_list) <= 100 ) and ( page*100 >= data.get('count') ):
+                        # 多页情景下,当前时间段内没有新数据了,不再翻页,进入下一个时间段
+                        # 单页情景下,当前时间段内只有不到100个数据或者刚好100个数据时,依然适用
+                        if set_end == set_start:
+                            # 日更场景,昨天的数据翻页完,退出时间段循环
+                            Time_period_loop = False
                         break
-                    new_time_period = False
                     page += 1
                 except:
                     Retry_times -= 1
-                    print('[*] Get zb_zplb aweme_id_url failed. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb, get_current_time()))
+                    print('[*] Get zb_zplb aweme_id_url failed. type:%s, num_zb:%s, url_zb:%s, time_period:%s-%s, page:%d, Retry occurred at %s' % (type, one_record.num_zb, one_record.url_zb, set_start, set_end, page, get_current_time()))
+
                     if Retry_times == 0:
-                        continue_next_flag = True
-                        break
+                        Turn_page_loop = False
+                        Time_period_loop = False
+                        print('[*]', type, 'zb_zplb', one_record.num_zb, one_record.name_zb, one_record.url_zb, 'time_period:%s-%s'%(set_start,set_end), 'page:%d'%page, 'Severe Error has occurred to continue next zb at', get_current_time())
+
                     time.sleep(5)
-            if continue_next_flag:
-                Table_obj.time_update = '[%s] aweme_id_url Error has occurred' % get_current_time()
-                Table_obj.save()
-                continue
 
         print('[+]', type, 'zb_zplb', one_record.num_zb, one_record.name_zb, '[ zp amount: %d ]'%zp_count, 'Done at', get_current_time())

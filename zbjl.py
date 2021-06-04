@@ -3,7 +3,7 @@
 # 次日启动,每天抓取昨天直播记录所有详情数据(如6月1日抓取5月31日的)
 
 import requests
-import json
+import json,os
 import websocket
 import datetime,time
 from DB import *
@@ -14,7 +14,7 @@ def get_current_time():
 today_date = datetime.datetime.now().strftime("%Y-%m-%d")
 lastday_date = (datetime.datetime.now()+datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
 first_crawl_date = (datetime.datetime.now()+datetime.timedelta(days=-121)).strftime("%Y-%m-%d")
-FIRST_RUN_DATE = '2021-06-02'
+FIRST_RUN_DATE = '2021-06-04'
 
 type_list = {
     'ms':'美食','ss':'时尚','kj':'科技',
@@ -118,7 +118,7 @@ for type in input_type:
                 count = data.get('count')
                 end_page = int(count / 100) + 1 if count % 100 != 0 else int(count / 100)
             except:
-                print('[*] Get zbjl webcastList_url count failed. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb,get_current_time()))
+                print('[*] Get zbjl webcastList_url count failed. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb, get_current_time()))
                 time.sleep(5)
             else:
                 break
@@ -131,7 +131,7 @@ for type in input_type:
                     rsp = requests.post(webcastList_url, headers=headers, data=json.dumps(post_data))
                     data_list = json.loads(rsp.text).get('data').get('list')
                 except:
-                    print('[*] Get zbjl webcastList_url data failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl,get_current_time()))
+                    print('[*] Get zbjl webcastList_url data failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
                     time.sleep(5)
                 else:
                     break
@@ -165,7 +165,7 @@ for type in input_type:
                     zbjl_count += 1
 
                 else:
-                    download_websocket_data(webcast_id, cookie, type, one_record.num_zb, one_record.num_zb)
+                    download_websocket_data(webcast_id, cookie, type, one_record.num_zb, one_record.url_zbjl)
                     websocket_use_count += 1
 
                     with open('/root/xd_crawler/websocket_data/%s.detail'%webcast_id, 'r') as f:
@@ -200,12 +200,54 @@ for type in input_type:
                     zbjl_count += 1
 
                 print('[+]', type, 'zbjl', one_record.num_zb, one_record.name_zb, webcast_id, Table_obj.livestraming_time, 'Done at', get_current_time())
-
         print('[+]', type, 'zbjl', one_record.num_zb, one_record.name_zb, '[ zbjl amount: %d ]'%zbjl_count, 'Done at', get_current_time())
         print('-' * 100)
-print('[*******] websocket_use_count : %d' % websocket_use_count)
+
+
 
 today_left_access_times = 6800 - websocket_use_count
-single_type_times = today_left_access_times/3
+single_type_times = int(today_left_access_times/len(input_type))
+print('[+] websocket_use_count : %d, today_left_access_times: %d' % (websocket_use_count,today_left_access_times))
+
 for type in input_type:
-    "list_%s_zbjl.select().where(list_%s_zbjl.url_zbjl=='%s',list_%s_zbjl.time_update.startswith('%s'))" % (type, type, url_zbjl, type, 'First_Established')
+
+    query_history_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.time_update.startswith('%s')).order_by(list_%s_zbjl.id).limit(%d)" % (type, type, 'First_Established', type, single_type_times)
+
+    for Table_obj in eval(query_history_cmd):
+
+        webcast_id = Table_obj.url_zbjl.split('/')[-1]
+
+        if not os.path.exists('/root/xd_crawler/websocket_data/%s.detail' % webcast_id):
+            download_websocket_data(webcast_id, cookie, type, Table_obj.num_zb, Table_obj.url_zbjl)
+
+        with open('/root/xd_crawler/websocket_data/%s.detail' % webcast_id, 'r') as f:
+            detail_data = json.load(f)
+
+        Table_obj.duration = detail_data.get('duration')
+        Table_obj.yinlangshouru = detail_data.get('stats_fan_ticket_money')
+        Table_obj.benchangyinlang = detail_data.get('stats_fan_ticket')
+        Table_obj.songli = detail_data.get('stats_gift_uv_count')
+        Table_obj.zaixianfengzhi = detail_data.get('max_user_count')
+        Table_obj.leijiguankan = detail_data.get('stats_total_user')
+        Table_obj.zongdianzan = detail_data.get('like_count')
+        Table_obj.danchangzhangfen = detail_data.get('add_fans_count')
+        Table_obj.zhuanfenlv = detail_data.get('turn_rate')
+        Table_obj.pingjunzaixian = detail_data.get('avg_user_count')
+        Table_obj.pingjunzhiliu = detail_data.get('user_average_duration')
+
+        Table_obj.yuguxiaoshoue = str(detail_data.get('total_sales_money'))
+        Table_obj.yuguxiaoshouliang = detail_data.get('total_sales')
+        Table_obj.shangjiashangpin = detail_data.get('promotion_count')
+
+        Table_obj.zuigaodanjia = detail_data.get('max_price')
+        Table_obj.zuigaoxiaoliang = detail_data.get('max_sales')
+        Table_obj.zuigaoxiaoshoue = detail_data.get('max_sales_money')
+        Table_obj.kedanjia = str(detail_data.get('customer_price'))
+        Table_obj.renjungoumaijiazhi = detail_data.get('per_capita')
+        Table_obj.xiaoshouzhuanhualv = detail_data.get('conversion_rate')
+
+        Table_obj.time_update = get_current_time() + ' For_History'
+
+        Table_obj.save()
+
+        print('[+]', type, 'For_History zbjl', Table_obj.num_zb, Table_obj.name_zb, Table_obj.livestraming_time, 'Done at', get_current_time())
