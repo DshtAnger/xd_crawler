@@ -40,9 +40,9 @@ headers = {
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36',
 }
 
-for type in input_type:
 
-    query_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.livestraming_time.startswith('%s'))" % (type,type,lastday_date)
+
+def zbjl_sx(query_cmd, today_update_flag):
 
     for one_record in eval(query_cmd):
 
@@ -53,16 +53,19 @@ for type in input_type:
             print('[+]', type, 'zbjl_sx', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'Done at', get_current_time())
             continue
 
+        if not os.path.exists('/root/xd_crawler/websocket_data/%s.detail' % webcast_id):
+            print('[+]', type, 'zbjl_sx', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'Error at', get_current_time())
+            continue
+
+        with open('/root/xd_crawler/websocket_data/%s.detail' % webcast_id, 'r') as f:
+            detail_data = json.load(f)
+
         Table_obj = eval('list_' + type + '_zbjl_sx' + '.create()')
         Table_obj.num_zb = one_record.num_zb
         Table_obj.id_zb = one_record.id_zb
         Table_obj.name_zb = one_record.name_zb
         Table_obj.url_zbjl = one_record.url_zbjl
         Table_obj.livestraming_time = one_record.livestraming_time
-
-
-        with open('/root/xd_crawler/websocket_data/%s.detail' % webcast_id, 'r') as f:
-            detail_data = json.load(f)
 
         Table_obj.shipintuijian = detail_data.get('stats_user_count_composition').get('video_detail') if detail_data.get('stats_user_count_composition') else '--'
         Table_obj.guanzhu = detail_data.get('stats_user_count_composition').get('my_follow') if detail_data.get('stats_user_count_composition') else '--'
@@ -126,8 +129,23 @@ for type in input_type:
         Table_obj.xianggang = ''.join([i.get('rate') for i in filter(lambda x: x.get('key') == '香港', data)]) if data!=None else '--'
         Table_obj.aomen = ''.join([i.get('rate') for i in filter(lambda x: x.get('key') == '澳门', data)]) if data!=None else '--'
 
-        Table_obj.time_update = get_current_time()
+        if today_update_flag:
+            Table_obj.time_update = get_current_time()
+        else:
+            Table_obj.time_update = get_current_time() + ' For_History'
 
         Table_obj.save()
 
         print('[+]', type, 'zbjl_sx', one_record.num_zb, one_record.name_zb, webcast_id, Table_obj.livestraming_time, 'Done at', get_current_time())
+
+for type in input_type:
+    # 日更的数据,必须是zbjl表里属于昨天的直播、且被正确完成日更的数据(即不能是待补抓的数据，也不能是被完成补抓的数据),这些记录才一定会有本地websocket数据
+    today_update_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.livestraming_time.startswith('%s'),~list_%s_zbjl.time_update.startswith('First_Established'),~list_%s_zbjl.time_update.endswith('For_History'))" % (type,type,lastday_date, type, type)
+
+    zbjl_sx(today_update_cmd, True)
+
+for type in input_type:
+    # 补更的数据,根据zbjl表里标记的数据进行抓取
+    crawl_history_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.time_update.endswith('For_History'))" % (type, type)
+
+    zbjl_sx(crawl_history_cmd, False)

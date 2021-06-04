@@ -40,9 +40,8 @@ headers = {
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36',
 }
 
-for type in input_type:
 
-    query_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.livestraming_time.startswith('%s'))" % (type,type,lastday_date)
+def zbjl_ll(query_cmd, today_update_flag):
 
     for one_record in eval(query_cmd):
 
@@ -77,7 +76,10 @@ for type in input_type:
             Table_obj_ll.livestraming_time = one_record.livestraming_time
             Table_obj_ll.traffic_time = crawl_time
             Table_obj_ll.renshu = item.get('user_count')
-            Table_obj_ll.time_update = get_current_time()
+            if today_update_flag:
+                Table_obj_ll.time_update = get_current_time()
+            else:
+                Table_obj_ll.time_update = get_current_time() + ' For_History'
 
             Table_obj_rc = eval('list_' + type + '_zbjl_rc' + '.create()')
             Table_obj_rc.num_zb = one_record.num_zb
@@ -90,7 +92,10 @@ for type in input_type:
             Table_obj_rc.guanzhu = item.get('stats_user_composition_from_my_follow')
             Table_obj_rc.shipintuijian = item.get('stats_user_composition_from_video_detail')
             Table_obj_rc.zhiboguangchang = item.get('stats_user_composition_from_other')
-            Table_obj_rc.time_update = get_current_time()
+            if today_update_flag:
+                Table_obj_rc.time_update = get_current_time()
+            else:
+                Table_obj_rc.time_update = get_current_time() + ' For_History'
 
             Table_obj_yl = eval('list_' + type + '_zbjl_yl' + '.create()')
             Table_obj_yl.num_zb = one_record.num_zb
@@ -100,7 +105,10 @@ for type in input_type:
             Table_obj_yl.livestraming_time = one_record.livestraming_time
             Table_obj_yl.yinlang_time = crawl_time
             Table_obj_yl.yinlang = item.get('stats_fan_ticket')
-            Table_obj_yl.time_update = get_current_time()
+            if today_update_flag:
+                Table_obj_yl.time_update = get_current_time()
+            else:
+                Table_obj_yl.time_update = get_current_time() + ' For_History'
 
             Table_obj_fst = eval('list_' + type + '_zbjl_fst' + '.create()')
             Table_obj_fst.num_zb = one_record.num_zb
@@ -110,7 +118,10 @@ for type in input_type:
             Table_obj_fst.livestraming_time = one_record.livestraming_time
             Table_obj_fst.fans_time = crawl_time
             Table_obj_fst.fans_zb = item.get('club_info_total_fans_count')
-            Table_obj_fst.time_update = get_current_time()
+            if today_update_flag:
+                Table_obj_fst.time_update = get_current_time()
+            else:
+                Table_obj_fst.time_update = get_current_time() + ' For_History'
 
             Table_obj_dz = eval('list_' + type + '_zbjl_dz' + '.create()')
             Table_obj_dz.num_zb = one_record.num_zb
@@ -120,7 +131,10 @@ for type in input_type:
             Table_obj_dz.livestraming_time = one_record.livestraming_time
             Table_obj_dz.support_time = crawl_time
             Table_obj_dz.support_zb = item.get('like_count')
-            Table_obj_dz.time_update = get_current_time()
+            if today_update_flag:
+                Table_obj_dz.time_update = get_current_time()
+            else:
+                Table_obj_dz.time_update = get_current_time() + ' For_History'
 
             Table_obj_ll.save()
             Table_obj_rc.save()
@@ -156,9 +170,24 @@ for type in input_type:
 
             Table_obj.timepoint = timepoint
             Table_obj.shichang = str(data.get('data'))
-            Table_obj.time_update = get_current_time()
+            if today_update_flag:
+                Table_obj.time_update = get_current_time()
+            else:
+                Table_obj.time_update = get_current_time() + ' For_History'
 
             Table_obj.save()
 
         print('[+]', type, 'zbjl_ll-rc...', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'Done at', get_current_time())
 
+
+for type in input_type:
+    # 日更的数据,必须是zbjl表里属于昨天的直播、且被正确完成日更的数据(即不能是待补抓的数据，也不能是被完成补抓的数据),这些记录才一定会有本地websocket数据
+    today_update_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.livestraming_time.startswith('%s'),~list_%s_zbjl.time_update.startswith('First_Established'),~list_%s_zbjl.time_update.endswith('For_History'))" % (type,type,lastday_date, type, type)
+
+    zbjl_ll(today_update_cmd, True)
+
+for type in input_type:
+    # 补更的数据,根据zbjl表里标记的数据进行抓取
+    crawl_history_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.time_update.endswith('For_History'))" % (type, type)
+
+    zbjl_ll(crawl_history_cmd, False)

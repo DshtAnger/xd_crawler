@@ -14,7 +14,7 @@ def get_current_time():
 today_date = datetime.datetime.now().strftime("%Y-%m-%d")
 lastday_date = (datetime.datetime.now()+datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
 first_crawl_date = (datetime.datetime.now()+datetime.timedelta(days=-121)).strftime("%Y-%m-%d")
-FIRST_RUN_DATE = '2021-06-04'
+FIRST_RUN_DATE = '2021-06-05'
 
 type_list = {
     'ms':'美食','ss':'时尚','kj':'科技',

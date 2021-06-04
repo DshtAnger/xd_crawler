@@ -14,7 +14,7 @@ def get_current_time():
 today_date = datetime.datetime.now().strftime("%Y-%m-%d")
 lastday_date = (datetime.datetime.now()+datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
 first_crawl_date = (datetime.datetime.now()+datetime.timedelta(days=-121)).strftime("%Y-%m-%d")
-FIRST_RUN_DATE = '2021-06-04'
+FIRST_RUN_DATE = '2021-06-05'
 
 type_list = {
     'ms':'美食','ss':'时尚','kj':'科技',
@@ -47,8 +47,11 @@ def download_websocket_data(webcast_id, cookie, type, num_zb, url_zbjl):
         "type": "webcast",
         "data": {"room_id": webcast_id}
     }
+    Retry_times = 20
+    Severe_error_flag = False
     while 1:
         try:
+            time.sleep(1)
             tipRank_data, commodity_data, detail_data = [None] * 3
             ws = websocket.WebSocket()
             ws.timeout = 10
@@ -74,10 +77,17 @@ def download_websocket_data(webcast_id, cookie, type, num_zb, url_zbjl):
                     else:
                         raise Exception
         except:
+            Retry_times -= 1
             print('[*] Get zbjl websocket data failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, num_zb, url_zbjl,get_current_time()))
+            if Retry_times == 0:
+                Severe_error_flag = True
+                break
             time.sleep(5)
         else:
             break
+
+    if Severe_error_flag:
+        return False
 
     with open('/root/xd_crawler/websocket_data/%s.detail'%webcast_id, 'w') as f:
         json.dump(detail_data,f)
@@ -165,8 +175,15 @@ for type in input_type:
                     zbjl_count += 1
 
                 else:
-                    download_websocket_data(webcast_id, cookie, type, one_record.num_zb, one_record.url_zbjl)
-                    websocket_use_count += 1
+
+                    if download_websocket_data(webcast_id, cookie, type, one_record.num_zb, one_record.url_zbjl):
+                        websocket_use_count += 1
+                    else:
+                        Table_obj.time_update = 'First_Established at %s' % get_current_time()
+                        Table_obj.save()
+                        zbjl_count += 1
+                        print('[+]', type, 'zbjl', one_record.num_zb, one_record.name_zb, webcast_id, Table_obj.livestraming_time, 'Error at', get_current_time())
+                        continue
 
                     with open('/root/xd_crawler/websocket_data/%s.detail'%webcast_id, 'r') as f:
                         detail_data = json.load(f)
@@ -211,14 +228,17 @@ print('[+] websocket_use_count : %d, today_left_access_times: %d' % (websocket_u
 
 for type in input_type:
 
-    query_history_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.time_update.startswith('%s')).order_by(list_%s_zbjl.id).limit(%d)" % (type, type, 'First_Established', type, single_type_times)
+    query_history_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.time_update.startswith('First_Established')).order_by(list_%s_zbjl.id).limit(%d)" % (type, type, type, single_type_times)
 
     for Table_obj in eval(query_history_cmd):
 
         webcast_id = Table_obj.url_zbjl.split('/')[-1]
 
         if not os.path.exists('/root/xd_crawler/websocket_data/%s.detail' % webcast_id):
-            download_websocket_data(webcast_id, cookie, type, Table_obj.num_zb, Table_obj.url_zbjl)
+
+            if not download_websocket_data(webcast_id, cookie, type, Table_obj.num_zb, Table_obj.url_zbjl):
+                print('[+]', type, 'For_History zbjl', Table_obj.num_zb, Table_obj.name_zb, webcast_id, Table_obj.livestraming_time, 'Error at', get_current_time())
+                continue
 
         with open('/root/xd_crawler/websocket_data/%s.detail' % webcast_id, 'r') as f:
             detail_data = json.load(f)
@@ -250,4 +270,4 @@ for type in input_type:
 
         Table_obj.save()
 
-        print('[+]', type, 'For_History zbjl', Table_obj.num_zb, Table_obj.name_zb, Table_obj.livestraming_time, 'Done at', get_current_time())
+        print('[+]', type, 'For_History zbjl', Table_obj.num_zb, Table_obj.name_zb, webcast_id, Table_obj.livestraming_time, 'Done at', get_current_time())
