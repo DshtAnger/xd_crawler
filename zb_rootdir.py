@@ -45,9 +45,11 @@ for type in input_type:
         post_data = {
             'keyword': id_zb
         }
+
         id_search_error_tag = False
         name_search_error_tag = False
-        #identify_search_error_tag = False
+        identify_search_error_tag = False
+
         num_zb = str(douyin_id_list.index(id_zb) + 1) + type
         name_zb = douyin_name_list[douyin_id_list.index(id_zb)]
         while 1:
@@ -60,6 +62,9 @@ for type in input_type:
                     raise Exception
                 if len(data) == 0 and (not name_search_error_tag):
                     name_search_error_tag = True
+                    raise Exception
+                if len(data) == 0 and (not identify_search_error_tag):
+                    identify_search_error_tag = True
                     raise Exception
             except:
                 if id_search_error_tag and (not name_search_error_tag):
@@ -76,10 +81,18 @@ for type in input_type:
                     search_identify = douyin_identify_list[douyin_id_list.index(id_zb)]
                     post_data.update({'keyword': search_identify})
 
-                print('[*] Get zb_rootdir failed. type:%s id_zb:%s id_search_error_tag:%s name_search_error_tag:%s' % (type,id_zb,id_search_error_tag,name_search_error_tag))
-                time.sleep(5)
+                print('[*] Get zb_rootdir failed. %s id_zb:%s name_zb:%s id_search_error_tag:%s name_search_error_tag:%s identify_search_error_tag:%s' % (num_zb, id_zb, name_zb, id_search_error_tag, name_search_error_tag, identify_search_error_tag))
+
+                if identify_search_error_tag:
+                    break
+                else:
+                    time.sleep(5)
             else:
                 break
+
+        if id_search_error_tag and name_search_error_tag and identify_search_error_tag:
+            print('[*] Can not find this: %s %s %s. To continux next.'%(num_zb, id_zb, name_zb))
+            continue
 
         one_data = None
         if len(data) > 1:
