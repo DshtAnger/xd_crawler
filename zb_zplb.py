@@ -94,13 +94,18 @@ for type in input_type:
                     data = data_ori.get('data')
 
                     if data_ori.get('code') == 4014 and data == None:
-                        import sys, re
+                        import os, re
                         error_msg = '|'.join(re.search(r'<div class="xd_noauth_wrap"><div class="xd_noauth_title">(.*)</div><div class="xd_noauth_subtitle">(.*)<span class="xd_noauth_count">(.*)</span>(.*)</div></div>',data_ori.get('msg')).groups())
                         print('[*] %s' % error_msg, one_record.num_zb, one_record.name_zb, 'at', get_current_time())
-                        sys.exit(0)
+                        os._exit(1)
                     else:
                          data_list = data.get('list')
                     #'{\n\t"msg":"<div class=\\"xd_noauth_wrap\\"><div class=\\"xd_noauth_title\\">今日访问次数已达上限</div><div class=\\"xd_noauth_subtitle\\">您当前为超级全家桶，该页面访问次数为<span class=\\"xd_noauth_count\\">8000</span>次/天</div></div>",\n\t"data":null,\n\t"code":4014\n}'
+
+                    if (data_list == []) and Turn_page_loop:
+                        # 上一时间段内翻页到底后，当前新时间段里也没有数据，则意味着数据抓取完毕，时间段不用再向前，结束间整个搜索循环
+                        Time_period_loop = False
+                        break
 
                     for aweme_obj in data_list:
 

@@ -51,7 +51,7 @@ def zbjl_splb(query_cmd, today_update_flag):
 
         for product in commodity_data:
 
-            query_cmd = "list_%s_zbjl_splb.select().where(list_%s_zbjl_splb.store_url=='%s',list_%s_zbjl_splb.time_update.startswith('%s'))" % (type, type, product.get('detail_url'), type, today_date)
+            query_cmd = "list_%s_zbjl_splb.select().where(list_%s_zbjl_splb.url_zbjl=='%s',list_%s_zbjl_splb.store_url=='%s',list_%s_zbjl_splb.time_update.startswith('%s'))" % (type, type, one_record.url_zbjl ,type, product.get('detail_url'), type, today_date)
             if eval(query_cmd):
                 continue
 

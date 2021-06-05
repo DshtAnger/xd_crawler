@@ -4,7 +4,7 @@
 
 import requests
 import websocket
-import json
+import json,os
 import datetime
 import time
 from DB import *
@@ -40,8 +40,6 @@ headers = {
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36',
 }
 
-
-
 def zbjl_sx(query_cmd, today_update_flag):
 
     for one_record in eval(query_cmd):
@@ -71,7 +69,7 @@ def zbjl_sx(query_cmd, today_update_flag):
         Table_obj.guanzhu = detail_data.get('stats_user_count_composition').get('my_follow') if detail_data.get('stats_user_count_composition') else '--'
         Table_obj.zhiboguangchang = detail_data.get('stats_user_count_composition').get('other') if detail_data.get('stats_user_count_composition') else '--'
 
-        male, female = ['--'] * 2
+        Table_obj.male, Table_obj.female = ['--'] * 2
         for gender in detail_data.get('watch_user_gender'):
             if gender.get('key') == "1":
                 Table_obj.male = gender.get('rate')
