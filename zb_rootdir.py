@@ -40,9 +40,6 @@ for type in input_type:
     douyin_name_list = list(data_sheet['抖音号名称'])
     douyin_identify_list = list(data_sheet['认证'])
 
-    if type == 'kj':
-        douyin_id_list = douyin_id_list[:100]
-
     for id_zb in douyin_id_list:
 
         post_data = {
