@@ -151,13 +151,14 @@ for type in input_type:
                 webcast_id = item.get('id')
                 url_zbjl = 'https://xd.newrank.cn/d/broadcast/%s' % webcast_id
 
-                query_cmd1 = "list_%s_zbjl.select().where(list_%s_zbjl.url_zbjl=='%s',list_%s_zbjl.time_update.startswith('%s'))" % (type, type, url_zbjl, type, today_date)
-                #query_cmd2 = "list_%s_zbjl.select().where(list_%s_zbjl.url_zbjl=='%s',list_%s_zbjl.time_update.startswith('%s'))" % (type, type, url_zbjl, type, 'First_Established')
-                eval1 = eval(query_cmd1)
-                #eval2 = eval(query_cmd2)
+                if today_date == FIRST_RUN_DATE:
+                    query_cmd1 = "list_%s_zbjl.select().where(list_%s_zbjl.url_zbjl=='%s',list_%s_zbjl.time_update.startswith('First_Established'))" % (type, type, url_zbjl, type)
+                else:
+                    query_cmd1 = "list_%s_zbjl.select().where(list_%s_zbjl.url_zbjl=='%s',list_%s_zbjl.time_update.startswith('%s'))" % (type, type, url_zbjl, type, today_date)
 
-                if eval1:# or eval2:
-                    print('[+]', type, 'zbjl', one_record.num_zb, one_record.name_zb, webcast_id, item.get('create_time'), 'Done at', get_current_time())
+                # query_cmd2 = "list_%s_zbjl.select().where(list_%s_zbjl.url_zbjl=='%s',list_%s_zbjl.time_update.startswith('%s'))" % (type, type, url_zbjl, type, 'First_Established')
+                if eval(query_cmd1):# or eval(query_cmd2):
+                    # print('[+]', type, 'zbjl', one_record.num_zb, one_record.name_zb, webcast_id, item.get('create_time'), 'Done at', get_current_time())
                     zbjl_count += 1
                     continue
 
