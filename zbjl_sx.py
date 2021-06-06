@@ -48,7 +48,7 @@ def zbjl_sx(query_cmd, today_update_flag):
 
         query_cmd = "list_%s_zbjl_sx.select().where(list_%s_zbjl_sx.url_zbjl=='%s',list_%s_zbjl_sx.time_update.startswith('%s'))" % (type, type, one_record.url_zbjl, type, today_date)
         if eval(query_cmd):
-            print('[+]', type, 'zbjl_sx', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'Done at', get_current_time())
+            print('[+]', type, 'zbjl_sx', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'is Repeated data. Continue next at', get_current_time())
             continue
 
         if not os.path.exists('/root/xd_crawler/websocket_data/%s.detail' % webcast_id):

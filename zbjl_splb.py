@@ -84,7 +84,7 @@ def zbjl_splb(query_cmd, today_update_flag):
             staticitem_url = 'https://ec.snssdk.com/product/fxgajaxstaticitem?b_type_new=0&device_id=0&is_outside=1&id={0}&preview=0'.format(product_id)
             while 1:
                 try:
-                    time.sleep(1)
+                    # time.sleep(1)
                     rsp = requests.get(staticitem_url, headers={'user-agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36'})
                     # if not json.loads(rsp.text).get('data'):
                     #     raise Exception

@@ -1,0 +1,28 @@
+查询list_ms_zplb表每个num_zb各自拥有的记录条数：
+SELECT num_zb,count(*) as COUNT FROM list_ms_zplb GROUP BY num_zb ORDER BY num_zb+0;
+
+查询list_ms_zbjl表每个num_zb各自拥有的记录条数：
+SELECT num_zb,count(*) as COUNT FROM list_ms_zbjl GROUP BY num_zb ORDER BY num_zb+0;
+
+
+查询list_ms_zbjl表首日预抓取数据：
+SELECT * FROM list_ms_zbjl WHERE left(time_update,17)='First_Established';
+
+查询list_ms_zbjl表每日历史补抓数据：
+SELECT * FROM list_ms_zbjl WHERE right(time_update,11)='For_History';
+查询list_ms_zbjl表每日历史补抓历史数据-以num_zb分组展示各自拥有的条数：
+SELECT num_zb,count(*) as COUNT FROM list_ms_zbjl WHERE right(time_update,11)='For_History' GROUP BY num_zb ORDER BY num_zb+0;
+
+查询list_ms_zbjl表每日日更数据：
+SELECT * FROM list_ms_zbjl WHERE left(time_update,10)='2021-06-06';
+
+查询list_ms_zbjl_splb表每个num_zb各自拥有的记录条数：
+SELECT num_zb,count(*) as COUNT FROM list_ms_zbjl_splb GROUP BY num_zb ORDER BY num_zb+0;
+查询list_ms_zbjl_splb表每个num_zb下已经抓了的url_zbjl数量：
+SELECT num_zb,count(distinct url_zbjl) as COUNT FROM list_ms_zbjl_splb GROUP BY num_zb ORDER BY num_zb+0;
+查询list_ms_zbjl_splb表里每个url_zbjl所对应的商品记录数量：
+SELECT num_zb,url_zbjl,count(*) FROM list_ms_zbjl_splb group by num_zb,url_zbjl;
+
+
+查询list_ms_zbjl_ll表每个url_zbjl所拥有的流量记录计数、按livestraming_time降序排列：
+SELECT num_zb,url_zbjl,livestraming_time,count(*) FROM list_ms_zbjl_ll group by num_zb,url_zbjl,livestraming_time order by livestraming_time desc;
