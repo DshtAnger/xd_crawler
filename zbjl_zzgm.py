@@ -40,46 +40,53 @@ headers = {
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36',
 }
 
-def zbjl_zzgm(query_cmd, today_update_flag):
 
-    for one_record in eval(query_cmd):
+Entry_list = {
+    ' Daily ': True,
+    'History': True
+}
+for current_taks in Entry_list:
 
-        webcast_id = one_record.url_zbjl.split('/')[-1]
+    for type in input_type:
 
-        buy_url = 'https://gw.newrank.cn/api/xd/xdnphb/nr/cloud/douyin/webcast/webDetail/buy'
-        post_data = {
-            "room_id": webcast_id
-        }
-        while 1:
-            try:
-                rsp = requests.post(buy_url, headers=headers, data=json.dumps(post_data))
-                data = json.loads(rsp.text).get('data')
-                data_list = data.get('webcastBuyDTOS') if data else []
-            except:
-                print(
-                    '[*] Get zbjl_zzgm buy_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
-                time.sleep(5)
+        if current_taks == ' Daily ':
+            update_date = lastday_date
+
+        elif current_taks == 'History':
+            query_cmd = "list_%s_zbjl_zzgm.select().where(list_%s_zbjl_zzgm.time_update.endswith('History')).order_by(list_%s_zbjl_zzgm.time_update).limit(10)" % (type, type, type)
+            query_result = eval(query_cmd)
+
+            if bool(query_result):
+                latest_history_date = query_result[0].time_update.split(' ')[0]
             else:
-                break
+                # 首日运行没有带标记的历史数据情景
+                latest_history_date = lastday_date
 
+            update_date = (datetime.datetime.strptime(latest_history_date, "%Y-%m-%d") + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
 
-        if data_list == []:
-            Table_obj = eval('list_' + type + '_zbjl_zzgm' + '.create()')
-            Table_obj.num_zb = one_record.num_zb
-            Table_obj.id_zb = one_record.id_zb
-            Table_obj.name_zb = one_record.name_zb
-            Table_obj.url_zbjl = one_record.url_zbjl
-            Table_obj.livestraming_time = one_record.livestraming_time
+        query_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.livestraming_time.startswith('%s'))" % (type, type, update_date)
 
-            Table_obj.purchase_time = '--'
-            Table_obj.purchase = '--'
-            Table_obj.time_update = get_current_time()
+        for one_record in eval(query_cmd):
 
-            Table_obj.save()
+            webcast_id = one_record.url_zbjl.split('/')[-1]
 
-        else:
+            buy_url = 'https://gw.newrank.cn/api/xd/xdnphb/nr/cloud/douyin/webcast/webDetail/buy'
+            post_data = {
+                "room_id": webcast_id
+            }
+            while 1:
+                try:
+                    rsp = requests.post(buy_url, headers=headers, data=json.dumps(post_data))
+                    data = json.loads(rsp.text).get('data')
+                    data_list = data.get('webcastBuyDTOS') if data else []
+                except:
+                    print('[*] Get zbjl_zzgm buy_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                    time.sleep(5)
+                else:
+                    break
 
-            for item in data_list:
+            zzgm_count = 0
+            if data_list == []:
                 Table_obj = eval('list_' + type + '_zbjl_zzgm' + '.create()')
                 Table_obj.num_zb = one_record.num_zb
                 Table_obj.id_zb = one_record.id_zb
@@ -87,27 +94,35 @@ def zbjl_zzgm(query_cmd, today_update_flag):
                 Table_obj.url_zbjl = one_record.url_zbjl
                 Table_obj.livestraming_time = one_record.livestraming_time
 
-                Table_obj.purchase_time = item.get('create_time')
-                Table_obj.purchase = item.get('purchase_cnt')
+                Table_obj.purchase_time = '--'
+                Table_obj.purchase = '--'
 
-                if today_update_flag:
+                if current_taks == ' Daily ':
                     Table_obj.time_update = get_current_time()
-                else:
-                    Table_obj.time_update = get_current_time() + ' For_History'
+                elif current_taks == 'History':
+                    Table_obj.time_update = get_current_time() + ' History'
 
                 Table_obj.save()
 
-        print('[+]', type, 'zbjl_zzgm', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'Done at', get_current_time())
+            else:
 
+                for item in data_list:
+                    Table_obj = eval('list_' + type + '_zbjl_zzgm' + '.create()')
+                    Table_obj.num_zb = one_record.num_zb
+                    Table_obj.id_zb = one_record.id_zb
+                    Table_obj.name_zb = one_record.name_zb
+                    Table_obj.url_zbjl = one_record.url_zbjl
+                    Table_obj.livestraming_time = one_record.livestraming_time
 
-for type in input_type:
-    # 日更的数据,必须是zbjl表里属于昨天的直播、且被正确完成日更的数据(即不能是待补抓的数据，也不能是被完成补抓的数据),这些记录才一定会有本地websocket数据
-    today_update_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.livestraming_time.startswith('%s'),~list_%s_zbjl.time_update.startswith('First_Established'),~list_%s_zbjl.time_update.endswith('For_History'))" % (type,type,lastday_date, type, type)
+                    Table_obj.purchase_time = item.get('create_time')
+                    Table_obj.purchase = item.get('purchase_cnt')
 
-    zbjl_zzgm(today_update_cmd, True)
+                    if current_taks == ' Daily ':
+                        Table_obj.time_update = get_current_time()
+                    elif current_taks == 'History':
+                        Table_obj.time_update = get_current_time() + ' History'
 
-for type in input_type:
-    # 补更的数据,根据zbjl表里标记的数据进行抓取
-    crawl_history_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.time_update.endswith('For_History'))" % (type, type)
+                    Table_obj.save()
+                    zzgm_count += 1
 
-    zbjl_zzgm(crawl_history_cmd, False)
+            print('[%s]'%current_taks, type, 'zbjl_zzgm', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ zbjl_zzgm amount: %d ]'%zzgm_count, 'Done at', get_current_time())

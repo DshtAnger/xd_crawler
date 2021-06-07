@@ -152,11 +152,10 @@ for current_taks in Entry_list:
                 webcast_id = item.get('id')
                 url_zbjl = 'https://xd.newrank.cn/d/broadcast/%s' % webcast_id
 
-
-                query_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.url_zbjl=='%s')" % (type, type, url_zbjl)
-                if eval(query_cmd):
+                repeat_detect_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.url_zbjl=='%s')" % (type, type, url_zbjl)
+                if eval(repeat_detect_cmd):
                     zbjl_count += 1
-                    print('[%s]'%current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb, webcast_id, item.get('create_time'), 'is Repeated data. Continue next at', get_current_time())
+                    print('[%s]'%current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb, webcast_id, item.get('create_time'), 'This is Repeated data. Continue next at', get_current_time())
                     continue
 
                 Table_obj = eval('list_' + type + '_zbjl' + '.create()')
@@ -173,7 +172,7 @@ for current_taks in Entry_list:
                     Table_obj.time_update = 'Severe error occurred at %s' % get_current_time()
                     Table_obj.save()
                     zbjl_count += 1
-                    print('[%s]'%current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb, webcast_id, item.get('create_time'), 'Severe error occurred at %s' % get_current_time())
+                    print('[%s]'%current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb, webcast_id, item.get('create_time'), 'Download websocket data failed at', get_current_time())
                     continue
 
                 with open('/root/xd_crawler/websocket_data/%s.detail'%webcast_id, 'r') as f:
@@ -202,9 +201,9 @@ for current_taks in Entry_list:
                 Table_obj.renjungoumaijiazhi = detail_data.get('per_capita')
                 Table_obj.xiaoshouzhuanhualv = detail_data.get('conversion_rate')
 
-                if current_taks == 'Daily_update':
+                if current_taks == ' Daily ':
                     Table_obj.time_update = get_current_time()
-                elif current_taks == 'History_update':
+                elif current_taks == 'History':
                     Table_obj.time_update = get_current_time() + ' History'
 
                 Table_obj.save()

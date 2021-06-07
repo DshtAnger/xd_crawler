@@ -1,4 +1,10 @@
 #!/bin/bash
 git add .
-git commit -m "new modify"
+if [ -n "$1" ]
+then
+  note=$1
+else
+  note="some modify"
+fi
+git commit -m "$note"
 git push -u origin master

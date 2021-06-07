@@ -40,80 +40,99 @@ headers = {
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36',
 }
 
-def zbjl_pl(query_cmd, today_update_flag):
 
-    for one_record in eval(query_cmd):
+Entry_list = {
+    ' Daily ': True,
+    'History': True
+}
+for current_taks in Entry_list:
 
-        webcast_id = one_record.url_zbjl.split('/')[-1]
-        comment_url = 'https://gw.newrank.cn/api/xd/xdnphb/nr/cloud/douyin/webcast/webcastMessageList'
-        post_data = {
-            "room_id": webcast_id,
-            "size": 100,
-            "start": 1,
-        }
+    for type in input_type:
 
-        while 1:
-            try:
-                rsp = requests.post(comment_url, headers=headers, data=json.dumps(post_data))
-                data = json.loads(rsp.text).get('data')
-                count = data.get('count') if data else -1
-                end_page = int(count / 100) + 1 if count % 100 != 0 else int(count / 100)
-            except:
-                print(
-                    '[*] Get zbjl_pl comment_url count failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
-                time.sleep(5)
+        if current_taks == ' Daily ':
+            update_date = lastday_date
+
+        elif current_taks == 'History':
+            query_cmd = "list_%s_zbjl_pl.select().where(list_%s_zbjl_pl.time_update.endswith('History')).order_by(list_%s_zbjl_pl.time_update).limit(10)" % (type, type, type)
+            query_result = eval(query_cmd)
+
+            if bool(query_result):
+                latest_history_date = query_result[0].time_update.split(' ')[0]
             else:
-                break
-        if count == -1:
-            print('[No_pl_data]', type, 'zbjl_pl', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'Done at', get_current_time())
-            continue
+                # 首日运行没有带标记的历史数据情景
+                latest_history_date = lastday_date
 
-        for page in range(1, end_page + 1):
+            update_date = (datetime.datetime.strptime(latest_history_date, "%Y-%m-%d") + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
 
+        query_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.livestraming_time.startswith('%s'))" % (type, type, update_date)
+
+        for one_record in eval(query_cmd):
+
+            webcast_id = one_record.url_zbjl.split('/')[-1]
+            comment_url = 'https://gw.newrank.cn/api/xd/xdnphb/nr/cloud/douyin/webcast/webcastMessageList'
+            post_data = {
+                "room_id": webcast_id,
+                "size": 100,
+                "start": 1,
+            }
             while 1:
                 try:
-                    post_data.update({'start': page})
                     rsp = requests.post(comment_url, headers=headers, data=json.dumps(post_data))
                     data = json.loads(rsp.text).get('data')
-                    data_list = data.get('list') if data else []
+                    count = data.get('count') if data else -1
+                    end_page = int(count / 100) + 1 if count % 100 != 0 else int(count / 100)
                 except:
-                    print('[*] Get zbjl_pl comment_url data failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                    print('[*] Get zbjl_pl comment_url count failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
                     time.sleep(5)
                 else:
                     break
 
-            for item in data_list:
-
+            if count == -1:
                 Table_obj = eval('list_' + type + '_zbjl_pl' + '.create()')
-
                 Table_obj.num_zb = one_record.num_zb
                 Table_obj.id_zb = one_record.id_zb
                 Table_obj.name_zb = one_record.name_zb
                 Table_obj.url_zbjl = one_record.url_zbjl
                 Table_obj.livestraming_time = one_record.livestraming_time
+                Table_obj.time_update = 'This zbjl No_pl_data. Maybe the limit is exhausted' % get_current_time()
+                print('[%s]'%current_taks, type, 'zbjl_pl', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'This zbjl No_pl_data. Maybe the limit is exhausted. Continue next at ', get_current_time())
+                continue
 
-                Table_obj.review_time = item.get('create_time')
-                Table_obj.author = item.get('user').get('nickname')
-                Table_obj.content = item.get('content')
+            pl_count = 0
+            for page in range(1, end_page + 1):
 
-                if today_update_flag:
-                    Table_obj.time_update = get_current_time()
-                else:
-                    Table_obj.time_update = get_current_time() + ' For_History'
+                while 1:
+                    try:
+                        post_data.update({'start': page})
+                        rsp = requests.post(comment_url, headers=headers, data=json.dumps(post_data))
+                        data = json.loads(rsp.text).get('data')
+                        data_list = data.get('list') if data else []
+                    except:
+                        print('[*] Get zbjl_pl comment_url data failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                        time.sleep(5)
+                    else:
+                        break
 
-                Table_obj.save()
+                for item in data_list:
 
-        print('[+]', type, 'zbjl_pl', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'Done at', get_current_time())
+                    Table_obj = eval('list_' + type + '_zbjl_pl' + '.create()')
 
+                    Table_obj.num_zb = one_record.num_zb
+                    Table_obj.id_zb = one_record.id_zb
+                    Table_obj.name_zb = one_record.name_zb
+                    Table_obj.url_zbjl = one_record.url_zbjl
+                    Table_obj.livestraming_time = one_record.livestraming_time
 
-for type in input_type:
-    # 日更的数据,必须是zbjl表里属于昨天的直播、且被正确完成日更的数据(即不能是待补抓的数据，也不能是被完成补抓的数据),这些记录才一定会有本地websocket数据
-    today_update_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.livestraming_time.startswith('%s'),~list_%s_zbjl.time_update.startswith('First_Established'),~list_%s_zbjl.time_update.endswith('For_History'))" % (type,type,lastday_date, type, type)
+                    Table_obj.review_time = item.get('create_time')
+                    Table_obj.author = item.get('user').get('nickname')
+                    Table_obj.content = item.get('content')
 
-    zbjl_pl(today_update_cmd, True)
+                    if current_taks == ' Daily ':
+                        Table_obj.time_update = get_current_time()
+                    elif current_taks == 'History':
+                        Table_obj.time_update = get_current_time() + ' History'
 
-for type in input_type:
-    # 补更的数据,根据zbjl表里标记的数据进行抓取
-    crawl_history_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.time_update.endswith('For_History'))" % (type, type)
+                    Table_obj.save()
+                    pl_count += 1
 
-    zbjl_pl(crawl_history_cmd, False)
+            print('[%s]'%current_taks, type, 'zbjl_pl', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ zbjl_pl amount: %d ]'%pl_count, 'Done at', get_current_time())
