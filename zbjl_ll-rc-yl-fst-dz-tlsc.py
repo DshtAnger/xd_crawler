@@ -48,6 +48,8 @@ Entry_list = {
 for current_taks in Entry_list:
 
     for type in input_type:
+        today_ll_count = 0
+        today_tlsc_count = 0
 
         if current_taks == ' Daily ':
             update_date = lastday_date
@@ -79,7 +81,7 @@ for current_taks in Entry_list:
                     rsp = requests.post(trend_url, headers=headers, data=json.dumps(post_data))
                     data_list = json.loads(rsp.text).get('data').get('webcastTrendList')
                 except:
-                    print('[*] Get zbjl_ll-rc... trend_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                    print('[*] Get zbjl_ll~dz... trend_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
                     time.sleep(5)
                 else:
                     break
@@ -164,6 +166,7 @@ for current_taks in Entry_list:
                 Table_obj_fst.save()
                 Table_obj_dz.save()
 
+            today_ll_count += len(data_list)
             print('[%s]'%current_taks, type, 'zbjl_ll~dz...', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ ll_rc_yl_fst_dz amount: %d ]'%len(data_list), 'Done at', get_current_time())
 
             for timepoint in timepoint_list:
@@ -180,7 +183,7 @@ for current_taks in Entry_list:
                         rsp = requests.post(userAvgDuration_url, headers=headers, data=json.dumps(post_data))
                         data = json.loads(rsp.text)
                     except:
-                        print('[*] Get zbjl_ll-rc... userAvgDuration_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                        print('[*] Get zbjl_tlsc... userAvgDuration_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
                         time.sleep(2)
                     else:
                         break
@@ -201,4 +204,9 @@ for current_taks in Entry_list:
 
                 Table_obj.save()
 
+            today_tlsc_count += len(timepoint_list)
             print('[%s]'%current_taks, type, 'zbjl_tlsc...', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ zbjl_tlsc amount: %d ]'%len(timepoint_list), 'Done at', get_current_time())
+
+        print('[%s]'%current_taks, type, 'zbjl_ll~dz', '[ today_zbjl_ll~dz_count: %d ]'%today_ll_count, 'Done at', get_current_time())
+        print('[%s]'%current_taks, type, 'zbjl_tlsc', '[ today_zbjl_tlsc_count: %d ]' % today_tlsc_count, 'Done at', get_current_time())
+        print('-'*100)

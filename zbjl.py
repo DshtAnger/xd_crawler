@@ -105,6 +105,7 @@ websocket_use_count = 0
 for current_taks in Entry_list:
 
     for type in input_type:
+        today_zbjl_count = 0
 
         if current_taks == ' Daily ':
             update_date = lastday_date
@@ -155,6 +156,7 @@ for current_taks in Entry_list:
                 repeat_detect_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.url_zbjl=='%s')" % (type, type, url_zbjl)
                 if eval(repeat_detect_cmd):
                     zbjl_count += 1
+                    today_zbjl_count += 1
                     print('[%s]'%current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb, webcast_id, item.get('create_time'), 'This is Repeated data. Continue next at', get_current_time())
                     continue
 
@@ -166,7 +168,7 @@ for current_taks in Entry_list:
                 Table_obj.livestraming_time = item.get('create_time')
                 Table_obj.theme = item.get('title')
 
-                if download_websocket_data(webcast_id, cookie, type, one_record.num_zb, one_record.url_zbjl):
+                if download_websocket_data(webcast_id, cookie, type, one_record.num_zb, url_zbjl):
                     websocket_use_count += 1
                 else:
                     Table_obj.time_update = 'Severe error occurred at %s' % get_current_time()
@@ -208,8 +210,10 @@ for current_taks in Entry_list:
 
                 Table_obj.save()
                 zbjl_count += 1
+                today_zbjl_count +=1
                 print('[%s]'%current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb, webcast_id, Table_obj.livestraming_time, 'Done at', get_current_time())
 
             print('[%s]'%current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb, '[ zbjl amount: %d ]'%zbjl_count, 'Done at', get_current_time())
             print('-'*50)
+        print('[%s]'%current_taks, type, 'zbjl', '[ today_zbjl_count: %d ]'%today_zbjl_count, 'Done at', get_current_time())
         print('-' * 100)

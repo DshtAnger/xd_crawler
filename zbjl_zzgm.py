@@ -48,6 +48,7 @@ Entry_list = {
 for current_taks in Entry_list:
 
     for type in input_type:
+        today_zzgm_count = 0
 
         if current_taks == ' Daily ':
             update_date = lastday_date
@@ -124,5 +125,8 @@ for current_taks in Entry_list:
 
                     Table_obj.save()
                     zzgm_count += 1
+                    today_zzgm_count += 1
 
             print('[%s]'%current_taks, type, 'zbjl_zzgm', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ zbjl_zzgm amount: %d ]'%zzgm_count, 'Done at', get_current_time())
+        print('[%s]'%current_taks, type, 'zbjl_zzgm', '[ today_zzgm_count: %d ]'%today_zzgm_count, 'Done at', get_current_time())
+        print('-'*100)
