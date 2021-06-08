@@ -48,8 +48,8 @@ Entry_list = {
 for current_taks in Entry_list:
 
     for type in input_type:
-        today_ll_count = 0
-        today_tlsc_count = 0
+
+        today_ll_rc_yl_fst_dz_tlsc_count = 0
 
         if current_taks == ' Daily ':
             update_date = lastday_date
@@ -177,8 +177,6 @@ for current_taks in Entry_list:
                 Table_obj_fst.save()
                 Table_obj_dz.save()
 
-            today_ll_count += len(data_list)
-            print('[%s]'%current_taks, type, 'zbjl_ll~dz...', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ ll_rc_yl_fst_dz amount: %d ]'%len(data_list), 'Done at', get_current_time())
 
             for timepoint in timepoint_list:
                 userAvgDuration_url = 'https://gw.newrank.cn/api/xd/xdnphb/nr/cloud/douyin/webcast/userAvgDuration'
@@ -215,9 +213,8 @@ for current_taks in Entry_list:
 
                 Table_obj.save()
 
-            today_tlsc_count += len(timepoint_list)
-            print('[%s]'%current_taks, type, 'zbjl_tlsc...', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ zbjl_tlsc amount: %d ]'%len(timepoint_list), 'Done at', get_current_time())
+            today_ll_rc_yl_fst_dz_tlsc_count += len(timepoint_list)
 
-        print('[%s]'%current_taks, type, 'zbjl_ll~dz', '[ today_zbjl_ll~dz_count: %d ]'%today_ll_count, 'Done at', get_current_time())
-        print('[%s]'%current_taks, type, 'zbjl_tlsc', '[ today_zbjl_tlsc_count: %d ]' % today_tlsc_count, 'Done at', get_current_time())
+            print('[%s]'%current_taks, type, 'zbjl_ll~dz_tlsc...', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ zbjl_ll~dz_tlsc amount: %d ]'%len(timepoint_list), 'Done at', get_current_time())
+        print('[%s]'%current_taks, type, 'zbjl_tlsc', '[ today_zbjl_ll~dz_tlsc_count: %d ]' % today_ll_rc_yl_fst_dz_tlsc_count, 'Done at', get_current_time())
         print('-'*100)
