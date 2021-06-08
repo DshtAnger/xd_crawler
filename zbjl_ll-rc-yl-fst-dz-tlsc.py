@@ -101,9 +101,9 @@ for current_taks in Entry_list:
                 Table_obj_ll.traffic_time = crawl_time
                 Table_obj_ll.renshu = item.get('user_count')
                 if current_taks == ' Daily ':
-                    Table_obj.time_update = get_current_time()
+                    Table_obj_ll.time_update = get_current_time()
                 elif current_taks == 'History':
-                    Table_obj.time_update = get_current_time() + ' History'
+                    Table_obj_ll.time_update = get_current_time() + ' History'
 
                 Table_obj_rc = eval('list_' + type + '_zbjl_rc' + '.create()')
                 Table_obj_rc.num_zb = one_record.num_zb
@@ -117,9 +117,9 @@ for current_taks in Entry_list:
                 Table_obj_rc.shipintuijian = item.get('stats_user_composition_from_video_detail')
                 Table_obj_rc.zhiboguangchang = item.get('stats_user_composition_from_other')
                 if current_taks == ' Daily ':
-                    Table_obj.time_update = get_current_time()
+                    Table_obj_rc.time_update = get_current_time()
                 elif current_taks == 'History':
-                    Table_obj.time_update = get_current_time() + ' History'
+                    Table_obj_rc.time_update = get_current_time() + ' History'
 
                 Table_obj_yl = eval('list_' + type + '_zbjl_yl' + '.create()')
                 Table_obj_yl.num_zb = one_record.num_zb
@@ -130,9 +130,9 @@ for current_taks in Entry_list:
                 Table_obj_yl.yinlang_time = crawl_time
                 Table_obj_yl.yinlang = item.get('stats_fan_ticket')
                 if current_taks == ' Daily ':
-                    Table_obj.time_update = get_current_time()
+                    Table_obj_yl.time_update = get_current_time()
                 elif current_taks == 'History':
-                    Table_obj.time_update = get_current_time() + ' History'
+                    Table_obj_yl.time_update = get_current_time() + ' History'
 
                 Table_obj_fst = eval('list_' + type + '_zbjl_fst' + '.create()')
                 Table_obj_fst.num_zb = one_record.num_zb
@@ -143,9 +143,9 @@ for current_taks in Entry_list:
                 Table_obj_fst.fans_time = crawl_time
                 Table_obj_fst.fans_zb = item.get('club_info_total_fans_count')
                 if current_taks == ' Daily ':
-                    Table_obj.time_update = get_current_time()
+                    Table_obj_fst.time_update = get_current_time()
                 elif current_taks == 'History':
-                    Table_obj.time_update = get_current_time() + ' History'
+                    Table_obj_fst.time_update = get_current_time() + ' History'
 
                 Table_obj_dz = eval('list_' + type + '_zbjl_dz' + '.create()')
                 Table_obj_dz.num_zb = one_record.num_zb
@@ -156,9 +156,9 @@ for current_taks in Entry_list:
                 Table_obj_dz.support_time = crawl_time
                 Table_obj_dz.support_zb = item.get('like_count')
                 if current_taks == ' Daily ':
-                    Table_obj.time_update = get_current_time()
+                    Table_obj_dz.time_update = get_current_time()
                 elif current_taks == 'History':
-                    Table_obj.time_update = get_current_time() + ' History'
+                    Table_obj_dz.time_update = get_current_time() + ' History'
 
                 Table_obj_ll.save()
                 Table_obj_rc.save()
