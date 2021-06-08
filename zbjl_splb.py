@@ -143,10 +143,11 @@ for current_taks in Entry_list:
                 Table_obj.yuguxiaoshoue = product.get('sales_money')
 
                 product_id = product.get('product_id')
-
+                WAIT_TIME = 1
                 staticitem_url = 'https://ec.snssdk.com/product/fxgajaxstaticitem?b_type_new=0&device_id=0&is_outside=1&id={0}&preview=0'.format(product_id)
                 while 1:
                     try:
+                        time.sleep(WAIT_TIME)
                         # rsp = requests.get(staticitem_url, headers={'user-agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36'})
                         rsp = requests.get(staticitem_url, headers=pseudo_header)
                     except:
@@ -191,6 +192,7 @@ for current_taks in Entry_list:
                 ajaxitem_url = 'https://ec.snssdk.com/product/ajaxitem?b_type_new=0&device_id=0&is_outside=1&id={0}&abParams=0'.format(product_id)
                 while 1:
                     try:
+                        time.sleep(WAIT_TIME)
                         # rsp = requests.get(ajaxitem_url, headers={'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36'})
                         rsp = requests.get(ajaxitem_url, headers=pseudo_header)
                     except:
