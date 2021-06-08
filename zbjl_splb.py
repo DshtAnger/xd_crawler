@@ -218,6 +218,6 @@ for current_taks in Entry_list:
                 today_splb_count += 1
                 print('[%s]' % current_taks, type, 'zbjl_splb', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'product_id:%s'%product_id, 'Done at', get_current_time())
             print('[%s]'%current_taks, type, 'zbjl_splb', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ zbjl_splb amount: %d ]'%splb_count, 'Done at', get_current_time())
-            print('-')*50
+            print('-'*50)
         print('[%s]'%current_taks, type, 'zbjl_splb', '[ today_splb_count: %d ]'%today_splb_count, 'Done at', get_current_time())
         print('-'*100)
