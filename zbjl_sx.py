@@ -53,16 +53,27 @@ for current_taks in Entry_list:
             update_date = lastday_date
 
         elif current_taks == 'History':
-            query_cmd = "list_%s_zbjl_sx.select().where(list_%s_zbjl_sx.time_update.endswith('History')).order_by(list_%s_zbjl_sx.time_update).limit(10)" % (type, type, type)
-            query_result = eval(query_cmd)
 
-            if bool(query_result):
-                latest_history_date = query_result[0].time_update.split(' ')[0]
+            all_history_data_query_cmd = "list_%s_zbjl_sx.select().where(list_%s_zbjl_sx.time_update.endswith('History')).order_by(list_%s_zbjl_sx.livestraming_time).limit(10)" % (type, type, type)
+            today_history_data_query_cmd = "list_%s_zbjl_sx.select().where(list_%s_zbjl_sx.time_update.endswith('History'),list_%s_zbjl_sx.time_update.startswith('%s')).order_by(list_%s_zbjl_sx.livestraming_time).limit(10)" % (type, type, type, today_date, type)
+
+            all_query_result = eval(all_history_data_query_cmd)
+            today_query_result = eval(today_history_data_query_cmd)
+
+            if bool(all_query_result):
+                # 可能是非首日,也可能是首日、但程序中断存在部分首日历史数据
+                if bool(today_query_result):
+                    # 首日/非首日的第二次运行,即程序异常导致数据中断情景
+                    latest_history_date = today_query_result[0].livestraming_time.split(' ')[0]
+                    update_date = latest_history_date
+                else:
+                    # 非首日,日更运行场景
+                    latest_history_date = all_query_result[0].livestraming_time.split(' ')[0]
+                    update_date = (datetime.datetime.strptime(latest_history_date, "%Y-%m-%d") + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
             else:
-                # 首日运行没有带标记的历史数据情景
+                # 首日第一次运行,数据库中没有任何带标记的历史数据，即也不存在任何今日历史数据
                 latest_history_date = lastday_date
-
-            update_date = (datetime.datetime.strptime(latest_history_date, "%Y-%m-%d") + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
+                update_date = (datetime.datetime.strptime(latest_history_date, "%Y-%m-%d") + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
 
         query_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.livestraming_time.startswith('%s'))" % (type, type, update_date)
 
