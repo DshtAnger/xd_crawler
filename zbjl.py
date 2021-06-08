@@ -113,7 +113,7 @@ for current_taks in Entry_list:
         elif current_taks == 'History':
 
             all_history_data_query_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.time_update.endswith('History')).order_by(list_%s_zbjl.livestraming_time).limit(10)" % (type, type, type)
-            today_history_data_query_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.time_update.endswith('History'),list_%s_zbjl.time_update.startwith('%s')).order_by(list_%s_zbjl.livestraming_time).limit(10)" % (type, type, type, today_date, type)
+            today_history_data_query_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.time_update.endswith('History'),list_%s_zbjl.time_update.startswith('%s')).order_by(list_%s_zbjl.livestraming_time).limit(10)" % (type, type, type, today_date, type)
 
             all_query_result = eval(all_history_data_query_cmd)
             today_query_result = eval(today_history_data_query_cmd)
