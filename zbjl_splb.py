@@ -7,6 +7,7 @@ import websocket
 import json
 import datetime
 import time
+import os
 from DB import *
 
 def get_current_time():
