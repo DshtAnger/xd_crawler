@@ -111,11 +111,11 @@ for current_taks in Entry_list:
             update_date = lastday_date
 
         elif current_taks == 'History':
-            query_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.time_update.endswith('History')).order_by(list_%s_zbjl.time_update).limit(10)" % (type, type,type)
+            query_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.time_update.endswith('History')).order_by(list_%s_zbjl.livestraming_time).limit(10)" % (type, type,type)
             query_result = eval(query_cmd)
 
             if bool(query_result):
-                latest_history_date = query_result[0].time_update.split(' ')[0]
+                latest_history_date = query_result[0].livestraming_time.split(' ')[0]
             else:
                 # 首日运行没有带标记的历史数据情景
                 latest_history_date = lastday_date
