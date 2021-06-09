@@ -86,7 +86,7 @@ Entry_list = {
     ' Daily ': True,
     'History': True
 }
-session = requests.Session()
+# session = requests.Session()
 for current_taks in Entry_list:
 
     for type in input_type:
@@ -171,20 +171,21 @@ for current_taks in Entry_list:
                 Table_obj.mo = product.get('platform_precent_sales')
                 Table_obj.yuguxiaoshoue = product.get('sales_money')
 
-                item2_url = product.get('detail_url')
+                # item2_url = product.get('detail_url')
+                # session.get(url=item2_url, headers=item2_page_headers)
+
                 product_id = product.get('product_id')
-                WAIT_TIME = 1
+                WAIT_TIME = 0.5
+
                 # staticitem_url = 'https://ec.snssdk.com/product/fxgajaxstaticitem?b_type_new=0&device_id=0&is_outside=1&id={0}&preview=0'.format(product_id)
                 staticitem_url = 'https://ec.snssdk.com/product/fxgajaxstaticitem?id={0}'.format(product_id)
-
-                session.get(url= item2_url , headers=item2_page_headers)
 
                 while 1:
                     try:
                         time.sleep(WAIT_TIME)
                         # rsp = requests.get(staticitem_url, headers={'user-agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36'})
-                        rsp = session.get(url=staticitem_url, headers=pseudo_header)
-                        # rsp = requests.get(staticitem_url, headers=pseudo_header)
+                        # rsp = session.get(url=staticitem_url, headers=pseudo_header)
+                        rsp = requests.get(staticitem_url, headers=pseudo_header)
                         data = json.loads(rsp.text).get('data')
                     except:
                         logging.info('[*] Get zbjl_splb staticitem_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
@@ -231,8 +232,8 @@ for current_taks in Entry_list:
                     try:
                         # time.sleep(WAIT_TIME)
                         # rsp = requests.get(ajaxitem_url, headers={'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36'})
-                        # rsp = requests.get(ajaxitem_url, headers=pseudo_header)
-                        rsp = session.get(url=ajaxitem_url, headers=pseudo_header)
+                        rsp = requests.get(ajaxitem_url, headers=pseudo_header)
+                        # rsp = session.get(url=ajaxitem_url, headers=pseudo_header)
                         data = json.loads(rsp.text)
                     except:
                         logging.info('[*] Get zbjl_splb ajaxitem_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
