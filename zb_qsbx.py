@@ -125,4 +125,4 @@ for type in input_type:
             Table_obj_supports.save()
             Table_obj_works.save()
 
-        logging.info('[+]', type, 'zb_qsbx', one_record.num_zb, one_record.name_zb, 'Done at', get_current_time())
+        logging.info(' '.join(['[+]', type, 'zb_qsbx', one_record.num_zb, one_record.name_zb, 'Done at', get_current_time()]))

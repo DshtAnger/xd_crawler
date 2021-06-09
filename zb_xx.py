@@ -56,7 +56,7 @@ for type in input_type:
 
         query_cmd = "list_%s_zbxx.select().where(list_%s_zbxx.url_zb=='%s',list_%s_zbxx.time_update.startswith('%s'))" % (type, type, one_record.url_zb, type, today_date)
         if eval(query_cmd):
-            logging.info('[+]', type, 'zb_zbxx', one_record.num_zb, one_record.name_zb, 'Done at', get_current_time())
+            logging.info(' '.join(['[+]', type, 'zb_zbxx', one_record.num_zb, one_record.name_zb, 'Done at', get_current_time()]))
             continue
 
         # query_cmd = "list_%s_zbxx.select().where(list_%s_zbxx.url_zb=='%s',list_%s_zbxx.time_update.endswith('Error has occurred'))" % (type, type, one_record.url_zb, type)
@@ -213,4 +213,4 @@ for type in input_type:
         Table_obj.time_update = get_current_time()
         Table_obj.save()
 
-        logging.info('[+]', type, 'zb_zbxx', one_record.num_zb, one_record.name_zb, 'Done at', get_current_time())
+        logging.info(' '.join(['[+]', type, 'zb_zbxx', one_record.num_zb, one_record.name_zb, 'Done at', get_current_time()]))
