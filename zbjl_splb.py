@@ -177,19 +177,19 @@ for current_taks in Entry_list:
                 staticitem_url = 'https://ec.snssdk.com/product/fxgajaxstaticitem?b_type_new=0&device_id=0&is_outside=1&id={0}&preview=0'.format(product_id)
 
                 session.get(url= item2_url , headers=item2_page_headers)
-                rsp = session.get(url=staticitem_url, headers=pseudo_header)
-                data = json.loads(rsp.text).get('data')
-                # while 1:
-                #     try:
-                #         time.sleep(WAIT_TIME)
-                #         # rsp = requests.get(staticitem_url, headers={'user-agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36'})
-                #         rsp = requests.get(staticitem_url, headers=pseudo_header)
-                #     except:
-                #         logging.info('[*] Get zbjl_splb staticitem_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
-                #         time.sleep(5)
-                #     else:
-                #         data = json.loads(rsp.text).get('data')
-                #         break
+
+                while 1:
+                    try:
+                        # time.sleep(WAIT_TIME)
+                        # rsp = requests.get(staticitem_url, headers={'user-agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36'})
+                        rsp = session.get(url=staticitem_url, headers=pseudo_header)
+                        # rsp = requests.get(staticitem_url, headers=pseudo_header)
+                        data = json.loads(rsp.text).get('data')
+                    except:
+                        logging.info('[*] Get zbjl_splb staticitem_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                        time.sleep(5)
+                    else:
+                        break
 
                 if data == None:
                     data = {}
@@ -224,19 +224,18 @@ for current_taks in Entry_list:
                 Table_obj.tuijianyu = data.get('recommend_remark') if data else '--'
 
                 ajaxitem_url = 'https://ec.snssdk.com/product/ajaxitem?b_type_new=0&device_id=0&is_outside=1&id={0}&abParams=0'.format(product_id)
-                rsp = session.get(url=ajaxitem_url, headers=pseudo_header)
-                data = json.loads(rsp.text)
-                # while 1:
-                #     try:
-                #         time.sleep(WAIT_TIME)
-                #         # rsp = requests.get(ajaxitem_url, headers={'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36'})
-                #         rsp = requests.get(ajaxitem_url, headers=pseudo_header)
-                #     except:
-                #         logging.info('[*] Get zbjl_splb ajaxitem_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
-                #         time.sleep(5)
-                #     else:
-                #         data = json.loads(rsp.text)
-                #         break
+                while 1:
+                    try:
+                        time.sleep(WAIT_TIME)
+                        # rsp = requests.get(ajaxitem_url, headers={'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36'})
+                        # rsp = requests.get(ajaxitem_url, headers=pseudo_header)
+                        rsp = session.get(url=ajaxitem_url, headers=pseudo_header)
+                        data = json.loads(rsp.text)
+                    except:
+                        logging.info('[*] Get zbjl_splb ajaxitem_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                        time.sleep(5)
+                    else:
+                        break
 
                 # data有可能是[],也可能是{"st":10024,"msg":"商品已下架","data":null}
                 if data == [] or data.get('data') == None:
