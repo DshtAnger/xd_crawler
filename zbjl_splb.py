@@ -174,7 +174,8 @@ for current_taks in Entry_list:
                 item2_url = product.get('detail_url')
                 product_id = product.get('product_id')
                 WAIT_TIME = 1
-                staticitem_url = 'https://ec.snssdk.com/product/fxgajaxstaticitem?b_type_new=0&device_id=0&is_outside=1&id={0}&preview=0'.format(product_id)
+                # staticitem_url = 'https://ec.snssdk.com/product/fxgajaxstaticitem?b_type_new=0&device_id=0&is_outside=1&id={0}&preview=0'.format(product_id)
+                staticitem_url = 'https://ec.snssdk.com/product/fxgajaxstaticitem?id={0}'.format(product_id)
 
                 session.get(url= item2_url , headers=item2_page_headers)
 
@@ -223,7 +224,9 @@ for current_taks in Entry_list:
                 Table_obj.shipping_experience = str(data.get('credit_score').get('logistics')) + pingjia_dic[str(data.get('credit_score').get('gap_logistics'))] if data.get('credit_score') else '--'
                 Table_obj.tuijianyu = data.get('recommend_remark') if data else '--'
 
-                ajaxitem_url = 'https://ec.snssdk.com/product/ajaxitem?b_type_new=0&device_id=0&is_outside=1&id={0}&abParams=0'.format(product_id)
+                # ajaxitem_url = 'https://ec.snssdk.com/product/ajaxitem?b_type_new=0&device_id=0&is_outside=1&id={0}&abParams=0'.format(product_id)
+                ajaxitem_url = 'https://ec.snssdk.com/product/ajaxitem?id={0}'.format(product_id)
+
                 while 1:
                     try:
                         time.sleep(WAIT_TIME)
