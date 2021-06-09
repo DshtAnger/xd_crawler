@@ -41,6 +41,23 @@ headers = {
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36',
 }
 
+item2_page_headers = {
+    'Connection': 'keep-alive',
+    'Cache-Control': 'max-age=0',
+    'sec-ch-ua': '" Not A;Brand";v="99", "Chromium";v="90", "Google Chrome";v="90"',
+    'sec-ch-ua-mobile': '?0',
+    'Upgrade-Insecure-Requests': '1',
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+    'Sec-Fetch-Site': 'none',
+    'Sec-Fetch-Mode': 'navigate',
+    'Sec-Fetch-User': '?1',
+    'Sec-Fetch-Dest': 'document',
+    'Accept-Language': 'zh-CN,zh;q=0.9',
+    'If-None-Match': 'W/"60bdcdb4-50f8"',
+    'If-Modified-Since': 'Mon, 07 Jun 2021 07:41:40 GMT',
+}
+
 pseudo_header = {
     'accept': 'application/json, text/plain, */*',
     'accept-language': 'zh-CN,zh;q=0.9',
@@ -58,6 +75,7 @@ Entry_list = {
     ' Daily ': True,
     'History': True
 }
+session = requests.Session()
 for current_taks in Entry_list:
 
     for type in input_type:
@@ -142,20 +160,25 @@ for current_taks in Entry_list:
                 Table_obj.mo = product.get('platform_precent_sales')
                 Table_obj.yuguxiaoshoue = product.get('sales_money')
 
+                item2_url = product.get('detail_url')
                 product_id = product.get('product_id')
                 WAIT_TIME = 1
                 staticitem_url = 'https://ec.snssdk.com/product/fxgajaxstaticitem?b_type_new=0&device_id=0&is_outside=1&id={0}&preview=0'.format(product_id)
-                while 1:
-                    try:
-                        time.sleep(WAIT_TIME)
-                        # rsp = requests.get(staticitem_url, headers={'user-agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36'})
-                        rsp = requests.get(staticitem_url, headers=pseudo_header)
-                    except:
-                        print('[*] Get zbjl_splb staticitem_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
-                        time.sleep(5)
-                    else:
-                        data = json.loads(rsp.text).get('data')
-                        break
+
+                session.get(url= item2_url , headers=item2_page_headers)
+                rsp = session.get(url=staticitem_url, headers=pseudo_header)
+                data = json.loads(rsp.text).get('data')
+                # while 1:
+                #     try:
+                #         time.sleep(WAIT_TIME)
+                #         # rsp = requests.get(staticitem_url, headers={'user-agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36'})
+                #         rsp = requests.get(staticitem_url, headers=pseudo_header)
+                #     except:
+                #         print('[*] Get zbjl_splb staticitem_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                #         time.sleep(5)
+                #     else:
+                #         data = json.loads(rsp.text).get('data')
+                #         break
 
                 if data == None:
                     data = {}
@@ -190,17 +213,19 @@ for current_taks in Entry_list:
                 Table_obj.tuijianyu = data.get('recommend_remark') if data else '--'
 
                 ajaxitem_url = 'https://ec.snssdk.com/product/ajaxitem?b_type_new=0&device_id=0&is_outside=1&id={0}&abParams=0'.format(product_id)
-                while 1:
-                    try:
-                        time.sleep(WAIT_TIME)
-                        # rsp = requests.get(ajaxitem_url, headers={'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36'})
-                        rsp = requests.get(ajaxitem_url, headers=pseudo_header)
-                    except:
-                        print('[*] Get zbjl_splb ajaxitem_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
-                        time.sleep(5)
-                    else:
-                        data = json.loads(rsp.text)
-                        break
+                rsp = session.get(url=ajaxitem_url, headers=pseudo_header)
+                data = json.loads(rsp.text)
+                # while 1:
+                #     try:
+                #         time.sleep(WAIT_TIME)
+                #         # rsp = requests.get(ajaxitem_url, headers={'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36'})
+                #         rsp = requests.get(ajaxitem_url, headers=pseudo_header)
+                #     except:
+                #         print('[*] Get zbjl_splb ajaxitem_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                #         time.sleep(5)
+                #     else:
+                #         data = json.loads(rsp.text)
+                #         break
 
                 # data有可能是[],也可能是{"st":10024,"msg":"商品已下架","data":null}
                 if data == [] or data.get('data') == None:
