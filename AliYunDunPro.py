@@ -18,13 +18,13 @@ if not os.path.exists(today_log_dir):
     os.mkdir(today_log_dir)
 
 # 首日启动时运行一次
-zb_rootdir = 'python3 -u /root/xd_crawler/zb_rootdir.py >> /root/xd_crawler/log/zb_rootdir.log 2>&1'
+zb_rootdir = 'python3 /root/xd_crawler/zb_rootdir.py'
 
 # 每日更新
-zb_xx = 'python3 -u /root/xd_crawler/zb_xx.py >> /root/xd_crawler/log/zb_xx.log 2>&1'
+zb_xx = 'python3 /root/xd_crawler/zb_xx.py'
 
 # 首日启动时运行一次
-zb_qsbx = 'python3 -u /root/xd_crawler/zb_qsbx.py >> /root/xd_crawler/log/zb_qsbx.log 2>&1 &'
+zb_qsbx = 'python3 /root/xd_crawler/zb_qsbx.py &'
 
 # 每日更新
 zb_zplb = 'python3 -u /root/xd_crawler/zb_zplb.py >> /root/xd_crawler/log/zb_zplb.log 2>&1'
@@ -34,12 +34,12 @@ zb_zplb_cyzhx = 'python3 -u /root/xd_crawler/zb_zplb_cyzhx.py >> /root/xd_crawle
 zb_zplb_glsp = 'python3 -u /root/xd_crawler/zb_zplb_glsp.py >> /root/xd_crawler/log/zb_zplb_glsp.log 2>&1 &'
 
 # 每日更新
-zbjl = 'python3 -u /root/xd_crawler/zbjl.py >> /root/xd_crawler/log/zbjl.log 2>&1'
-zbjl_sx = 'python3 -u /root/xd_crawler/zbjl_sx.py >> /root/xd_crawler/log/zbjl_sx.log 2>&1 &'
-zbjl_splb = 'python3 -u /root/xd_crawler/zbjl_splb.py  >> /root/xd_crawler/log/zbjl_splb.log 2>&1 &'
-zbjl_pl = 'python3  -u /root/xd_crawler/zbjl_pl.py >> /root/xd_crawler/log/zbjl_pl.log 2>&1 &'
-zbjl_zzgm = 'python3 -u /root/xd_crawler/zbjl_zzgm.py >> /root/xd_crawler/log/zbjl_zzgm.log 2>&1 &'
-zbjl_ll_rc = 'python3 -u /root/xd_crawler/zbjl_ll-rc-yl-fst-dz-tlsc.py >> /root/xd_crawler/log/zbjl_ll_rc.log 2>&1 &'
+zbjl = 'python3 /root/xd_crawler/zbjl.py'
+zbjl_sx = 'python3 /root/xd_crawler/zbjl_sx.py &'
+zbjl_splb = 'python3 /root/xd_crawler/zbjl_splb.py &'
+zbjl_pl = 'python3  /root/xd_crawler/zbjl_pl.py &'
+zbjl_zzgm = 'python3 /root/xd_crawler/zbjl_zzgm.py &'
+zbjl_ll_rc = 'python3 /root/xd_crawler/zbjl_ll-rc-yl-fst-dz-tlsc.py &'
 
 '------------------------------------------------------------------------------'
 

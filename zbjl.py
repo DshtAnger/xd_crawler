@@ -181,7 +181,7 @@ for current_taks in Entry_list:
                 if eval(repeat_detect_cmd):
                     zbjl_count += 1
                     today_zbjl_count += 1
-                    logging.info('[%s]'%current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb, webcast_id, item.get('create_time'), 'This is Repeated data. Continue next at', get_current_time())
+                    logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb, webcast_id, item.get('create_time'), 'This is Repeated data. Continue next at', get_current_time()]))
                     continue
 
                 Table_obj = eval('list_' + type + '_zbjl' + '.create()')
@@ -198,7 +198,7 @@ for current_taks in Entry_list:
                     Table_obj.time_update = 'Severe error occurred at %s' % get_current_time()
                     Table_obj.save()
                     zbjl_count += 1
-                    logging.info('[%s]'%current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb, webcast_id, item.get('create_time'), 'Download websocket data failed at', get_current_time())
+                    logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb, webcast_id, item.get('create_time'), 'Download websocket data failed at', get_current_time()]))
                     continue
 
                 with open('/root/xd_crawler/websocket_data/%s.detail'%webcast_id, 'r') as f:
@@ -235,9 +235,9 @@ for current_taks in Entry_list:
                 Table_obj.save()
                 zbjl_count += 1
                 today_zbjl_count +=1
-                logging.info('[%s]'%current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb, webcast_id, Table_obj.livestraming_time, 'Done at', get_current_time())
+                logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb, webcast_id, Table_obj.livestraming_time, 'Done at', get_current_time()]))
 
-            logging.info('[%s]'%current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb, '[ zbjl amount: %d ]'%zbjl_count, 'Done at', get_current_time())
+            logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb, '[ zbjl amount: %d ]'%zbjl_count, 'Done at', get_current_time()]))
             logging.info('-'*50)
-        logging.info('[%s]'%current_taks, type, 'zbjl', '[ today_zbjl_count: %d ]'%today_zbjl_count, 'Done at', get_current_time())
+        logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl', '[ today_zbjl_count: %d ]'%today_zbjl_count, 'Done at', get_current_time()]))
         logging.info('-' * 100)

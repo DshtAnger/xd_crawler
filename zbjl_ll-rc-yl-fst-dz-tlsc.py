@@ -227,6 +227,6 @@ for current_taks in Entry_list:
 
             today_ll_rc_yl_fst_dz_tlsc_count += len(timepoint_list)
 
-            logging.info('[%s]'%current_taks, type, 'zbjl_ll~dz_tlsc...', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ zbjl_ll~dz_tlsc amount: %d ]'%len(timepoint_list), 'Done at', get_current_time())
-        logging.info('[%s]'%current_taks, type, 'zbjl_tlsc', '[ today_zbjl_ll~dz_tlsc_count: %d ]' % today_ll_rc_yl_fst_dz_tlsc_count, 'Done at', get_current_time())
+            logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_ll~dz_tlsc...', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ zbjl_ll~dz_tlsc amount: %d ]'%len(timepoint_list), 'Done at', get_current_time()]))
+        logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_tlsc', '[ today_zbjl_ll~dz_tlsc_count: %d ]' % today_ll_rc_yl_fst_dz_tlsc_count, 'Done at', get_current_time()]))
         logging.info('-'*100)

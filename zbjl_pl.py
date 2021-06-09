@@ -119,7 +119,7 @@ for current_taks in Entry_list:
                 Table_obj.url_zbjl = one_record.url_zbjl
                 Table_obj.livestraming_time = one_record.livestraming_time
                 Table_obj.time_update = 'This zbjl No_pl_data. Maybe the limit is exhausted' % get_current_time()
-                logging.info('[%s]'%current_taks, type, 'zbjl_pl', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'This zbjl No_pl_data. Maybe the limit is exhausted. Continue next at ', get_current_time())
+                logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_pl', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'This zbjl No_pl_data. Maybe the limit is exhausted. Continue next at ', get_current_time()]))
                 continue
 
             pl_count = 0
@@ -160,6 +160,6 @@ for current_taks in Entry_list:
                     pl_count += 1
                     today_pl_count += 1
 
-            logging.info('[%s]'%current_taks, type, 'zbjl_pl', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ zbjl_pl amount: %d ]'%pl_count, 'Done at', get_current_time())
-        logging.info('[%s]'%current_taks, type, 'zbjl_pl', '[ today_pl_count: %d ]'%today_pl_count, 'Done at', get_current_time())
+            logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_pl', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ zbjl_pl amount: %d ]'%pl_count, 'Done at', get_current_time()]))
+        logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_pl', '[ today_pl_count: %d ]'%today_pl_count, 'Done at', get_current_time()]))
         logging.info('-'*100)

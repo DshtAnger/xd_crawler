@@ -133,7 +133,7 @@ for current_taks in Entry_list:
                 Table_obj.livestraming_time = one_record.livestraming_time
                 Table_obj.time_update = 'Severe error occurred at %s' % get_current_time()
                 Table_obj.save()
-                logging.info('[%s]'%current_taks, type, 'zbjl_splb', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'Find local websocket file failed  at', get_current_time())
+                logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_splb', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'Find local websocket file failed  at', get_current_time()]))
                 continue
 
             with open('/root/xd_crawler/websocket_data/%s.commodity' % webcast_id, 'r') as f:
@@ -144,7 +144,7 @@ for current_taks in Entry_list:
 
                 repeat_detect_cmd = "list_%s_zbjl_splb.select().where(list_%s_zbjl_splb.url_zbjl=='%s',list_%s_zbjl_splb.store_url=='%s',list_%s_zbjl_splb.time_update.startswith('%s'))" % (type, type, one_record.url_zbjl ,type, product.get('detail_url'), type, today_date)
                 if eval(repeat_detect_cmd):
-                    logging.info('[%s]'%current_taks, type, 'zbjl_splb', one_record.num_zb, one_record.name_zb, webcast_id,one_record.livestraming_time, 'This is Repeated data. Continue next at', get_current_time())
+                    logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_splb', one_record.num_zb, one_record.name_zb, webcast_id,one_record.livestraming_time, 'This is Repeated data. Continue next at', get_current_time()]))
                     continue
 
                 Table_obj = eval('list_' + type + '_zbjl_splb' + '.create()')
@@ -251,8 +251,8 @@ for current_taks in Entry_list:
                 Table_obj.save()
                 splb_count += 1
                 today_splb_count += 1
-                logging.info('[%s]' % current_taks, type, 'zbjl_splb', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'product_id:%s'%product_id, 'Done at', get_current_time())
-            logging.info('[%s]'%current_taks, type, 'zbjl_splb', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ zbjl_splb amount: %d ]'%splb_count, 'Done at', get_current_time())
+                logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_splb', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'product_id:%s'%product_id, 'Done at', get_current_time()]))
+            logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_splb', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ zbjl_splb amount: %d ]'%splb_count, 'Done at', get_current_time()]))
             logging.info('-'*50)
-        logging.info('[%s]'%current_taks, type, 'zbjl_splb', '[ today_splb_count: %d ]'%today_splb_count, 'Done at', get_current_time())
+        logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_splb', '[ today_splb_count: %d ]'%today_splb_count, 'Done at', get_current_time()]))
         logging.info('-'*100)
