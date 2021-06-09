@@ -1,6 +1,5 @@
 # coding=utf-8
 
-
 import logging
 import datetime,time
 import os
@@ -13,6 +12,10 @@ today_date = datetime.datetime.now().strftime("%Y-%m-%d")
 lastday_date = (datetime.datetime.now()+datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
 first_crawl_date = (datetime.datetime.now()+datetime.timedelta(days=-121)).strftime("%Y-%m-%d")
 FIRST_RUN_DATE = today_date
+
+today_log_dir = '/root/xd_crawler/log/%s' % today_date
+if not os.path.exists(today_log_dir):
+    os.mkdir(today_log_dir)
 
 # 首日启动时运行一次
 zb_rootdir = 'python3 -u /root/xd_crawler/zb_rootdir.py >> /root/xd_crawler/log/zb_rootdir.log 2>&1'

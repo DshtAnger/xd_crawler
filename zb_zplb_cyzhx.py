@@ -1,16 +1,31 @@
 # coding=utf-8
 # 从6月1日期开始每日更新，每天抓取是4个月前记录的作品url的数据（如6月1日抓取的是1月31日的）即向前推121天
 
+
 import requests
 import json
 import datetime
 import time
+import os,sys
+import logging
 from DB import *
 
 def get_current_time():
     return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
 update_date = (datetime.datetime.now()+datetime.timedelta(days=-121)).strftime("%Y-%m-%d")
+
+today_date = datetime.datetime.now().strftime("%Y-%m-%d")
+today_log_dir = '/root/xd_crawler/log/%s' % today_date
+if not os.path.exists(today_log_dir):
+    os.mkdir(today_log_dir)
+logging.basicConfig(format='%(message)s',filename=today_log_dir + '/zb_zplb_cyzhx.log', level=logging.INFO)
+def handle_exception(exc_type, exc_value, exc_traceback):
+    if issubclass(exc_type, KeyboardInterrupt):
+        sys.__excepthook__(exc_type, exc_value, exc_traceback)
+        return
+    logging.info("--------------------Uncaught Exception--------------------",exc_info=(exc_type, exc_value, exc_traceback))
+sys.excepthook = handle_exception
 
 type_list = {
     'ms':'美食','ss':'时尚','kj':'科技',

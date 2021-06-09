@@ -4,9 +4,26 @@
 
 import requests
 import json
-import time
+import datetime,time
 import pandas
+import os,sys
+import logging
 from DB import *
+
+def get_current_time():
+    return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+
+today_date = datetime.datetime.now().strftime("%Y-%m-%d")
+today_log_dir = '/root/xd_crawler/log/%s' % today_date
+if not os.path.exists(today_log_dir):
+    os.mkdir(today_log_dir)
+logging.basicConfig(format='%(message)s',filename=today_log_dir + '/zb_rootdir.log', level=logging.INFO)
+def handle_exception(exc_type, exc_value, exc_traceback):
+    if issubclass(exc_type, KeyboardInterrupt):
+        sys.__excepthook__(exc_type, exc_value, exc_traceback)
+        return
+    logging.info("--------------------Uncaught Exception--------------------",exc_info=(exc_type, exc_value, exc_traceback))
+sys.excepthook = handle_exception
 
 type_list = {
     'ms':'美食','ss':'时尚','kj':'科技',
@@ -20,7 +37,6 @@ with open('/root/xd_crawler/token','r') as f:
     token = f.read().strip()
 with open('/root/xd_crawler/type','r') as f:
     input_type = f.read().strip().split()
-
 
 headers = {
     'accept': 'application/json, text/plain, */*',
@@ -81,7 +97,7 @@ for type in input_type:
                     search_identify = douyin_identify_list[douyin_id_list.index(id_zb)]
                     post_data.update({'keyword': search_identify})
 
-                print('[*] Get zb_rootdir failed. %s id_zb:%s name_zb:%s id_search_error_tag:%s name_search_error_tag:%s identify_search_error_tag:%s' % (num_zb, id_zb, name_zb, id_search_error_tag, name_search_error_tag, identify_search_error_tag))
+                logging.info('[*] Get zb_rootdir failed. %s id_zb:%s name_zb:%s id_search_error_tag:%s name_search_error_tag:%s identify_search_error_tag:%s' % (num_zb, id_zb, name_zb, id_search_error_tag, name_search_error_tag, identify_search_error_tag))
 
                 if identify_search_error_tag:
                     break
@@ -91,7 +107,7 @@ for type in input_type:
                 break
 
         if id_search_error_tag and name_search_error_tag and identify_search_error_tag:
-            print('[*] Can not find this: %s %s %s. To continux next.'%(num_zb, id_zb, name_zb))
+            logging.info('[*] Can not find this: %s %s %s. To continux next.'%(num_zb, id_zb, name_zb))
             continue
 
         one_data = None
@@ -117,8 +133,8 @@ for type in input_type:
 
         eval('list_' + type + '.create(num_zb=num_zb, id_zb="", name_zb=name_zb, url_zb=url_zb)')
 
-        print("[+] %s %s Done." % (num_zb, name_zb))
-    print("-" * 50)
+        logging.info("[+] %s %s Done." % (num_zb, name_zb))
+    logging.info("-" * 50)
 
 
 '''for type in input_type:
@@ -142,7 +158,7 @@ for type in input_type:
                 rsp = requests.post(saleRank_search_url, headers=headers, data=json.dumps(post_data))
                 data = json.loads(rsp.text).get('data').get('list')
             except:
-                print('[*] Get zb rootdir type:%s page:%d failed...Retrying..'%(type,page))
+                logging.info('[*] Get zb rootdir type:%s page:%d failed...Retrying..'%(type,page))
                 time.sleep(5)
             else:
                 break
@@ -157,5 +173,5 @@ for type in input_type:
             eval('list_' + type + '.create(num_zb=num_zb, id_zb=id_zb, name_zb=name_zb, url_zb=url_zb)')
             zb_index += 1
 
-        print("[+] %s page %d Done."%(type,page))
-    print("[+] %s page %d Done." % (type, page))'''
+        logging.info("[+] %s page %d Done."%(type,page))
+    logging.info("[+] %s page %d Done." % (type, page))'''

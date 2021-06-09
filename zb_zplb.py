@@ -6,6 +6,8 @@ import requests
 import json
 import datetime
 import time
+import os,sys
+import logging
 from DB import *
 
 def get_current_time():
@@ -14,7 +16,18 @@ def get_current_time():
 today_date = datetime.datetime.now().strftime("%Y-%m-%d")
 lastday_date = (datetime.datetime.now()+datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
 first_crawl_date = (datetime.datetime.now()+datetime.timedelta(days=-121)).strftime("%Y-%m-%d")
+
 FIRST_RUN_DATE = '2021-06-06'
+today_log_dir = '/root/xd_crawler/log/%s' % today_date
+if not os.path.exists(today_log_dir):
+    os.mkdir(today_log_dir)
+logging.basicConfig(format='%(message)s',filename=today_log_dir + '/zb_zplb.log', level=logging.INFO)
+def handle_exception(exc_type, exc_value, exc_traceback):
+    if issubclass(exc_type, KeyboardInterrupt):
+        sys.__excepthook__(exc_type, exc_value, exc_traceback)
+        return
+    logging.info("--------------------Uncaught Exception--------------------",exc_info=(exc_type, exc_value, exc_traceback))
+sys.excepthook = handle_exception
 
 type_list = {
     'ms':'美食','ss':'时尚','kj':'科技',
@@ -96,7 +109,7 @@ for type in input_type:
                     if data_ori.get('code') == 4014 and data == None:
                         import os, re
                         error_msg = '|'.join(re.search(r'<div class="xd_noauth_wrap"><div class="xd_noauth_title">(.*)</div><div class="xd_noauth_subtitle">(.*)<span class="xd_noauth_count">(.*)</span>(.*)</div></div>',data_ori.get('msg')).groups())
-                        print('[*] %s' % error_msg, one_record.num_zb, one_record.name_zb, 'at', get_current_time())
+                        logging.info('[*] %s' % error_msg, one_record.num_zb, one_record.name_zb, 'at', get_current_time())
                         os._exit(1)
                     else:
                          data_list = data.get('list')
@@ -151,13 +164,13 @@ for type in input_type:
                     page += 1
                 except:
                     Retry_times -= 1
-                    print('[*] Get zb_zplb aweme_id_url failed. type:%s, num_zb:%s, url_zb:%s, time_period:%s-%s, page:%d, Retry occurred at %s' % (type, one_record.num_zb, one_record.url_zb, set_start, set_end, page, get_current_time()))
+                    logging.info('[*] Get zb_zplb aweme_id_url failed. type:%s, num_zb:%s, url_zb:%s, time_period:%s-%s, page:%d, Retry occurred at %s' % (type, one_record.num_zb, one_record.url_zb, set_start, set_end, page, get_current_time()))
 
                     if Retry_times == 0:
                         Turn_page_loop = False
                         Time_period_loop = False
-                        print('[*]', type, 'zb_zplb', one_record.num_zb, one_record.name_zb, one_record.url_zb, 'time_period:%s-%s'%(set_start,set_end), 'page:%d'%page, 'Severe Error has occurred to continue next zb at', get_current_time())
+                        logging.info('[*]', type, 'zb_zplb', one_record.num_zb, one_record.name_zb, one_record.url_zb, 'time_period:%s-%s'%(set_start,set_end), 'page:%d'%page, 'Severe Error has occurred to continue next zb at', get_current_time())
 
                     time.sleep(5)
 
-        print('[+]', type, 'zb_zplb', one_record.num_zb, one_record.name_zb, '[ zp amount: %d ]'%zp_count, 'Done at', get_current_time())
+        logging.info('[+]', type, 'zb_zplb', one_record.num_zb, one_record.name_zb, '[ zp amount: %d ]'%zp_count, 'Done at', get_current_time())

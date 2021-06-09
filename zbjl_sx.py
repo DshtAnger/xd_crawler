@@ -4,9 +4,11 @@
 
 import requests
 import websocket
-import json,os
+import json
 import datetime
 import time
+import os,sys
+import logging
 from DB import *
 
 def get_current_time():
@@ -15,6 +17,16 @@ def get_current_time():
 today_date = datetime.datetime.now().strftime("%Y-%m-%d")
 lastday_date = (datetime.datetime.now()+datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
 first_crawl_date = (datetime.datetime.now()+datetime.timedelta(days=-121)).strftime("%Y-%m-%d")
+today_log_dir = '/root/xd_crawler/log/%s' % today_date
+if not os.path.exists(today_log_dir):
+    os.mkdir(today_log_dir)
+logging.basicConfig(format='%(message)s',filename=today_log_dir + '/zbjl_sx.log', level=logging.INFO)
+def handle_exception(exc_type, exc_value, exc_traceback):
+    if issubclass(exc_type, KeyboardInterrupt):
+        sys.__excepthook__(exc_type, exc_value, exc_traceback)
+        return
+    logging.info("--------------------Uncaught Exception--------------------",exc_info=(exc_type, exc_value, exc_traceback))
+sys.excepthook = handle_exception
 
 type_list = {
     'ms':'美食','ss':'时尚','kj':'科技',
@@ -83,7 +95,7 @@ for current_taks in Entry_list:
 
             repeat_detect_cmd = "list_%s_zbjl_sx.select().where(list_%s_zbjl_sx.url_zbjl=='%s',list_%s_zbjl_sx.time_update.startswith('%s'))" % (type, type, one_record.url_zbjl, type, today_date)
             if eval(repeat_detect_cmd):
-                print('[%s]'%current_taks, type, 'zbjl_sx', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'This is Repeated data. Continue next at', get_current_time())
+                logging.info('[%s]'%current_taks, type, 'zbjl_sx', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'This is Repeated data. Continue next at', get_current_time())
                 continue
 
             Table_obj = eval('list_' + type + '_zbjl_sx' + '.create()')
@@ -96,7 +108,7 @@ for current_taks in Entry_list:
             if not os.path.exists('/root/xd_crawler/websocket_data/%s.detail' % webcast_id):
                 Table_obj.time_update = 'Severe error occurred at %s' % get_current_time()
                 Table_obj.save()
-                print('[%s]'%current_taks, type, 'zbjl_sx', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'Find local websocket file failed  at', get_current_time())
+                logging.info('[%s]'%current_taks, type, 'zbjl_sx', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'Find local websocket file failed  at', get_current_time())
                 continue
 
             with open('/root/xd_crawler/websocket_data/%s.detail' % webcast_id, 'r') as f:
@@ -123,7 +135,7 @@ for current_taks in Entry_list:
                     rsp = requests.post(city_url, headers=headers, data=json.dumps(post_data))
                     data = json.loads(rsp.text).get('data')
                 except:
-                    print('[*] Get zbjl_sx city_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl,get_current_time()))
+                    logging.info('[*] Get zbjl_sx city_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl,get_current_time()))
                     time.sleep(5)
                 else:
                     break
@@ -171,6 +183,6 @@ for current_taks in Entry_list:
             Table_obj.save()
             today_zbjl_sx_count += 1
 
-            print('[%s]'%current_taks, type, 'zbjl_sx', one_record.num_zb, one_record.name_zb, webcast_id, Table_obj.livestraming_time, 'Done at', get_current_time())
-        print('[%s]'%current_taks, type, 'zbjl', '[ today_zbjl_sx_count: %d ]'%today_zbjl_sx_count, 'Done at', get_current_time())
-        print('-'*100)
+            logging.info('[%s]'%current_taks, type, 'zbjl_sx', one_record.num_zb, one_record.name_zb, webcast_id, Table_obj.livestraming_time, 'Done at', get_current_time())
+        logging.info('[%s]'%current_taks, type, 'zbjl', '[ today_zbjl_sx_count: %d ]'%today_zbjl_sx_count, 'Done at', get_current_time())
+        logging.info('-'*100)

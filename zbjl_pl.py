@@ -7,6 +7,8 @@ import websocket
 import json
 import datetime
 import time
+import os,sys
+import logging
 from DB import *
 
 def get_current_time():
@@ -15,6 +17,16 @@ def get_current_time():
 today_date = datetime.datetime.now().strftime("%Y-%m-%d")
 lastday_date = (datetime.datetime.now()+datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
 first_crawl_date = (datetime.datetime.now()+datetime.timedelta(days=-121)).strftime("%Y-%m-%d")
+today_log_dir = '/root/xd_crawler/log/%s' % today_date
+if not os.path.exists(today_log_dir):
+    os.mkdir(today_log_dir)
+logging.basicConfig(format='%(message)s',filename=today_log_dir + '/zbjl_pl.log', level=logging.INFO)
+def handle_exception(exc_type, exc_value, exc_traceback):
+    if issubclass(exc_type, KeyboardInterrupt):
+        sys.__excepthook__(exc_type, exc_value, exc_traceback)
+        return
+    logging.info("--------------------Uncaught Exception--------------------",exc_info=(exc_type, exc_value, exc_traceback))
+sys.excepthook = handle_exception
 
 type_list = {
     'ms':'美食','ss':'时尚','kj':'科技',
@@ -94,7 +106,7 @@ for current_taks in Entry_list:
                     count = data.get('count') if data else -1
                     end_page = int(count / 100) + 1 if count % 100 != 0 else int(count / 100)
                 except:
-                    print('[*] Get zbjl_pl comment_url count failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                    logging.info('[*] Get zbjl_pl comment_url count failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
                     time.sleep(5)
                 else:
                     break
@@ -107,7 +119,7 @@ for current_taks in Entry_list:
                 Table_obj.url_zbjl = one_record.url_zbjl
                 Table_obj.livestraming_time = one_record.livestraming_time
                 Table_obj.time_update = 'This zbjl No_pl_data. Maybe the limit is exhausted' % get_current_time()
-                print('[%s]'%current_taks, type, 'zbjl_pl', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'This zbjl No_pl_data. Maybe the limit is exhausted. Continue next at ', get_current_time())
+                logging.info('[%s]'%current_taks, type, 'zbjl_pl', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'This zbjl No_pl_data. Maybe the limit is exhausted. Continue next at ', get_current_time())
                 continue
 
             pl_count = 0
@@ -120,7 +132,7 @@ for current_taks in Entry_list:
                         data = json.loads(rsp.text).get('data')
                         data_list = data.get('list') if data else []
                     except:
-                        print('[*] Get zbjl_pl comment_url data failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                        logging.info('[*] Get zbjl_pl comment_url data failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
                         time.sleep(5)
                     else:
                         break
@@ -148,6 +160,6 @@ for current_taks in Entry_list:
                     pl_count += 1
                     today_pl_count += 1
 
-            print('[%s]'%current_taks, type, 'zbjl_pl', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ zbjl_pl amount: %d ]'%pl_count, 'Done at', get_current_time())
-        print('[%s]'%current_taks, type, 'zbjl_pl', '[ today_pl_count: %d ]'%today_pl_count, 'Done at', get_current_time())
-        print('-'*100)
+            logging.info('[%s]'%current_taks, type, 'zbjl_pl', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ zbjl_pl amount: %d ]'%pl_count, 'Done at', get_current_time())
+        logging.info('[%s]'%current_taks, type, 'zbjl_pl', '[ today_pl_count: %d ]'%today_pl_count, 'Done at', get_current_time())
+        logging.info('-'*100)

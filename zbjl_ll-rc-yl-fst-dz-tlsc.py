@@ -7,6 +7,8 @@ import websocket
 import json
 import datetime
 import time
+import os,sys
+import logging
 from DB import *
 
 def get_current_time():
@@ -15,6 +17,16 @@ def get_current_time():
 today_date = datetime.datetime.now().strftime("%Y-%m-%d")
 lastday_date = (datetime.datetime.now()+datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
 first_crawl_date = (datetime.datetime.now()+datetime.timedelta(days=-121)).strftime("%Y-%m-%d")
+today_log_dir = '/root/xd_crawler/log/%s' % today_date
+if not os.path.exists(today_log_dir):
+    os.mkdir(today_log_dir)
+logging.basicConfig(format='%(message)s',filename=today_log_dir + '/zbjl_ll_rc.log', level=logging.INFO)
+def handle_exception(exc_type, exc_value, exc_traceback):
+    if issubclass(exc_type, KeyboardInterrupt):
+        sys.__excepthook__(exc_type, exc_value, exc_traceback)
+        return
+    logging.info("--------------------Uncaught Exception--------------------",exc_info=(exc_type, exc_value, exc_traceback))
+sys.excepthook = handle_exception
 
 type_list = {
     'ms':'美食','ss':'时尚','kj':'科技',
@@ -92,7 +104,7 @@ for current_taks in Entry_list:
                     rsp = requests.post(trend_url, headers=headers, data=json.dumps(post_data))
                     data_list = json.loads(rsp.text).get('data').get('webcastTrendList')
                 except:
-                    print('[*] Get zbjl_ll~dz... trend_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                    logging.info('[*] Get zbjl_ll~dz... trend_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
                     time.sleep(5)
                 else:
                     break
@@ -192,7 +204,7 @@ for current_taks in Entry_list:
                         rsp = requests.post(userAvgDuration_url, headers=headers, data=json.dumps(post_data))
                         data = json.loads(rsp.text)
                     except:
-                        print('[*] Get zbjl_tlsc... userAvgDuration_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                        logging.info('[*] Get zbjl_tlsc... userAvgDuration_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
                         time.sleep(2)
                     else:
                         break
@@ -215,6 +227,6 @@ for current_taks in Entry_list:
 
             today_ll_rc_yl_fst_dz_tlsc_count += len(timepoint_list)
 
-            print('[%s]'%current_taks, type, 'zbjl_ll~dz_tlsc...', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ zbjl_ll~dz_tlsc amount: %d ]'%len(timepoint_list), 'Done at', get_current_time())
-        print('[%s]'%current_taks, type, 'zbjl_tlsc', '[ today_zbjl_ll~dz_tlsc_count: %d ]' % today_ll_rc_yl_fst_dz_tlsc_count, 'Done at', get_current_time())
-        print('-'*100)
+            logging.info('[%s]'%current_taks, type, 'zbjl_ll~dz_tlsc...', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ zbjl_ll~dz_tlsc amount: %d ]'%len(timepoint_list), 'Done at', get_current_time())
+        logging.info('[%s]'%current_taks, type, 'zbjl_tlsc', '[ today_zbjl_ll~dz_tlsc_count: %d ]' % today_ll_rc_yl_fst_dz_tlsc_count, 'Done at', get_current_time())
+        logging.info('-'*100)

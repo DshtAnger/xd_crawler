@@ -1,16 +1,31 @@
 # coding=utf-8
 # 从6月1日期开始每日更新，每天抓取是4个月前记录的作品url的数据（如6月1日抓取的是1月31日的）即向前推121天
 
+
 import requests
 import json
 import datetime
 import time
+import os,sys
+import logging
 from DB import *
 
 def get_current_time():
     return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
 update_date = (datetime.datetime.now()+datetime.timedelta(days=-121)).strftime("%Y-%m-%d")
+
+today_date = datetime.datetime.now().strftime("%Y-%m-%d")
+today_log_dir = '/root/xd_crawler/log/%s' % today_date
+if not os.path.exists(today_log_dir):
+    os.mkdir(today_log_dir)
+logging.basicConfig(format='%(message)s',filename=today_log_dir + '/zb_zplb_pl.log', level=logging.INFO)
+def handle_exception(exc_type, exc_value, exc_traceback):
+    if issubclass(exc_type, KeyboardInterrupt):
+        sys.__excepthook__(exc_type, exc_value, exc_traceback)
+        return
+    logging.info("--------------------Uncaught Exception--------------------",exc_info=(exc_type, exc_value, exc_traceback))
+sys.excepthook = handle_exception
 
 type_list = {
     'ms':'美食','ss':'时尚','kj':'科技',
@@ -57,7 +72,7 @@ for type in input_type:
                 count = data.get('count')
                 end_page = int(count / 100) + 1 if count % 100 != 0 else int(count / 100)
             except:
-                print('[*] Get zb_zplb_pl aweme_comment_url count failed. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb, get_current_time()))
+                logging.info('[*] Get zb_zplb_pl aweme_comment_url count failed. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb, get_current_time()))
                 time.sleep(5)
             else:
                 break
@@ -71,7 +86,7 @@ for type in input_type:
                     rsp = requests.post(aweme_comment_url, headers=headers, data=json.dumps(post_data))
                     data_list = json.loads(rsp.text).get('data').get('list')
                 except:
-                    print('[*] Get zb_zplb_pl aweme_id_url data failed. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb, get_current_time()))
+                    logging.info('[*] Get zb_zplb_pl aweme_id_url data failed. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb, get_current_time()))
                     time.sleep(5)
                 else:
                     break
@@ -94,4 +109,4 @@ for type in input_type:
 
                 Table_obj.save()
 
-        print('[+]', type, 'zb_zplb_pl', one_record.num_zb, one_record.name_zb, aweme_id, "Done %s's update at"%update_date, get_current_time())
+        logging.info('[+]', type, 'zb_zplb_pl', one_record.num_zb, one_record.name_zb, aweme_id, "Done %s's update at"%update_date, get_current_time())

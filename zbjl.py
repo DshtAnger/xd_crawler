@@ -3,9 +3,12 @@
 # 次日启动,每天抓取昨天直播记录所有详情数据(如6月1日抓取5月31日的)
 
 import requests
-import json,os
 import websocket
-import datetime,time
+import json
+import datetime
+import time
+import os,sys
+import logging
 from DB import *
 
 def get_current_time():
@@ -14,6 +17,16 @@ def get_current_time():
 today_date = datetime.datetime.now().strftime("%Y-%m-%d")
 lastday_date = (datetime.datetime.now()+datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
 first_crawl_date = (datetime.datetime.now()+datetime.timedelta(days=-121)).strftime("%Y-%m-%d")
+today_log_dir = '/root/xd_crawler/log/%s' % today_date
+if not os.path.exists(today_log_dir):
+    os.mkdir(today_log_dir)
+logging.basicConfig(format='%(message)s',filename=today_log_dir + '/zbjl.log', level=logging.INFO)
+def handle_exception(exc_type, exc_value, exc_traceback):
+    if issubclass(exc_type, KeyboardInterrupt):
+        sys.__excepthook__(exc_type, exc_value, exc_traceback)
+        return
+    logging.info("--------------------Uncaught Exception--------------------",exc_info=(exc_type, exc_value, exc_traceback))
+sys.excepthook = handle_exception
 
 type_list = {
     'ms':'美食','ss':'时尚','kj':'科技',
@@ -77,7 +90,7 @@ def download_websocket_data(webcast_id, cookie, type, num_zb, url_zbjl):
                         raise Exception
         except:
             Retry_times -= 1
-            print('[*] Get zbjl websocket data failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, num_zb, url_zbjl,get_current_time()))
+            logging.info('[*] Get zbjl websocket data failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, num_zb, url_zbjl,get_current_time()))
             if Retry_times == 0:
                 Severe_error_flag = True
                 break
@@ -154,7 +167,7 @@ for current_taks in Entry_list:
                     rsp = requests.post(webcastList_url, headers=headers, data=json.dumps(post_data))
                     data_list = json.loads(rsp.text).get('data').get('list')
                 except:
-                    print('[%s] Get zbjl webcastList_url data failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (current_taks, type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                    logging.info('[%s] Get zbjl webcastList_url data failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (current_taks, type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
                     time.sleep(5)
                 else:
                     break
@@ -168,7 +181,7 @@ for current_taks in Entry_list:
                 if eval(repeat_detect_cmd):
                     zbjl_count += 1
                     today_zbjl_count += 1
-                    print('[%s]'%current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb, webcast_id, item.get('create_time'), 'This is Repeated data. Continue next at', get_current_time())
+                    logging.info('[%s]'%current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb, webcast_id, item.get('create_time'), 'This is Repeated data. Continue next at', get_current_time())
                     continue
 
                 Table_obj = eval('list_' + type + '_zbjl' + '.create()')
@@ -185,7 +198,7 @@ for current_taks in Entry_list:
                     Table_obj.time_update = 'Severe error occurred at %s' % get_current_time()
                     Table_obj.save()
                     zbjl_count += 1
-                    print('[%s]'%current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb, webcast_id, item.get('create_time'), 'Download websocket data failed at', get_current_time())
+                    logging.info('[%s]'%current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb, webcast_id, item.get('create_time'), 'Download websocket data failed at', get_current_time())
                     continue
 
                 with open('/root/xd_crawler/websocket_data/%s.detail'%webcast_id, 'r') as f:
@@ -222,9 +235,9 @@ for current_taks in Entry_list:
                 Table_obj.save()
                 zbjl_count += 1
                 today_zbjl_count +=1
-                print('[%s]'%current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb, webcast_id, Table_obj.livestraming_time, 'Done at', get_current_time())
+                logging.info('[%s]'%current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb, webcast_id, Table_obj.livestraming_time, 'Done at', get_current_time())
 
-            print('[%s]'%current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb, '[ zbjl amount: %d ]'%zbjl_count, 'Done at', get_current_time())
-            print('-'*50)
-        print('[%s]'%current_taks, type, 'zbjl', '[ today_zbjl_count: %d ]'%today_zbjl_count, 'Done at', get_current_time())
-        print('-' * 100)
+            logging.info('[%s]'%current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb, '[ zbjl amount: %d ]'%zbjl_count, 'Done at', get_current_time())
+            logging.info('-'*50)
+        logging.info('[%s]'%current_taks, type, 'zbjl', '[ today_zbjl_count: %d ]'%today_zbjl_count, 'Done at', get_current_time())
+        logging.info('-' * 100)
