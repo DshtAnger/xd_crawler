@@ -35,7 +35,7 @@ headers = {
 
 for type in input_type:
 
-    data_sheet = pandas.read_excel('./download_excel/%s.xlsx'%type, sheet_name='基础数据' )
+    data_sheet = pandas.read_excel('/root/xd_crawler/download_excel/%s.xlsx'%type, sheet_name='基础数据' )
     douyin_id_list = list(data_sheet['抖音号ID'])
     douyin_name_list = list(data_sheet['抖音号名称'])
     douyin_identify_list = list(data_sheet['认证'])
