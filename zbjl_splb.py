@@ -144,7 +144,7 @@ for current_taks in Entry_list:
 
                 repeat_detect_cmd = "list_%s_zbjl_splb.select().where(list_%s_zbjl_splb.url_zbjl=='%s',list_%s_zbjl_splb.store_url=='%s',list_%s_zbjl_splb.time_update.startswith('%s'))" % (type, type, one_record.url_zbjl ,type, product.get('detail_url'), type, today_date)
                 if eval(repeat_detect_cmd):
-                    logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_splb', one_record.num_zb, one_record.name_zb, webcast_id,one_record.livestraming_time, 'This is Repeated data. Continue next at', get_current_time()]))
+                    logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_splb', one_record.num_zb, one_record.name_zb, webcast_id,one_record.livestraming_time, 'product_id:%s'%product.get('product_id'), 'This is Repeated data. Continue next at', get_current_time()]))
                     continue
 
                 Table_obj = eval('list_' + type + '_zbjl_splb' + '.create()')
