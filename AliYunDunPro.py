@@ -40,27 +40,27 @@ zbjl_ll_rc = 'python3 -u /root/xd_crawler/zbjl_ll-rc-yl-fst-dz-tlsc.py >> /root/
 
 '------------------------------------------------------------------------------'
 
-# if today_date == FIRST_RUN_DATE:
-#     try:
-#         os.system(zb_rootdir)
-#     except Exception as e:
-#         logging.exception(e)
-#         print('zb_rootdir error')
-#
-#
-# try:
-#     os.system(zb_xx)
-# except Exception as e:
-#     logging.exception(e)
-#     print('zb_xx error')
-#
-#
-# if today_date == FIRST_RUN_DATE:
-#     try:
-#         os.system(zb_qsbx)
-#     except Exception as e:
-#         logging.exception(e)
-#         print('zb_qsbx error')
+if today_date == FIRST_RUN_DATE:
+    try:
+        os.system(zb_rootdir)
+    except Exception as e:
+        logging.exception(e)
+        print('zb_rootdir error')
+
+
+try:
+    os.system(zb_xx)
+except Exception as e:
+    logging.exception(e)
+    print('zb_xx error')
+
+
+if today_date == FIRST_RUN_DATE:
+    try:
+        os.system(zb_qsbx)
+    except Exception as e:
+        logging.exception(e)
+        print('zb_qsbx error')
 
 '------------------------------------------------------------------------------'
 
