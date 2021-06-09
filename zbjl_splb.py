@@ -181,7 +181,7 @@ for current_taks in Entry_list:
 
                 while 1:
                     try:
-                        # time.sleep(WAIT_TIME)
+                        time.sleep(WAIT_TIME)
                         # rsp = requests.get(staticitem_url, headers={'user-agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36'})
                         rsp = session.get(url=staticitem_url, headers=pseudo_header)
                         # rsp = requests.get(staticitem_url, headers=pseudo_header)
@@ -229,7 +229,7 @@ for current_taks in Entry_list:
 
                 while 1:
                     try:
-                        time.sleep(WAIT_TIME)
+                        # time.sleep(WAIT_TIME)
                         # rsp = requests.get(ajaxitem_url, headers={'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36'})
                         # rsp = requests.get(ajaxitem_url, headers=pseudo_header)
                         rsp = session.get(url=ajaxitem_url, headers=pseudo_header)
