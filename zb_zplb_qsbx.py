@@ -1,6 +1,5 @@
 # coding=utf-8
-# 从6月1日期开始每日更新，每天抓取是4个月前记录的作品url的数据（如6月1日抓取的是1月31日的）即向前推121天
-
+# 每日更新，每天抓取是4个月前记录的作品url的数据（如6月1日抓取的是1月31日的）即向前推121天
 
 import requests
 import json
@@ -14,8 +13,8 @@ def get_current_time():
     return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
 update_date = (datetime.datetime.now()+datetime.timedelta(days=-121)).strftime("%Y-%m-%d")
-
 today_date = datetime.datetime.now().strftime("%Y-%m-%d")
+
 today_log_dir = '/root/xd_crawler/log/%s' % today_date
 if not os.path.exists(today_log_dir):
     os.mkdir(today_log_dir)
@@ -53,10 +52,16 @@ headers = {
 }
 
 for type in input_type:
+    today_qsbx_support_count = 0
+    today_qsbx_plbh_count = 0
+    today_qsbx_share_count = 0
 
     query_cmd = "list_%s_zplb.select().where(list_%s_zplb.time_release.startswith('%s'))" % (type,type,update_date)
 
     for one_record in eval(query_cmd):
+        qsbx_support_count = 0
+        qsbx_plbh_count = 0
+        qsbx_share_count = 0
 
         aweme_id = one_record.url_works.split('/')[-1]
         aweme_trend_url = 'https://gw.newrank.cn/api/xd/xdnphb/nr/cloud/douyin/aweme/awemeDetail/trend'
@@ -69,7 +74,7 @@ for type in input_type:
                 rsp = requests.post(aweme_trend_url, headers=headers, data=json.dumps(post_data))
                 data = json.loads(rsp.text).get('data')
             except:
-                print('[*] Get zb_zplb_qsbx failed. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb, get_current_time()))
+                logging.info('[*] Get zb_zplb_qsbx failed. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb, get_current_time()))
                 time.sleep(5)
             else:
                 break
@@ -89,6 +94,8 @@ for type in input_type:
             Table_obj.time_update = get_current_time()
 
             Table_obj.save()
+            qsbx_support_count += 1
+            today_qsbx_support_count += 1
 
         commentList = data.get('commentList')
         for comment in commentList:
@@ -105,6 +112,8 @@ for type in input_type:
             Table_obj.time_update = get_current_time()
 
             Table_obj.save()
+            qsbx_plbh_count += 1
+            today_qsbx_plbh_count += 1
 
         shareList = data.get('shareList')
         for _share in shareList:
@@ -121,5 +130,10 @@ for type in input_type:
             Table_obj.time_update = get_current_time()
 
             Table_obj.save()
+            qsbx_share_count += 1
+            today_qsbx_share_count += 1
 
-        print('[+]', type, 'zb_zplb_qsbx', one_record.num_zb, one_record.name_zb, aweme_id, "Done %s's update at"%update_date, get_current_time())
+        logging.info(' '.join(['[+]', type, 'zb_zplb_qsbx', one_record.num_zb, one_record.name_zb, aweme_id, one_record.time_release, '[ support_count:%d plbh_count:%d share_count:%d ]'%(qsbx_support_count,qsbx_plbh_count,qsbx_share_count),"Done at", get_current_time()]))
+
+    logging.info(' '.join(['[+]', type, 'zb_zplb_qsbx', '[ today_support_count:%d today_plbh_count:%d today_share_count:%d ]' % (today_qsbx_support_count, today_qsbx_plbh_count, today_qsbx_share_count),"Done at", get_current_time()]))
+    logging.info('-' * 100)

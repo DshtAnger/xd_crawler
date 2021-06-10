@@ -261,7 +261,7 @@ for current_taks in Entry_list:
                 splb_count += 1
                 today_splb_count += 1
                 logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_splb', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'product_id:%s'%product_id, 'Done at', get_current_time()]))
-            logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_splb', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ zbjl_splb amount: %d ]'%splb_count, 'Done at', get_current_time()]))
+            logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_splb', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ splb_count: %d ]'%splb_count, 'Done at', get_current_time()]))
             logging.info('-'*50)
         logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_splb', '[ today_splb_count: %d ]'%today_splb_count, 'Done at', get_current_time()]))
         logging.info('-'*100)

@@ -1,6 +1,5 @@
 # coding=utf-8
-# 从6月1日期开始每日更新，每天抓取是4个月前记录的作品url的数据（如6月1日抓取的是1月31日的）即向前推121天
-
+# 每日更新，每天抓取是4个月前记录的作品url的数据（如6月1日抓取的是1月31日的）即向前推121天
 
 import requests
 import json
@@ -13,9 +12,9 @@ from DB import *
 def get_current_time():
     return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
+today_date = datetime.datetime.now().strftime("%Y-%m-%d")
 update_date = (datetime.datetime.now()+datetime.timedelta(days=-121)).strftime("%Y-%m-%d")
 
-today_date = datetime.datetime.now().strftime("%Y-%m-%d")
 today_log_dir = '/root/xd_crawler/log/%s' % today_date
 if not os.path.exists(today_log_dir):
     os.mkdir(today_log_dir)
@@ -53,10 +52,12 @@ headers = {
 }
 
 for type in input_type:
+    today_pl_count = 0
 
     query_cmd = "list_%s_zplb.select().where(list_%s_zplb.time_release.startswith('%s'))" % (type,type,update_date)
 
     for one_record in eval(query_cmd):
+        pl_count = 0
 
         aweme_id = one_record.url_works.split('/')[-1]
         aweme_comment_url = 'https://gw.newrank.cn/api/xd/xdnphb/nr/cloud/douyin/aweme/awemeDetail/listAwemeComment'
@@ -76,7 +77,6 @@ for type in input_type:
                 time.sleep(5)
             else:
                 break
-
 
         for page in range(1,end_page+1):
 
@@ -108,5 +108,10 @@ for type in input_type:
                 Table_obj.time_update = get_current_time()
 
                 Table_obj.save()
+                pl_count += 1
+                today_pl_count += 1
 
-        logging.info('[+]', type, 'zb_zplb_pl', one_record.num_zb, one_record.name_zb, aweme_id, "Done %s's update at"%update_date, get_current_time())
+        logging.info(' '.join(['[+]', type, 'zb_zplb_pl', one_record.num_zb, one_record.name_zb, aweme_id, one_record.time_release, '[ pl_count: %d ]' % pl_count ,"Done at", get_current_time()]))
+
+    logging.info(' '.join(['[+]', type, 'zb_zplb_pl', '[ today_pl_count: %d ]' % today_pl_count, "Done at", get_current_time()]))
+    logging.info('-' * 100)

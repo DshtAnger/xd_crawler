@@ -150,6 +150,6 @@ for current_taks in Entry_list:
                     zzgm_count += 1
                     today_zzgm_count += 1
 
-            logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_zzgm', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ zbjl_zzgm amount: %d ]'%zzgm_count, 'Done at', get_current_time()]))
+            logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_zzgm', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ zzgm_count: %d ]'%zzgm_count, 'Done at', get_current_time()]))
         logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_zzgm', '[ today_zzgm_count: %d ]'%today_zzgm_count, 'Done at', get_current_time()]))
         logging.info('-'*100)
