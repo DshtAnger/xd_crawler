@@ -89,7 +89,7 @@ for current_taks in Entry_list:
             earliest_no_history_date = eval(earliest_no_history_query)[0].time_release.split(' ')[0]
 
             if update_date == earliest_no_history_date:
-                logging.info(' '.join(['[%s]' % current_taks, type, 'zb_zplb', '[ Does not crawl history data ]', 'Done at', get_current_time()]))
+                logging.info(' '.join(['[%s]' % current_taks, type, 'zb_zplb', '[ Does not crawl history data any more ]', 'Done at', get_current_time()]))
                 logging.info('-' * 100)
                 continue
 
