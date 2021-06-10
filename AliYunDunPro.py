@@ -27,11 +27,11 @@ zb_xx = 'python3 /root/xd_crawler/zb_xx.py'
 zb_qsbx = 'python3 /root/xd_crawler/zb_qsbx.py &'
 
 # 每日更新
-zb_zplb = 'python3 -u /root/xd_crawler/zb_zplb.py >> /root/xd_crawler/log/zb_zplb.log 2>&1'
-zb_zplb_pl = 'python3 -u /root/xd_crawler/zb_zplb_pl.py >> /root/xd_crawler/log/zb_zplb_pl.log 2>&1 &'
-zb_zplb_qsbx = 'python3 -u /root/xd_crawler/zb_zplb_qsbx.py >> /root/xd_crawler/log/zb_zplb_qsbx.log 2>&1 &'
-zb_zplb_cyzhx = 'python3 -u /root/xd_crawler/zb_zplb_cyzhx.py >> /root/xd_crawler/log/zb_zplb_cyzhx.log 2>&1 &'
-zb_zplb_glsp = 'python3 -u /root/xd_crawler/zb_zplb_glsp.py >> /root/xd_crawler/log/zb_zplb_glsp.log 2>&1 &'
+zb_zplb = 'python3 -u /root/xd_crawler/zb_zplb.py'
+zb_zplb_pl = 'python3 -u /root/xd_crawler/zb_zplb_pl.py &'
+zb_zplb_qsbx = 'python3 -u /root/xd_crawler/zb_zplb_qsbx.py &'
+zb_zplb_cyzhx = 'python3 -u /root/xd_crawler/zb_zplb_cyzhx.py &'
+zb_zplb_glsp = 'python3 -u /root/xd_crawler/zb_zplb_glsp.py &'
 
 # 每日更新
 zbjl = 'python3 /root/xd_crawler/zbjl.py'
@@ -67,36 +67,36 @@ if today_date == FIRST_RUN_DATE:
 
 '------------------------------------------------------------------------------'
 
-# try:
-#     os.system(zb_zplb)
-# except Exception as e:
-#     logging.exception(e)
-#     print('zb_zplb error')
-#
-#
-# try:
-#     os.system(zb_zplb_pl)
-# except Exception as e:
-#     logging.exception(e)
-#     print('zb_zplb_pl error')
-#
-# try:
-#     os.system(zb_zplb_qsbx)
-# except Exception as e:
-#     logging.exception(e)
-#     print('zb_zplb_qsbx error')
-#
-# try:
-#     os.system(zb_zplb_cyzhx)
-# except Exception as e:
-#     logging.exception(e)
-#     print('zb_zplb_cyzhx error')
-#
-# try:
-#     os.system(zb_zplb_glsp)
-# except Exception as e:
-#     logging.exception(e)
-#     print('zb_zplb_glsp error')
+try:
+    os.system(zb_zplb)
+except Exception as e:
+    logging.exception(e)
+    print('zb_zplb error')
+
+
+try:
+    os.system(zb_zplb_pl)
+except Exception as e:
+    logging.exception(e)
+    print('zb_zplb_pl error')
+
+try:
+    os.system(zb_zplb_qsbx)
+except Exception as e:
+    logging.exception(e)
+    print('zb_zplb_qsbx error')
+
+try:
+    os.system(zb_zplb_cyzhx)
+except Exception as e:
+    logging.exception(e)
+    print('zb_zplb_cyzhx error')
+
+try:
+    os.system(zb_zplb_glsp)
+except Exception as e:
+    logging.exception(e)
+    print('zb_zplb_glsp error')
 
 '------------------------------------------------------------------------------'
 
