@@ -1,3 +1,6 @@
+git config --global http.sslVerify false
+git clone https://github.com/DshtAnger/xd_crawler.git
+
 查询list_ms_zplb表每个num_zb各自拥有的记录条数：
 SELECT num_zb,count(*) as COUNT FROM list_ms_zplb GROUP BY num_zb ORDER BY num_zb+0;
 
