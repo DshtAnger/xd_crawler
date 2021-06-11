@@ -139,6 +139,8 @@ except Exception as e:
     logging.exception(e)
     print('zbjl_ll_rc_yl_fst_dz error')
 
+time.sleep(60 * 60)
+
 try:
     os.system(zbjl_tlsc)
 except Exception as e:
