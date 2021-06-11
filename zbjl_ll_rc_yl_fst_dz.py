@@ -113,7 +113,7 @@ for current_taks in Entry_list:
             for item in data_list:
 
                 crawl_time = item.get('crawl_date')
-                timepoint_list.append(crawl_time)
+                #timepoint_list.append(crawl_time)
 
                 Table_obj_ll = eval('list_' + type + '_zbjl_ll' + '.create()')
                 Table_obj_ll.num_zb = one_record.num_zb
@@ -189,7 +189,7 @@ for current_taks in Entry_list:
                 Table_obj_fst.save()
                 Table_obj_dz.save()
 
-            today_ll_rc_yl_fst_dz_count += len(timepoint_list)
+            today_ll_rc_yl_fst_dz_count += len(data_list)
             logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_ll_rc_yl_fst_dz', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ zbjl_ll_rc_yl_fst_dz: %d ]' % len(data_list), 'Done at', get_current_time()]))
 
         logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_tlsc', '[ today_ll_rc_yl_fst_dz_count: %d ]' % today_ll_rc_yl_fst_dz_count, 'Done at', get_current_time()]))

@@ -95,7 +95,7 @@ for current_taks in Entry_list:
 
             webcast_id = one_record.url_zbjl.split('/')[-1]
 
-            data  = eval("list_%s_zbjl_ll.select().where(list_%s_zbjl_ll.livestraming_time.startswith('%s')).order_by(list_%s_zbjl_ll.time_update)" % (type, type, one_record.livestraming_time, type))
+            data  = eval("list_%s_zbjl_ll.select().where(list_%s_zbjl_ll.url_zbjl=='%s',list_%s_zbjl_ll.livestraming_time.startswith('%s')).order_by(list_%s_zbjl_ll.time_update)" % (type, type, one_record.url_zbjl, type, one_record.livestraming_time, type))
             timepoint_list = [i.traffic_time for i in data]
 
             for timepoint in timepoint_list:
