@@ -245,12 +245,11 @@ for current_taks in Entry_list:
                 if data == []:
                     Table_obj.product_amount = '0'
                 else:
+                    if data.get('data') == None and data.get('msg') == "商品已下架":
+                        Table_obj.yishou = data.get('msg')
+                        Table_obj.shippingfee = '--'
+                        Table_obj.fahuo_time = '--'
                     Table_obj.product_amount = str(data.get('data').get('shop_product_count')) if data.get('data') else '--'
-
-                if data.get('data') == None and  data.get('msg') == "商品已下架":
-                    Table_obj.yishou = data.get('msg')
-                    Table_obj.shippingfee = '--'
-                    Table_obj.fahuo_time = '--'
 
                 if current_taks == ' Daily ':
                     Table_obj.time_update = get_current_time()
