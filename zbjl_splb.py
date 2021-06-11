@@ -118,7 +118,7 @@ for current_taks in Entry_list:
                 latest_history_date = lastday_date
                 update_date = (datetime.datetime.strptime(latest_history_date, "%Y-%m-%d") + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
 
-        query_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.livestraming_time.startswith('%s'))" % (type, type, update_date)
+        query_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.livestraming_time.startswith('%s')).order_by(list_%s_zbjl.time_update)" % (type, type, update_date, type)
 
         for one_record in eval(query_cmd):
 
@@ -242,12 +242,12 @@ for current_taks in Entry_list:
                         break
 
                 # data有可能是[],也可能是{"st":10024,"msg":"商品已下架","data":null}
-                if data == [] or data.get('data') == None:
+                if data == []:
                     Table_obj.product_amount = '0'
                 else:
                     Table_obj.product_amount = str(data.get('data').get('shop_product_count')) if data.get('data') else '--'
 
-                if data.get('msg') == "商品已下架":
+                if data.get('data') == None and  data.get('msg') == "商品已下架":
                     Table_obj.yishou = data.get('msg')
                     Table_obj.shippingfee = '--'
                     Table_obj.fahuo_time = '--'
