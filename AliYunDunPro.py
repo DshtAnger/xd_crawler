@@ -11,7 +11,7 @@ def get_current_time():
 today_date = datetime.datetime.now().strftime("%Y-%m-%d")
 lastday_date = (datetime.datetime.now()+datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
 first_crawl_date = (datetime.datetime.now()+datetime.timedelta(days=-121)).strftime("%Y-%m-%d")
-FIRST_RUN_DATE = today_date
+FIRST_RUN_DATE = '2021-06-12'
 
 today_log_dir = '/root/xd_crawler/log/%s' % today_date
 if not os.path.exists(today_log_dir):
