@@ -39,7 +39,8 @@ zbjl_sx = 'python3 /root/xd_crawler/zbjl_sx.py &'
 zbjl_splb = 'python3 /root/xd_crawler/zbjl_splb.py &'
 zbjl_pl = 'python3  /root/xd_crawler/zbjl_pl.py &'
 zbjl_zzgm = 'python3 /root/xd_crawler/zbjl_zzgm.py &'
-zbjl_ll_rc = 'python3 /root/xd_crawler/zbjl_ll-rc-yl-fst-dz-tlsc.py &'
+zbjl_ll_rc_yl_fst_dz = 'python3 /root/xd_crawler/zbjl_ll_rc_yl_fst_dz.py &'
+zbjl_tlsc = 'python3 /root/xd_crawler/zbjl_tlsc.py &'
 
 '------------------------------------------------------------------------------'
 
@@ -133,10 +134,16 @@ except Exception as e:
     print('zbjl_zzgm error')
 
 try:
-    os.system(zbjl_ll_rc)
+    os.system(zbjl_ll_rc_yl_fst_dz)
 except Exception as e:
     logging.exception(e)
-    print('zbjl_ll_rc error')
+    print('zbjl_ll_rc_yl_fst_dz error')
+
+try:
+    os.system(zbjl_tlsc)
+except Exception as e:
+    logging.exception(e)
+    print('zbjl_tlsc error')
 
 '------------------------------------------------------------------------------'
 

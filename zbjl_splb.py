@@ -175,7 +175,7 @@ for current_taks in Entry_list:
                 # session.get(url=item2_url, headers=item2_page_headers)
 
                 product_id = product.get('product_id')
-                WAIT_TIME = 0.5
+                WAIT_TIME = 0.4
 
                 # staticitem_url = 'https://ec.snssdk.com/product/fxgajaxstaticitem?b_type_new=0&device_id=0&is_outside=1&id={0}&preview=0'.format(product_id)
                 staticitem_url = 'https://ec.snssdk.com/product/fxgajaxstaticitem?id={0}'.format(product_id)
@@ -241,10 +241,11 @@ for current_taks in Entry_list:
                     else:
                         break
 
-                # data有可能是[],也可能是{"st":10024,"msg":"商品已下架","data":null}
                 if data == []:
+                    # data得不到数据,因为访问频率的问题,值是[]
                     Table_obj.product_amount = '0'
                 else:
+                    # data能取到数据,值是{"st":10024,"msg":"商品已下架","data":null}
                     if data.get('data') == None and data.get('msg') == "商品已下架":
                         Table_obj.yishou = data.get('msg')
                         Table_obj.shippingfee = '--'
