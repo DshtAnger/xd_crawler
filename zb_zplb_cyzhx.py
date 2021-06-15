@@ -63,16 +63,24 @@ for type in input_type:
         post_data = {
             "aweme_id": aweme_id
         }
-
+        Retry_times = 10
+        continue_next_flag = False
         while 1:
             try:
                 rsp = requests.post(aweme_userinfo_url, headers=headers, data=json.dumps(post_data))
                 data = json.loads(rsp.text).get('data')
             except:
+                Retry_times -= 1
                 logging.info('[*] Get zb_zplb_cyzhx failed. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb, get_current_time()))
+                if Retry_times == 0:
+                    continue_next_flag = True
+                    break
                 time.sleep(5)
             else:
                 break
+        if continue_next_flag:
+            logging.info(' '.join(['[+]', type, 'zb_zplb_cyzhx', one_record.num_zb, one_record.name_zb, aweme_id, one_record.time_release, "aweme_userinfo_url Error at", get_current_time()]))
+            continue
 
         Table_obj = eval('list_' + type + '_zplb_cyzhx' + '.create()')
 

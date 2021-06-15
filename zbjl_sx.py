@@ -130,15 +130,27 @@ for current_taks in Entry_list:
             post_data = {
                 "room_id": webcast_id
             }
+            Retry_times = 10
+            continue_next_flag = False
             while 1:
                 try:
                     rsp = requests.post(city_url, headers=headers, data=json.dumps(post_data))
                     data = json.loads(rsp.text).get('data')
                 except:
+                    Retry_times -= 1
                     logging.info('[*] Get zbjl_sx city_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl,get_current_time()))
+                    if Retry_times == 0:
+                        continue_next_flag = True
+                        break
                     time.sleep(5)
                 else:
                     break
+            if continue_next_flag:
+                logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_sx', one_record.num_zb, one_record.name_zb, webcast_id, Table_obj.livestraming_time, 'city_url Error at', get_current_time()]))
+                Table_obj.time_update = '%s city_url Error' % get_current_time()
+                Table_obj.save()
+                today_zbjl_sx_count += 1
+                continue
 
             Table_obj.heilongjiang = ''.join([i.get('rate') for i in filter(lambda x: x.get('key') == '黑龙江', data)]) if data!=None else '--'
             Table_obj.jilin = ''.join([i.get('rate') for i in filter(lambda x: x.get('key') == '吉林', data)]) if data!=None else '--'

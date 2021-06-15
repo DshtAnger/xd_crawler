@@ -5217,17 +5217,17 @@ if __name__ == '__main__':
     #             print('[+] Table %s created.' % var)
     #     print('-'*100)
 
-
     #single,all
     delete_name = sys.argv[1]
+    # <,>,==
+    delete_symbolic = sys.argv[2]
     #2021-06-15
-    delete_time = sys.argv[2]
-
+    delete_time = sys.argv[3]
 
     if delete_name == 'all':
         for table in db.get_tables():
-            eval(table + ".delete().where(%s.time_update<'%s')" % (table, delete_time))
-            print('[+] %s before %s delete Done.' % (table, delete))
+            eval(table + ".delete().where(%s.time_update%s'%s')" % (table, delete_symbolic, delete_time))
+            print('[+] %s %s %s delete Done.' % (table, delete_symbolic, delete))
     else:
-        eval(delete_name + ".delete().where(%s.time_update<'%s')" % (delete_name, delete_time))
-        print('[+] %s before %s delete Done.' % (table, delete))
+        eval(delete_name + ".delete().where(%s.time_update%s'%s')" % (delete_name, delete_symbolic, delete_time))
+        print('[+] %s %s %s delete Done.' % (delete_name, delete_symbolic, delete_time))

@@ -114,16 +114,26 @@ for current_taks in Entry_list:
                 "create_time_end": update_date
             }
             zplb_count = 0
+
+            Retry_times = 10
+            continue_next_flag = False
             while 1:
                 try:
                     rsp = requests.post(aweme_id_url, headers=headers, data=json.dumps(post_data))
                     data_ori = json.loads(rsp.text)
                     data = data_ori.get('data')
                 except:
+                    Retry_times -= 1
                     logging.info('[*] Get zb_zplb aweme_id_url failed. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb, get_current_time()))
+                    if Retry_times == 0:
+                        continue_next_flag = True
+                        break
                     time.sleep(5)
                 else:
                     break
+            if continue_next_flag:
+                logging.info(' '.join(['[%s]' % current_taks, type, 'zb_zplb', one_record.num_zb, one_record.name_zb, 'aweme_id_url Error at', get_current_time()]))
+                continue
 
             if data_ori.get('code') == 4014 and data == None:
                 # '{\n\t"msg":"<div class=\\"xd_noauth_wrap\\"><div class=\\"xd_noauth_title\\">今日访问次数已达上限</div><div class=\\"xd_noauth_subtitle\\">您当前为超级全家桶，该页面访问次数为<span class=\\"xd_noauth_count\\">8000</span>次/天</div></div>",\n\t"data":null,\n\t"code":4014\n}'

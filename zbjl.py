@@ -161,16 +161,25 @@ for current_taks in Entry_list:
                 "has_commerce_goods": "",
                 "uid": uid
             }
-
+            Retry_times = 10
+            continue_next_flag = False
             while 1:
                 try:
                     rsp = requests.post(webcastList_url, headers=headers, data=json.dumps(post_data))
                     data_list = json.loads(rsp.text).get('data').get('list')
                 except:
+                    Retry_times -= 1
                     logging.info('[%s] Get zbjl webcastList_url data failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (current_taks, type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                    if Retry_times == 0:
+                        continue_next_flag = True
+                        break
                     time.sleep(5)
                 else:
                     break
+            if continue_next_flag:
+                logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb,'webcastList_url Error at', get_current_time()]))
+                continue
+
             zbjl_count = 0
             for item in data_list:
 

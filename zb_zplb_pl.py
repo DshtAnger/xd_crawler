@@ -66,6 +66,8 @@ for type in input_type:
             "size": 100,
             "start": 1
         }
+        Retry_times = 10
+        continue_next_flag = False
         while 1:
             try:
                 rsp = requests.post(aweme_comment_url, headers=headers, data=json.dumps(post_data))
@@ -73,23 +75,39 @@ for type in input_type:
                 count = data.get('count')
                 end_page = int(count / 100) + 1 if count % 100 != 0 else int(count / 100)
             except:
+                Retry_times -= 1
                 logging.info('[*] Get zb_zplb_pl aweme_comment_url count failed. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb, get_current_time()))
+                if Retry_times == 0:
+                    continue_next_flag = True
+                    break
                 time.sleep(5)
             else:
                 break
+        if continue_next_flag:
+            logging.info(' '.join(['[+]', type, 'zb_zplb_pl', one_record.num_zb, one_record.name_zb, aweme_id, one_record.time_release, 'aweme_comment_url count Error at', get_current_time()]))
+            continue
 
         for page in range(1,end_page+1):
 
+            Retry_times = 10
+            continue_next_flag = False
             while 1:
                 try:
                     post_data.update({'start': page})
                     rsp = requests.post(aweme_comment_url, headers=headers, data=json.dumps(post_data))
                     data_list = json.loads(rsp.text).get('data').get('list')
                 except:
+                    Retry_times -= 1
                     logging.info('[*] Get zb_zplb_pl aweme_id_url data failed. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb, get_current_time()))
+                    if Retry_times == 0:
+                        continue_next_flag = True
+                        break
                     time.sleep(5)
                 else:
                     break
+            if continue_next_flag:
+                logging.info(' '.join(['[+]', type, 'zb_zplb_pl', one_record.num_zb, one_record.name_zb, aweme_id, one_record.time_release, 'aweme_comment_url data Error at', get_current_time()]))
+                break
 
             for item in data_list:
 
@@ -110,8 +128,8 @@ for type in input_type:
                 Table_obj.save()
                 pl_count += 1
                 today_pl_count += 1
-
-        logging.info(' '.join(['[+]', type, 'zb_zplb_pl', one_record.num_zb, one_record.name_zb, aweme_id, one_record.time_release, '[ pl_count: %d ]' % pl_count ,"Done at", get_current_time()]))
+        else:
+            logging.info(' '.join(['[+]', type, 'zb_zplb_pl', one_record.num_zb, one_record.name_zb, aweme_id, one_record.time_release, '[ pl_count: %d ]' % pl_count ,"Done at", get_current_time()]))
 
     logging.info(' '.join(['[+]', type, 'zb_zplb_pl', '[ today_pl_count: %d ]' % today_pl_count, "Done at", get_current_time()]))
     logging.info('-' * 100)

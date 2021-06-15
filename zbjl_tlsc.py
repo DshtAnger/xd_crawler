@@ -10,6 +10,7 @@ import time
 import os,sys
 import logging
 from DB import *
+from multiprocessing import Pool
 
 def get_current_time():
     return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
@@ -268,17 +269,29 @@ def run_crawler_task(type, current_taks):
         post_data = {
             "room_id": webcast_id
         }
+        Retry_times = 10
+        continue_next_flag = False
         while 1:
             try:
                 rsp = requests.post(trend_url, headers=headers, data=json.dumps(post_data))
                 data_list = json.loads(rsp.text).get('data').get('webcastTrendList')
             except:
+                Retry_times -= 1
                 logging.info('[*] Get zbjl_ll~dz... trend_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                if Retry_times == 0:
+                    continue_next_flag = True
+                    break
                 time.sleep(5)
             else:
                 break
+        if continue_next_flag:
+            logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_tlsc', one_record.num_zb, one_record.name_zb, webcast_id,one_record.livestraming_time, 'trend_url Error at', get_current_time()]))
+            continue
 
-        for timepoint in data_list:
+        for item in data_list:
+
+            timepoint = item.get('crawl_date')
+
             userAvgDuration_url = 'https://gw.newrank.cn/api/xd/xdnphb/nr/cloud/douyin/webcast/userAvgDuration'
             post_data = {
                 'createTime': one_record.livestraming_time,
@@ -287,15 +300,24 @@ def run_crawler_task(type, current_taks):
                 'endTime': timepoint,
                 "roomId": webcast_id
             }
+            Retry_times = 10
+            continue_next_flag = False
             while 1:
                 try:
                     rsp = requests.post(userAvgDuration_url, headers=headers, data=json.dumps(post_data))
                     data = json.loads(rsp.text)
                 except:
+                    Retry_times -= 1
                     logging.info('[*] Get zbjl_tlsc... userAvgDuration_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                    if Retry_times == 0:
+                        continue_next_flag = True
+                        break
                     time.sleep(2)
                 else:
                     break
+            if continue_next_flag:
+                logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_tlsc', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'userAvgDuration_url Error at', get_current_time()]))
+                break
 
             Table_obj = eval('list_' + type + '_zbjl_tlsc' + '.create()')
             Table_obj.num_zb = one_record.num_zb
@@ -312,10 +334,9 @@ def run_crawler_task(type, current_taks):
                 Table_obj.time_update = get_current_time() + ' History'
 
             Table_obj.save()
-
-        today_tlsc_count += len(data_list)
-
-        logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_tlsc', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ tlsc_count: %d ]'%len(data_list), 'Done at', get_current_time()]))
+        else:
+            today_tlsc_count += len(data_list)
+            logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_tlsc', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ tlsc_count: %d ]'%len(data_list), 'Done at', get_current_time()]))
 
     logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_tlsc', '[ today_tlsc_count: %d ]' % today_tlsc_count, 'Done at', get_current_time()]))
     logging.info('-'*100)

@@ -98,16 +98,26 @@ for current_taks in Entry_list:
             post_data = {
                 "room_id": webcast_id
             }
+            Retry_times = 10
+            continue_next_flag = False
             while 1:
                 try:
                     rsp = requests.post(buy_url, headers=headers, data=json.dumps(post_data))
                     data = json.loads(rsp.text).get('data')
                     data_list = data.get('webcastBuyDTOS') if data else []
                 except:
+                    Retry_times -= 1
                     logging.info('[*] Get zbjl_zzgm buy_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                    if Retry_times == 0:
+                        continue_next_flag = True
+                        break
                     time.sleep(5)
                 else:
                     break
+            if continue_next_flag:
+                logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_zzgm', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'buy_url Error at', get_current_time()]))
+
+                continue
 
             zzgm_count = 0
             if data_list == []:
@@ -151,5 +161,6 @@ for current_taks in Entry_list:
                     today_zzgm_count += 1
 
             logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_zzgm', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ zzgm_count: %d ]'%zzgm_count, 'Done at', get_current_time()]))
+
         logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_zzgm', '[ today_zzgm_count: %d ]'%today_zzgm_count, 'Done at', get_current_time()]))
         logging.info('-'*100)

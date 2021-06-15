@@ -99,15 +99,24 @@ for current_taks in Entry_list:
             post_data = {
                 "room_id": webcast_id
             }
+            Retry_times = 10
+            continue_next_flag = False
             while 1:
                 try:
                     rsp = requests.post(trend_url, headers=headers, data=json.dumps(post_data))
                     data_list = json.loads(rsp.text).get('data').get('webcastTrendList')
                 except:
+                    Retry_times -= 1
                     logging.info('[*] Get zbjl_ll~dz... trend_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                    if Retry_times == 0:
+                        continue_next_flag = True
+                        break
                     time.sleep(5)
                 else:
                     break
+            if continue_next_flag:
+                logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_ll_rc_yl_fst_dz', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'trend_url Error at', get_current_time()]))
+                continue
 
             # timepoint_list = []
             for item in data_list:

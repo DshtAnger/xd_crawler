@@ -179,7 +179,8 @@ for current_taks in Entry_list:
 
                 # staticitem_url = 'https://ec.snssdk.com/product/fxgajaxstaticitem?b_type_new=0&device_id=0&is_outside=1&id={0}&preview=0'.format(product_id)
                 staticitem_url = 'https://ec.snssdk.com/product/fxgajaxstaticitem?id={0}'.format(product_id)
-
+                Retry_times = 10
+                continue_next_flag = False
                 while 1:
                     try:
                         time.sleep(WAIT_TIME)
@@ -188,10 +189,18 @@ for current_taks in Entry_list:
                         rsp = requests.get(staticitem_url, headers=pseudo_header)
                         data = json.loads(rsp.text).get('data')
                     except:
+                        Retry_times -= 1
                         logging.info('[*] Get zbjl_splb staticitem_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                        if Retry_times == 0:
+                            continue_next_flag = True
+                            break
                         time.sleep(5)
                     else:
                         break
+                if continue_next_flag:
+                    Table_obj.time_update = '%s staticitem_url Error' % get_current_time()
+                    Table_obj.save()
+                    continue
 
                 if data == None:
                     data = {}
@@ -226,20 +235,22 @@ for current_taks in Entry_list:
                 Table_obj.tuijianyu = data.get('recommend_remark') if data else '--'
 
                 # ajaxitem_url = 'https://ec.snssdk.com/product/ajaxitem?b_type_new=0&device_id=0&is_outside=1&id={0}&abParams=0'.format(product_id)
-                ajaxitem_url = 'https://ec.snssdk.com/product/ajaxitem?id={0}'.format(product_id)
+                # ajaxitem_url = 'https://ec.snssdk.com/product/ajaxitem?id={0}'.format(product_id)
+                #
+                # while 1:
+                #     try:
+                #         # time.sleep(WAIT_TIME)
+                #         # rsp = requests.get(ajaxitem_url, headers={'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36'})
+                #         rsp = requests.get(ajaxitem_url, headers=pseudo_header)
+                #         # rsp = session.get(url=ajaxitem_url, headers=pseudo_header)
+                #         data = json.loads(rsp.text)
+                #     except:
+                #         logging.info('[*] Get zbjl_splb ajaxitem_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                #         time.sleep(5)
+                #     else:
+                #         break
 
-                while 1:
-                    try:
-                        # time.sleep(WAIT_TIME)
-                        # rsp = requests.get(ajaxitem_url, headers={'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36'})
-                        rsp = requests.get(ajaxitem_url, headers=pseudo_header)
-                        # rsp = session.get(url=ajaxitem_url, headers=pseudo_header)
-                        data = json.loads(rsp.text)
-                    except:
-                        logging.info('[*] Get zbjl_splb ajaxitem_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
-                        time.sleep(5)
-                    else:
-                        break
+                data = []
 
                 if data == []:
                     # data得不到数据,因为访问频率的问题,值是[]
