@@ -97,6 +97,9 @@ for type in input_type:
                     search_identify = douyin_identify_list[douyin_id_list.index(id_zb)]
                     post_data.update({'keyword': search_identify})
 
+                    if search_identify == '':
+                        identify_search_error_tag = True
+
                 logging.info('[*] Get zb_rootdir failed. %s id_zb:%s name_zb:%s id_search_error_tag:%s name_search_error_tag:%s identify_search_error_tag:%s' % (num_zb, id_zb, name_zb, id_search_error_tag, name_search_error_tag, identify_search_error_tag))
 
                 if identify_search_error_tag:

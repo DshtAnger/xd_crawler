@@ -169,7 +169,7 @@ for current_taks in Entry_list:
                     data_list = json.loads(rsp.text).get('data').get('list')
                 except:
                     Retry_times -= 1
-                    logging.info('[%s] Get zbjl webcastList_url data failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (current_taks, type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                    logging.info('[%s] Get zbjl webcastList_url data failed. type:%s, num_zb:%s, url_zb:%s at %s' % (current_taks, type, one_record.num_zb, one_record.url_zb, get_current_time()))
                     if Retry_times == 0:
                         continue_next_flag = True
                         break
