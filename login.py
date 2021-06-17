@@ -22,7 +22,7 @@ sys.excepthook = handle_exception
 USERNAME = 'wanghongpeng'
 PASSWORD = 'Wanghongpeng1'
 
-def login():
+async def login():
 
     browser = await launch(headless=True,options={'args': ['--no-sandbox']},ignoreDefaultArgs=['--enable-automation']) # 关闭无头浏览器
     page = await browser.newPage()
