@@ -2,7 +2,22 @@
 
 from pyppeteer import launch
 import asyncio
-import time
+import datetime,time
+
+def get_current_time():
+    return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+
+today_date = datetime.datetime.now().strftime("%Y-%m-%d")
+today_log_dir = '/root/xd_crawler/log/%s' % today_date
+if not os.path.exists(today_log_dir):
+    os.mkdir(today_log_dir)
+logging.basicConfig(format='%(message)s',filename=today_log_dir + '/login.log', level=logging.INFO)
+def handle_exception(exc_type, exc_value, exc_traceback):
+    if issubclass(exc_type, KeyboardInterrupt):
+        sys.__excepthook__(exc_type, exc_value, exc_traceback)
+        return
+    logging.info("--------------------Uncaught Exception--------------------",exc_info=(exc_type, exc_value, exc_traceback))
+sys.excepthook = handle_exception
 
 USERNAME = 'wanghongpeng'
 PASSWORD = 'Wanghongpeng1'
@@ -54,7 +69,8 @@ cookie = ''
 for one in cookies:
     if one.get('name') == 'token':
         cookie = 'token=' + one.get('value')
-print(cookie)
+
+logging.info('[+] Get Today cookie: %s at %s'%(cookie,get_current_time()))
 
 with open('/root/xd_crawler/cookie','w') as f:
     f.write(cookie)

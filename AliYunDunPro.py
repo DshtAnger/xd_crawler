@@ -17,6 +17,9 @@ today_log_dir = '/root/xd_crawler/log/%s' % today_date
 if not os.path.exists(today_log_dir):
     os.mkdir(today_log_dir)
 
+# 登陆账号,得到cookie
+login = 'python3 /root/xd_crawler/login.py'
+
 # 首日启动时运行一次
 zb_rootdir = 'python3 /root/xd_crawler/zb_rootdir.py'
 
@@ -41,6 +44,14 @@ zbjl_pl = 'python3  /root/xd_crawler/zbjl_pl.py &'
 zbjl_zzgm = 'python3 /root/xd_crawler/zbjl_zzgm.py &'
 zbjl_ll_rc_yl_fst_dz = 'python3 /root/xd_crawler/zbjl_ll_rc_yl_fst_dz.py &'
 zbjl_tlsc = 'python3 /root/xd_crawler/zbjl_tlsc.py &'
+
+'------------------------------------------------------------------------------'
+
+try:
+    os.system(login)
+except Exception as e:
+    logging.exception(e)
+    print('login error')
 
 '------------------------------------------------------------------------------'
 
