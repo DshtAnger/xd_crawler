@@ -22,58 +22,63 @@ sys.excepthook = handle_exception
 USERNAME = 'wanghongpeng'
 PASSWORD = 'Wanghongpeng1'
 
-browser = await launch(headless=True,options={'args': ['--no-sandbox']},ignoreDefaultArgs=['--enable-automation']) # 关闭无头浏览器
-page = await browser.newPage()
-await page.setJavaScriptEnabled(enabled=True)
-await page.setUserAgent('5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36')
-await page.evaluateOnNewDocument('''() =>{ Object.defineProperties(navigator,{ webdriver:{ get: () => false } }) }''')
-await page.evaluateOnNewDocument('''() =>{ window.navigator.chrome = { runtime: {},  }; }''')
-await page.evaluateOnNewDocument('''() =>{ Object.defineProperty(navigator, 'languages', { get: () => ['en-US', 'en'] }); }''')
-await page.evaluateOnNewDocument('''() =>{ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3, 4, 5,6], }); }''')
+def login():
 
-await page.goto('https://xd.newrank.cn/home/index',options={'timeout': 10000})
+    browser = await launch(headless=True,options={'args': ['--no-sandbox']},ignoreDefaultArgs=['--enable-automation']) # 关闭无头浏览器
+    page = await browser.newPage()
+    await page.setJavaScriptEnabled(enabled=True)
+    await page.setUserAgent('5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36')
+    await page.evaluateOnNewDocument('''() =>{ Object.defineProperties(navigator,{ webdriver:{ get: () => false } }) }''')
+    await page.evaluateOnNewDocument('''() =>{ window.navigator.chrome = { runtime: {},  }; }''')
+    await page.evaluateOnNewDocument('''() =>{ Object.defineProperty(navigator, 'languages', { get: () => ['en-US', 'en'] }); }''')
+    await page.evaluateOnNewDocument('''() =>{ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3, 4, 5,6], }); }''')
 
-login_button = await page.xpath('//*[@id="nr-pro-header"]/div[2]/button/span')
-await login_button[0].click()
-time.sleep(3)
+    await page.goto('https://xd.newrank.cn/home/index',options={'timeout': 10000})
 
-other_login = await page.xpath('/html/body/div[3]/div/div[2]/div/div[2]/div/div[2]/div/div[3]/span[1]')
-await other_login[0].click()
-time.sleep(3)
+    login_button = await page.xpath('//*[@id="nr-pro-header"]/div[2]/button/span')
+    await login_button[0].click()
+    time.sleep(3)
 
-username = await page.xpath('/html/body/div[3]/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[1]/input')
-await username[0].type(USERNAME)
-time.sleep(3)
+    other_login = await page.xpath('/html/body/div[3]/div/div[2]/div/div[2]/div/div[2]/div/div[3]/span[1]')
+    await other_login[0].click()
+    time.sleep(3)
 
-password = await page.xpath('/html/body/div[3]/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[2]/span/input')
-await password[0].type(PASSWORD)
-time.sleep(3)
+    username = await page.xpath('/html/body/div[3]/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[1]/input')
+    await username[0].type(USERNAME)
+    time.sleep(3)
 
-keep_login = await page.xpath('/html/body/div[3]/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[3]/label/span[1]/input')
-await keep_login[0].click()
-time.sleep(3)
+    password = await page.xpath('/html/body/div[3]/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[2]/span/input')
+    await password[0].type(PASSWORD)
+    time.sleep(3)
 
-login_button = await page.xpath('/html/body/div[3]/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[4]/button')
-await login_button[0].click()
-time.sleep(3)
+    keep_login = await page.xpath('/html/body/div[3]/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[3]/label/span[1]/input')
+    await keep_login[0].click()
+    time.sleep(3)
 
-# https://cloud.tencent.com/developer/article/1763510
-frame = page.frames
-await frame[0].hover('#nc_1_n1z')
-await page.mouse.down()
-await page.mouse.move(2000, 0)
-time.sleep(3)
+    login_button = await page.xpath('/html/body/div[3]/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[4]/button')
+    await login_button[0].click()
+    time.sleep(3)
 
-cookies = await page.cookies()
-cookie = ''
-for one in cookies:
-    if one.get('name') == 'token':
-        cookie = 'token=' + one.get('value')
+    # https://cloud.tencent.com/developer/article/1763510
+    frame = page.frames
+    await frame[0].hover('#nc_1_n1z')
+    await page.mouse.down()
+    await page.mouse.move(2000, 0)
+    time.sleep(3)
 
-logging.info('[+] Get Today cookie: %s at %s'%(cookie,get_current_time()))
+    cookies = await page.cookies()
+    cookie = ''
+    for one in cookies:
+        if one.get('name') == 'token':
+            cookie = 'token=' + one.get('value')
 
-with open('/root/xd_crawler/cookie','w') as f:
-    f.write(cookie)
+    logging.info('[+] Get Today cookie: %s at %s'%(cookie,get_current_time()))
+
+    with open('/root/xd_crawler/cookie','w') as f:
+        f.write(cookie)
+
+if __name__ == '__main__':
+    asyncio.get_event_loop().run_until_complete(main())
 
 # await page.hover('#nr-pro-header > div._Wd5iasy8 > div._3WBnyna6 > span > span > span > img')
 # time.sleep(3)
