@@ -276,3 +276,6 @@ for current_taks in Entry_list:
             logging.info('-'*50)
         logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_splb', '[ today_splb_count: %d ]'%today_splb_count, 'Done at', get_current_time()]))
         logging.info('-'*100)
+
+os.system('python3 /root/xd_crawler/logout.py')
+logging.info('[+] Today cookie: %s logout Done at %s'%(cookie,get_current_time()))

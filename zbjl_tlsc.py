@@ -55,6 +55,9 @@ def run_crawler_task(type, current_taks):
 
     from peewee import MySQLDatabase
     from peewee import Model, CharField
+    import pymysql
+    from warnings import filterwarnings
+    filterwarnings('ignore', category=pymysql.Warning)
 
     db1 = MySQLDatabase('xd', user='root', password='Wanghongpeng1', host='127.0.0.1', port=3306)  # ,charset='utf8mb4')
     db1.connection()
