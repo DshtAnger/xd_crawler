@@ -8,6 +8,8 @@ select user,host from user;
 update user set host='%' where user='root' and host='localhost';
 alter user 'root'@'%' identified with mysql_native_password by 'Wanghongpeng1'
 
+pyppeteer-install
+
 查询list_ms_zplb表每个num_zb各自拥有的记录条数：
 SELECT num_zb,count(*) as COUNT FROM list_ms_zplb GROUP BY num_zb ORDER BY num_zb+0;
 

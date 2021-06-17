@@ -3,3 +3,4 @@ peewee
 websocket-client
 openpyxl
 pandas
+pyppeteer
