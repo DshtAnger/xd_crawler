@@ -80,7 +80,7 @@ async def login():
         f.write(cookie)
 
 if __name__ == '__main__':
-    asyncio.get_event_loop().run_until_complete(main())
+    asyncio.get_event_loop().run_until_complete(login())
 
 # await page.hover('#nr-pro-header > div._Wd5iasy8 > div._3WBnyna6 > span > span > span > img')
 # time.sleep(3)
