@@ -131,7 +131,7 @@ for current_taks in Entry_list:
                 Table_obj.name_zb = one_record.name_zb
                 Table_obj.url_zbjl = one_record.url_zbjl
                 Table_obj.livestraming_time = one_record.livestraming_time
-                Table_obj.time_update = 'Severe error occurred at %s' % get_current_time()
+                Table_obj.time_update = 'Severe error with no local file occurred at %s' % get_current_time()
                 Table_obj.save()
                 logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_splb', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'Find local websocket file failed  at', get_current_time()]))
                 continue

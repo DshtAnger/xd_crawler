@@ -18,11 +18,15 @@ class list_yl(BaseModel):
     name_zb = CharField(max_length=256, null=False, index=True)
     url_zb = CharField(max_length=256, null=False, index=True)
 
+    time_update = CharField(max_length=256, null=False)
+
 class list_cy(BaseModel):
     num_zb = CharField(max_length=256, null=False, index=True)
     id_zb = CharField(max_length=256, null=False, index=True)
     name_zb = CharField(max_length=256, null=False, index=True)
     url_zb = CharField(max_length=256, null=False, index=True)
+
+    time_update = CharField(max_length=256, null=False)
 
 class list_mc(BaseModel):
     num_zb = CharField(max_length=256, null=False, index=True)
@@ -30,11 +34,15 @@ class list_mc(BaseModel):
     name_zb = CharField(max_length=256, null=False, index=True)
     url_zb = CharField(max_length=256, null=False, index=True)
 
+    time_update = CharField(max_length=256, null=False)
+
 class list_gx(BaseModel):
     num_zb = CharField(max_length=256, null=False, index=True)
     id_zb = CharField(max_length=256, null=False, index=True)
     name_zb = CharField(max_length=256, null=False, index=True)
     url_zb = CharField(max_length=256, null=False, index=True)
+
+    time_update = CharField(max_length=256, null=False)
 
 class list_yx(BaseModel):
     num_zb = CharField(max_length=256, null=False, index=True)
@@ -42,11 +50,15 @@ class list_yx(BaseModel):
     name_zb = CharField(max_length=256, null=False, index=True)
     url_zb = CharField(max_length=256, null=False, index=True)
 
+    time_update = CharField(max_length=256, null=False)
+
 class list_jj(BaseModel):
     num_zb = CharField(max_length=256, null=False, index=True)
     id_zb = CharField(max_length=256, null=False, index=True)
     name_zb = CharField(max_length=256, null=False, index=True)
     url_zb = CharField(max_length=256, null=False, index=True)
+
+    time_update = CharField(max_length=256, null=False)
 
 class list_ms(BaseModel):
     num_zb = CharField(max_length=256, null=False, index=True)
@@ -54,11 +66,15 @@ class list_ms(BaseModel):
     name_zb = CharField(max_length=256, null=False, index=True)
     url_zb = CharField(max_length=256, null=False, index=True)
 
+    time_update = CharField(max_length=256, null=False)
+
 class list_ly(BaseModel):
     num_zb = CharField(max_length=256, null=False, index=True)
     id_zb = CharField(max_length=256, null=False, index=True)
     name_zb = CharField(max_length=256, null=False, index=True)
     url_zb = CharField(max_length=256, null=False, index=True)
+
+    time_update = CharField(max_length=256, null=False)
 
 class list_jk(BaseModel):
     num_zb = CharField(max_length=256, null=False, index=True)
@@ -66,11 +82,15 @@ class list_jk(BaseModel):
     name_zb = CharField(max_length=256, null=False, index=True)
     url_zb = CharField(max_length=256, null=False, index=True)
 
+    time_update = CharField(max_length=256, null=False)
+
 class list_qc(BaseModel):
     num_zb = CharField(max_length=256, null=False, index=True)
     id_zb = CharField(max_length=256, null=False, index=True)
     name_zb = CharField(max_length=256, null=False, index=True)
     url_zb = CharField(max_length=256, null=False, index=True)
+
+    time_update = CharField(max_length=256, null=False)
 
 class list_ss(BaseModel):
     num_zb = CharField(max_length=256, null=False, index=True)
@@ -78,11 +98,15 @@ class list_ss(BaseModel):
     name_zb = CharField(max_length=256, null=False, index=True)
     url_zb = CharField(max_length=256, null=False, index=True)
 
+    time_update = CharField(max_length=256, null=False)
+
 class list_sh(BaseModel):
     num_zb = CharField(max_length=256, null=False, index=True)
     id_zb = CharField(max_length=256, null=False, index=True)
     name_zb = CharField(max_length=256, null=False, index=True)
     url_zb = CharField(max_length=256, null=False, index=True)
+
+    time_update = CharField(max_length=256, null=False)
 
 class list_kj(BaseModel):
     num_zb = CharField(max_length=256, null=False, index=True)
@@ -90,11 +114,15 @@ class list_kj(BaseModel):
     name_zb = CharField(max_length=256, null=False, index=True)
     url_zb = CharField(max_length=256, null=False, index=True)
 
+    time_update = CharField(max_length=256, null=False)
+
 class list_qy(BaseModel):
     num_zb = CharField(max_length=256, null=False, index=True)
     id_zb = CharField(max_length=256, null=False, index=True)
     name_zb = CharField(max_length=256, null=False, index=True)
     url_zb = CharField(max_length=256, null=False, index=True)
+
+    time_update = CharField(max_length=256, null=False)
 
 '------------------------------------------------------------------------------------'
 

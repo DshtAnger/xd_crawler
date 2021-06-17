@@ -146,7 +146,7 @@ for current_taks in Entry_list:
                 latest_history_date = lastday_date
                 update_date = (datetime.datetime.strptime(latest_history_date, "%Y-%m-%d") + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
 
-        for one_record in eval('list_' + type + '.select()'):
+        for one_record in eval('list_%s.select().where(list_%s.time_update=="%s")'%(type, type, today_date)):
 
             uid = one_record.url_zb.split('/')[-1]
             webcastList_url = 'https://gw.newrank.cn/api/xd/xdnphb/nr/cloud/douyin/webcast/webcastList'

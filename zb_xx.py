@@ -52,7 +52,7 @@ headers = {
 
 for type in input_type:
 
-    for one_record in eval('list_' + type + '.select()'):
+    for one_record in eval('list_%s.select().where(list_%s.time_update=="%s")'%(type, type, today_date)):
 
         query_cmd = "list_%s_zbxx.select().where(list_%s_zbxx.url_zb=='%s',list_%s_zbxx.time_update.startswith('%s'))" % (type, type, one_record.url_zb, type, today_date)
         if eval(query_cmd):
@@ -66,9 +66,6 @@ for type in input_type:
         # else:
         #     pass
 
-        Table_obj = eval('list_' + type + '_zbxx' + '.create()')
-        Table_obj.num_zb = one_record.num_zb
-        Table_obj.url_zb = one_record.url_zb
 
         uid = one_record.url_zb.split('/')[-1]
         account_info_url = 'https://gw.newrank.cn/api/xd/xdnphb/nr/cloud/douyin/detail/accountInfoAll'
@@ -92,14 +89,17 @@ for type in input_type:
             else:
                 break
         if continue_next_flag:
-            Table_obj.time_update = '[%s] account_info_url Error has occurred' % get_current_time()
-            Table_obj.save()
+            #Table_obj.time_update = '[%s] account_info_url Error has occurred' % get_current_time()
+            #Table_obj.save()
             continue
-
 
         one_record.id_zb = data.get('account')
         one_record.name_zb = data.get('nickname')
         one_record.save()
+
+        Table_obj = eval('list_' + type + '_zbxx' + '.create()')
+        Table_obj.num_zb = one_record.num_zb
+        Table_obj.url_zb = one_record.url_zb
 
         Table_obj.id_zb = data.get('account')
         Table_obj.name_zb = data.get('nickname')

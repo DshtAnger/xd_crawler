@@ -44,12 +44,11 @@ zbjl_tlsc = 'python3 /root/xd_crawler/zbjl_tlsc.py &'
 
 '------------------------------------------------------------------------------'
 
-if today_date == FIRST_RUN_DATE:
-    try:
-        os.system(zb_rootdir)
-    except Exception as e:
-        logging.exception(e)
-        print('zb_rootdir error')
+try:
+    os.system(zb_rootdir)
+except Exception as e:
+    logging.exception(e)
+    print('zb_rootdir error')
 
 
 try:

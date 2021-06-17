@@ -14,6 +14,8 @@ def get_current_time():
     return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
 today_date = datetime.datetime.now().strftime("%Y-%m-%d")
+lastday_date = (datetime.datetime.now()+datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
+
 today_log_dir = '/root/xd_crawler/log/%s' % today_date
 if not os.path.exists(today_log_dir):
     os.mkdir(today_log_dir)
@@ -51,93 +53,170 @@ headers = {
 
 for type in input_type:
 
-    data_sheet = pandas.read_excel('/root/xd_crawler/download_excel/%s.xlsx'%type, sheet_name='基础数据' )
-    douyin_id_list = list(data_sheet['抖音号ID'])
-    douyin_name_list = list(data_sheet['抖音号名称'])
-    douyin_identify_list = list(data_sheet['认证'])
+    if len(eval('list_' + type + '.select()')) == 0:
+        #初次建立场景,使用excel建立
 
-    for id_zb in douyin_id_list:
+        data_sheet = pandas.read_excel('/root/xd_crawler/download_excel/%s.xlsx'%type, sheet_name='基础数据' )
+        douyin_id_list = list(data_sheet['抖音号ID'])
+        douyin_name_list = list(data_sheet['抖音号名称'])
+        douyin_identify_list = list(data_sheet['认证'])
 
-        post_data = {
-            'keyword': id_zb
-        }
+        for id_zb in douyin_id_list:
 
-        id_search_error_tag = False
-        name_search_error_tag = False
-        identify_search_error_tag = False
+            post_data = {
+                'keyword': id_zb
+            }
 
-        num_zb = str(douyin_id_list.index(id_zb) + 1) + type
-        name_zb = douyin_name_list[douyin_id_list.index(id_zb)]
-        while 1:
-            try:
-                searchAccount_url = 'https://gw.newrank.cn/api/xd/xdnphb/nr/cloud/douyin/searchAccountList'
-                rsp = requests.post(searchAccount_url, headers=headers, data=json.dumps(post_data))
-                data = json.loads(rsp.text).get('data').get('list')
-                if len(data) == 0 and (not id_search_error_tag):
-                    id_search_error_tag = True
-                    raise Exception
-                if len(data) == 0 and (not name_search_error_tag):
-                    name_search_error_tag = True
-                    raise Exception
-                if len(data) == 0 and (not identify_search_error_tag):
-                    identify_search_error_tag = True
-                    raise Exception
-            except:
-                if id_search_error_tag and (not name_search_error_tag):
-                    search_name = douyin_name_list[douyin_id_list.index(id_zb)]
-                    if '（' in search_name:
-                        search_name = search_name.split('（')[0]
-                    if '（' in search_name:
-                        search_name = search_name.split('【')[0]
-                    if '?' in search_name:
-                        search_name = search_name.split('?')[0]
-                    post_data.update({'keyword': search_name})
+            id_search_error_tag = False
+            name_search_error_tag = False
+            identify_search_error_tag = False
 
-                if name_search_error_tag:
-                    search_identify = douyin_identify_list[douyin_id_list.index(id_zb)]
-                    post_data.update({'keyword': search_identify})
-
-                    if str(search_identify) == 'nan':
+            num_zb = str(douyin_id_list.index(id_zb) + 1) + type
+            name_zb = douyin_name_list[douyin_id_list.index(id_zb)]
+            while 1:
+                try:
+                    searchAccount_url = 'https://gw.newrank.cn/api/xd/xdnphb/nr/cloud/douyin/searchAccountList'
+                    rsp = requests.post(searchAccount_url, headers=headers, data=json.dumps(post_data))
+                    data = json.loads(rsp.text).get('data').get('list')
+                    if len(data) == 0 and (not id_search_error_tag):
+                        id_search_error_tag = True
+                        raise Exception
+                    if len(data) == 0 and (not name_search_error_tag):
+                        name_search_error_tag = True
+                        raise Exception
+                    if len(data) == 0 and (not identify_search_error_tag):
                         identify_search_error_tag = True
+                        raise Exception
+                except:
+                    if id_search_error_tag and (not name_search_error_tag):
+                        search_name = douyin_name_list[douyin_id_list.index(id_zb)]
+                        if '（' in search_name:
+                            search_name = search_name.split('（')[0]
+                        if '（' in search_name:
+                            search_name = search_name.split('【')[0]
+                        if '?' in search_name:
+                            search_name = search_name.split('?')[0]
+                        post_data.update({'keyword': search_name})
 
-                logging.info('[*] Get zb_rootdir failed. %s id_zb:%s name_zb:%s id_search_error_tag:%s name_search_error_tag:%s identify_search_error_tag:%s' % (num_zb, id_zb, name_zb, id_search_error_tag, name_search_error_tag, identify_search_error_tag))
+                    if name_search_error_tag:
+                        search_identify = douyin_identify_list[douyin_id_list.index(id_zb)]
+                        post_data.update({'keyword': search_identify})
 
-                if identify_search_error_tag:
-                    break
+                        if str(search_identify) == 'nan':
+                            identify_search_error_tag = True
+
+                    logging.info('[*] Get zb_rootdir failed. %s id_zb:%s name_zb:%s id_search_error_tag:%s name_search_error_tag:%s identify_search_error_tag:%s' % (num_zb, id_zb, name_zb, id_search_error_tag, name_search_error_tag, identify_search_error_tag))
+
+                    if identify_search_error_tag:
+                        break
+                    else:
+                        time.sleep(5)
                 else:
-                    time.sleep(5)
-            else:
-                break
-
-        if id_search_error_tag and name_search_error_tag and identify_search_error_tag:
-            logging.info('[*] Can not find this: %s %s %s. To continux next.'%(num_zb, id_zb, name_zb))
-            continue
-
-        one_data = None
-        if len(data) > 1:
-            #主播名匹配
-            for item in data:
-                if item.get('nickname')[:3] in name_zb:
-                    one_data = item
                     break
 
-            if one_data == None:
-                #粉丝数匹配
-                max_followers = max([int(i.get('mplatform_followers_count')) for i in data])
+            if id_search_error_tag and name_search_error_tag and identify_search_error_tag:
+                logging.info('[*] Can not find this: %s %s %s. To continux next.'%(num_zb, id_zb, name_zb))
+                continue
+
+            one_data = None
+            if len(data) > 1:
+                #主播名匹配
                 for item in data:
-                    if int(item.get('mplatform_followers_count')) == max_followers:
+                    if item.get('nickname')[:3] in name_zb:
                         one_data = item
                         break
-        else:
-            one_data = data[0]
 
-        url_zb = 'https://xd.newrank.cn/tiktok/detail/latest/%s' % one_data.get('uid')
-        #首次建立不写入id_zb,待zbxx运行后再更新id_zb和name_zb
+                if one_data == None:
+                    #粉丝数匹配
+                    max_followers = max([int(i.get('mplatform_followers_count')) for i in data])
+                    for item in data:
+                        if int(item.get('mplatform_followers_count')) == max_followers:
+                            one_data = item
+                            break
+            else:
+                one_data = data[0]
 
-        eval('list_' + type + '.create(num_zb=num_zb, id_zb="", name_zb=name_zb, url_zb=url_zb)')
+            url_zb = 'https://xd.newrank.cn/tiktok/detail/latest/%s' % one_data.get('uid')
+            #首次建立不写入id_zb,待zbxx运行后再更新id_zb和name_zb
 
-        logging.info("[+] %s %s Done." % (num_zb, name_zb))
-    logging.info("-" * 50)
+            eval('list_' + type + '.create(num_zb=num_zb, id_zb="", name_zb=name_zb, url_zb=url_zb, time_update=today_date)')
+
+            logging.info("[+] %s %s Done at %s" % (num_zb, name_zb, today_date))
+        logging.info("-" * 50)
+
+    else:
+        # 日更场景
+        query_cmd = 'list_%s.select().where(list_%s.time_update=="%s")'%(type,type,lastday_date)
+        for one_record in eval(query_cmd):
+
+            num_zb = one_record.num_zb
+            id_zb = one_record.id_zb
+            name_zb = one_record.name_zb
+
+            post_data = {
+                'keyword': id_zb
+            }
+            id_search_error_tag = False
+            name_search_error_tag = False
+            while 1:
+                try:
+                    searchAccount_url = 'https://gw.newrank.cn/api/xd/xdnphb/nr/cloud/douyin/searchAccountList'
+                    rsp = requests.post(searchAccount_url, headers=headers, data=json.dumps(post_data))
+                    data = json.loads(rsp.text).get('data').get('list')
+                    if len(data) == 0 and (not id_search_error_tag):
+                        id_search_error_tag = True
+                        raise Exception
+                    if len(data) == 0 and (not name_search_error_tag):
+                        name_search_error_tag = True
+                        raise Exception
+                except:
+                    if id_search_error_tag and (not name_search_error_tag):
+                        search_name = name_zb
+                        if '（' in search_name:
+                            search_name = search_name.split('（')[0]
+                        if '（' in search_name:
+                            search_name = search_name.split('【')[0]
+                        if '?' in search_name:
+                            search_name = search_name.replace('?','')
+                        post_data.update({'keyword': search_name})
+
+                    logging.info('[*] Get zb_rootdir failed. %s id_zb:%s name_zb:%s id_search_error_tag:%s name_search_error_tag:%s' % (num_zb, id_zb, name_zb, id_search_error_tag, name_search_error_tag))
+
+                    if id_search_error_tag and name_search_error_tag:
+                        break
+                    else:
+                        time.sleep(5)
+                else:
+                    break
+            if id_search_error_tag and name_search_error_tag:
+                logging.info('[*] Can not find new this: %s %s %s. To continux next.' % (num_zb, id_zb, name_zb))
+                continue
+
+            one_data = None
+            if len(data) > 1:
+                # 主播名匹配
+                for item in data:
+                    if item.get('nickname')[:3] in name_zb:
+                        one_data = item
+                        break
+
+                if one_data == None:
+                    # 粉丝数匹配
+                    max_followers = max([int(i.get('mplatform_followers_count')) for i in data])
+                    for item in data:
+                        if int(item.get('mplatform_followers_count')) == max_followers:
+                            one_data = item
+                            break
+            else:
+                one_data = data[0]
+
+            url_zb = 'https://xd.newrank.cn/tiktok/detail/latest/%s' % one_data.get('uid')
+            # 首次建立不写入id_zb,待zbxx运行后再更新id_zb和name_zb
+
+            eval('list_' + type + '.create(num_zb=num_zb, id_zb=id_zb, name_zb=name_zb, url_zb=url_zb, time_update=today_date)')
+            logging.info("[+] %s %s Done at %s" % (num_zb, name_zb, today_date))
+        logging.info("-" * 50)
+
 
 
 '''for type in input_type:
