@@ -5235,7 +5235,7 @@ class list_qy_zbjl_splb(BaseModel):
 
 if __name__ == '__main__':
 
-    with open('./type', 'r') as f:
+    with open('/root/xd_crawler/type', 'r') as f:
         input_type = f.read().strip().split()
 
     var_list = list(locals())
