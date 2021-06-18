@@ -19,12 +19,6 @@ today_date = datetime.datetime.now().strftime("%Y-%m-%d")
 lastday_date = (datetime.datetime.now()+datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
 first_crawl_date = (datetime.datetime.now()+datetime.timedelta(days=-121)).strftime("%Y-%m-%d")
 
-type_list = {
-    'ms':'美食','ss':'时尚','kj':'科技',
-    'yl':'娱乐','gx':'搞笑','cy':'才艺',
-    'qy':'企业',
-}
-
 with open('/root/xd_crawler/cookie','r') as f:
     cookie = f.read().strip()
 with open('/root/xd_crawler/token','r') as f:

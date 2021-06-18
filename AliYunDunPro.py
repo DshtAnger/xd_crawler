@@ -2,8 +2,19 @@
 
 import logging
 import datetime,time
-import os
+import os,sys
 from multiprocessing import Pool
+
+server_type = sys.argv[1]
+
+type_list = {
+    'ms':'\n'.join(['ms','ss','kj']),
+    'yl':'\n'.join(['yl','cy','ty']),
+    'gx':'\n'.join(['gx','ly','jk'])
+}
+
+with open('/root/xd_crawler/type','w') as f:
+    f.write(type_list.get(server_type))
 
 def get_current_time():
     return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
@@ -17,8 +28,11 @@ today_log_dir = '/root/xd_crawler/log/%s' % today_date
 if not os.path.exists(today_log_dir):
     os.mkdir(today_log_dir)
 
+# 初始化数据库
+db_init = 'python3 /root/xd_crawler/DB.py'
+
 # 登陆账号,得到cookie
-login = 'python3 /root/xd_crawler/login.py'
+login = 'python3 /root/xd_crawler/login.py %s' % server_type
 
 # 首日启动时运行一次
 zb_rootdir = 'python3 /root/xd_crawler/zb_rootdir.py'
@@ -46,6 +60,11 @@ zbjl_ll_rc_yl_fst_dz = 'python3 /root/xd_crawler/zbjl_ll_rc_yl_fst_dz.py &'
 zbjl_tlsc = 'python3 /root/xd_crawler/zbjl_tlsc.py &'
 
 '------------------------------------------------------------------------------'
+try:
+    os.system(db_init)
+except Exception as e:
+    logging.exception(e)
+    print('db_init error')
 
 try:
     os.system(login)

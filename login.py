@@ -6,6 +6,13 @@ import os,sys
 import logging
 import datetime,time
 
+account_list = {
+    'ms':[('wanghongpeng','Wanghongpeng1'),('changzhao','duqianzhou@1907')],
+    'yl':[('fsx456','123456'),('pangruhuan','duqianzhou@1907')],
+    'gx':[('liuyuanyuan','duqianzhou@1907'),('zhudingye','duqianzhou@1907')]
+}
+
+
 def get_current_time():
     return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
@@ -21,10 +28,7 @@ def handle_exception(exc_type, exc_value, exc_traceback):
     logging.info("--------------------Uncaught Exception--------------------",exc_info=(exc_type, exc_value, exc_traceback))
 sys.excepthook = handle_exception
 
-USERNAME = 'wanghongpeng'
-PASSWORD = 'Wanghongpeng1'
-
-async def login():
+async def login(USERNAME, PASSWORD):
 
     browser = await launch(headless=True,options={'args': ['--no-sandbox']},ignoreDefaultArgs=['--enable-automation']) # 关闭无头浏览器
     page = await browser.newPage()
@@ -74,15 +78,30 @@ async def login():
         if one.get('name') == 'token':
             cookie = 'token=' + one.get('value')
 
-    logging.info('[+] Get Today cookie: %s at %s'%(cookie,get_current_time()))
+    if cookie != '':
 
-    with open('/root/xd_crawler/cookie','w') as f:
-        f.write(cookie)
+        logging.info('[+] Get Today %s cookie: %s at %s'%(USERNAME, cookie, get_current_time()))
+
+        with open('/root/xd_crawler/cookie','w') as f:
+            f.write(cookie)
+
+    else:
+        logging.info('[+] Get Today %s cookie Error at %s' % (USERNAME, get_current_time()))
 
     await browser.close()
 
+    return cookie
+
 if __name__ == '__main__':
-    asyncio.get_event_loop().run_until_complete(login())
+
+    server_type = sys.argv[1]
+    main_account, backup_account = account_list.get(server_type)
+
+    main_result = asyncio.get_event_loop().run_until_complete(login(main_account[0],main_account[1]))
+
+    if main_result == '':
+        time.sleep(3)
+        backup_result = asyncio.get_event_loop().run_until_complete(login(backup_account[0], backup_account[1]))
 
 # await page.hover('#nr-pro-header > div._Wd5iasy8 > div._3WBnyna6 > span > span > span > img')
 # time.sleep(3)

@@ -1,6 +1,7 @@
 # coding=utf-8
 
 import requests,json
+import os
 
 with open('/root/xd_crawler/cookie','r') as f:
     cookie = f.read().strip()
@@ -17,3 +18,5 @@ headers = {
 
 logout_url = 'https://xd.newrank.cn/nr/user/login/loginOut'
 requests.post(logout_url,headers=headers, data=json.dumps({}))
+
+os.remove('/root/xd_crawler/cookie')

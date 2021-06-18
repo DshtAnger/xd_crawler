@@ -28,12 +28,6 @@ def handle_exception(exc_type, exc_value, exc_traceback):
     logging.info("--------------------Uncaught Exception--------------------",exc_info=(exc_type, exc_value, exc_traceback))
 sys.excepthook = handle_exception
 
-type_list = {
-    'ms':'美食','ss':'时尚','kj':'科技',
-    'yl':'娱乐','gx':'搞笑','cy':'才艺',
-    'qy':'企业',
-}
-
 with open('/root/xd_crawler/cookie','r') as f:
     cookie = f.read().strip()
 with open('/root/xd_crawler/token','r') as f:
