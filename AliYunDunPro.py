@@ -30,11 +30,11 @@ zb_xx = 'python3 /root/xd_crawler/zb_xx.py'
 zb_qsbx = 'python3 /root/xd_crawler/zb_qsbx.py &'
 
 # 每日更新
-zb_zplb = 'python3 /root/xd_crawler/zb_zplb.py'
-zb_zplb_pl = 'python3 /root/xd_crawler/zb_zplb_pl.py &'
-zb_zplb_qsbx = 'python3 /root/xd_crawler/zb_zplb_qsbx.py &'
-zb_zplb_cyzhx = 'python3 /root/xd_crawler/zb_zplb_cyzhx.py &'
-zb_zplb_glsp = 'python3 /root/xd_crawler/zb_zplb_glsp.py &'
+zb_zplb = 'python3 /root/xd_crawler/zplb.py'
+zb_zplb_pl = 'python3 /root/xd_crawler/zplb_pl.py &'
+zb_zplb_qsbx = 'python3 /root/xd_crawler/zplb_qsbx.py &'
+zb_zplb_cyzhx = 'python3 /root/xd_crawler/zplb_cyzhx.py &'
+zb_zplb_glsp = 'python3 /root/xd_crawler/zplb_glsp.py &'
 
 # 每日更新
 zbjl = 'python3 /root/xd_crawler/zbjl.py'

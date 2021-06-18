@@ -18,7 +18,7 @@ update_date = (datetime.datetime.now()+datetime.timedelta(days=-121)).strftime("
 today_log_dir = '/root/xd_crawler/log/%s' % today_date
 if not os.path.exists(today_log_dir):
     os.mkdir(today_log_dir)
-logging.basicConfig(format='%(message)s',filename=today_log_dir + '/zb_zplb_pl.log', level=logging.INFO)
+logging.basicConfig(format='%(message)s',filename=today_log_dir + '/zplb_pl.log', level=logging.INFO)
 def handle_exception(exc_type, exc_value, exc_traceback):
     if issubclass(exc_type, KeyboardInterrupt):
         sys.__excepthook__(exc_type, exc_value, exc_traceback)
