@@ -5255,7 +5255,7 @@ if __name__ == '__main__':
     if delete_name == 'all':
         for table in db.get_tables():
             eval(table + ".delete().where(%s.time_update%s'%s').execute()" % (table, delete_symbolic, delete_time))
-            print('[+] %s %s %s delete Done.' % (table, delete_symbolic, delete))
+            print('[+] %s %s %s delete Done.' % (table, delete_symbolic, delete_time))
     else:
         eval(delete_name + ".delete().where(%s.time_update%s'%s').execute()" % (delete_name, delete_symbolic, delete_time))
         print('[+] %s %s %s delete Done.' % (delete_name, delete_symbolic, delete_time))
