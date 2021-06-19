@@ -5248,8 +5248,8 @@ if __name__ == '__main__':
         for var in var_list:
             if (table_prefix in var) and var.startswith('list_'):
                 if db.table_exists(var):
-                    print('[+] Table %s existed at %s' % (var, get_current_time()))
+                    print('[%s][Existed] Table %s' % (get_current_time(),var))
                 else:
                     eval(var + '.create_table()')
-                    print('[+] Table %s created at %s' % (var, get_current_time()))
+                    print('[%s][Created] Table %s' % (get_current_time(),var))
         print('-'*100)
