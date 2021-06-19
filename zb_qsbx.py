@@ -49,7 +49,7 @@ for type in input_type:
     query_cmd_supports =  eval('list_%s_qsbx_supports.select()' % type)
     query_cmd_works =  eval('list_%s_qsbx_works.select()' % type)
 
-    if (len(query_cmd_fans) == 0) or (len(query_cmd_supports)==0) or (len(query_cmd_works)==0):
+    if (len(query_cmd_fans) != 0) or (len(query_cmd_supports) != 0) or (len(query_cmd_works) != 0):
         logging.info(' '.join(['[+]', type, 'zb_qsbx', 'Do not need to update at', get_current_time()]))
         continue
 
