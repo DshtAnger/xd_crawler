@@ -5234,6 +5234,9 @@ class list_qy_zbjl_splb(BaseModel):
 '------------------------------------------------------------------------------------'
 
 if __name__ == '__main__':
+    import time
+    def get_current_time():
+        return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
     with open('/root/xd_crawler/type', 'r') as f:
         input_type = f.read().strip().split()
@@ -5243,7 +5246,10 @@ if __name__ == '__main__':
     for type in input_type:
         table_prefix = 'list_%s' % type
         for var in var_list:
-            if (table_prefix in var) and var.startswith('list'):
-                eval(var + '.create_table()')
-                print('[+] Table %s created.' % var)
+            if (table_prefix in var) and var.startswith('list_'):
+                if db.table_exists(var):
+                    print('[+] Table %s existed at %s' % (var, get_current_time()))
+                else:
+                    eval(var + '.create_table()')
+                    print('[+] Table %s created at %s' % (var, get_current_time()))
         print('-'*100)
