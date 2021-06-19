@@ -5241,8 +5241,9 @@ if __name__ == '__main__':
     var_list = list(locals())
 
     for type in input_type:
+        table_prefix = 'list_%s' % type
         for var in var_list:
-            if (type in var) and var.startswith('list'):
+            if (table_prefix in var) and var.startswith('list'):
                 eval(var + '.create_table()')
                 print('[+] Table %s created.' % var)
         print('-'*100)
