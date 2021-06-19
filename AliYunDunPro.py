@@ -22,7 +22,6 @@ def get_current_time():
 today_date = datetime.datetime.now().strftime("%Y-%m-%d")
 lastday_date = (datetime.datetime.now()+datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
 first_crawl_date = (datetime.datetime.now()+datetime.timedelta(days=-121)).strftime("%Y-%m-%d")
-FIRST_RUN_DATE = '2021-06-12'
 
 today_log_dir = '/root/xd_crawler/log/%s' % today_date
 if not os.path.exists(today_log_dir):
@@ -88,12 +87,11 @@ except Exception as e:
     print('zb_xx error')
 
 
-if today_date == FIRST_RUN_DATE:
-    try:
-        os.system(zb_qsbx)
-    except Exception as e:
-        logging.exception(e)
-        print('zb_qsbx error')
+try:
+    os.system(zb_qsbx)
+except Exception as e:
+    logging.exception(e)
+    print('zb_qsbx error')
 
 '------------------------------------------------------------------------------'
 

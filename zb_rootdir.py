@@ -209,7 +209,7 @@ for type in input_type:
 
             eval('list_' + type + '.create(num_zb=num_zb, id_zb=id_zb, name_zb=name_zb, url_zb=url_zb, time_update=today_date)')
             logging.info("[+] %s %s Done at %s" % (num_zb, name_zb, today_date))
-        logging.info("-" * 50)
+        logging.info("-" * 100)
 
 
 

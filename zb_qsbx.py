@@ -45,6 +45,15 @@ headers = {
 
 for type in input_type:
 
+    query_cmd_fans = eval('list_%s_qsbx_fans.select()' % type)
+    query_cmd_supports =  eval('list_%s_qsbx_supports.select()' % type)
+    query_cmd_works =  eval('list_%s_qsbx_works.select()' % type)
+
+    if (len(query_cmd_fans) == 0) or (len(query_cmd_supports)==0) or (len(query_cmd_works)==0):
+        logging.info(' '.join(['[+]', type, 'zb_qsbx', 'Do not need to update at', get_current_time()]))
+        continue
+
+    today_zb_qsbx_count = 0
     for one_record in eval('list_' + type + '.select()'):
 
         uid = one_record.url_zb.split('/')[-1]
@@ -119,4 +128,9 @@ for type in input_type:
             Table_obj_supports.save()
             Table_obj_works.save()
 
+            today_zb_qsbx_count += 1
+
         logging.info(' '.join(['[+]', type, 'zb_qsbx', one_record.num_zb, one_record.name_zb, 'Done at', get_current_time()]))
+    else:
+        logging.info(' '.join(['[+]', type, 'zb_qsbx', '[ today_zb_qsbx_count: %d ]'%today_zb_qsbx_count, 'Done at', get_current_time()]))
+        logging.info('-' * 100)

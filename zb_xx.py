@@ -45,6 +45,7 @@ headers = {
 
 
 for type in input_type:
+    today_zbxx_count = 0
 
     for one_record in eval('list_%s.select().where(list_%s.time_update=="%s")'%(type, type, today_date)):
 
@@ -206,5 +207,9 @@ for type in input_type:
 
         Table_obj.time_update = get_current_time()
         Table_obj.save()
+        today_zbxx_count += 1
 
         logging.info(' '.join(['[+]', type, 'zb_zbxx', one_record.num_zb, one_record.name_zb, 'Done at', get_current_time()]))
+    else:
+        logging.info(' '.join(['[+]', type, 'zb_zbxx', '[ today_zbxx_count: %d ]'%today_zbxx_count, 'Done at', get_current_time()]))
+        logging.info('-' * 100)
