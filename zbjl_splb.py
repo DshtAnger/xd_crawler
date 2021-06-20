@@ -7,6 +7,7 @@ import websocket
 import json
 import datetime
 import time
+import random
 import os,sys
 import logging
 from DB import *
@@ -149,10 +150,13 @@ for current_taks in Entry_list:
                 # session.get(url=item2_url, headers=item2_page_headers)
 
                 product_id = product.get('product_id')
-                if type in ['ms','yl','gx','ly']:
-                    WAIT_TIME = 0.4
-                if type in ['ss','kj','cy','ty','jk',]:
-                    WAIT_TIME = 0.6
+
+                # if type in ['ms','yl','gx','ly']:
+                #     WAIT_TIME = 0.4
+                # if type in ['ss','kj','cy','ty','jk',]:
+                #     WAIT_TIME = 0.6
+
+                WAIT_TIME = random.choice([0.5, 0.6, 0.7, 0.8])
 
                 # staticitem_url = 'https://ec.snssdk.com/product/fxgajaxstaticitem?b_type_new=0&device_id=0&is_outside=1&id={0}&preview=0'.format(product_id)
                 staticitem_url = 'https://ec.snssdk.com/product/fxgajaxstaticitem?id={0}'.format(product_id)
