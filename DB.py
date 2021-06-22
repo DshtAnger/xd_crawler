@@ -16,124 +16,124 @@ class BaseModel(Model):
 '------------------------------------------------------------------------------------'
 
 class list_yl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     time_update = CharField(max_length=256, null=False)
 
 class list_cy(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     time_update = CharField(max_length=256, null=False)
 
 class list_ty(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     time_update = CharField(max_length=256, null=False)
 
 class list_gx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     time_update = CharField(max_length=256, null=False)
 
 class list_yx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     time_update = CharField(max_length=256, null=False)
 
 class list_jj(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     time_update = CharField(max_length=256, null=False)
 
 class list_ms(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     time_update = CharField(max_length=256, null=False)
 
 class list_ly(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     time_update = CharField(max_length=256, null=False)
 
 class list_jk(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     time_update = CharField(max_length=256, null=False)
 
 class list_qc(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     time_update = CharField(max_length=256, null=False)
 
 class list_ss(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     time_update = CharField(max_length=256, null=False)
 
 class list_sh(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     time_update = CharField(max_length=256, null=False)
 
 class list_kj(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     time_update = CharField(max_length=256, null=False)
 
 class list_qy(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     time_update = CharField(max_length=256, null=False)
 
 '------------------------------------------------------------------------------------'
 
 class list_yl_zbxx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb =CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb =CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     index = CharField(max_length=256, null=False)
     categoly = CharField(max_length=256, null=False)
@@ -166,10 +166,10 @@ class list_yl_zbxx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_cy_zbxx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     index = CharField(max_length=256, null=False)
     categoly = CharField(max_length=256, null=False)
@@ -202,10 +202,10 @@ class list_cy_zbxx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ty_zbxx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     index = CharField(max_length=256, null=False)
     categoly = CharField(max_length=256, null=False)
@@ -238,10 +238,10 @@ class list_ty_zbxx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_gx_zbxx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     index = CharField(max_length=256, null=False)
     categoly = CharField(max_length=256, null=False)
@@ -274,10 +274,10 @@ class list_gx_zbxx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_yx_zbxx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     index = CharField(max_length=256, null=False)
     categoly = CharField(max_length=256, null=False)
@@ -310,10 +310,10 @@ class list_yx_zbxx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_jj_zbxx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     index = CharField(max_length=256, null=False)
     categoly = CharField(max_length=256, null=False)
@@ -346,10 +346,10 @@ class list_jj_zbxx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ms_zbxx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     index = CharField(max_length=256, null=False)
     categoly = CharField(max_length=256, null=False)
@@ -382,10 +382,10 @@ class list_ms_zbxx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ly_zbxx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     index = CharField(max_length=256, null=False)
     categoly = CharField(max_length=256, null=False)
@@ -418,10 +418,10 @@ class list_ly_zbxx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_jk_zbxx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     index = CharField(max_length=256, null=False)
     categoly = CharField(max_length=256, null=False)
@@ -454,10 +454,10 @@ class list_jk_zbxx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_qc_zbxx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     index = CharField(max_length=256, null=False)
     categoly = CharField(max_length=256, null=False)
@@ -490,10 +490,10 @@ class list_qc_zbxx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ss_zbxx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     index = CharField(max_length=256, null=False)
     categoly = CharField(max_length=256, null=False)
@@ -526,10 +526,10 @@ class list_ss_zbxx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_sh_zbxx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     index = CharField(max_length=256, null=False)
     categoly = CharField(max_length=256, null=False)
@@ -562,10 +562,10 @@ class list_sh_zbxx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_kj_zbxx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     index = CharField(max_length=256, null=False)
     categoly = CharField(max_length=256, null=False)
@@ -598,10 +598,10 @@ class list_kj_zbxx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_qy_zbxx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     index = CharField(max_length=256, null=False)
     categoly = CharField(max_length=256, null=False)
@@ -636,10 +636,10 @@ class list_qy_zbxx(BaseModel):
 '------------------------------------------------------------------------------------'
 
 class list_yl_qsbx_fans(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     fans_time = CharField(max_length=256, null=False)
     fans_zl = CharField(max_length=256, null=False)
@@ -647,29 +647,29 @@ class list_yl_qsbx_fans(BaseModel):
     zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_yl_qsbx_supports(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     supports_time = CharField(max_length=256, null=False)
     support_zl = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_yl_qsbx_works(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     works_time = CharField(max_length=256, null=False)
     works_zl = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_cy_qsbx_fans(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     fans_time = CharField(max_length=256, null=False)
     fans_zl = CharField(max_length=256, null=False)
@@ -677,29 +677,29 @@ class list_cy_qsbx_fans(BaseModel):
     zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_cy_qsbx_supports(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     supports_time = CharField(max_length=256, null=False)
     support_zl = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_cy_qsbx_works(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     works_time = CharField(max_length=256, null=False)
     works_zl = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ty_qsbx_fans(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     fans_time = CharField(max_length=256, null=False)
     fans_zl = CharField(max_length=256, null=False)
@@ -707,29 +707,29 @@ class list_ty_qsbx_fans(BaseModel):
     zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_ty_qsbx_supports(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     supports_time = CharField(max_length=256, null=False)
     support_zl = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_ty_qsbx_works(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     works_time = CharField(max_length=256, null=False)
     works_zl = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_gx_qsbx_fans(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     fans_time = CharField(max_length=256, null=False)
     fans_zl = CharField(max_length=256, null=False)
@@ -737,29 +737,29 @@ class list_gx_qsbx_fans(BaseModel):
     zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_gx_qsbx_supports(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     supports_time = CharField(max_length=256, null=False)
     support_zl = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_gx_qsbx_works(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     works_time = CharField(max_length=256, null=False)
     works_zl = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_yx_qsbx_fans(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     fans_time = CharField(max_length=256, null=False)
     fans_zl = CharField(max_length=256, null=False)
@@ -767,29 +767,29 @@ class list_yx_qsbx_fans(BaseModel):
     zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_yx_qsbx_supports(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     supports_time = CharField(max_length=256, null=False)
     support_zl = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_yx_qsbx_works(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     works_time = CharField(max_length=256, null=False)
     works_zl = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_jj_qsbx_fans(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     fans_time = CharField(max_length=256, null=False)
     fans_zl = CharField(max_length=256, null=False)
@@ -797,29 +797,29 @@ class list_jj_qsbx_fans(BaseModel):
     zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_jj_qsbx_supports(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     supports_time = CharField(max_length=256, null=False)
     support_zl = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_jj_qsbx_works(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     works_time = CharField(max_length=256, null=False)
     works_zl = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ms_qsbx_fans(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     fans_time = CharField(max_length=256, null=False)
     fans_zl = CharField(max_length=256, null=False)
@@ -827,29 +827,29 @@ class list_ms_qsbx_fans(BaseModel):
     zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_ms_qsbx_supports(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     supports_time = CharField(max_length=256, null=False)
     support_zl = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_ms_qsbx_works(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     works_time = CharField(max_length=256, null=False)
     works_zl = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ly_qsbx_fans(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     fans_time = CharField(max_length=256, null=False)
     fans_zl = CharField(max_length=256, null=False)
@@ -857,29 +857,29 @@ class list_ly_qsbx_fans(BaseModel):
     zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_ly_qsbx_supports(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     supports_time = CharField(max_length=256, null=False)
     support_zl = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_ly_qsbx_works(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     works_time = CharField(max_length=256, null=False)
     works_zl = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_jk_qsbx_fans(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     fans_time = CharField(max_length=256, null=False)
     fans_zl = CharField(max_length=256, null=False)
@@ -887,29 +887,29 @@ class list_jk_qsbx_fans(BaseModel):
     zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_jk_qsbx_supports(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     supports_time = CharField(max_length=256, null=False)
     support_zl = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_jk_qsbx_works(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     works_time = CharField(max_length=256, null=False)
     works_zl = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_qc_qsbx_fans(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     fans_time = CharField(max_length=256, null=False)
     fans_zl = CharField(max_length=256, null=False)
@@ -917,29 +917,29 @@ class list_qc_qsbx_fans(BaseModel):
     zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_qc_qsbx_supports(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     supports_time = CharField(max_length=256, null=False)
     support_zl = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_qc_qsbx_works(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     works_time = CharField(max_length=256, null=False)
     works_zl = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ss_qsbx_fans(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     fans_time = CharField(max_length=256, null=False)
     fans_zl = CharField(max_length=256, null=False)
@@ -947,29 +947,29 @@ class list_ss_qsbx_fans(BaseModel):
     zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_ss_qsbx_supports(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     supports_time = CharField(max_length=256, null=False)
     support_zl = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_ss_qsbx_works(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     works_time = CharField(max_length=256, null=False)
     works_zl = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_sh_qsbx_fans(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     fans_time = CharField(max_length=256, null=False)
     fans_zl = CharField(max_length=256, null=False)
@@ -977,29 +977,29 @@ class list_sh_qsbx_fans(BaseModel):
     zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_sh_qsbx_supports(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     supports_time = CharField(max_length=256, null=False)
     support_zl = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_sh_qsbx_works(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     works_time = CharField(max_length=256, null=False)
     works_zl = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_kj_qsbx_fans(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     fans_time = CharField(max_length=256, null=False)
     fans_zl = CharField(max_length=256, null=False)
@@ -1007,29 +1007,29 @@ class list_kj_qsbx_fans(BaseModel):
     zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_kj_qsbx_supports(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     supports_time = CharField(max_length=256, null=False)
     support_zl = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_kj_qsbx_works(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     works_time = CharField(max_length=256, null=False)
     works_zl = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_qy_qsbx_fans(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     fans_time = CharField(max_length=256, null=False)
     fans_zl = CharField(max_length=256, null=False)
@@ -1037,19 +1037,19 @@ class list_qy_qsbx_fans(BaseModel):
     zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_qy_qsbx_supports(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     supports_time = CharField(max_length=256, null=False)
     support_zl = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_qy_qsbx_works(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
 
     works_time = CharField(max_length=256, null=False)
     works_zl = CharField(max_length=256, null=False)
@@ -1058,11 +1058,11 @@ class list_qy_qsbx_works(BaseModel):
 '------------------------------------------------------------------------------------'
 
 class list_yl_zplb(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     content = CharField(max_length=256, null=False)
     duration = CharField(max_length=256, null=False)
@@ -1071,11 +1071,11 @@ class list_yl_zplb(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_cy_zplb(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     content = CharField(max_length=256, null=False)
     duration = CharField(max_length=256, null=False)
@@ -1084,11 +1084,11 @@ class list_cy_zplb(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ty_zplb(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     content = CharField(max_length=256, null=False)
     duration = CharField(max_length=256, null=False)
@@ -1097,11 +1097,11 @@ class list_ty_zplb(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_gx_zplb(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     content = CharField(max_length=256, null=False)
     duration = CharField(max_length=256, null=False)
@@ -1110,11 +1110,11 @@ class list_gx_zplb(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_yx_zplb(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     content = CharField(max_length=256, null=False)
     duration = CharField(max_length=256, null=False)
@@ -1123,11 +1123,11 @@ class list_yx_zplb(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_jj_zplb(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     content = CharField(max_length=256, null=False)
     duration = CharField(max_length=256, null=False)
@@ -1136,11 +1136,11 @@ class list_jj_zplb(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ms_zplb(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     content = CharField(max_length=256, null=False)
     duration = CharField(max_length=256, null=False)
@@ -1149,11 +1149,11 @@ class list_ms_zplb(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ly_zplb(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     content = CharField(max_length=256, null=False)
     duration = CharField(max_length=256, null=False)
@@ -1162,11 +1162,11 @@ class list_ly_zplb(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_jk_zplb(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     content = CharField(max_length=256, null=False)
     duration = CharField(max_length=256, null=False)
@@ -1175,11 +1175,11 @@ class list_jk_zplb(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_qc_zplb(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     content = CharField(max_length=256, null=False)
     duration = CharField(max_length=256, null=False)
@@ -1188,11 +1188,11 @@ class list_qc_zplb(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ss_zplb(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     content = CharField(max_length=256, null=False)
     duration = CharField(max_length=256, null=False)
@@ -1201,11 +1201,11 @@ class list_ss_zplb(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_sh_zplb(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     content = CharField(max_length=256, null=False)
     duration = CharField(max_length=256, null=False)
@@ -1214,11 +1214,11 @@ class list_sh_zplb(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_kj_zplb(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     content = CharField(max_length=256, null=False)
     duration = CharField(max_length=256, null=False)
@@ -1227,11 +1227,11 @@ class list_kj_zplb(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_qy_zplb(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     content = CharField(max_length=256, null=False)
     duration = CharField(max_length=256, null=False)
@@ -1242,11 +1242,11 @@ class list_qy_zplb(BaseModel):
 '------------------------------------------------------------------------------------'
 
 class list_yl_zplb_pl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     reviewer = CharField(max_length=256, null=False)
     xin = CharField(max_length=256, null=False)
@@ -1255,11 +1255,11 @@ class list_yl_zplb_pl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_cy_zplb_pl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     reviewer = CharField(max_length=256, null=False)
     xin = CharField(max_length=256, null=False)
@@ -1268,11 +1268,11 @@ class list_cy_zplb_pl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ty_zplb_pl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     reviewer = CharField(max_length=256, null=False)
     xin = CharField(max_length=256, null=False)
@@ -1281,11 +1281,11 @@ class list_ty_zplb_pl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_gx_zplb_pl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     reviewer = CharField(max_length=256, null=False)
     xin = CharField(max_length=256, null=False)
@@ -1294,11 +1294,11 @@ class list_gx_zplb_pl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_yx_zplb_pl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     reviewer = CharField(max_length=256, null=False)
     xin = CharField(max_length=256, null=False)
@@ -1307,11 +1307,11 @@ class list_yx_zplb_pl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_jj_zplb_pl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     reviewer = CharField(max_length=256, null=False)
     xin = CharField(max_length=256, null=False)
@@ -1320,11 +1320,11 @@ class list_jj_zplb_pl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ms_zplb_pl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     reviewer = CharField(max_length=256, null=False)
     xin = CharField(max_length=256, null=False)
@@ -1333,11 +1333,11 @@ class list_ms_zplb_pl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ly_zplb_pl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     reviewer = CharField(max_length=256, null=False)
     xin = CharField(max_length=256, null=False)
@@ -1346,11 +1346,11 @@ class list_ly_zplb_pl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_jk_zplb_pl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     reviewer = CharField(max_length=256, null=False)
     xin = CharField(max_length=256, null=False)
@@ -1359,11 +1359,11 @@ class list_jk_zplb_pl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_qc_zplb_pl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     reviewer = CharField(max_length=256, null=False)
     xin = CharField(max_length=256, null=False)
@@ -1372,11 +1372,11 @@ class list_qc_zplb_pl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ss_zplb_pl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     reviewer = CharField(max_length=256, null=False)
     xin = CharField(max_length=256, null=False)
@@ -1385,11 +1385,11 @@ class list_ss_zplb_pl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_sh_zplb_pl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     reviewer = CharField(max_length=256, null=False)
     xin = CharField(max_length=256, null=False)
@@ -1398,11 +1398,11 @@ class list_sh_zplb_pl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_kj_zplb_pl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     reviewer = CharField(max_length=256, null=False)
     xin = CharField(max_length=256, null=False)
@@ -1411,11 +1411,11 @@ class list_kj_zplb_pl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_qy_zplb_pl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     reviewer = CharField(max_length=256, null=False)
     xin = CharField(max_length=256, null=False)
@@ -1426,434 +1426,434 @@ class list_qy_zplb_pl(BaseModel):
 '------------------------------------------------------------------------------------'
 
 class list_yl_zplb_qsbx_support(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     support_works = CharField(max_length=256, null=False)
     time_support = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_yl_zplb_qsbx_plbh(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     volume = CharField(max_length=256, null=False)
     time_volume = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_yl_zplb_qsbx_share(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     share = CharField(max_length=256, null=False)
     time_share = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_cy_zplb_qsbx_support(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     support_works = CharField(max_length=256, null=False)
     time_support = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_cy_zplb_qsbx_plbh(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     volume = CharField(max_length=256, null=False)
     time_volume = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_cy_zplb_qsbx_share(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     share = CharField(max_length=256, null=False)
     time_share = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ty_zplb_qsbx_support(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     support_works = CharField(max_length=256, null=False)
     time_support = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_ty_zplb_qsbx_plbh(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     volume = CharField(max_length=256, null=False)
     time_volume = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_ty_zplb_qsbx_share(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     share = CharField(max_length=256, null=False)
     time_share = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_gx_zplb_qsbx_support(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     support_works = CharField(max_length=256, null=False)
     time_support = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_gx_zplb_qsbx_plbh(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     volume = CharField(max_length=256, null=False)
     time_volume = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_gx_zplb_qsbx_share(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     share = CharField(max_length=256, null=False)
     time_share = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_yx_zplb_qsbx_support(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     support_works = CharField(max_length=256, null=False)
     time_support = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_yx_zplb_qsbx_plbh(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     volume = CharField(max_length=256, null=False)
     time_volume = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_yx_zplb_qsbx_share(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     share = CharField(max_length=256, null=False)
     time_share = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_jj_zplb_qsbx_support(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     support_works = CharField(max_length=256, null=False)
     time_support = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_jj_zplb_qsbx_plbh(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     volume = CharField(max_length=256, null=False)
     time_volume = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_jj_zplb_qsbx_share(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     share = CharField(max_length=256, null=False)
     time_share = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ms_zplb_qsbx_support(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     support_works = CharField(max_length=256, null=False)
     time_support = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_ms_zplb_qsbx_plbh(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     volume = CharField(max_length=256, null=False)
     time_volume = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_ms_zplb_qsbx_share(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     share = CharField(max_length=256, null=False)
     time_share = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ly_zplb_qsbx_support(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     support_works = CharField(max_length=256, null=False)
     time_support = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_ly_zplb_qsbx_plbh(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     volume = CharField(max_length=256, null=False)
     time_volume = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_ly_zplb_qsbx_share(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     share = CharField(max_length=256, null=False)
     time_share = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_jk_zplb_qsbx_support(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     support_works = CharField(max_length=256, null=False)
     time_support = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_jk_zplb_qsbx_plbh(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     volume = CharField(max_length=256, null=False)
     time_volume = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_jk_zplb_qsbx_share(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     share = CharField(max_length=256, null=False)
     time_share = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_qc_zplb_qsbx_support(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     support_works = CharField(max_length=256, null=False)
     time_support = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_qc_zplb_qsbx_plbh(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     volume = CharField(max_length=256, null=False)
     time_volume = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_qc_zplb_qsbx_share(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     share = CharField(max_length=256, null=False)
     time_share = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ss_zplb_qsbx_support(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     support_works = CharField(max_length=256, null=False)
     time_support = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_ss_zplb_qsbx_plbh(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     volume = CharField(max_length=256, null=False)
     time_volume = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_ss_zplb_qsbx_share(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     share = CharField(max_length=256, null=False)
     time_share = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_sh_zplb_qsbx_support(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     support_works = CharField(max_length=256, null=False)
     time_support = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_sh_zplb_qsbx_plbh(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     volume = CharField(max_length=256, null=False)
     time_volume = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_sh_zplb_qsbx_share(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     share = CharField(max_length=256, null=False)
     time_share = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_kj_zplb_qsbx_support(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     support_works = CharField(max_length=256, null=False)
     time_support = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_kj_zplb_qsbx_plbh(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     volume = CharField(max_length=256, null=False)
     time_volume = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_kj_zplb_qsbx_share(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     share = CharField(max_length=256, null=False)
     time_share = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_qy_zplb_qsbx_support(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     support_works = CharField(max_length=256, null=False)
     time_support = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_qy_zplb_qsbx_plbh(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     volume = CharField(max_length=256, null=False)
     time_volume = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 class list_qy_zplb_qsbx_share(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     share = CharField(max_length=256, null=False)
     time_share = CharField(max_length=256, null=False)
@@ -1862,11 +1862,11 @@ class list_qy_zplb_qsbx_share(BaseModel):
 '------------------------------------------------------------------------------------'
 
 class list_yl_zplb_cyzhx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     female = CharField(max_length=256, null=False)
     male = CharField(max_length=256, null=False)
@@ -1879,11 +1879,11 @@ class list_yl_zplb_cyzhx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_cy_zplb_cyzhx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     female = CharField(max_length=256, null=False)
     male = CharField(max_length=256, null=False)
@@ -1896,11 +1896,11 @@ class list_cy_zplb_cyzhx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ty_zplb_cyzhx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     female = CharField(max_length=256, null=False)
     male = CharField(max_length=256, null=False)
@@ -1913,11 +1913,11 @@ class list_ty_zplb_cyzhx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_gx_zplb_cyzhx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     female = CharField(max_length=256, null=False)
     male = CharField(max_length=256, null=False)
@@ -1930,11 +1930,11 @@ class list_gx_zplb_cyzhx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_yx_zplb_cyzhx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     female = CharField(max_length=256, null=False)
     male = CharField(max_length=256, null=False)
@@ -1947,11 +1947,11 @@ class list_yx_zplb_cyzhx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_jj_zplb_cyzhx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     female = CharField(max_length=256, null=False)
     male = CharField(max_length=256, null=False)
@@ -1964,11 +1964,11 @@ class list_jj_zplb_cyzhx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ms_zplb_cyzhx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     female = CharField(max_length=256, null=False)
     male = CharField(max_length=256, null=False)
@@ -1981,11 +1981,11 @@ class list_ms_zplb_cyzhx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ly_zplb_cyzhx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     female = CharField(max_length=256, null=False)
     male = CharField(max_length=256, null=False)
@@ -1998,11 +1998,11 @@ class list_ly_zplb_cyzhx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_jk_zplb_cyzhx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     female = CharField(max_length=256, null=False)
     male = CharField(max_length=256, null=False)
@@ -2015,11 +2015,11 @@ class list_jk_zplb_cyzhx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_qc_zplb_cyzhx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     female = CharField(max_length=256, null=False)
     male = CharField(max_length=256, null=False)
@@ -2032,11 +2032,11 @@ class list_qc_zplb_cyzhx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ss_zplb_cyzhx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     female = CharField(max_length=256, null=False)
     male = CharField(max_length=256, null=False)
@@ -2049,11 +2049,11 @@ class list_ss_zplb_cyzhx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_sh_zplb_cyzhx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     female = CharField(max_length=256, null=False)
     male = CharField(max_length=256, null=False)
@@ -2066,11 +2066,11 @@ class list_sh_zplb_cyzhx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_kj_zplb_cyzhx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     female = CharField(max_length=256, null=False)
     male = CharField(max_length=256, null=False)
@@ -2083,11 +2083,11 @@ class list_kj_zplb_cyzhx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_qy_zplb_cyzhx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     female = CharField(max_length=256, null=False)
     male = CharField(max_length=256, null=False)
@@ -2102,11 +2102,11 @@ class list_qy_zplb_cyzhx(BaseModel):
 '------------------------------------------------------------------------------------'
 
 class list_yl_zplb_glsp(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     product = CharField(max_length=256, null=False)
     sales = CharField(max_length=256, null=False)
@@ -2116,11 +2116,11 @@ class list_yl_zplb_glsp(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_cy_zplb_glsp(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     product = CharField(max_length=256, null=False)
     sales = CharField(max_length=256, null=False)
@@ -2130,11 +2130,11 @@ class list_cy_zplb_glsp(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ty_zplb_glsp(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     product = CharField(max_length=256, null=False)
     sales = CharField(max_length=256, null=False)
@@ -2144,11 +2144,11 @@ class list_ty_zplb_glsp(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_gx_zplb_glsp(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     product = CharField(max_length=256, null=False)
     sales = CharField(max_length=256, null=False)
@@ -2158,11 +2158,11 @@ class list_gx_zplb_glsp(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_yx_zplb_glsp(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     product = CharField(max_length=256, null=False)
     sales = CharField(max_length=256, null=False)
@@ -2172,11 +2172,11 @@ class list_yx_zplb_glsp(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_jj_zplb_glsp(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     product = CharField(max_length=256, null=False)
     sales = CharField(max_length=256, null=False)
@@ -2186,11 +2186,11 @@ class list_jj_zplb_glsp(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ms_zplb_glsp(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     product = CharField(max_length=256, null=False)
     sales = CharField(max_length=256, null=False)
@@ -2200,11 +2200,11 @@ class list_ms_zplb_glsp(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ly_zplb_glsp(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     product = CharField(max_length=256, null=False)
     sales = CharField(max_length=256, null=False)
@@ -2214,11 +2214,11 @@ class list_ly_zplb_glsp(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_jk_zplb_glsp(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     product = CharField(max_length=256, null=False)
     sales = CharField(max_length=256, null=False)
@@ -2228,11 +2228,11 @@ class list_jk_zplb_glsp(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_qc_zplb_glsp(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     product = CharField(max_length=256, null=False)
     sales = CharField(max_length=256, null=False)
@@ -2242,11 +2242,11 @@ class list_qc_zplb_glsp(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ss_zplb_glsp(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     product = CharField(max_length=256, null=False)
     sales = CharField(max_length=256, null=False)
@@ -2256,11 +2256,11 @@ class list_ss_zplb_glsp(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_sh_zplb_glsp(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     product = CharField(max_length=256, null=False)
     sales = CharField(max_length=256, null=False)
@@ -2270,11 +2270,11 @@ class list_sh_zplb_glsp(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_kj_zplb_glsp(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     product = CharField(max_length=256, null=False)
     sales = CharField(max_length=256, null=False)
@@ -2284,11 +2284,11 @@ class list_kj_zplb_glsp(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_qy_zplb_glsp(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zb = CharField(max_length=256, null=False, index=True)
-    url_works = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zb = CharField(max_length=256, null=False)
+    url_works = CharField(max_length=256, null=False)
 
     product = CharField(max_length=256, null=False)
     sales = CharField(max_length=256, null=False)
@@ -2300,11 +2300,11 @@ class list_qy_zplb_glsp(BaseModel):
 '------------------------------------------------------------------------------------'
 
 class list_yl_zbjl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
     theme = CharField(max_length=256, null=False)
 
     duration = CharField(max_length=256, null=False)
@@ -2330,11 +2330,11 @@ class list_yl_zbjl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_cy_zbjl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
     theme = CharField(max_length=256, null=False)
 
     duration = CharField(max_length=256, null=False)
@@ -2360,11 +2360,11 @@ class list_cy_zbjl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ty_zbjl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
     theme = CharField(max_length=256, null=False)
 
     duration = CharField(max_length=256, null=False)
@@ -2390,11 +2390,11 @@ class list_ty_zbjl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_gx_zbjl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
     theme = CharField(max_length=256, null=False)
 
     duration = CharField(max_length=256, null=False)
@@ -2420,11 +2420,11 @@ class list_gx_zbjl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_yx_zbjl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
     theme = CharField(max_length=256, null=False)
 
     duration = CharField(max_length=256, null=False)
@@ -2450,11 +2450,11 @@ class list_yx_zbjl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_jj_zbjl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
     theme = CharField(max_length=256, null=False)
 
     duration = CharField(max_length=256, null=False)
@@ -2480,11 +2480,11 @@ class list_jj_zbjl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ms_zbjl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
     theme = CharField(max_length=256, null=False)
 
     duration = CharField(max_length=256, null=False)
@@ -2510,11 +2510,11 @@ class list_ms_zbjl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ly_zbjl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
     theme = CharField(max_length=256, null=False)
 
     duration = CharField(max_length=256, null=False)
@@ -2540,11 +2540,11 @@ class list_ly_zbjl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_jk_zbjl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
     theme = CharField(max_length=256, null=False)
 
     duration = CharField(max_length=256, null=False)
@@ -2570,11 +2570,11 @@ class list_jk_zbjl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_qc_zbjl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
     theme = CharField(max_length=256, null=False)
 
     duration = CharField(max_length=256, null=False)
@@ -2600,11 +2600,11 @@ class list_qc_zbjl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ss_zbjl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
     theme = CharField(max_length=256, null=False)
 
     duration = CharField(max_length=256, null=False)
@@ -2630,11 +2630,11 @@ class list_ss_zbjl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_sh_zbjl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
     theme = CharField(max_length=256, null=False)
 
     duration = CharField(max_length=256, null=False)
@@ -2660,11 +2660,11 @@ class list_sh_zbjl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_kj_zbjl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
     theme = CharField(max_length=256, null=False)
 
     duration = CharField(max_length=256, null=False)
@@ -2690,11 +2690,11 @@ class list_kj_zbjl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_qy_zbjl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
     theme = CharField(max_length=256, null=False)
 
     duration = CharField(max_length=256, null=False)
@@ -2722,11 +2722,11 @@ class list_qy_zbjl(BaseModel):
 '------------------------------------------------------------------------------------'
 
 class list_yl_zbjl_sx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     shipintuijian = CharField(max_length=256, null=False)
     guanzhu = CharField(max_length=256, null=False)
@@ -2770,11 +2770,11 @@ class list_yl_zbjl_sx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_cy_zbjl_sx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     shipintuijian = CharField(max_length=256, null=False)
     guanzhu = CharField(max_length=256, null=False)
@@ -2818,11 +2818,11 @@ class list_cy_zbjl_sx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ty_zbjl_sx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     shipintuijian = CharField(max_length=256, null=False)
     guanzhu = CharField(max_length=256, null=False)
@@ -2866,11 +2866,11 @@ class list_ty_zbjl_sx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_gx_zbjl_sx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     shipintuijian = CharField(max_length=256, null=False)
     guanzhu = CharField(max_length=256, null=False)
@@ -2914,11 +2914,11 @@ class list_gx_zbjl_sx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_yx_zbjl_sx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     shipintuijian = CharField(max_length=256, null=False)
     guanzhu = CharField(max_length=256, null=False)
@@ -2962,11 +2962,11 @@ class list_yx_zbjl_sx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_jj_zbjl_sx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     shipintuijian = CharField(max_length=256, null=False)
     guanzhu = CharField(max_length=256, null=False)
@@ -3010,11 +3010,11 @@ class list_jj_zbjl_sx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ms_zbjl_sx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     shipintuijian = CharField(max_length=256, null=False)
     guanzhu = CharField(max_length=256, null=False)
@@ -3058,11 +3058,11 @@ class list_ms_zbjl_sx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ly_zbjl_sx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     shipintuijian = CharField(max_length=256, null=False)
     guanzhu = CharField(max_length=256, null=False)
@@ -3106,11 +3106,11 @@ class list_ly_zbjl_sx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_jk_zbjl_sx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     shipintuijian = CharField(max_length=256, null=False)
     guanzhu = CharField(max_length=256, null=False)
@@ -3154,11 +3154,11 @@ class list_jk_zbjl_sx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_qc_zbjl_sx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     shipintuijian = CharField(max_length=256, null=False)
     guanzhu = CharField(max_length=256, null=False)
@@ -3202,11 +3202,11 @@ class list_qc_zbjl_sx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ss_zbjl_sx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     shipintuijian = CharField(max_length=256, null=False)
     guanzhu = CharField(max_length=256, null=False)
@@ -3250,11 +3250,11 @@ class list_ss_zbjl_sx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_sh_zbjl_sx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     shipintuijian = CharField(max_length=256, null=False)
     guanzhu = CharField(max_length=256, null=False)
@@ -3298,11 +3298,11 @@ class list_sh_zbjl_sx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_kj_zbjl_sx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     shipintuijian = CharField(max_length=256, null=False)
     guanzhu = CharField(max_length=256, null=False)
@@ -3346,11 +3346,11 @@ class list_kj_zbjl_sx(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_qy_zbjl_sx(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     shipintuijian = CharField(max_length=256, null=False)
     guanzhu = CharField(max_length=256, null=False)
@@ -3396,11 +3396,11 @@ class list_qy_zbjl_sx(BaseModel):
 '------------------------------------------------------------------------------------'
 
 class list_yl_zbjl_pl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     review_time = CharField(max_length=256, null=False)
     author = CharField(max_length=256, null=False)
@@ -3408,11 +3408,11 @@ class list_yl_zbjl_pl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_cy_zbjl_pl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     review_time = CharField(max_length=256, null=False)
     author = CharField(max_length=256, null=False)
@@ -3420,11 +3420,11 @@ class list_cy_zbjl_pl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ty_zbjl_pl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     review_time = CharField(max_length=256, null=False)
     author = CharField(max_length=256, null=False)
@@ -3432,11 +3432,11 @@ class list_ty_zbjl_pl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_gx_zbjl_pl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     review_time = CharField(max_length=256, null=False)
     author = CharField(max_length=256, null=False)
@@ -3444,11 +3444,11 @@ class list_gx_zbjl_pl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_yx_zbjl_pl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     review_time = CharField(max_length=256, null=False)
     author = CharField(max_length=256, null=False)
@@ -3456,11 +3456,11 @@ class list_yx_zbjl_pl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_jj_zbjl_pl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     review_time = CharField(max_length=256, null=False)
     author = CharField(max_length=256, null=False)
@@ -3468,11 +3468,11 @@ class list_jj_zbjl_pl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ms_zbjl_pl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     review_time = CharField(max_length=256, null=False)
     author = CharField(max_length=256, null=False)
@@ -3480,11 +3480,11 @@ class list_ms_zbjl_pl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ly_zbjl_pl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     review_time = CharField(max_length=256, null=False)
     author = CharField(max_length=256, null=False)
@@ -3492,11 +3492,11 @@ class list_ly_zbjl_pl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_jk_zbjl_pl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     review_time = CharField(max_length=256, null=False)
     author = CharField(max_length=256, null=False)
@@ -3504,11 +3504,11 @@ class list_jk_zbjl_pl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_qc_zbjl_pl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     review_time = CharField(max_length=256, null=False)
     author = CharField(max_length=256, null=False)
@@ -3516,11 +3516,11 @@ class list_qc_zbjl_pl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ss_zbjl_pl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     review_time = CharField(max_length=256, null=False)
     author = CharField(max_length=256, null=False)
@@ -3528,11 +3528,11 @@ class list_ss_zbjl_pl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_sh_zbjl_pl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     review_time = CharField(max_length=256, null=False)
     author = CharField(max_length=256, null=False)
@@ -3540,11 +3540,11 @@ class list_sh_zbjl_pl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_kj_zbjl_pl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     review_time = CharField(max_length=256, null=False)
     author = CharField(max_length=256, null=False)
@@ -3552,11 +3552,11 @@ class list_kj_zbjl_pl(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_qy_zbjl_pl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     review_time = CharField(max_length=256, null=False)
     author = CharField(max_length=256, null=False)
@@ -3566,154 +3566,154 @@ class list_qy_zbjl_pl(BaseModel):
 '------------------------------------------------------------------------------------'
 
 class list_yl_zbjl_ll(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     traffic_time = CharField(max_length=256, null=False)
     renshu = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_cy_zbjl_ll(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     traffic_time = CharField(max_length=256, null=False)
     renshu = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ty_zbjl_ll(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     traffic_time = CharField(max_length=256, null=False)
     renshu = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_gx_zbjl_ll(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     traffic_time = CharField(max_length=256, null=False)
     renshu = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_yx_zbjl_ll(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     traffic_time = CharField(max_length=256, null=False)
     renshu = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_jj_zbjl_ll(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     traffic_time = CharField(max_length=256, null=False)
     renshu = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ms_zbjl_ll(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     traffic_time = CharField(max_length=256, null=False)
     renshu = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ly_zbjl_ll(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     traffic_time = CharField(max_length=256, null=False)
     renshu = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_jk_zbjl_ll(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     traffic_time = CharField(max_length=256, null=False)
     renshu = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_qc_zbjl_ll(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     traffic_time = CharField(max_length=256, null=False)
     renshu = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ss_zbjl_ll(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     traffic_time = CharField(max_length=256, null=False)
     renshu = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_sh_zbjl_ll(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     traffic_time = CharField(max_length=256, null=False)
     renshu = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_kj_zbjl_ll(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     traffic_time = CharField(max_length=256, null=False)
     renshu = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_qy_zbjl_ll(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     traffic_time = CharField(max_length=256, null=False)
     renshu = CharField(max_length=256, null=False)
@@ -3722,11 +3722,11 @@ class list_qy_zbjl_ll(BaseModel):
 '------------------------------------------------------------------------------------'
 
 class list_yl_zbjl_rc(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     watching_time = CharField(max_length=256, null=False)
     leijirenci = CharField(max_length=256, null=False)
@@ -3736,11 +3736,11 @@ class list_yl_zbjl_rc(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_cy_zbjl_rc(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     watching_time = CharField(max_length=256, null=False)
     leijirenci = CharField(max_length=256, null=False)
@@ -3750,11 +3750,11 @@ class list_cy_zbjl_rc(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ty_zbjl_rc(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     watching_time = CharField(max_length=256, null=False)
     leijirenci = CharField(max_length=256, null=False)
@@ -3764,11 +3764,11 @@ class list_ty_zbjl_rc(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_gx_zbjl_rc(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     watching_time = CharField(max_length=256, null=False)
     leijirenci = CharField(max_length=256, null=False)
@@ -3778,11 +3778,11 @@ class list_gx_zbjl_rc(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_yx_zbjl_rc(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     watching_time = CharField(max_length=256, null=False)
     leijirenci = CharField(max_length=256, null=False)
@@ -3792,11 +3792,11 @@ class list_yx_zbjl_rc(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_jj_zbjl_rc(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     watching_time = CharField(max_length=256, null=False)
     leijirenci = CharField(max_length=256, null=False)
@@ -3806,11 +3806,11 @@ class list_jj_zbjl_rc(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ms_zbjl_rc(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     watching_time = CharField(max_length=256, null=False)
     leijirenci = CharField(max_length=256, null=False)
@@ -3820,11 +3820,11 @@ class list_ms_zbjl_rc(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ly_zbjl_rc(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     watching_time = CharField(max_length=256, null=False)
     leijirenci = CharField(max_length=256, null=False)
@@ -3834,11 +3834,11 @@ class list_ly_zbjl_rc(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_jk_zbjl_rc(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     watching_time = CharField(max_length=256, null=False)
     leijirenci = CharField(max_length=256, null=False)
@@ -3848,11 +3848,11 @@ class list_jk_zbjl_rc(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_qc_zbjl_rc(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     watching_time = CharField(max_length=256, null=False)
     leijirenci = CharField(max_length=256, null=False)
@@ -3862,11 +3862,11 @@ class list_qc_zbjl_rc(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ss_zbjl_rc(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     watching_time = CharField(max_length=256, null=False)
     leijirenci = CharField(max_length=256, null=False)
@@ -3876,11 +3876,11 @@ class list_ss_zbjl_rc(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_sh_zbjl_rc(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     watching_time = CharField(max_length=256, null=False)
     leijirenci = CharField(max_length=256, null=False)
@@ -3890,11 +3890,11 @@ class list_sh_zbjl_rc(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_kj_zbjl_rc(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     watching_time = CharField(max_length=256, null=False)
     leijirenci = CharField(max_length=256, null=False)
@@ -3904,11 +3904,11 @@ class list_kj_zbjl_rc(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_qy_zbjl_rc(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     watching_time = CharField(max_length=256, null=False)
     leijirenci = CharField(max_length=256, null=False)
@@ -3920,154 +3920,154 @@ class list_qy_zbjl_rc(BaseModel):
 '------------------------------------------------------------------------------------'
 
 class list_yl_zbjl_yl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     yinlang_time = CharField(max_length=256, null=False)
     yinlang = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_cy_zbjl_yl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     yinlang_time = CharField(max_length=256, null=False)
     yinlang = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ty_zbjl_yl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     yinlang_time = CharField(max_length=256, null=False)
     yinlang = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_gx_zbjl_yl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     yinlang_time = CharField(max_length=256, null=False)
     yinlang = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_yx_zbjl_yl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     yinlang_time = CharField(max_length=256, null=False)
     yinlang = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_jj_zbjl_yl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     yinlang_time = CharField(max_length=256, null=False)
     yinlang = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ms_zbjl_yl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     yinlang_time = CharField(max_length=256, null=False)
     yinlang = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ly_zbjl_yl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     yinlang_time = CharField(max_length=256, null=False)
     yinlang = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_jk_zbjl_yl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     yinlang_time = CharField(max_length=256, null=False)
     yinlang = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_qc_zbjl_yl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     yinlang_time = CharField(max_length=256, null=False)
     yinlang = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ss_zbjl_yl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     yinlang_time = CharField(max_length=256, null=False)
     yinlang = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_sh_zbjl_yl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     yinlang_time = CharField(max_length=256, null=False)
     yinlang = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_kj_zbjl_yl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     yinlang_time = CharField(max_length=256, null=False)
     yinlang = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_qy_zbjl_yl(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     yinlang_time = CharField(max_length=256, null=False)
     yinlang = CharField(max_length=256, null=False)
@@ -4076,154 +4076,154 @@ class list_qy_zbjl_yl(BaseModel):
 '------------------------------------------------------------------------------------'
 
 class list_yl_zbjl_fst(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     fans_time = CharField(max_length=256, null=False)
     fans_zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_cy_zbjl_fst(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     fans_time = CharField(max_length=256, null=False)
     fans_zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ty_zbjl_fst(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     fans_time = CharField(max_length=256, null=False)
     fans_zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_gx_zbjl_fst(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     fans_time = CharField(max_length=256, null=False)
     fans_zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_yx_zbjl_fst(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     fans_time = CharField(max_length=256, null=False)
     fans_zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_jj_zbjl_fst(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     fans_time = CharField(max_length=256, null=False)
     fans_zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ms_zbjl_fst(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     fans_time = CharField(max_length=256, null=False)
     fans_zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ly_zbjl_fst(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     fans_time = CharField(max_length=256, null=False)
     fans_zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_jk_zbjl_fst(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     fans_time = CharField(max_length=256, null=False)
     fans_zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_qc_zbjl_fst(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     fans_time = CharField(max_length=256, null=False)
     fans_zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ss_zbjl_fst(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     fans_time = CharField(max_length=256, null=False)
     fans_zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_sh_zbjl_fst(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     fans_time = CharField(max_length=256, null=False)
     fans_zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_kj_zbjl_fst(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     fans_time = CharField(max_length=256, null=False)
     fans_zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_qy_zbjl_fst(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     fans_time = CharField(max_length=256, null=False)
     fans_zb = CharField(max_length=256, null=False)
@@ -4232,154 +4232,154 @@ class list_qy_zbjl_fst(BaseModel):
 '------------------------------------------------------------------------------------'
 
 class list_yl_zbjl_dz(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     support_time = CharField(max_length=256, null=False)
     support_zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_cy_zbjl_dz(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     support_time = CharField(max_length=256, null=False)
     support_zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ty_zbjl_dz(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     support_time = CharField(max_length=256, null=False)
     support_zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_gx_zbjl_dz(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     support_time = CharField(max_length=256, null=False)
     support_zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_yx_zbjl_dz(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     support_time = CharField(max_length=256, null=False)
     support_zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_jj_zbjl_dz(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     support_time = CharField(max_length=256, null=False)
     support_zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ms_zbjl_dz(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     support_time = CharField(max_length=256, null=False)
     support_zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ly_zbjl_dz(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     support_time = CharField(max_length=256, null=False)
     support_zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_jk_zbjl_dz(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     support_time = CharField(max_length=256, null=False)
     support_zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_qc_zbjl_dz(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     support_time = CharField(max_length=256, null=False)
     support_zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ss_zbjl_dz(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     support_time = CharField(max_length=256, null=False)
     support_zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_sh_zbjl_dz(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     support_time = CharField(max_length=256, null=False)
     support_zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_kj_zbjl_dz(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     support_time = CharField(max_length=256, null=False)
     support_zb = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_qy_zbjl_dz(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     support_time = CharField(max_length=256, null=False)
     support_zb = CharField(max_length=256, null=False)
@@ -4388,154 +4388,154 @@ class list_qy_zbjl_dz(BaseModel):
 '------------------------------------------------------------------------------------'
 
 class list_yl_zbjl_zzgm(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     purchase_time = CharField(max_length=256, null=False)
     purchase = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_cy_zbjl_zzgm(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     purchase_time = CharField(max_length=256, null=False)
     purchase = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ty_zbjl_zzgm(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     purchase_time = CharField(max_length=256, null=False)
     purchase = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_gx_zbjl_zzgm(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     purchase_time = CharField(max_length=256, null=False)
     purchase = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_yx_zbjl_zzgm(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     purchase_time = CharField(max_length=256, null=False)
     purchase = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_jj_zbjl_zzgm(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     purchase_time = CharField(max_length=256, null=False)
     purchase = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ms_zbjl_zzgm(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     purchase_time = CharField(max_length=256, null=False)
     purchase = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ly_zbjl_zzgm(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     purchase_time = CharField(max_length=256, null=False)
     purchase = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_jk_zbjl_zzgm(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     purchase_time = CharField(max_length=256, null=False)
     purchase = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_qc_zbjl_zzgm(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     purchase_time = CharField(max_length=256, null=False)
     purchase = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ss_zbjl_zzgm(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     purchase_time = CharField(max_length=256, null=False)
     purchase = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_sh_zbjl_zzgm(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     purchase_time = CharField(max_length=256, null=False)
     purchase = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_kj_zbjl_zzgm(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     purchase_time = CharField(max_length=256, null=False)
     purchase = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_qy_zbjl_zzgm(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     purchase_time = CharField(max_length=256, null=False)
     purchase = CharField(max_length=256, null=False)
@@ -4544,154 +4544,154 @@ class list_qy_zbjl_zzgm(BaseModel):
 '------------------------------------------------------------------------------------'
 
 class list_yl_zbjl_tlsc(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     timepoint = CharField(max_length=256, null=False)
     shichang = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_cy_zbjl_tlsc(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     timepoint = CharField(max_length=256, null=False)
     shichang = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ty_zbjl_tlsc(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     timepoint = CharField(max_length=256, null=False)
     shichang = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_gx_zbjl_tlsc(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     timepoint = CharField(max_length=256, null=False)
     shichang = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_yx_zbjl_tlsc(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     timepoint = CharField(max_length=256, null=False)
     shichang = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_jj_zbjl_tlsc(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     timepoint = CharField(max_length=256, null=False)
     shichang = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ms_zbjl_tlsc(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     timepoint = CharField(max_length=256, null=False)
     shichang = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ly_zbjl_tlsc(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     timepoint = CharField(max_length=256, null=False)
     shichang = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_jk_zbjl_tlsc(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     timepoint = CharField(max_length=256, null=False)
     shichang = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_qc_zbjl_tlsc(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     timepoint = CharField(max_length=256, null=False)
     shichang = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_ss_zbjl_tlsc(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     timepoint = CharField(max_length=256, null=False)
     shichang = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_sh_zbjl_tlsc(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     timepoint = CharField(max_length=256, null=False)
     shichang = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_kj_zbjl_tlsc(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     timepoint = CharField(max_length=256, null=False)
     shichang = CharField(max_length=256, null=False)
     time_update = CharField(max_length=256, null=False)
 
 class list_qy_zbjl_tlsc(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     timepoint = CharField(max_length=256, null=False)
     shichang = CharField(max_length=256, null=False)
@@ -4700,11 +4700,11 @@ class list_qy_zbjl_tlsc(BaseModel):
 '------------------------------------------------------------------------------------'
 
 class list_yl_zbjl_splb(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     product_name = CharField(max_length=256, null=False)
     category1 = CharField(max_length=256, null=False)
@@ -4738,11 +4738,11 @@ class list_yl_zbjl_splb(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_cy_zbjl_splb(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     product_name = CharField(max_length=256, null=False)
     category1 = CharField(max_length=256, null=False)
@@ -4776,11 +4776,11 @@ class list_cy_zbjl_splb(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ty_zbjl_splb(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     product_name = CharField(max_length=256, null=False)
     category1 = CharField(max_length=256, null=False)
@@ -4814,11 +4814,11 @@ class list_ty_zbjl_splb(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_gx_zbjl_splb(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     product_name = CharField(max_length=256, null=False)
     category1 = CharField(max_length=256, null=False)
@@ -4852,11 +4852,11 @@ class list_gx_zbjl_splb(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_yx_zbjl_splb(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     product_name = CharField(max_length=256, null=False)
     category1 = CharField(max_length=256, null=False)
@@ -4890,11 +4890,11 @@ class list_yx_zbjl_splb(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_jj_zbjl_splb(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     product_name = CharField(max_length=256, null=False)
     category1 = CharField(max_length=256, null=False)
@@ -4928,11 +4928,11 @@ class list_jj_zbjl_splb(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ms_zbjl_splb(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     product_name = CharField(max_length=256, null=False)
     category1 = CharField(max_length=256, null=False)
@@ -4966,11 +4966,11 @@ class list_ms_zbjl_splb(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ly_zbjl_splb(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     product_name = CharField(max_length=256, null=False)
     category1 = CharField(max_length=256, null=False)
@@ -5004,11 +5004,11 @@ class list_ly_zbjl_splb(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_jk_zbjl_splb(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     product_name = CharField(max_length=256, null=False)
     category1 = CharField(max_length=256, null=False)
@@ -5042,11 +5042,11 @@ class list_jk_zbjl_splb(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_qc_zbjl_splb(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     product_name = CharField(max_length=256, null=False)
     category1 = CharField(max_length=256, null=False)
@@ -5080,11 +5080,11 @@ class list_qc_zbjl_splb(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_ss_zbjl_splb(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     product_name = CharField(max_length=256, null=False)
     category1 = CharField(max_length=256, null=False)
@@ -5118,11 +5118,11 @@ class list_ss_zbjl_splb(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_sh_zbjl_splb(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     product_name = CharField(max_length=256, null=False)
     category1 = CharField(max_length=256, null=False)
@@ -5156,11 +5156,11 @@ class list_sh_zbjl_splb(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_kj_zbjl_splb(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     product_name = CharField(max_length=256, null=False)
     category1 = CharField(max_length=256, null=False)
@@ -5194,11 +5194,11 @@ class list_kj_zbjl_splb(BaseModel):
     time_update = CharField(max_length=256, null=False)
 
 class list_qy_zbjl_splb(BaseModel):
-    num_zb = CharField(max_length=256, null=False, index=True)
-    id_zb = CharField(max_length=256, null=False, index=True)
-    name_zb = CharField(max_length=256, null=False, index=True)
-    url_zbjl = CharField(max_length=256, null=False, index=True)
-    livestraming_time = CharField(max_length=256, null=False, index=True)
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
 
     product_name = CharField(max_length=256, null=False)
     category1 = CharField(max_length=256, null=False)
