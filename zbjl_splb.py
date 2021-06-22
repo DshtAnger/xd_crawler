@@ -156,7 +156,7 @@ for current_taks in Entry_list:
                 # if type in ['ss','kj','cy','ty','jk',]:
                 #     WAIT_TIME = 0.6
 
-                WAIT_TIME = random.choice([0.5, 0.6, 0.7, 0.8])
+                WAIT_TIME = random.choice([0.5, 0.6])
 
                 # staticitem_url = 'https://ec.snssdk.com/product/fxgajaxstaticitem?b_type_new=0&device_id=0&is_outside=1&id={0}&preview=0'.format(product_id)
                 staticitem_url = 'https://ec.snssdk.com/product/fxgajaxstaticitem?id={0}'.format(product_id)
