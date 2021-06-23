@@ -8,9 +8,9 @@ from multiprocessing import Pool
 server_type = sys.argv[1]
 
 type_list = {
-    'ms':'\n'.join(['ms','ss','kj']),
+    'ms':'\n'.join(['ms','ly','kj']),
     'yl':'\n'.join(['yl','cy','ty']),
-    'gx':'\n'.join(['gx','ly','jk'])
+    'gx':'\n'.join(['gx','ss','jk'])
 }
 
 with open('/root/xd_crawler/type','w') as f:
@@ -26,6 +26,12 @@ first_crawl_date = (datetime.datetime.now()+datetime.timedelta(days=-121)).strft
 today_log_dir = '/root/xd_crawler/log/%s' % today_date
 if not os.path.exists(today_log_dir):
     os.mkdir(today_log_dir)
+
+if int(os.popen('du -l -d 1 /root/xd_crawler/websocket_data/').read().split()[0]) > 1024*1024*3:
+    os.system('rm -rf /root/xd_crawler/websocket_data/*')
+
+if int(os.popen('du -l -d 1 /root/xd_crawler/log/').read().split()[-2]) > 1024*1024:
+    os.system('rm -rf /root/xd_crawler/log/*')
 
 # 初始化数据库
 db_init = 'python3 /root/xd_crawler/DB.py'
