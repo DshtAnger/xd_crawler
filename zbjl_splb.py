@@ -187,7 +187,13 @@ for current_taks in Entry_list:
                     data = {}
 
                 Table_obj.yishou = data.get('sell_num') if data else '--'
-                Table_obj.fahuo_time = data.get('detail_delay_desc') if data else '--'
+
+                if data:
+                    Table_obj.fahuo_time = data.get('detail_delay_desc') if data.get('detail_delay_desc') else data.get('sku_presell_delay_desc')
+                    if Table_obj.fahuo_time == "":
+                        Table_obj.fahuo_time = data.get('sku_delay_desc')
+                else:
+                    Table_obj.fahuo_time = '--'
 
                 if data.get('freight'):
                     Table_obj.fahuo_city = data.get('freight').get('product_province_name') if data.get('freight') else '--'
