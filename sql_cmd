@@ -1,6 +1,8 @@
 git config --global http.sslVerify false
 git clone https://github.com/DshtAnger/xd_crawler.git
 
+select table_schema as '数据库',sum(table_rows) as '记录数',sum(truncate(data_length/1024/1024, 2)) as '数据容量(MB)',sum(truncate(index_length/1024/1024, 2)) as '索引容量(MB)' from information_schema.tables group by table_schema order by sum(data_length) desc, sum(index_length) desc;
+
 set global validate_password.policy=0;
 
 use mysql;

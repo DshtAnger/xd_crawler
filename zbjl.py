@@ -53,7 +53,7 @@ def download_websocket_data(webcast_id, cookie, type, num_zb, url_zbjl):
         "type": "webcast",
         "data": {"room_id": webcast_id}
     }
-    Retry_times = 20
+    Retry_times = 3
     Severe_error_flag = False
     while 1:
         try:
@@ -67,6 +67,9 @@ def download_websocket_data(webcast_id, cookie, type, num_zb, url_zbjl):
             while 1:
                 try:
                     recv_data = json.loads(ws.recv())
+                    if recv_data.get('type') == 'error':
+                        Severe_error_flag = True
+                        break
                     if recv_data.get('type') == 'tipRank':
                         tipRank_data = recv_data.get('data')
                     if recv_data.get('type') == 'commodity':
@@ -198,7 +201,7 @@ for current_taks in Entry_list:
                 if download_websocket_data(webcast_id, cookie, type, one_record.num_zb, url_zbjl):
                     websocket_use_count += 1
                 else:
-                    Table_obj.time_update = 'Severe error occurred at %s' % get_current_time()
+                    Table_obj.time_update = 'Exhaustion of retries or type error occurred at %s' % get_current_time()
                     Table_obj.save()
                     zbjl_count += 1
                     logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb, webcast_id, item.get('create_time'), 'Download websocket data failed at', get_current_time()]))
