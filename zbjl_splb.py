@@ -216,9 +216,9 @@ for current_taks in Entry_list:
 
                 pingjia_dic = {'0':'暂无','1': '高', '2': '中', '3': '低'}
                 Table_obj.store_name = data.get('shop_name') if data else '--'
-                Table_obj.product_experience = str(data.get('credit_score').get('product')) + pingjia_dic[str(data.get('credit_score').get('gap_product'))] if data.get('credit_score') else '--'
-                Table_obj.seller_service = str(data.get('credit_score').get('shop')) + pingjia_dic[str(data.get('credit_score').get('gap_shop'))] if data.get('credit_score') else '--'
-                Table_obj.shipping_experience = str(data.get('credit_score').get('logistics')) + pingjia_dic[str(data.get('credit_score').get('gap_logistics'))] if data.get('credit_score') else '--'
+                Table_obj.product_experience = str(data.get('credit_score').get('product')) + str(pingjia_dic.get(str(data.get('credit_score').get('gap_product')))) if data.get('credit_score') else '--'
+                Table_obj.seller_service = str(data.get('credit_score').get('shop')) + str(pingjia_dic.get(str(data.get('credit_score').get('gap_shop')))) if data.get('credit_score') else '--'
+                Table_obj.shipping_experience = str(data.get('credit_score').get('logistics')) + str(pingjia_dic.get(str(data.get('credit_score').get('gap_logistics')))) if data.get('credit_score') else '--'
                 Table_obj.tuijianyu = data.get('recommend_remark') if data else '--'
 
                 # ajaxitem_url = 'https://ec.snssdk.com/product/ajaxitem?b_type_new=0&device_id=0&is_outside=1&id={0}&abParams=0'.format(product_id)
