@@ -526,13 +526,20 @@ def run_crawler_task(type, current_taks):
     logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_tlsc', '[ today_tlsc_count: %d ]' % today_tlsc_count, 'Done at', get_current_time()]))
     logging.info('-'*100)
 
-Entry_list = {
-    ' Daily ': True,
-    'History': True
-}
-for current_taks in Entry_list:
-    p = Pool(3)
-    for type in input_type:
-        p.apply_async(run_crawler_task, args=(type, current_taks))
-    p.close()
-    p.join()
+if __name__ == '__main__':
+
+    Entry_list = {
+        ' Daily ': True,
+        'History': True
+    }
+
+    for current_taks in Entry_list:
+        # p = Pool(3)
+        # for type in input_type:
+        #     p.apply_async(run_crawler_task, args=(type, current_taks))
+        # p.close()
+        # p.join()
+        args = [(i, current_taks) for i in input_type]
+        p = Pool(3)
+        p.starmap(run_crawler_task, args)
+        p.close()
