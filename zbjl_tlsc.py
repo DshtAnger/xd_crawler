@@ -535,7 +535,7 @@ Entry_list = {
 }
 
 for current_taks in Entry_list:
-    p = Pool()
+    p = Pool(3)
     for type in input_type:
         p.apply_async(run_crawler_task, args=(type, current_taks))
     p.close()
