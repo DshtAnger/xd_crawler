@@ -29,6 +29,8 @@ def handle_exception(exc_type, exc_value, exc_traceback):
     logging.info("--------------------Uncaught Exception--------------------",exc_info=(exc_type, exc_value, exc_traceback))
 sys.excepthook = handle_exception
 
+REPEAT_CHECK_FLAG = False
+
 with open('/root/xd_crawler/cookie','r') as f:
     cookie = f.read().strip()
 with open('/root/xd_crawler/token','r') as f:
@@ -117,10 +119,11 @@ for current_taks in Entry_list:
             splb_count = 0
             for product in commodity_data:
 
-                # repeat_detect_cmd = "list_%s_zbjl_splb.select().where(list_%s_zbjl_splb.url_zbjl=='%s',list_%s_zbjl_splb.store_url=='%s',list_%s_zbjl_splb.time_update.startswith('%s'))" % (type, type, one_record.url_zbjl ,type, product.get('detail_url'), type, today_date)
-                # if eval(repeat_detect_cmd):
-                #     logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_splb', one_record.num_zb, one_record.name_zb, webcast_id,one_record.livestraming_time, 'product_id:%s'%product.get('product_id'), 'This is Repeated data. Continue next at', get_current_time()]))
-                #     continue
+                if REPEAT_CHECK_FLAG:
+                    repeat_detect_cmd = "list_%s_zbjl_splb.select().where(list_%s_zbjl_splb.url_zbjl=='%s',list_%s_zbjl_splb.store_url=='%s',list_%s_zbjl_splb.time_update.startswith('%s'))" % (type, type, one_record.url_zbjl ,type, product.get('detail_url'), type, today_date)
+                    if eval(repeat_detect_cmd):
+                        logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_splb', one_record.num_zb, one_record.name_zb, webcast_id,one_record.livestraming_time, 'product_id:%s'%product.get('product_id'), 'This is Repeated data. Continue next at', get_current_time()]))
+                        continue
 
                 Table_obj = eval('list_' + type + '_zbjl_splb' + '.create()')
 
