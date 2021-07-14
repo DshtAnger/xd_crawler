@@ -424,10 +424,12 @@ def run_crawler_task(type, current_taks):
         shichang = CharField(max_length=256, null=False)
         time_update = CharField(max_length=256, null=False)
 
+    suffix = 'd' if current_taks == ' Daily ' else 'h'
+
     today_log_dir = '/root/xd_crawler/log/%s' % today_date
     if not os.path.exists(today_log_dir):
         os.mkdir(today_log_dir)
-    logging.basicConfig(format='%(message)s', filename=today_log_dir + '/zbjl_tlsc_%s.log'%type, level=logging.INFO)
+    logging.basicConfig(format='%(message)s', filename=today_log_dir + '/zbjl_tlsc_%s_%s.log'%(type,suffix), level=logging.INFO)
 
     def handle_exception(exc_type, exc_value, exc_traceback):
         if issubclass(exc_type, KeyboardInterrupt):
@@ -527,17 +529,14 @@ def run_crawler_task(type, current_taks):
     logging.info('-'*100)
     db1.close()
 
-
-
 Entry_list = {
     ' Daily ': True,
     'History': True
 }
-
+pool = Pool(6)
 for current_taks in Entry_list:
-    p = Pool(3)
     for type in input_type:
-        p.apply_async(run_crawler_task, args=(type, current_taks))
-    p.close()
-    p.join()
-    p.terminate()
+        pool.apply_async(run_crawler_task, args=(type, current_taks))
+pool.close()
+pool.join()
+pool.terminate()
