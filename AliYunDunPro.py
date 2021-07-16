@@ -28,7 +28,8 @@ if not os.path.exists(today_log_dir):
     os.mkdir(today_log_dir)
 
 if int(os.popen('du -l -d 1 /root/xd_crawler/websocket_data/').read().split()[0]) > 1024*1024*3:
-    os.system('rm -rf /root/xd_crawler/websocket_data/*')
+    os.system('rm -rf /root/xd_crawler/websocket_data/')
+    os.system('mkdir /root/xd_crawler/websocket_data/')
 
 if int(os.popen('du -l -d 1 /root/xd_crawler/log/').read().split()[-2]) > 1024*1024:
     os.system('rm -rf /root/xd_crawler/log/*')
