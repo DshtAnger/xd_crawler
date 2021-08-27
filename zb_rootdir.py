@@ -140,6 +140,11 @@ for type in input_type:
 
     else:
         # 日更场景
+        # 数据库里最新最近的日期
+        query_cmd = 'list_%s.select(list_%s.time_update).order_by(-list_%s.time_update)' % (type, type, type)
+        newest_date = eval(query_cmd)[0].time_update
+
+        lastday_date = newest_date
         query_cmd = 'list_%s.select().where(list_%s.time_update=="%s")'%(type,type,lastday_date)
         for one_record in eval(query_cmd):
 
