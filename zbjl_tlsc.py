@@ -37,6 +37,42 @@ headers = {
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36',
 }
 
+def calc_userAvgDuration(start_time,end_time,point_list):
+    try:
+        start_timestamp = time.mktime(time.strptime(start_time, "%Y-%m-%d %H:%M:%S"))
+        end_timestamp = time.mktime(time.strptime(end_time, "%Y-%m-%d %H:%M:%S"))
+        total_time = end_timestamp - start_timestamp
+
+        user_count = []
+        strat_cumulative_number_online = 0
+        end_cumulative_number_online = 0
+        for point in point_list:
+            if point[0] == start_time and len(user_count) == 0 :
+                user_count.append(point[1])
+                strat_cumulative_number_online = point[2]
+            if point[0] != start_time and len(user_count) != 0:
+                user_count.append(point[1])
+                if point[0] == end_time:
+                    end_cumulative_number_online = point[2]
+                    break
+
+        tlsc = total_time * (sum(user_count)/len(user_count)/(end_cumulative_number_online - strat_cumulative_number_online))
+
+        # print(total_time)
+        # print(sum(user_count))
+        # print(len(user_count))
+        # print(end_cumulative_number_online - strat_cumulative_number_online)
+        # print(tlsc)
+
+        pos = str(tlsc).index('.')
+        tlsc = float(str(tlsc)[:pos+3])
+
+        return '{:.2f}'.format(tlsc)
+    except:
+        logging.info('[*] Get zbjl_ll~dz... calc_userAvgDuration failed. start_time:%s end_time:%s at %s' % (start_time,end_time,get_current_time()))
+        return '--'
+
+    #calc_userAvgDuration('2021-08-30 14:53:10','2021-08-30 15:02:43',data)
 
 def run_crawler_task(type, current_taks):
 
@@ -475,36 +511,61 @@ def run_crawler_task(type, current_taks):
             logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_tlsc', one_record.num_zb, one_record.name_zb, webcast_id,one_record.livestraming_time, 'trend_url Error at', get_current_time()]))
             continue
 
-        for item in data_list:
+        data = [(i.get('crawl_date'),i.get('user_count'),i.get('stats_total_user')) for i in data_list]
 
-            timepoint = item.get('crawl_date')
+        Table_obj = eval('list_' + type + '_zbjl_tlsc' + '.create()')
+        Table_obj.num_zb = one_record.num_zb
+        Table_obj.id_zb = one_record.id_zb
+        Table_obj.name_zb = one_record.name_zb
+        Table_obj.url_zbjl = one_record.url_zbjl
+        Table_obj.livestraming_time = one_record.livestraming_time
+        Table_obj.timepoint = data_list[0].get('crawl_date')
+        Table_obj.shichang = '--'
+        if current_taks == ' Daily ':
+            Table_obj.time_update = get_current_time()
+        elif current_taks == 'History':
+            Table_obj.time_update = get_current_time() + ' History'
+        Table_obj.save()
 
-            userAvgDuration_url = 'https://gw.newrank.cn/api/xd/xdnphb/nr/cloud/douyin/webcast/userAvgDuration'
-            post_data = {
-                'createTime': one_record.livestraming_time,
-                'finishTime': "",
-                'startTime': one_record.livestraming_time,
-                'endTime': timepoint,
-                "roomId": webcast_id
-            }
-            Retry_times = 10
-            continue_next_flag = False
-            while 1:
-                try:
-                    rsp = requests.post(userAvgDuration_url, headers=headers, data=json.dumps(post_data))
-                    data = json.loads(rsp.text)
-                except:
-                    Retry_times -= 1
-                    logging.info('[*] Get zbjl_tlsc... userAvgDuration_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
-                    if Retry_times == 0:
-                        continue_next_flag = True
-                        break
-                    time.sleep(2)
-                else:
-                    break
-            if continue_next_flag:
-                logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_tlsc', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'userAvgDuration_url Error at', get_current_time()]))
-                break
+
+        for index in range(len(data_list)-1):
+
+            start_point = data_list[index].get('crawl_date')
+            end_point = data_list[index+1].get('crawl_date')
+
+            tlsc = calc_userAvgDuration(start_point,end_point,data)
+
+
+        # for item in data_list:
+        #
+        #     timepoint = item.get('crawl_date')
+        #
+        #     userAvgDuration_url = 'https://gw.newrank.cn/api/xd/xdnphb/nr/cloud/douyin/webcast/userAvgDuration'
+        #     post_data = {
+        #         'createTime': one_record.livestraming_time,
+        #         'finishTime': "",
+        #         'startTime': one_record.livestraming_time,
+        #         'endTime': timepoint,
+        #         "roomId": webcast_id
+        #     }
+        #     Retry_times = 10
+        #     continue_next_flag = False
+        #     while 1:
+        #         try:
+        #             rsp = requests.post(userAvgDuration_url, headers=headers, data=json.dumps(post_data))
+        #             data = json.loads(rsp.text)
+        #         except:
+        #             Retry_times -= 1
+        #             logging.info('[*] Get zbjl_tlsc... userAvgDuration_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+        #             if Retry_times == 0:
+        #                 continue_next_flag = True
+        #                 break
+        #             time.sleep(2)
+        #         else:
+        #             break
+        #     if continue_next_flag:
+        #         logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_tlsc', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'userAvgDuration_url Error at', get_current_time()]))
+        #         break
 
             Table_obj = eval('list_' + type + '_zbjl_tlsc' + '.create()')
             Table_obj.num_zb = one_record.num_zb
@@ -513,8 +574,9 @@ def run_crawler_task(type, current_taks):
             Table_obj.url_zbjl = one_record.url_zbjl
             Table_obj.livestraming_time = one_record.livestraming_time
 
-            Table_obj.timepoint = timepoint
-            Table_obj.shichang = str(data.get('data'))
+            Table_obj.timepoint = end_point
+            Table_obj.shichang = tlsc
+
             if current_taks == ' Daily ':
                 Table_obj.time_update = get_current_time()
             elif current_taks == 'History':
