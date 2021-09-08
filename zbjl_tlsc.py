@@ -37,26 +37,29 @@ headers = {
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36',
 }
 
-def calc_userAvgDuration(start_time,end_time,point_list):
+def calc_userAvgDuration(start_time,end_time,point_list, type,num_zb,url_zbjl):
     try:
         start_timestamp = time.mktime(time.strptime(start_time, "%Y-%m-%d %H:%M:%S"))
         end_timestamp = time.mktime(time.strptime(end_time, "%Y-%m-%d %H:%M:%S"))
         total_time = end_timestamp - start_timestamp
 
         user_count = []
-        strat_cumulative_number_online = 0
+        start_cumulative_number_online = 0
         end_cumulative_number_online = 0
         for point in point_list:
-            if point[0] == start_time and len(user_count) == 0 :
-                user_count.append(point[1])
-                strat_cumulative_number_online = point[2]
-            if point[0] != start_time and len(user_count) != 0:
-                user_count.append(point[1])
-                if point[0] == end_time:
-                    end_cumulative_number_online = point[2]
+            if point.get('crawl_date') == start_time and len(user_count) == 0 :
+                user_count.append(point.get('user_count'))
+                start_cumulative_number_online = point.get('stats_total_user')
+            if point.get('crawl_date') != start_time and len(user_count) != 0:
+                if point.get('user_count')==None or point.get('stats_total_user')==None:
+                    user_count.append(0)
+                else:
+                    user_count.append(point.get('user_count'))
+                if point.get('crawl_date') == end_time:
+                    end_cumulative_number_online = point.get('stats_total_user')
                     break
 
-        tlsc = total_time * (sum(user_count)/len(user_count)/(end_cumulative_number_online - strat_cumulative_number_online))
+        tlsc = total_time * (sum(user_count)/len(user_count)/(end_cumulative_number_online - start_cumulative_number_online))
 
         # print(total_time)
         # print(sum(user_count))
@@ -69,7 +72,7 @@ def calc_userAvgDuration(start_time,end_time,point_list):
 
         return '{:.2f}'.format(tlsc)
     except:
-        logging.info('[*] Get zbjl_ll~dz... calc_userAvgDuration failed. start_time:%s end_time:%s at %s' % (start_time,end_time,get_current_time()))
+        logging.info('[*] Get zbjl_tlsc... calc_userAvgDuration failed. type:%s, num_zb:%s, url_zbjl:%s, start_time:%s | end_time:%s at %s' % (type, num_zb, url_zbjl, start_time, end_time, get_current_time()))
         return '--'
 
     #calc_userAvgDuration('2021-08-30 14:53:10','2021-08-30 15:02:43',data)
@@ -511,7 +514,7 @@ def run_crawler_task(type, current_taks):
             logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_tlsc', one_record.num_zb, one_record.name_zb, webcast_id,one_record.livestraming_time, 'trend_url Error at', get_current_time()]))
             continue
 
-        data = [(i.get('crawl_date'),i.get('user_count'),i.get('stats_total_user')) for i in data_list]
+        valid_data = [i.get('crawl_date') for i in data_list if i.get('user_count')!=None and i.get('stats_total_user')!=None]
 
         Table_obj = eval('list_' + type + '_zbjl_tlsc' + '.create()')
         Table_obj.num_zb = one_record.num_zb
@@ -528,12 +531,14 @@ def run_crawler_task(type, current_taks):
         Table_obj.save()
 
 
-        for index in range(len(data_list)-1):
+        for index in range(len(valid_data)-1):
 
-            start_point = data_list[index].get('crawl_date')
-            end_point = data_list[index+1].get('crawl_date')
+            start_point = valid_data[index]
+            end_point = valid_data[index+1]
 
-            tlsc = calc_userAvgDuration(start_point,end_point,data)
+            tlsc = calc_userAvgDuration(start_point,end_point,data_list,type,one_record.num_zb,one_record.url_zbjl)
+
+            print(start_point,'|',end_point,'|',tlsc)
 
 
         # for item in data_list:
@@ -584,8 +589,8 @@ def run_crawler_task(type, current_taks):
 
             Table_obj.save()
         else:
-            today_tlsc_count += len(data_list)
-            logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_tlsc', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ tlsc_count: %d ]'%len(data_list), 'Done at', get_current_time()]))
+            today_tlsc_count += len(valid_data)
+            logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_tlsc', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ tlsc_count: %d ]'%len(valid_data), 'Done at', get_current_time()]))
 
     logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_tlsc', '[ today_tlsc_count: %d ]' % today_tlsc_count, 'Done at', get_current_time()]))
     logging.info('-'*100)

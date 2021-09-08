@@ -91,85 +91,90 @@ for current_taks in Entry_list:
                 logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_ll_rc_yl_fst_dz', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'trend_url Error at', get_current_time()]))
                 continue
 
+            valid_data = [i.get('crawl_date') for i in data_list if i.get('user_count') != None and i.get('stats_total_user') != None]
+
             # timepoint_list = []
             for item in data_list:
 
                 crawl_time = item.get('crawl_date')
                 #timepoint_list.append(crawl_time)
+                if item.get('user_count'):
+                    Table_obj_ll = eval('list_' + type + '_zbjl_ll' + '.create()')
+                    Table_obj_ll.num_zb = one_record.num_zb
+                    Table_obj_ll.id_zb = one_record.id_zb
+                    Table_obj_ll.name_zb = one_record.name_zb
+                    Table_obj_ll.url_zbjl = one_record.url_zbjl
+                    Table_obj_ll.livestraming_time = one_record.livestraming_time
+                    Table_obj_ll.traffic_time = crawl_time
+                    Table_obj_ll.renshu = item.get('user_count')
+                    if current_taks == ' Daily ':
+                        Table_obj_ll.time_update = get_current_time()
+                    elif current_taks == 'History':
+                        Table_obj_ll.time_update = get_current_time() + ' History'
+                    Table_obj_ll.save()
 
-                Table_obj_ll = eval('list_' + type + '_zbjl_ll' + '.create()')
-                Table_obj_ll.num_zb = one_record.num_zb
-                Table_obj_ll.id_zb = one_record.id_zb
-                Table_obj_ll.name_zb = one_record.name_zb
-                Table_obj_ll.url_zbjl = one_record.url_zbjl
-                Table_obj_ll.livestraming_time = one_record.livestraming_time
-                Table_obj_ll.traffic_time = crawl_time
-                Table_obj_ll.renshu = item.get('user_count')
-                if current_taks == ' Daily ':
-                    Table_obj_ll.time_update = get_current_time()
-                elif current_taks == 'History':
-                    Table_obj_ll.time_update = get_current_time() + ' History'
+                if item.get('stats_total_user'):
+                    Table_obj_rc = eval('list_' + type + '_zbjl_rc' + '.create()')
+                    Table_obj_rc.num_zb = one_record.num_zb
+                    Table_obj_rc.id_zb = one_record.id_zb
+                    Table_obj_rc.name_zb = one_record.name_zb
+                    Table_obj_rc.url_zbjl = one_record.url_zbjl
+                    Table_obj_rc.livestraming_time = one_record.livestraming_time
+                    Table_obj_rc.watching_time = crawl_time
+                    Table_obj_rc.leijirenci = item.get('stats_total_user')
+                    Table_obj_rc.guanzhu = item.get('stats_user_composition_from_my_follow')
+                    Table_obj_rc.shipintuijian = item.get('stats_user_composition_from_video_detail')
+                    Table_obj_rc.zhiboguangchang = item.get('stats_user_composition_from_other')
+                    if current_taks == ' Daily ':
+                        Table_obj_rc.time_update = get_current_time()
+                    elif current_taks == 'History':
+                        Table_obj_rc.time_update = get_current_time() + ' History'
+                    Table_obj_rc.save()
 
-                Table_obj_rc = eval('list_' + type + '_zbjl_rc' + '.create()')
-                Table_obj_rc.num_zb = one_record.num_zb
-                Table_obj_rc.id_zb = one_record.id_zb
-                Table_obj_rc.name_zb = one_record.name_zb
-                Table_obj_rc.url_zbjl = one_record.url_zbjl
-                Table_obj_rc.livestraming_time = one_record.livestraming_time
-                Table_obj_rc.watching_time = crawl_time
-                Table_obj_rc.leijirenci = item.get('stats_total_user')
-                Table_obj_rc.guanzhu = item.get('stats_user_composition_from_my_follow')
-                Table_obj_rc.shipintuijian = item.get('stats_user_composition_from_video_detail')
-                Table_obj_rc.zhiboguangchang = item.get('stats_user_composition_from_other')
-                if current_taks == ' Daily ':
-                    Table_obj_rc.time_update = get_current_time()
-                elif current_taks == 'History':
-                    Table_obj_rc.time_update = get_current_time() + ' History'
+                # if item.get('stats_fan_ticket'):
+                #     Table_obj_yl = eval('list_' + type + '_zbjl_yl' + '.create()')
+                #     Table_obj_yl.num_zb = one_record.num_zb
+                #     Table_obj_yl.id_zb = one_record.id_zb
+                #     Table_obj_yl.name_zb = one_record.name_zb
+                #     Table_obj_yl.url_zbjl = one_record.url_zbjl
+                #     Table_obj_yl.livestraming_time = one_record.livestraming_time
+                #     Table_obj_yl.yinlang_time = crawl_time
+                #     Table_obj_yl.yinlang = item.get('stats_fan_ticket')
+                #     if current_taks == ' Daily ':
+                #         Table_obj_yl.time_update = get_current_time()
+                #     elif current_taks == 'History':
+                #         Table_obj_yl.time_update = get_current_time() + ' History'
+                #     Table_obj_yl.save()
 
-                Table_obj_yl = eval('list_' + type + '_zbjl_yl' + '.create()')
-                Table_obj_yl.num_zb = one_record.num_zb
-                Table_obj_yl.id_zb = one_record.id_zb
-                Table_obj_yl.name_zb = one_record.name_zb
-                Table_obj_yl.url_zbjl = one_record.url_zbjl
-                Table_obj_yl.livestraming_time = one_record.livestraming_time
-                Table_obj_yl.yinlang_time = crawl_time
-                Table_obj_yl.yinlang = item.get('stats_fan_ticket')
-                if current_taks == ' Daily ':
-                    Table_obj_yl.time_update = get_current_time()
-                elif current_taks == 'History':
-                    Table_obj_yl.time_update = get_current_time() + ' History'
+                if item.get('club_info_total_fans_count'):
+                    Table_obj_fst = eval('list_' + type + '_zbjl_fst' + '.create()')
+                    Table_obj_fst.num_zb = one_record.num_zb
+                    Table_obj_fst.id_zb = one_record.id_zb
+                    Table_obj_fst.name_zb = one_record.name_zb
+                    Table_obj_fst.url_zbjl = one_record.url_zbjl
+                    Table_obj_fst.livestraming_time = one_record.livestraming_time
+                    Table_obj_fst.fans_time = crawl_time
+                    Table_obj_fst.fans_zb = item.get('club_info_total_fans_count')
+                    if current_taks == ' Daily ':
+                        Table_obj_fst.time_update = get_current_time()
+                    elif current_taks == 'History':
+                        Table_obj_fst.time_update = get_current_time() + ' History'
+                    Table_obj_fst.save()
 
-                Table_obj_fst = eval('list_' + type + '_zbjl_fst' + '.create()')
-                Table_obj_fst.num_zb = one_record.num_zb
-                Table_obj_fst.id_zb = one_record.id_zb
-                Table_obj_fst.name_zb = one_record.name_zb
-                Table_obj_fst.url_zbjl = one_record.url_zbjl
-                Table_obj_fst.livestraming_time = one_record.livestraming_time
-                Table_obj_fst.fans_time = crawl_time
-                Table_obj_fst.fans_zb = item.get('club_info_total_fans_count')
-                if current_taks == ' Daily ':
-                    Table_obj_fst.time_update = get_current_time()
-                elif current_taks == 'History':
-                    Table_obj_fst.time_update = get_current_time() + ' History'
-
-                Table_obj_dz = eval('list_' + type + '_zbjl_dz' + '.create()')
-                Table_obj_dz.num_zb = one_record.num_zb
-                Table_obj_dz.id_zb = one_record.id_zb
-                Table_obj_dz.name_zb = one_record.name_zb
-                Table_obj_dz.url_zbjl = one_record.url_zbjl
-                Table_obj_dz.livestraming_time = one_record.livestraming_time
-                Table_obj_dz.support_time = crawl_time
-                Table_obj_dz.support_zb = item.get('like_count')
-                if current_taks == ' Daily ':
-                    Table_obj_dz.time_update = get_current_time()
-                elif current_taks == 'History':
-                    Table_obj_dz.time_update = get_current_time() + ' History'
-
-                Table_obj_ll.save()
-                Table_obj_rc.save()
-                Table_obj_yl.save()
-                Table_obj_fst.save()
-                Table_obj_dz.save()
+                if item.get('like_count'):
+                    Table_obj_dz = eval('list_' + type + '_zbjl_dz' + '.create()')
+                    Table_obj_dz.num_zb = one_record.num_zb
+                    Table_obj_dz.id_zb = one_record.id_zb
+                    Table_obj_dz.name_zb = one_record.name_zb
+                    Table_obj_dz.url_zbjl = one_record.url_zbjl
+                    Table_obj_dz.livestraming_time = one_record.livestraming_time
+                    Table_obj_dz.support_time = crawl_time
+                    Table_obj_dz.support_zb = item.get('like_count')
+                    if current_taks == ' Daily ':
+                        Table_obj_dz.time_update = get_current_time()
+                    elif current_taks == 'History':
+                        Table_obj_dz.time_update = get_current_time() + ' History'
+                    Table_obj_dz.save()
 
             today_ll_rc_yl_fst_dz_count += len(data_list)
             logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_ll_rc_yl_fst_dz', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ zbjl_ll_rc_yl_fst_dz: %d ]' % len(data_list), 'Done at', get_current_time()]))
