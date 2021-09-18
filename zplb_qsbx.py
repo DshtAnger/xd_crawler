@@ -49,6 +49,10 @@ for type in input_type:
     today_qsbx_plbh_count = 0
     today_qsbx_share_count = 0
 
+    # for ms server's data 2 days miss
+    if type in ['ms','ly','kj']:
+        update_date = (datetime.datetime.now() + datetime.timedelta(days=-121-2)).strftime("%Y-%m-%d")
+
     query_cmd = "list_%s_zplb.select().where(list_%s_zplb.time_release.startswith('%s'))" % (type,type,update_date)
 
     for one_record in eval(query_cmd):
