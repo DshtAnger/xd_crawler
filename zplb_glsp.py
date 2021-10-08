@@ -50,6 +50,9 @@ for type in input_type:
     # for ms server's data 2 days miss
     if type in ['ms','ly','kj']:
         update_date = (datetime.datetime.now() + datetime.timedelta(days=-121-2)).strftime("%Y-%m-%d")
+    # for gx server's data 1 days miss
+    if type in ['gx','ss','jk']:
+        update_date = (datetime.datetime.now() + datetime.timedelta(days=-121-1)).strftime("%Y-%m-%d")
 
     query_cmd = "list_%s_zplb.select().where(list_%s_zplb.time_release.startswith('%s'))" % (type,type,update_date)
 
