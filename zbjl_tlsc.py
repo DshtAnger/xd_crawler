@@ -538,7 +538,7 @@ def run_crawler_task(type, current_taks):
 
             tlsc = calc_userAvgDuration(start_point,end_point,data_list,type,one_record.num_zb,one_record.url_zbjl)
 
-            print(start_point,'|',end_point,'|',tlsc)
+            #print(start_point,'|',end_point,'|',tlsc)
 
 
         # for item in data_list:
