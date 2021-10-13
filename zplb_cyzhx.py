@@ -72,7 +72,7 @@ for type in input_type:
         post_data = {
             "aweme_id": aweme_id
         }
-        Retry_times = 10
+        Retry_times = 3
         continue_next_flag = False
         while 1:
             try:

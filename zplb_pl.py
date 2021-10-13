@@ -75,7 +75,7 @@ for type in input_type:
             "size": 100,
             "start": 1
         }
-        Retry_times = 10
+        Retry_times = 3
         continue_next_flag = False
         while 1:
             try:
@@ -93,12 +93,12 @@ for type in input_type:
             else:
                 break
         if continue_next_flag:
-            logging.info(' '.join(['[+]', type, 'zb_zplb_pl', one_record.num_zb, one_record.name_zb, aweme_id, one_record.time_release, 'aweme_comment_url count Error at', get_current_time()]))
+            logging.info(' '.join(['[+]', type, 'zb_zplb_pl', one_record.num_zb, one_record.name_zb, one_record.url_works, one_record.time_release, 'aweme_comment_url count Error at', get_current_time()]))
             continue
 
         for page in range(1,end_page+1):
 
-            Retry_times = 10
+            Retry_times = 3
             continue_next_flag = False
             while 1:
                 try:

@@ -80,7 +80,7 @@ for type in input_type:
             "aweme_id": aweme_id,
             "collection_time": ""
         }
-        Retry_times = 10
+        Retry_times = 3
         continue_next_flag = False
         while 1:
             try:
@@ -99,7 +99,7 @@ for type in input_type:
             logging.info(' '.join(['[+]', type, 'zb_zplb_qsbx', one_record.num_zb, one_record.name_zb, aweme_id, one_record.time_release, "aweme_trend_url Error at", get_current_time()]))
             continue
 
-        diggList = data.get('diggList')
+        diggList = data.get('diggList') if data else []
         for digg in diggList:
             Table_obj = eval('list_' + type + '_zplb_qsbx_support' + '.create()')
 
@@ -117,7 +117,7 @@ for type in input_type:
             qsbx_support_count += 1
             today_qsbx_support_count += 1
 
-        commentList = data.get('commentList')
+        commentList = data.get('commentList') if data else []
         for comment in commentList:
             Table_obj = eval('list_' + type + '_zplb_qsbx_plbh' + '.create()')
 
@@ -135,7 +135,7 @@ for type in input_type:
             qsbx_plbh_count += 1
             today_qsbx_plbh_count += 1
 
-        shareList = data.get('shareList')
+        shareList = data.get('shareList') if data else []
         for _share in shareList:
             Table_obj = eval('list_' + type + '_zplb_qsbx_share' + '.create()')
 
