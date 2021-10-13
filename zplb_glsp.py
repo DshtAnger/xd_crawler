@@ -139,24 +139,27 @@ for type in input_type:
                 Table_obj.save()
                 glsp_count += 1
                 today_glsp_count += 1
+
+            logging.info(' '.join(['[+]', type, 'zb_zplb_glsp', one_record.num_zb, one_record.name_zb, aweme_id, one_record.time_release, '[ glsp_count: %d ]'%glsp_count ,"Done at", get_current_time()]))
+
         else:
 
-            Table_obj = eval('list_' + type + '_zplb_glsp' + '.create()')
+            # Table_obj = eval('list_' + type + '_zplb_glsp' + '.create()')
+            #
+            # Table_obj.num_zb = one_record.num_zb
+            # Table_obj.id_zb = one_record.id_zb
+            # Table_obj.name_zb = one_record.name_zb
+            # Table_obj.url_zb = one_record.url_zb
+            # Table_obj.url_works = one_record.url_works
+            #
+            # Table_obj.product, Table_obj.sales, Table_obj.time_sales, Table_obj.price, Table_obj.sply = ['--'] * 5
+            # Table_obj.time_update = get_current_time()
+            #
+            # Table_obj.save()
+            # glsp_count += 1
+            # today_glsp_count += 1
 
-            Table_obj.num_zb = one_record.num_zb
-            Table_obj.id_zb = one_record.id_zb
-            Table_obj.name_zb = one_record.name_zb
-            Table_obj.url_zb = one_record.url_zb
-            Table_obj.url_works = one_record.url_works
-
-            Table_obj.product, Table_obj.sales, Table_obj.time_sales, Table_obj.price, Table_obj.sply = ['--'] * 5
-            Table_obj.time_update = get_current_time()
-
-            Table_obj.save()
-            glsp_count += 1
-            today_glsp_count += 1
-
-        logging.info(' '.join(['[+]', type, 'zb_zplb_glsp', one_record.num_zb, one_record.name_zb, aweme_id, one_record.time_release, '[ glsp_count: %d ]'%glsp_count ,"Done at", get_current_time()]))
+            logging.info(' '.join(['[+]', type, 'zb_zplb_glsp', one_record.num_zb, one_record.name_zb, aweme_id, one_record.time_release, "No data at", get_current_time()]))
 
     logging.info(' '.join(['[+]', type, 'zb_zplb_glsp', '[ today_glsp_count: %d ]'%today_glsp_count, "Done at", get_current_time()]))
     logging.info('-' * 100)

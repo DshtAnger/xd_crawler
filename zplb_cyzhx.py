@@ -100,9 +100,10 @@ for type in input_type:
         Table_obj.url_works = one_record.url_works
 
         if not data:
-            Table_obj.female,Table_obj.male,Table_obj.eighteen, Table_obj.eighteentotwentythree, Table_obj.twentyfourtothirty, Table_obj.thirtyonetofourty, Table_obj.fourtyonetofifty, Table_obj.fifty = ['--'] * 8
-            Table_obj.time_update = get_current_time()
-            Table_obj.save()
+            #Table_obj.female,Table_obj.male,Table_obj.eighteen, Table_obj.eighteentotwentythree, Table_obj.twentyfourtothirty, Table_obj.thirtyonetofourty, Table_obj.fourtyonetofifty, Table_obj.fifty = ['--'] * 8
+            #Table_obj.time_update = get_current_time()
+            #Table_obj.save()
+            logging.info(' '.join(['[+]', type, 'zb_zplb_cyzhx', one_record.num_zb, one_record.name_zb, aweme_id, one_record.time_release, "No data at", get_current_time()]))
             continue
 
         Table_obj.female, Table_obj.male = ['--'] * 2
