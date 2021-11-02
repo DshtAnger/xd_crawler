@@ -61,11 +61,14 @@ for type in input_type:
     query_result = eval(query_cmd)
     time_release = list(query_result)[0].time_release.split(' ')[0]
 
-    update_date = (datetime.datetime.strptime(time_release, "%Y-%m-%d") + datetime.timedelta(days=+1)).strftime("%Y-%m-%d")
+    for i in range(1,100):
+        update_date = (datetime.datetime.strptime(time_release, "%Y-%m-%d") + datetime.timedelta(days=i)).strftime("%Y-%m-%d")
+        query_cmd = "list_%s_zplb.select().where(list_%s_zplb.time_release.startswith('%s'))" % (type,type,update_date)
+        query_result = eval(query_cmd)
+        if bool(query_result):
+            break
 
-    query_cmd = "list_%s_zplb.select().where(list_%s_zplb.time_release.startswith('%s'))" % (type,type,update_date)
-
-    for one_record in eval(query_cmd):
+    for one_record in query_result:
 
         aweme_id = one_record.url_works.split('/')[-1]
         aweme_userinfo_url = 'https://gw.newrank.cn/api/xd/xdnphb/nr/cloud/douyin/aweme/awemeDetail/getAwemeUserInfo'
