@@ -59,11 +59,13 @@ zb_zplb_glsp = 'python3 /root/xd_crawler/zplb_glsp.py &'
 # 每日更新
 zbjl = 'python3 /root/xd_crawler/zbjl.py'
 zbjl_sx = 'python3 /root/xd_crawler/zbjl_sx.py &'
-zbjl_splb = 'python3 /root/xd_crawler/zbjl_splb.py &'
+zbjl_rc = 'python3 /root/xd_crawler/zbjl_rc.py &'
 zbjl_pl = 'python3  /root/xd_crawler/zbjl_pl.py &'
-zbjl_zzgm = 'python3 /root/xd_crawler/zbjl_zzgm.py &'
-zbjl_ll_rc_yl_fst_dz = 'python3 /root/xd_crawler/zbjl_ll_rc_yl_fst_dz.py &'
+zbjl_splb = 'python3 /root/xd_crawler/zbjl_splb.py &'
 zbjl_tlsc = 'python3 /root/xd_crawler/zbjl_tlsc.py &'
+zbjl_fd = 'python3 /root/xd_crawler/zbjl_fd.py &'
+zbjl_yrsp = 'python3 /root/xd_crawler/zbjl_yrsp.py &'
+zbjl_jcfx = 'python3 /root/xd_crawler/zbjl_jcfx.py &'
 
 '------------------------------------------------------------------------------'
 try:
@@ -148,11 +150,12 @@ except Exception as e:
     logging.exception(e)
     print('zbjl_sx error')
 
+
 try:
-    os.system(zbjl_splb)
+    os.system(zbjl_rc)
 except Exception as e:
     logging.exception(e)
-    print('zbjl_splb error')
+    print('zbjl_rc error')
 
 
 try:
@@ -161,23 +164,40 @@ except Exception as e:
     logging.exception(e)
     print('zbjl_pl error')
 
-try:
-    os.system(zbjl_zzgm)
-except Exception as e:
-    logging.exception(e)
-    print('zbjl_zzgm error')
 
 try:
-    os.system(zbjl_ll_rc_yl_fst_dz)
+    os.system(zbjl_splb)
 except Exception as e:
     logging.exception(e)
-    print('zbjl_ll_rc_yl_fst_dz error')
+    print('zbjl_splb error')
+
 
 try:
     os.system(zbjl_tlsc)
 except Exception as e:
     logging.exception(e)
     print('zbjl_tlsc error')
+
+
+try:
+    os.system(zbjl_fd)
+except Exception as e:
+    logging.exception(e)
+    print('zbjl_fd error')
+
+
+try:
+    os.system(zbjl_yrsp)
+except Exception as e:
+    logging.exception(e)
+    print('zbjl_yrsp error')
+
+
+try:
+    os.system(zbjl_jcfx)
+except Exception as e:
+    logging.exception(e)
+    print('zbjl_jcfx error')
 
 '------------------------------------------------------------------------------'
 

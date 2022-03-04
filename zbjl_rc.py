@@ -19,7 +19,7 @@ first_crawl_date = (datetime.datetime.now()+datetime.timedelta(days=-121)).strft
 today_log_dir = '/root/xd_crawler/log/%s' % today_date
 if not os.path.exists(today_log_dir):
     os.mkdir(today_log_dir)
-logging.basicConfig(format='%(message)s',filename=today_log_dir + '/zbjl_pl.log', level=logging.INFO)
+logging.basicConfig(format='%(message)s',filename=today_log_dir + '/zbjl_ll_rc.log', level=logging.INFO)
 def handle_exception(exc_type, exc_value, exc_traceback):
     if issubclass(exc_type, KeyboardInterrupt):
         sys.__excepthook__(exc_type, exc_value, exc_traceback)
@@ -45,7 +45,6 @@ headers = {
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36',
 }
 
-
 Entry_list = {
     ' Daily ': True,
     'History': True
@@ -53,7 +52,7 @@ Entry_list = {
 for current_taks in Entry_list:
 
     for type in input_type:
-        today_pl_count = 0
+        today_rc_count = 0
 
         if current_taks == ' Daily ':
 
@@ -67,20 +66,19 @@ for current_taks in Entry_list:
 
             webcast_id = one_record.url_zbjl.split('/')[-1]
 
-            comment_url = 'https://gw.newrank.cn/api/douyin-webcastdetail/xdnphb/nr/app/douyin/webcastdetail/detail/webcastMessageListV2'
+            userSourceInfo_url = 'https://gw.newrank.cn/api/douyin-webcastdetail/xdnphb/nr/app/douyin/webcastdetail/detail/userSourceInfo'
             post_data = {
-                "roomId": webcast_id
+                'roomId': webcast_id
             }
             Retry_times = 10
             continue_next_flag = False
             while 1:
                 try:
-                    rsp = requests.post(comment_url, headers=headers, data=json.dumps(post_data))
-                    data = json.loads(rsp.text).get('data')
-                    data_list = data.get('list')
+                    rsp = requests.post(userSourceInfo_url, headers=headers, data=json.dumps(post_data))
+                    data_list = json.loads(rsp.text).get('data').get('trend')
                 except:
                     Retry_times -= 1
-                    logging.info('[*] Get zbjl_pl comment_url count failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                    logging.info('[*] Get zbjl_rc userSourceInfo_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
                     if Retry_times == 0:
                         continue_next_flag = True
                         break
@@ -88,34 +86,36 @@ for current_taks in Entry_list:
                 else:
                     break
             if continue_next_flag:
-                logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_pl', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'comment_url count Error at', get_current_time()]))
+                logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_rc', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'userSourceInfo_url Error at', get_current_time()]))
                 continue
 
-            pl_count = 0
+
             for item in data_list:
 
-                Table_obj = eval('list_' + type + '_zbjl_pl' + '.create()')
+                crawl_time = item.get('gmtCreate')
 
-                Table_obj.num_zb = one_record.num_zb
-                Table_obj.id_zb = one_record.id_zb
-                Table_obj.name_zb = one_record.name_zb
-                Table_obj.url_zbjl = one_record.url_zbjl
-                Table_obj.livestraming_time = one_record.livestraming_time
+                Table_obj_rc = eval('list_' + type + '_zbjl_rc' + '.create()')
+                Table_obj_rc.num_zb = one_record.num_zb
+                Table_obj_rc.id_zb = one_record.id_zb
+                Table_obj_rc.name_zb = one_record.name_zb
+                Table_obj_rc.url_zbjl = one_record.url_zbjl
+                Table_obj_rc.livestraming_time = one_record.livestraming_time
+                Table_obj_rc.watching_time = crawl_time
 
-                Table_obj.review_time = item.get('gmtCreate')
-                Table_obj.author = item.get('user',None).get('nickname') if item.get('user',None) else '--'
-                Table_obj.content = item.get('content')
+                #Table_obj_rc.leijirenci = item.get('stats_total_user')#现版本已无数据
+                Table_obj_rc.guanzhu = str(item.get('followCount'))
+                Table_obj_rc.shipintuijian = str(item.get('videoDetailCount'))
+                Table_obj_rc.zhiboguangchang = str(item.get('otherCount'))
 
                 if current_taks == ' Daily ':
-                    Table_obj.time_update = get_current_time()
+                    Table_obj_rc.time_update = get_current_time()
                 elif current_taks == 'History':
-                    Table_obj.time_update = get_current_time() + ' History'
+                    Table_obj_rc.time_update = get_current_time() + ' History'
+                Table_obj_rc.save()
 
-                Table_obj.save()
-                pl_count += 1
-                today_pl_count += 1
 
-            logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_pl', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ pl_count: %d ]'%pl_count, 'Done at', get_current_time()]))
+            today_rc_count += len(data_list)
+            logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_rc', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ zbjl_rc_count: %d ]' % len(data_list), 'Done at', get_current_time()]))
 
-        logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_pl', '[ today_pl_count: %d ]'%today_pl_count, 'Done at', get_current_time()]))
-        logging.info('-'*100)
+        logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_rc', '[ today_rc_count: %d ]' % today_rc_count, 'Done at', get_current_time()]))
+        logging.info('-' * 100)

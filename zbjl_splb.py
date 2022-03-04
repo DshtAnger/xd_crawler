@@ -3,7 +3,6 @@
 # 次日启动,每天抓取昨天的相应数据(如6月1日抓取5月31日的)
 
 import requests
-import websocket
 import json
 import datetime
 import time
@@ -101,23 +100,33 @@ for current_taks in Entry_list:
 
             webcast_id = one_record.url_zbjl.split('/')[-1]
 
-            if not os.path.exists('/root/xd_crawler/websocket_data/%s.detail' % webcast_id):
-                Table_obj = eval('list_' + type + '_zbjl_splb' + '.create()')
-                Table_obj.num_zb = one_record.num_zb
-                Table_obj.id_zb = one_record.id_zb
-                Table_obj.name_zb = one_record.name_zb
-                Table_obj.url_zbjl = one_record.url_zbjl
-                Table_obj.livestraming_time = one_record.livestraming_time
-                Table_obj.time_update = 'Severe error with no local file occurred at %s' % get_current_time()
-                Table_obj.save()
-                logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_splb', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'Find local websocket file failed  at', get_current_time()]))
+            promotionList_url = 'https://gw.newrank.cn/api/douyin-webcastdetail/xdnphb/nr/app/douyin/webcastdetail/detail/promotionList'
+            post_data = {
+                'roomId': webcast_id
+            }
+            Retry_times = 10
+            continue_next_flag = False
+            while 1:
+                try:
+                    rsp = requests.post(promotionList_url, headers=headers, data=json.dumps(post_data))
+                    promotion_data = json.loads(rsp.text).get('data')
+                except:
+                    Retry_times -= 1
+                    logging.info(
+                        '[%s] Get zbjl_splb promotionList_url data failed. type:%s, num_zb:%s, url_zb:%s at %s' % (current_taks, type, one_record.num_zb, one_record.url_zb, get_current_time()))
+                    if Retry_times == 0:
+                        continue_next_flag = True
+                        break
+                    time.sleep(5)
+                else:
+                    break
+            if continue_next_flag:
+                logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_splb', one_record.num_zb, one_record.name_zb,'promotionList_url Error at', get_current_time()]))
                 continue
 
-            with open('/root/xd_crawler/websocket_data/%s.commodity' % webcast_id, 'r') as f:
-                commodity_data = json.load(f)
 
             splb_count = 0
-            for product in commodity_data:
+            for product in promotion_data:
 
                 if REPEAT_CHECK_FLAG:
                     repeat_detect_cmd = "list_%s_zbjl_splb.select().where(list_%s_zbjl_splb.url_zbjl=='%s',list_%s_zbjl_splb.store_url=='%s',list_%s_zbjl_splb.time_update.startswith('%s'))" % (type, type, one_record.url_zbjl ,type, product.get('detail_url'), type, today_date)
@@ -133,26 +142,27 @@ for current_taks in Entry_list:
                 Table_obj.url_zbjl = one_record.url_zbjl
                 Table_obj.livestraming_time = one_record.livestraming_time
 
-                Table_obj.product_name = product.get('title_total')
-                Table_obj.category1 = product.get('promotion_type_v1')
-                Table_obj.category2 = product.get('promotion_type_v2')
-                Table_obj.store_url = product.get('detail_url')
-                Table_obj.yuguyongjin = product.get('cos_fee')
-                Table_obj.yongjinratio = product.get('cos_fee_rate')
+                Table_obj.product_name = product.get('title')
+                Table_obj.category1 = product.get('promotionTypePredict')
+                Table_obj.category2 = product.get('promotionTypeV2')
+                Table_obj.store_url = 'https:' + product.get('detailUrl')
+
+                Table_obj.yuguyongjin = product.get('cosFee')
+                Table_obj.yongjinratio = product.get('cosFeeRate')
                 Table_obj.zhibojia = product.get('price')
-                Table_obj.yuanjian = product.get('market_price')
-                Table_obj.quanhoujia = product.get('coupon_price')
-                Table_obj.shangjiatime = product.get('create_time')
-                Table_obj.shangjiarenshu = product.get('user_count')
-                Table_obj.yuguxiaoliang = product.get('add_sales')
-                Table_obj.shi = product.get('platform_first_sales')
-                Table_obj.mo = product.get('platform_precent_sales')
-                Table_obj.yuguxiaoshoue = product.get('sales_money')
+                Table_obj.yuanjian = product.get('marketPrice')
+                Table_obj.quanhoujia = product.get('couponPrice')
+                Table_obj.shangjiatime = product.get('createTime')
+                Table_obj.shangjiarenshu = product.get('userCount')
+                Table_obj.yuguxiaoliang = product.get('addSales')
+                Table_obj.shi = product.get('firstSales')
+                Table_obj.mo = product.get('lastSales')
+                Table_obj.yuguxiaoshoue = product.get('salesMoney')
 
                 # item2_url = product.get('detail_url')
                 # session.get(url=item2_url, headers=item2_page_headers)
 
-                product_id = product.get('product_id')
+                product_id = product.get('productId')
 
                 # if type in ['ms','yl','gx','ly']:
                 #     WAIT_TIME = 0.4
@@ -210,7 +220,9 @@ for current_taks in Entry_list:
                 if services:
                     if 'support_7days_refund' in services:
                         Table_obj.sevendays = '7天无理由退货'
-                    if 'pay_for_fake' in services:
+                    if 'unsupport_7days_refund' in services:
+                        Table_obj.sevendays = '不支持7天无理由退货'
+                    if 'pay_for_bad' in services:
                         Table_obj.onetothree = '假一赔三'
                     if 'customer_protection' in services:
                         Table_obj.protect = '消费者保障服务'
@@ -244,7 +256,7 @@ for current_taks in Entry_list:
 
                 if data == []:
                     # data得不到数据,因为访问频率的问题,值是[]
-                    Table_obj.product_amount = '0'
+                    Table_obj.product_amount = '--'
                 else:
                     # data能取到数据,值是{"st":10024,"msg":"商品已下架","data":null}
                     if data.get('data') == None and data.get('msg') == "商品已下架":
@@ -267,5 +279,5 @@ for current_taks in Entry_list:
         logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_splb', '[ today_splb_count: %d ]'%today_splb_count, 'Done at', get_current_time()]))
         logging.info('-'*100)
 
-os.system('python3 /root/xd_crawler/logout.py')
-logging.info('[+] Today cookie: %s logout Done at %s'%(cookie,get_current_time()))
+#os.system('python3 /root/xd_crawler/logout.py')
+#logging.info('[+] Today cookie: %s logout Done at %s'%(cookie,get_current_time()))

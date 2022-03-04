@@ -5233,6 +5233,552 @@ class list_qy_zbjl_splb(BaseModel):
 
 '------------------------------------------------------------------------------------'
 
+class list_ms_zbjl_fd(BaseModel):
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
+
+    ffsj = CharField(max_length=256, null=False)
+    fdjp = CharField(max_length=256, null=False)
+    cytj = CharField(max_length=256, null=False)
+    cyrs = CharField(max_length=256, null=False)
+    zjrs = CharField(max_length=256, null=False)
+
+    time_update = CharField(max_length=256, null=False)
+
+class list_ly_zbjl_fd(BaseModel):
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
+
+    ffsj = CharField(max_length=256, null=False)
+    fdjp = CharField(max_length=256, null=False)
+    cytj = CharField(max_length=256, null=False)
+    cyrs = CharField(max_length=256, null=False)
+    zjrs = CharField(max_length=256, null=False)
+
+    time_update = CharField(max_length=256, null=False)
+
+class list_kj_zbjl_fd(BaseModel):
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
+
+    ffsj = CharField(max_length=256, null=False)
+    fdjp = CharField(max_length=256, null=False)
+    cytj = CharField(max_length=256, null=False)
+    cyrs = CharField(max_length=256, null=False)
+    zjrs = CharField(max_length=256, null=False)
+
+    time_update = CharField(max_length=256, null=False)
+
+class list_yl_zbjl_fd(BaseModel):
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
+
+    ffsj = CharField(max_length=256, null=False)
+    fdjp = CharField(max_length=256, null=False)
+    cytj = CharField(max_length=256, null=False)
+    cyrs = CharField(max_length=256, null=False)
+    zjrs = CharField(max_length=256, null=False)
+
+    time_update = CharField(max_length=256, null=False)
+
+class list_cy_zbjl_fd(BaseModel):
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
+
+    ffsj = CharField(max_length=256, null=False)
+    fdjp = CharField(max_length=256, null=False)
+    cytj = CharField(max_length=256, null=False)
+    cyrs = CharField(max_length=256, null=False)
+    zjrs = CharField(max_length=256, null=False)
+
+    time_update = CharField(max_length=256, null=False)
+
+class list_ty_zbjl_fd(BaseModel):
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
+
+    ffsj = CharField(max_length=256, null=False)
+    fdjp = CharField(max_length=256, null=False)
+    cytj = CharField(max_length=256, null=False)
+    cyrs = CharField(max_length=256, null=False)
+    zjrs = CharField(max_length=256, null=False)
+
+    time_update = CharField(max_length=256, null=False)
+
+class list_gx_zbjl_fd(BaseModel):
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
+
+    ffsj = CharField(max_length=256, null=False)
+    fdjp = CharField(max_length=256, null=False)
+    cytj = CharField(max_length=256, null=False)
+    cyrs = CharField(max_length=256, null=False)
+    zjrs = CharField(max_length=256, null=False)
+
+    time_update = CharField(max_length=256, null=False)
+
+class list_ss_zbjl_fd(BaseModel):
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
+
+    ffsj = CharField(max_length=256, null=False)
+    fdjp = CharField(max_length=256, null=False)
+    cytj = CharField(max_length=256, null=False)
+    cyrs = CharField(max_length=256, null=False)
+    zjrs = CharField(max_length=256, null=False)
+
+    time_update = CharField(max_length=256, null=False)
+
+class list_jk_zbjl_fd(BaseModel):
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
+
+    ffsj = CharField(max_length=256, null=False)
+    fdjp = CharField(max_length=256, null=False)
+    cytj = CharField(max_length=256, null=False)
+    cyrs = CharField(max_length=256, null=False)
+    zjrs = CharField(max_length=256, null=False)
+
+    time_update = CharField(max_length=256, null=False)
+
+'------------------------------------------------------------------------------------'
+
+class list_ms_zbjl_yrsp(BaseModel):
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
+
+    url_works = CharField(max_length=256, null=False)
+    time_release = CharField(max_length=256, null=False)
+    zdx = CharField(max_length=256, null=False)
+    zbdz = CharField(max_length=256, null=False)
+    ygyl = CharField(max_length=256, null=False)
+
+    time_update = CharField(max_length=256, null=False)
+
+class list_ly_zbjl_yrsp(BaseModel):
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
+
+    url_works = CharField(max_length=256, null=False)
+    time_release = CharField(max_length=256, null=False)
+    zdx = CharField(max_length=256, null=False)
+    zbdz = CharField(max_length=256, null=False)
+    ygyl = CharField(max_length=256, null=False)
+
+    time_update = CharField(max_length=256, null=False)
+
+class list_kj_zbjl_yrsp(BaseModel):
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
+
+    url_works = CharField(max_length=256, null=False)
+    time_release = CharField(max_length=256, null=False)
+    zdx = CharField(max_length=256, null=False)
+    zbdz = CharField(max_length=256, null=False)
+    ygyl = CharField(max_length=256, null=False)
+
+    time_update = CharField(max_length=256, null=False)
+
+class list_yl_zbjl_yrsp(BaseModel):
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
+
+    url_works = CharField(max_length=256, null=False)
+    time_release = CharField(max_length=256, null=False)
+    zdx = CharField(max_length=256, null=False)
+    zbdz = CharField(max_length=256, null=False)
+    ygyl = CharField(max_length=256, null=False)
+
+    time_update = CharField(max_length=256, null=False)
+
+class list_cy_zbjl_yrsp(BaseModel):
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
+
+    url_works = CharField(max_length=256, null=False)
+    time_release = CharField(max_length=256, null=False)
+    zdx = CharField(max_length=256, null=False)
+    zbdz = CharField(max_length=256, null=False)
+    ygyl = CharField(max_length=256, null=False)
+
+    time_update = CharField(max_length=256, null=False)
+
+class list_ty_zbjl_yrsp(BaseModel):
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
+
+    url_works = CharField(max_length=256, null=False)
+    time_release = CharField(max_length=256, null=False)
+    zdx = CharField(max_length=256, null=False)
+    zbdz = CharField(max_length=256, null=False)
+    ygyl = CharField(max_length=256, null=False)
+
+    time_update = CharField(max_length=256, null=False)
+
+class list_gx_zbjl_yrsp(BaseModel):
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
+
+    url_works = CharField(max_length=256, null=False)
+    time_release = CharField(max_length=256, null=False)
+    zdx = CharField(max_length=256, null=False)
+    zbdz = CharField(max_length=256, null=False)
+    ygyl = CharField(max_length=256, null=False)
+
+    time_update = CharField(max_length=256, null=False)
+
+class list_ss_zbjl_yrsp(BaseModel):
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
+
+    url_works = CharField(max_length=256, null=False)
+    time_release = CharField(max_length=256, null=False)
+    zdx = CharField(max_length=256, null=False)
+    zbdz = CharField(max_length=256, null=False)
+    ygyl = CharField(max_length=256, null=False)
+
+    time_update = CharField(max_length=256, null=False)
+
+class list_jk_zbjl_yrsp(BaseModel):
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
+
+    url_works = CharField(max_length=256, null=False)
+    time_release = CharField(max_length=256, null=False)
+    zdx = CharField(max_length=256, null=False)
+    zbdz = CharField(max_length=256, null=False)
+    ygyl = CharField(max_length=256, null=False)
+
+    time_update = CharField(max_length=256, null=False)
+
+'------------------------------------------------------------------------------------'
+
+class list_ms_zbjl_jcfx(BaseModel):
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
+
+    taffic_time = CharField(max_length=256, null=False)
+    zxrs = CharField(max_length=256, null=False)
+    ljgk = CharField(max_length=256, null=False)
+    jcrs = CharField(max_length=256, null=False)
+    ltrs = CharField(max_length=256, null=False)
+    fss = CharField(max_length=256, null=False)
+    dzs = CharField(max_length=256, null=False)
+    dms = CharField(max_length=256, null=False)
+    fst = CharField(max_length=256, null=False)
+    zzgm = CharField(max_length=256, null=False)
+
+    spsj_product = CharField(max_length=256, null=False)
+    spsj_price = CharField(max_length=256, null=False)
+    spsj_sales = CharField(max_length=256, null=False)
+
+    jjsp_product = CharField(max_length=256, null=False)
+    jjsp_price = CharField(max_length=256, null=False)
+    jjsp_sales = CharField(max_length=256, null=False)
+
+    fc = CharField(max_length=256, null=False)
+
+    time_update = CharField(max_length=256, null=False)
+
+class list_ly_zbjl_jcfx(BaseModel):
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
+
+    taffic_time = CharField(max_length=256, null=False)
+    zxrs = CharField(max_length=256, null=False)
+    ljgk = CharField(max_length=256, null=False)
+    jcrs = CharField(max_length=256, null=False)
+    ltrs = CharField(max_length=256, null=False)
+    fss = CharField(max_length=256, null=False)
+    dzs = CharField(max_length=256, null=False)
+    dms = CharField(max_length=256, null=False)
+    fst = CharField(max_length=256, null=False)
+    zzgm = CharField(max_length=256, null=False)
+
+    spsj_product = CharField(max_length=256, null=False)
+    spsj_price = CharField(max_length=256, null=False)
+    spsj_sales = CharField(max_length=256, null=False)
+
+    jjsp_product = CharField(max_length=256, null=False)
+    jjsp_price = CharField(max_length=256, null=False)
+    jjsp_sales = CharField(max_length=256, null=False)
+
+    fc = CharField(max_length=256, null=False)
+
+    time_update = CharField(max_length=256, null=False)
+
+class list_kj_zbjl_jcfx(BaseModel):
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
+
+    taffic_time = CharField(max_length=256, null=False)
+    zxrs = CharField(max_length=256, null=False)
+    ljgk = CharField(max_length=256, null=False)
+    jcrs = CharField(max_length=256, null=False)
+    ltrs = CharField(max_length=256, null=False)
+    fss = CharField(max_length=256, null=False)
+    dzs = CharField(max_length=256, null=False)
+    dms = CharField(max_length=256, null=False)
+    fst = CharField(max_length=256, null=False)
+    zzgm = CharField(max_length=256, null=False)
+
+    spsj_product = CharField(max_length=256, null=False)
+    spsj_price = CharField(max_length=256, null=False)
+    spsj_sales = CharField(max_length=256, null=False)
+
+    jjsp_product = CharField(max_length=256, null=False)
+    jjsp_price = CharField(max_length=256, null=False)
+    jjsp_sales = CharField(max_length=256, null=False)
+
+    fc = CharField(max_length=256, null=False)
+
+    time_update = CharField(max_length=256, null=False)
+
+class list_yl_zbjl_jcfx(BaseModel):
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
+
+    taffic_time = CharField(max_length=256, null=False)
+    zxrs = CharField(max_length=256, null=False)
+    ljgk = CharField(max_length=256, null=False)
+    jcrs = CharField(max_length=256, null=False)
+    ltrs = CharField(max_length=256, null=False)
+    fss = CharField(max_length=256, null=False)
+    dzs = CharField(max_length=256, null=False)
+    dms = CharField(max_length=256, null=False)
+    fst = CharField(max_length=256, null=False)
+    zzgm = CharField(max_length=256, null=False)
+
+    spsj_product = CharField(max_length=256, null=False)
+    spsj_price = CharField(max_length=256, null=False)
+    spsj_sales = CharField(max_length=256, null=False)
+
+    jjsp_product = CharField(max_length=256, null=False)
+    jjsp_price = CharField(max_length=256, null=False)
+    jjsp_sales = CharField(max_length=256, null=False)
+
+    fc = CharField(max_length=256, null=False)
+
+    time_update = CharField(max_length=256, null=False)
+
+class list_cy_zbjl_jcfx(BaseModel):
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
+
+    taffic_time = CharField(max_length=256, null=False)
+    zxrs = CharField(max_length=256, null=False)
+    ljgk = CharField(max_length=256, null=False)
+    jcrs = CharField(max_length=256, null=False)
+    ltrs = CharField(max_length=256, null=False)
+    fss = CharField(max_length=256, null=False)
+    dzs = CharField(max_length=256, null=False)
+    dms = CharField(max_length=256, null=False)
+    fst = CharField(max_length=256, null=False)
+    zzgm = CharField(max_length=256, null=False)
+
+    spsj_product = CharField(max_length=256, null=False)
+    spsj_price = CharField(max_length=256, null=False)
+    spsj_sales = CharField(max_length=256, null=False)
+
+    jjsp_product = CharField(max_length=256, null=False)
+    jjsp_price = CharField(max_length=256, null=False)
+    jjsp_sales = CharField(max_length=256, null=False)
+
+    fc = CharField(max_length=256, null=False)
+
+    time_update = CharField(max_length=256, null=False)
+
+class list_ty_zbjl_jcfx(BaseModel):
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
+
+    taffic_time = CharField(max_length=256, null=False)
+    zxrs = CharField(max_length=256, null=False)
+    ljgk = CharField(max_length=256, null=False)
+    jcrs = CharField(max_length=256, null=False)
+    ltrs = CharField(max_length=256, null=False)
+    fss = CharField(max_length=256, null=False)
+    dzs = CharField(max_length=256, null=False)
+    dms = CharField(max_length=256, null=False)
+    fst = CharField(max_length=256, null=False)
+    zzgm = CharField(max_length=256, null=False)
+
+    spsj_product = CharField(max_length=256, null=False)
+    spsj_price = CharField(max_length=256, null=False)
+    spsj_sales = CharField(max_length=256, null=False)
+
+    jjsp_product = CharField(max_length=256, null=False)
+    jjsp_price = CharField(max_length=256, null=False)
+    jjsp_sales = CharField(max_length=256, null=False)
+
+    fc = CharField(max_length=256, null=False)
+
+    time_update = CharField(max_length=256, null=False)
+
+class list_gx_zbjl_jcfx(BaseModel):
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
+
+    taffic_time = CharField(max_length=256, null=False)
+    zxrs = CharField(max_length=256, null=False)
+    ljgk = CharField(max_length=256, null=False)
+    jcrs = CharField(max_length=256, null=False)
+    ltrs = CharField(max_length=256, null=False)
+    fss = CharField(max_length=256, null=False)
+    dzs = CharField(max_length=256, null=False)
+    dms = CharField(max_length=256, null=False)
+    fst = CharField(max_length=256, null=False)
+    zzgm = CharField(max_length=256, null=False)
+
+    spsj_product = CharField(max_length=256, null=False)
+    spsj_price = CharField(max_length=256, null=False)
+    spsj_sales = CharField(max_length=256, null=False)
+
+    jjsp_product = CharField(max_length=256, null=False)
+    jjsp_price = CharField(max_length=256, null=False)
+    jjsp_sales = CharField(max_length=256, null=False)
+
+    fc = CharField(max_length=256, null=False)
+
+    time_update = CharField(max_length=256, null=False)
+
+class list_ss_zbjl_jcfx(BaseModel):
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
+
+    taffic_time = CharField(max_length=256, null=False)
+    zxrs = CharField(max_length=256, null=False)
+    ljgk = CharField(max_length=256, null=False)
+    jcrs = CharField(max_length=256, null=False)
+    ltrs = CharField(max_length=256, null=False)
+    fss = CharField(max_length=256, null=False)
+    dzs = CharField(max_length=256, null=False)
+    dms = CharField(max_length=256, null=False)
+    fst = CharField(max_length=256, null=False)
+    zzgm = CharField(max_length=256, null=False)
+
+    spsj_product = CharField(max_length=256, null=False)
+    spsj_price = CharField(max_length=256, null=False)
+    spsj_sales = CharField(max_length=256, null=False)
+
+    jjsp_product = CharField(max_length=256, null=False)
+    jjsp_price = CharField(max_length=256, null=False)
+    jjsp_sales = CharField(max_length=256, null=False)
+
+    fc = CharField(max_length=256, null=False)
+
+    time_update = CharField(max_length=256, null=False)
+
+class list_jk_zbjl_jcfx(BaseModel):
+    num_zb = CharField(max_length=256, null=False)
+    id_zb = CharField(max_length=256, null=False)
+    name_zb = CharField(max_length=256, null=False)
+    url_zbjl = CharField(max_length=256, null=False)
+    livestraming_time = CharField(max_length=256, null=False)
+
+    taffic_time = CharField(max_length=256, null=False)
+    zxrs = CharField(max_length=256, null=False)
+    ljgk = CharField(max_length=256, null=False)
+    jcrs = CharField(max_length=256, null=False)
+    ltrs = CharField(max_length=256, null=False)
+    fss = CharField(max_length=256, null=False)
+    dzs = CharField(max_length=256, null=False)
+    dms = CharField(max_length=256, null=False)
+    fst = CharField(max_length=256, null=False)
+    zzgm = CharField(max_length=256, null=False)
+
+    spsj_product = CharField(max_length=256, null=False)
+    spsj_price = CharField(max_length=256, null=False)
+    spsj_sales = CharField(max_length=256, null=False)
+
+    jjsp_product = CharField(max_length=256, null=False)
+    jjsp_price = CharField(max_length=256, null=False)
+    jjsp_sales = CharField(max_length=256, null=False)
+
+    fc = CharField(max_length=256, null=False)
+
+    time_update = CharField(max_length=256, null=False)
+
+'------------------------------------------------------------------------------------'
+
 if __name__ == '__main__':
     import time
     def get_current_time():

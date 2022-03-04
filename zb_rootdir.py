@@ -130,7 +130,7 @@ for type in input_type:
             else:
                 one_data = data[0]
 
-            url_zb = 'https://xd.newrank.cn/tiktok/detail/latest/%s' % one_data.get('uid')
+            url_zb = 'https://xd.newrank.cn/tiktok/detailV2/overview/%s' % one_data.get('uid')
             #首次建立不写入id_zb,待zbxx运行后再更新id_zb和name_zb
 
             eval('list_' + type + '.create(num_zb=num_zb, id_zb=id_zb, name_zb=name_zb, url_zb=url_zb, time_update=today_date)')
@@ -209,7 +209,7 @@ for type in input_type:
             else:
                 one_data = data[0]
 
-            url_zb = 'https://xd.newrank.cn/tiktok/detail/latest/%s' % one_data.get('uid')
+            url_zb = 'https://xd.newrank.cn/tiktok/detailV2/overview/%s' % one_data.get('uid')
             # 首次建立不写入id_zb,待zbxx运行后再更新id_zb和name_zb
 
             eval('list_' + type + '.create(num_zb=num_zb, id_zb=id_zb, name_zb=name_zb, url_zb=url_zb, time_update=today_date)')

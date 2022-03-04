@@ -3,7 +3,6 @@
 # 次日启动,每天抓取昨天的相应数据(如6月1日抓取5月31日的)
 
 import requests
-import websocket
 import json
 import datetime
 import time
@@ -79,40 +78,28 @@ for current_taks in Entry_list:
             Table_obj.url_zbjl = one_record.url_zbjl
             Table_obj.livestraming_time = one_record.livestraming_time
 
-            if not os.path.exists('/root/xd_crawler/websocket_data/%s.detail' % webcast_id):
-                Table_obj.time_update = 'Severe error occurred at %s' % get_current_time()
-                Table_obj.save()
-                logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_sx', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'Find local websocket file failed  at', get_current_time()]))
-                continue
+            # 2022.2月版本更新，已无websocket机制
+            # if not os.path.exists('/root/xd_crawler/websocket_data/%s.detail' % webcast_id):
+            #     Table_obj.time_update = 'Severe error occurred at %s' % get_current_time()
+            #     Table_obj.save()
+            #     logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_sx', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, 'Find local websocket file failed  at', get_current_time()]))
+            #     continue
+            # with open('/root/xd_crawler/websocket_data/%s.detail' % webcast_id, 'r') as f:
+            #     detail_data = json.load(f)
 
-            with open('/root/xd_crawler/websocket_data/%s.detail' % webcast_id, 'r') as f:
-                detail_data = json.load(f)
-
-            Table_obj.shipintuijian = detail_data.get('stats_user_count_composition').get('video_detail') if detail_data.get('stats_user_count_composition') else '--'
-            Table_obj.guanzhu = detail_data.get('stats_user_count_composition').get('my_follow') if detail_data.get('stats_user_count_composition') else '--'
-            Table_obj.zhiboguangchang = detail_data.get('stats_user_count_composition').get('other') if detail_data.get('stats_user_count_composition') else '--'
-
-            Table_obj.male, Table_obj.female = ['--'] * 2
-            for gender in detail_data.get('watch_user_gender'):
-                if gender.get('key') == "1":
-                    Table_obj.male = gender.get('rate')
-                if gender.get('key') == "2":
-                    Table_obj.female = gender.get('rate')
-
-
-            city_url = 'https://gw.newrank.cn/api/xd/xdnphb/nr/cloud/douyin/webcast/webDetail/city'
+            userSourceInfo_url = 'https://gw.newrank.cn/api/douyin-webcastdetail/xdnphb/nr/app/douyin/webcastdetail/detail/userSourceInfo'
             post_data = {
-                "room_id": webcast_id
+                'roomId': webcast_id
             }
             Retry_times = 10
             continue_next_flag = False
             while 1:
                 try:
-                    rsp = requests.post(city_url, headers=headers, data=json.dumps(post_data))
-                    data = json.loads(rsp.text).get('data')
+                    rsp = requests.post(userSourceInfo_url, headers=headers, data=json.dumps(post_data))
+                    data = json.loads(rsp.text).get('data').get('compostion')
                 except:
                     Retry_times -= 1
-                    logging.info('[*] Get zbjl_sx city_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl,get_current_time()))
+                    logging.info('[%s] Get zbjl_sx userSourceInfo_url data failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (current_taks, type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
                     if Retry_times == 0:
                         continue_next_flag = True
                         break
@@ -120,12 +107,51 @@ for current_taks in Entry_list:
                 else:
                     break
             if continue_next_flag:
-                logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_sx', one_record.num_zb, one_record.name_zb, webcast_id, Table_obj.livestraming_time, 'city_url Error at', get_current_time()]))
-                Table_obj.time_update = '%s city_url Error' % get_current_time()
-                Table_obj.save()
-                today_zbjl_sx_count += 1
+                logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_sx', one_record.num_zb, one_record.name_zb,'userSourceInfo_url Error at', get_current_time()]))
                 continue
 
+            for item in data:
+                if item.get('key') == '关注':
+                    Table_obj.guanzhu = str(item.get('rate'))
+                elif item.get('key') == '视频推荐':
+                    Table_obj.shipintuijian = str(item.get('rate'))
+                elif item.get('key') == '其他':
+                    Table_obj.zhiboguangchang = str(item.get('rate'))
+
+
+            watchUserInfo_url = 'https://gw.newrank.cn/api/douyin-webcastdetail/xdnphb/nr/app/douyin/webcastdetail/detail/watchUserInfo'
+            post_data = {
+                'roomId': webcast_id
+            }
+            Retry_times = 10
+            continue_next_flag = False
+            while 1:
+                try:
+                    rsp = requests.post(watchUserInfo_url, headers=headers, data=json.dumps(post_data))
+                    data = json.loads(rsp.text).get('data')
+                    gender_data = data.get('watchUserGender')
+                    province_data = data.get('watchUserProvince')
+                except:
+                    Retry_times -= 1
+                    logging.info('[%s] Get zbjl_sx watchUserInfo_url data failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (current_taks, type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                    if Retry_times == 0:
+                        continue_next_flag = True
+                        break
+                    time.sleep(5)
+                else:
+                    break
+            if continue_next_flag:
+                logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_sx', one_record.num_zb, one_record.name_zb, 'watchUserInfo_url Error at', get_current_time()]))
+                continue
+
+            for gender in gender_data:
+                if gender.get('key') == '1':
+                    Table_obj.male = gender.get('rate')
+                if gender.get('key') == "2":
+                    Table_obj.female = gender.get('rate')
+
+
+            data = province_data
             Table_obj.heilongjiang = ''.join([i.get('rate') for i in filter(lambda x: x.get('key') == '黑龙江', data)]) if data!=None else '--'
             Table_obj.jilin = ''.join([i.get('rate') for i in filter(lambda x: x.get('key') == '吉林', data)]) if data!=None else '--'
             Table_obj.liaoning = ''.join([i.get('rate') for i in filter(lambda x: x.get('key') == '辽宁', data)]) if data!=None else '--'

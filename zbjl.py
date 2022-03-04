@@ -3,7 +3,6 @@
 # 次日启动,每天抓取昨天直播记录所有详情数据(如6月1日抓取5月31日的)
 
 import requests
-import websocket
 import json
 import datetime
 import time
@@ -46,67 +45,6 @@ headers = {
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36',
 }
 
-def download_websocket_data(webcast_id, cookie, type, num_zb, url_zbjl):
-
-    websocket_url = 'wss://xd.newrank.cn/xdnphb/nr/cloud/douyin/websocket'
-    ws_data = {
-        "type": "webcast",
-        "data": {"room_id": webcast_id}
-    }
-    Retry_times = 3
-    Severe_error_flag = False
-    while 1:
-        try:
-            time.sleep(1)
-            tipRank_data, commodity_data, detail_data = [None] * 3
-            ws = websocket.WebSocket()
-            ws.timeout = 10
-            ws.connect(websocket_url, cookie=cookie, origin="https://xd.newrank.cn", host="xd.newrank.cn")
-            ws.send(json.dumps(ws_data))
-
-            while 1:
-                try:
-                    recv_data = json.loads(ws.recv())
-                    if recv_data.get('type') == 'error':
-                        Severe_error_flag = True
-                        break
-                    if recv_data.get('type') == 'tipRank':
-                        tipRank_data = recv_data.get('data')
-                    if recv_data.get('type') == 'commodity':
-                        commodity_data = recv_data.get('data')
-                    if recv_data.get('type') == 'detail':
-                        detail_data = recv_data.get('data')
-                    #未带货直播的commodity_data为[],此时也需要跳出while
-                    if commodity_data!=None and detail_data!=None:
-                        break
-                #except websocket.WebSocketTimeoutException:
-                except:
-                    if commodity_data and detail_data:
-                        break
-                    else:
-                        raise Exception
-        except:
-            Retry_times -= 1
-            logging.info('[*] Get zbjl websocket data failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, num_zb, url_zbjl,get_current_time()))
-            if Retry_times == 0:
-                Severe_error_flag = True
-                break
-            time.sleep(5)
-        else:
-            break
-
-    if Severe_error_flag:
-        return False
-
-    with open('/root/xd_crawler/websocket_data/%s.detail'%webcast_id, 'w') as f:
-        json.dump(detail_data,f)
-
-    with open('/root/xd_crawler/websocket_data/%s.commodity' % webcast_id, 'w') as f:
-        json.dump(commodity_data, f)
-
-    return True
-
-
 Entry_list = {
     ' Daily ': True,
     'History': True
@@ -146,17 +84,18 @@ for current_taks in Entry_list:
         for one_record in eval('list_%s.select().where(list_%s.time_update=="%s")'%(type, type, today_date)):
 
             uid = one_record.url_zb.split('/')[-1]
-            webcastList_url = 'https://gw.newrank.cn/api/xd/xdnphb/nr/cloud/douyin/webcast/webcastList'
+
+            webcastList_url = 'https://gw.newrank.cn/api/xd/xdnphb/nr/cloud/douyin/user/webcast/list'
 
             post_data = {
-                "create_time": update_date,
-                "date_type": "",
-                "end_time": update_date,
+                "uid": uid,
+                "dateType": "3",
+                "startTime": update_date,
+                "endTime": update_date,
+                "start": 1,
                 "size": 100,
                 "sort": "",
-                "start": 1,
-                "has_commerce_goods": "",
-                "uid": uid
+                "hasCommerceGoods": "",
             }
             Retry_times = 10
             continue_next_flag = False
@@ -181,7 +120,7 @@ for current_taks in Entry_list:
             for item in data_list:
 
                 webcast_id = item.get('id')
-                url_zbjl = 'https://xd.newrank.cn/d/broadcast/%s' % webcast_id
+                url_zbjl = 'https://xd.newrank.cn/broadcast/liveDetails/%s' % webcast_id
 
                 repeat_detect_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.url_zbjl=='%s')" % (type, type, url_zbjl)
                 if eval(repeat_detect_cmd):
@@ -198,40 +137,90 @@ for current_taks in Entry_list:
                 Table_obj.livestraming_time = item.get('create_time')
                 Table_obj.theme = item.get('title')
 
-                if download_websocket_data(webcast_id, cookie, type, one_record.num_zb, url_zbjl):
-                    websocket_use_count += 1
-                else:
-                    Table_obj.time_update = 'Exhaustion of retries or type error occurred at %s' % get_current_time()
-                    Table_obj.save()
-                    zbjl_count += 1
-                    logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb, webcast_id, item.get('create_time'), 'Download websocket data failed at', get_current_time()]))
+                Table_obj.duration = item.get('duration')
+                Table_obj.leijiguankan = item.get('stats_total_user')
+                Table_obj.zongdianzan = item.get('like_count')
+                Table_obj.danchangzhangfen = item.get('stats_follow_count')
+
+                # 2022.2月版本更新，已无websocket机制
+                # if download_websocket_data(webcast_id, cookie, type, one_record.num_zb, url_zbjl):
+                #     websocket_use_count += 1
+                # else:
+                #     Table_obj.time_update = 'Exhaustion of retries or type error occurred at %s' % get_current_time()
+                #     Table_obj.save()
+                #     zbjl_count += 1
+                #     logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb, webcast_id, item.get('create_time'), 'Download websocket data failed at', get_current_time()]))
+                #     continue
+                # with open('/root/xd_crawler/websocket_data/%s.detail'%webcast_id, 'r') as f:
+                #     detail_data = json.load(f)
+
+                # 2022.2月版本更新，已经没有这些数据
+                # Table_obj.yinlangshouru = detail_data.get('stats_fan_ticket_money')
+                # Table_obj.benchangyinlang = detail_data.get('stats_fan_ticket')
+                # Table_obj.songli = detail_data.get('stats_gift_uv_count')
+
+                popularData_url  = 'https://gw.newrank.cn/api/douyin-webcastdetail/xdnphb/nr/app/douyin/webcastdetail/detail/popularData'
+                post_data = {
+                    'roomId': webcast_id
+                }
+                Retry_times = 10
+                continue_next_flag = False
+                while 1:
+                    try:
+                        rsp = requests.post(popularData_url, headers=headers, data=json.dumps(post_data))
+                        data = json.loads(rsp.text).get('data')
+                    except:
+                        Retry_times -= 1
+                        logging.info('[%s] Get zbjl popularData_url data failed. type:%s, num_zb:%s, url_zb:%s at %s' % (current_taks, type, one_record.num_zb, one_record.url_zb, get_current_time()))
+                        if Retry_times == 0:
+                            continue_next_flag = True
+                            break
+                        time.sleep(5)
+                    else:
+                        break
+                if continue_next_flag:
+                    logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb,'popularData_url Error at', get_current_time()]))
                     continue
 
-                with open('/root/xd_crawler/websocket_data/%s.detail'%webcast_id, 'r') as f:
-                    detail_data = json.load(f)
+                Table_obj.zaixianfengzhi = str(data.get('maxUserCount'))
+                Table_obj.zhuanfenlv = str(data.get('turnRate'))
+                Table_obj.pingjunzaixian = str(int(data.get('avgUserCount')))
+                Table_obj.pingjunzhiliu = data.get('userAverageDuration')
 
-                Table_obj.duration = detail_data.get('duration')
-                Table_obj.yinlangshouru = detail_data.get('stats_fan_ticket_money')
-                Table_obj.benchangyinlang = detail_data.get('stats_fan_ticket')
-                Table_obj.songli = detail_data.get('stats_gift_uv_count')
-                Table_obj.zaixianfengzhi = detail_data.get('max_user_count')
-                Table_obj.leijiguankan = detail_data.get('stats_total_user')
-                Table_obj.zongdianzan = detail_data.get('like_count')
-                Table_obj.danchangzhangfen = detail_data.get('add_fans_count')
-                Table_obj.zhuanfenlv = detail_data.get('turn_rate')
-                Table_obj.pingjunzaixian = detail_data.get('avg_user_count')
-                Table_obj.pingjunzhiliu = detail_data.get('user_average_duration')
 
-                Table_obj.yuguxiaoshoue = str(detail_data.get('total_sales_money'))
-                Table_obj.yuguxiaoshouliang = detail_data.get('total_sales')
-                Table_obj.shangjiashangpin = detail_data.get('promotion_count')
+                sellInfo_url  = 'https://gw.newrank.cn/api/douyin-webcastdetail/xdnphb/nr/app/douyin/webcastdetail/detail/sellInfo'
+                post_data = {
+                    'roomId': webcast_id
+                }
+                Retry_times = 10
+                continue_next_flag = False
+                while 1:
+                    try:
+                        rsp = requests.post(sellInfo_url, headers=headers, data=json.dumps(post_data))
+                        data = json.loads(rsp.text).get('data')
+                    except:
+                        Retry_times -= 1
+                        logging.info('[%s] Get zbjl sellInfo_url data failed. type:%s, num_zb:%s, url_zb:%s at %s' % (current_taks, type, one_record.num_zb, one_record.url_zb, get_current_time()))
+                        if Retry_times == 0:
+                            continue_next_flag = True
+                            break
+                        time.sleep(5)
+                    else:
+                        break
+                if continue_next_flag:
+                    logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb,'sellInfo_url Error at', get_current_time()]))
+                    continue
 
-                Table_obj.zuigaodanjia = detail_data.get('max_price')
-                Table_obj.zuigaoxiaoliang = detail_data.get('max_sales')
-                Table_obj.zuigaoxiaoshoue = detail_data.get('max_sales_money')
-                Table_obj.kedanjia = str(detail_data.get('customer_price'))
-                Table_obj.renjungoumaijiazhi = detail_data.get('per_capita')
-                Table_obj.xiaoshouzhuanhualv = detail_data.get('conversion_rate')
+                Table_obj.yuguxiaoshoue = str(int(data.get('totalSalesMoney')))
+                Table_obj.yuguxiaoshouliang = str(data.get('totalSales'))
+                Table_obj.shangjiashangpin = str(data.get('promotionCount'))
+                Table_obj.zuigaodanjia = str(int(data.get('maxPrice')))
+                #Table_obj.zuigaoxiaoliang = detail_data.get('max_sales')
+                #Table_obj.zuigaoxiaoshoue = detail_data.get('max_sales_money')
+                Table_obj.kedanjia = str(data.get('customerPrice'))
+                Table_obj.renjungoumaijiazhi = str(data.get('perCapita'))
+                Table_obj.xiaoshouzhuanhualv = str(data.get('conversionRate'))
+
 
                 if current_taks == ' Daily ':
                     Table_obj.time_update = get_current_time()
@@ -248,3 +237,66 @@ for current_taks in Entry_list:
 
         logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl', '[ today_zbjl_count: %d ]'%today_zbjl_count, 'Done at', get_current_time()]))
         logging.info('-' * 100)
+
+
+
+# 2022.2月版本更新，已无websocket机制
+# def download_websocket_data(webcast_id, cookie, type, num_zb, url_zbjl):
+#
+#     websocket_url = 'wss://xd.newrank.cn/xdnphb/nr/cloud/douyin/websocket'
+#     ws_data = {
+#         "type": "webcast",
+#         "data": {"room_id": webcast_id}
+#     }
+#     Retry_times = 3
+#     Severe_error_flag = False
+#     while 1:
+#         try:
+#             time.sleep(1)
+#             tipRank_data, commodity_data, detail_data = [None] * 3
+#             ws = websocket.WebSocket()
+#             ws.timeout = 10
+#             ws.connect(websocket_url, cookie=cookie, origin="https://xd.newrank.cn", host="xd.newrank.cn")
+#             ws.send(json.dumps(ws_data))
+#
+#             while 1:
+#                 try:
+#                     recv_data = json.loads(ws.recv())
+#                     if recv_data.get('type') == 'error':
+#                         Severe_error_flag = True
+#                         break
+#                     if recv_data.get('type') == 'tipRank':
+#                         tipRank_data = recv_data.get('data')
+#                     if recv_data.get('type') == 'commodity':
+#                         commodity_data = recv_data.get('data')
+#                     if recv_data.get('type') == 'detail':
+#                         detail_data = recv_data.get('data')
+#                     #未带货直播的commodity_data为[],此时也需要跳出while
+#                     if commodity_data!=None and detail_data!=None:
+#                         break
+#                 #except websocket.WebSocketTimeoutException:
+#                 except:
+#                     if commodity_data and detail_data:
+#                         break
+#                     else:
+#                         raise Exception
+#         except:
+#             Retry_times -= 1
+#             logging.info('[*] Get zbjl websocket data failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, num_zb, url_zbjl,get_current_time()))
+#             if Retry_times == 0:
+#                 Severe_error_flag = True
+#                 break
+#             time.sleep(5)
+#         else:
+#             break
+#
+#     if Severe_error_flag:
+#         return False
+#
+#     with open('/root/xd_crawler/websocket_data/%s.detail'%webcast_id, 'w') as f:
+#         json.dump(detail_data,f)
+#
+#     with open('/root/xd_crawler/websocket_data/%s.commodity' % webcast_id, 'w') as f:
+#         json.dump(commodity_data, f)
+#
+#     return True
