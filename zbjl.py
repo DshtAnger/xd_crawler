@@ -129,12 +129,14 @@ for current_taks in Entry_list:
                     logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb, webcast_id, item.get('create_time'), 'This is Repeated data. Continue next at', get_current_time()]))
                     continue
 
+                livestraming_time = item.get('create_time')
+
                 Table_obj = eval('list_' + type + '_zbjl' + '.create()')
                 Table_obj.num_zb = one_record.num_zb
                 Table_obj.id_zb = one_record.id_zb
                 Table_obj.name_zb = one_record.name_zb
                 Table_obj.url_zbjl = url_zbjl
-                Table_obj.livestraming_time = item.get('create_time')
+                Table_obj.livestraming_time = livestraming_time
                 Table_obj.theme = item.get('title')
 
                 Table_obj.duration = item.get('duration')
@@ -184,8 +186,8 @@ for current_taks in Entry_list:
 
                 Table_obj.zaixianfengzhi = str(data.get('maxUserCount'))
                 Table_obj.zhuanfenlv = str(data.get('turnRate'))
-                Table_obj.pingjunzaixian = str(int(data.get('avgUserCount')))
-                Table_obj.pingjunzhiliu = data.get('userAverageDuration')
+                Table_obj.pingjunzaixian = str(data.get('avgUserCount'))
+                Table_obj.pingjunzhiliu = str(data.get('userAverageDuration'))
 
 
                 sellInfo_url  = 'https://gw.newrank.cn/api/douyin-webcastdetail/xdnphb/nr/app/douyin/webcastdetail/detail/sellInfo'
@@ -211,10 +213,10 @@ for current_taks in Entry_list:
                     logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb,'sellInfo_url Error at', get_current_time()]))
                     continue
 
-                Table_obj.yuguxiaoshoue = str(int(data.get('totalSalesMoney')))
+                Table_obj.yuguxiaoshoue = str(data.get('totalSalesMoney'))
                 Table_obj.yuguxiaoshouliang = str(data.get('totalSales'))
                 Table_obj.shangjiashangpin = str(data.get('promotionCount'))
-                Table_obj.zuigaodanjia = str(int(data.get('maxPrice')))
+                Table_obj.zuigaodanjia = str(data.get('maxPrice'))
                 #Table_obj.zuigaoxiaoliang = detail_data.get('max_sales')
                 #Table_obj.zuigaoxiaoshoue = detail_data.get('max_sales_money')
                 Table_obj.kedanjia = str(data.get('customerPrice'))
@@ -230,7 +232,7 @@ for current_taks in Entry_list:
                 Table_obj.save()
                 zbjl_count += 1
                 today_zbjl_count +=1
-                logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb, webcast_id, Table_obj.livestraming_time, 'Done at', get_current_time()]))
+                logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb, webcast_id, livestraming_time, 'Done at', get_current_time()]))
 
             logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl', one_record.num_zb, one_record.name_zb, '[ zbjl_count: %d ]'%zbjl_count, 'Done at', get_current_time()]))
             logging.info('-'*50)

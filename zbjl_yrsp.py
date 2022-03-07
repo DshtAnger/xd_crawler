@@ -111,6 +111,6 @@ for current_taks in Entry_list:
                 Table_obj.save()
                 today_zbjl_yrsp_count += 1
 
-            logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_yrsp', one_record.num_zb, one_record.name_zb, webcast_id, Table_obj.livestraming_time, '[ zbjl_yrsp_count: %d ]'%len(data_list), 'Done at', get_current_time()]))
+            logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_yrsp', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ zbjl_yrsp_count: %d ]'%len(data_list), 'Done at', get_current_time()]))
         logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_yrsp', '[ today_zbjl_yrsp_count: %d ]'%today_zbjl_yrsp_count, 'Done at', get_current_time()]))
         logging.info('-'*100)

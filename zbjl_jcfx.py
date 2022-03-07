@@ -158,20 +158,18 @@ for current_taks in Entry_list:
             trendFansclub_list = [{'gmtCreate': current_node_time, 'clubInfoTotalFansCount':0}] + trendFansclub_list
 
 
-
-            Table_obj = eval('list_' + type + '_zbjl_jcfx' + '.create()')
-            Table_obj.num_zb = one_record.num_zb
-            Table_obj.id_zb = one_record.id_zb
-            Table_obj.name_zb = one_record.name_zb
-            Table_obj.url_zbjl = one_record.url_zbjl
-            Table_obj.livestraming_time = one_record.livestraming_time
-
-
             current_node_time = calc_next_time(start_time, 1)
             next_newPromotion_flag = None
             next_explainPromotion_flag = None
             count = 0
             while time_comparison(current_node_time, end_time):
+
+                Table_obj = eval('list_' + type + '_zbjl_jcfx' + '.create()')
+                Table_obj.num_zb = one_record.num_zb
+                Table_obj.id_zb = one_record.id_zb
+                Table_obj.name_zb = one_record.name_zb
+                Table_obj.url_zbjl = one_record.url_zbjl
+                Table_obj.livestraming_time = one_record.livestraming_time
 
                 '---------------------------------------------------------------------------------------------------------------------------------------'
 
@@ -187,7 +185,7 @@ for current_taks in Entry_list:
 
                 if not (left_node and right_node):
 
-                    if time_comparison(trendUser_list[-1].get('gmtCreate'),current_node_time):
+                    if len(trendUser_list)>=2 and time_comparison(trendUser_list[-1].get('gmtCreate'),current_node_time):
                         left_node = trendUser_list[-2]
                         right_node = trendUser_list[-1]
                     else:
@@ -218,7 +216,7 @@ for current_taks in Entry_list:
 
                 if not (left_node and right_node):
 
-                    if time_comparison(trendInteraction_list[-1].get('gmtCreate'),current_node_time):
+                    if len(trendInteraction_list)>=2 and  time_comparison(trendInteraction_list[-1].get('gmtCreate'),current_node_time):
                         left_node = trendInteraction_list[-2]
                         right_node = trendInteraction_list[-1]
                     else:
@@ -245,7 +243,7 @@ for current_taks in Entry_list:
 
                 if not (left_node and right_node):
 
-                    if time_comparison(trendBuy_list[-1].get('gmtCreate'),current_node_time):
+                    if len(trendBuy_list)>=2 and time_comparison(trendBuy_list[-1].get('gmtCreate'),current_node_time):
                         left_node = trendBuy_list[-2]
                         right_node = trendBuy_list[-1]
                     else:
@@ -269,7 +267,7 @@ for current_taks in Entry_list:
 
                 if not (left_node and right_node):
 
-                    if time_comparison(trendFansclub_list[-1].get('gmtCreate'),current_node_time):
+                    if len(trendFansclub_list)>=2 and time_comparison(trendFansclub_list[-1].get('gmtCreate'),current_node_time):
                         left_node = trendFansclub_list[-2]
                         right_node = trendFansclub_list[-1]
                     else:
@@ -408,6 +406,6 @@ for current_taks in Entry_list:
 
                 current_node_time = calc_next_time(current_node_time, 1)
 
-            logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_jcfx', one_record.num_zb, one_record.name_zb, webcast_id, Table_obj.livestraming_time, '[ zbjl_jcfx_count: %d ]'%count, 'Done at', get_current_time()]))
+            logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_jcfx', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ zbjl_jcfx_count: %d ]'%count, 'Done at', get_current_time()]))
         logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_fcfx', '[ today_zbjl_jcfx_count: %d ]'%today_zbjl_jcfx_count, 'Done at', get_current_time()]))
         logging.info('-'*100)
