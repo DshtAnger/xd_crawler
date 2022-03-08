@@ -189,7 +189,7 @@ for current_taks in Entry_list:
                         left_node = trendUser_list[-2]
                         right_node = trendUser_list[-1]
                     else:
-                        logging.info('[%s] Get zbjl_jcfx type:%s, num_zb:%s, url_zbjl:%s, trendUser_list current_node_time: %s can not get left or right node at %s' % (current_taks, type, one_record.num_zb, one_record.url_zbjl, current_node_time, get_current_time()))
+                        #logging.info('[%s] Get zbjl_jcfx type:%s, num_zb:%s, url_zbjl:%s, trendUser_list current_node_time: %s can not get left or right node at %s' % (current_taks, type, one_record.num_zb, one_record.url_zbjl, current_node_time, get_current_time()))
                         zxrs = '0'
                         ljgk = '0'
                         jcrs = '0'
@@ -220,7 +220,7 @@ for current_taks in Entry_list:
                         left_node = trendInteraction_list[-2]
                         right_node = trendInteraction_list[-1]
                     else:
-                        logging.info('[%s] Get zbjl_jcfx type:%s, num_zb:%s, url_zbjl:%s, trendInteraction_list current_node_time: %s can not get left or right node at %s' % (current_taks, type, one_record.num_zb, one_record.url_zbjl, current_node_time, get_current_time()))
+                        #logging.info('[%s] Get zbjl_jcfx type:%s, num_zb:%s, url_zbjl:%s, trendInteraction_list current_node_time: %s can not get left or right node at %s' % (current_taks, type, one_record.num_zb, one_record.url_zbjl, current_node_time, get_current_time()))
                         fss = '0'
                         dzs = '0'
                         dms = '0'
@@ -247,7 +247,7 @@ for current_taks in Entry_list:
                         left_node = trendBuy_list[-2]
                         right_node = trendBuy_list[-1]
                     else:
-                        logging.info('[%s] Get zbjl_jcfx type:%s, num_zb:%s, url_zbjl:%s, trendBuy_list current_node_time: %s can not get left or right node at %s' % (current_taks, type, one_record.num_zb, one_record.url_zbjl, current_node_time, get_current_time()))
+                        #logging.info('[%s] Get zbjl_jcfx type:%s, num_zb:%s, url_zbjl:%s, trendBuy_list current_node_time: %s can not get left or right node at %s' % (current_taks, type, one_record.num_zb, one_record.url_zbjl, current_node_time, get_current_time()))
                         zzgm = '0'
                 else:
                     zzgm = '{:.2f}'.format(calc_data(left_node.get('gmtCreate'), right_node.get('gmtCreate'), left_node.get('purchaseCnt'), right_node.get('purchaseCnt'), current_node_time))
@@ -271,7 +271,7 @@ for current_taks in Entry_list:
                         left_node = trendFansclub_list[-2]
                         right_node = trendFansclub_list[-1]
                     else:
-                        logging.info('[%s] Get zbjl_jcfx type:%s, num_zb:%s, url_zbjl:%s, trendFansclub_list current_node_time: %s can not get left or right node at %s' % (current_taks, type, one_record.num_zb, one_record.url_zbjl, current_node_time, get_current_time()))
+                        #logging.info('[%s] Get zbjl_jcfx type:%s, num_zb:%s, url_zbjl:%s, trendFansclub_list current_node_time: %s can not get left or right node at %s' % (current_taks, type, one_record.num_zb, one_record.url_zbjl, current_node_time, get_current_time()))
                         fst = '0'
                 else:
                     fst = '{:.2f}'.format(calc_data(left_node.get('gmtCreate'), right_node.get('gmtCreate'), left_node.get('clubInfoTotalFansCount'), right_node.get('clubInfoTotalFansCount'), current_node_time))

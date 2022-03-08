@@ -72,6 +72,7 @@ pseudo_header = {
     'referer': 'https://haohuo.jinritemai.com/',
     'sec-ch-ua': '" Not A;Brand";v="99", "Chromium";v="90", "Google Chrome";v="90"',
     'sec-ch-ua-mobile': '?0',
+    'sec-ch-ua-platform': "macOS",
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'cross-site',
@@ -169,13 +170,15 @@ for current_taks in Entry_list:
                 # if type in ['ss','kj','cy','ty','jk',]:
                 #     WAIT_TIME = 0.6
 
-                WAIT_TIME = random.choice([0.5, 0.6, 0.7, 0.8])
+                WAIT_TIME = random.choice([0.6, 0.7, 0.8, 0.9])
 
                 # staticitem_url = 'https://ec.snssdk.com/product/fxgajaxstaticitem?b_type_new=0&device_id=0&is_outside=1&id={0}&preview=0'.format(product_id)
-                staticitem_url = 'https://ec.snssdk.com/product/fxgajaxstaticitem?id={0}'.format(product_id)
-                Retry_times = 10
+                staticitem_url = 'https://ec.snssdk.com/product/fxgajaxstaticitem?id={0}'.format(product_id)#
+                #staticitem_url = 'https://ec.snssdk.com/product/fxgajaxstaticitem?b_type_new=0&device_id=0&is_outside=1&id={0}&preview=0&is_native_h5=1'.format(product_id)
+                Retry_times = 3
                 continue_next_flag = False
                 while 1:
+                    data = None
                     try:
                         time.sleep(WAIT_TIME)
                         # rsp = requests.get(staticitem_url, headers={'user-agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36'})
