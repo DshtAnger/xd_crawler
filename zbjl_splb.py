@@ -181,10 +181,14 @@ for current_taks in Entry_list:
                         # rsp = requests.get(staticitem_url, headers={'user-agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36'})
                         # rsp = session.get(url=staticitem_url, headers=pseudo_header)
                         rsp = requests.get(staticitem_url, headers=pseudo_header)
-                        data = json.loads(rsp.text).get('data')
+                        if rsp.text == '':
+                            data = None
+                        else:
+                            data = json.loads(rsp.text)
+                            data = data.get('data') if isinstance(data,dict) else {}
                     except:
                         Retry_times -= 1
-                        logging.info('[*] Get zbjl_splb staticitem_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                        logging.info('[*] Get zbjl_splb staticitem_url failed. type:%s, num_zb:%s, url_zbjl:%s product_id:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, product_id, get_current_time()))
                         if Retry_times == 0:
                             continue_next_flag = True
                             break
