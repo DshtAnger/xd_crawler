@@ -185,12 +185,12 @@ except Exception as e:
     logging.exception(e)
     print('zbjl_fd error')
 
-
-try:
-    os.system(zbjl_yrsp)
-except Exception as e:
-    logging.exception(e)
-    print('zbjl_yrsp error')
+# 8点启动无法获取到数据,可能是xd更新数据时间的问题,该任务单独用crontab定为12点启动
+# try:
+#     os.system(zbjl_yrsp)
+# except Exception as e:
+#     logging.exception(e)
+#     print('zbjl_yrsp error')
 
 
 try:
