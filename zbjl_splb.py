@@ -65,6 +65,20 @@ item2_page_headers = {
     'If-Modified-Since': 'Mon, 07 Jun 2021 07:41:40 GMT',
 }
 
+pseudo_header = {
+    'accept': 'application/json, text/plain, */*',
+    'accept-language': 'zh-CN,zh;q=0.9',
+    'origin': 'https://haohuo.jinritemai.com',
+    'referer': 'https://haohuo.jinritemai.com/',
+    'sec-ch-ua': '" Not A;Brand";v="99", "Chromium";v="90", "Google Chrome";v="90"',
+    'sec-ch-ua-mobile': '?0',
+    'sec-ch-ua-platform': "macOS",
+    'sec-fetch-dest': 'empty',
+    'sec-fetch-mode': 'cors',
+    'sec-fetch-site': 'cross-site',
+    'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36'
+}
+
 Entry_list = {
     ' Daily ': True,
     'History': True
@@ -151,30 +165,15 @@ for current_taks in Entry_list:
 
                 product_id = product.get('productId')
 
-                pseudo_header = {
-                    'accept': 'application/json, text/plain, */*',
-                    'accept-language': 'zh-CN,zh;q=0.9',
-                    'origin': 'https://haohuo.jinritemai.com',
-                    'referer': 'https://haohuo.jinritemai.com/',
-                    'sec-ch-ua': '" Not A;Brand";v="99", "Chromium";v="90", "Google Chrome";v="90"',
-                    'sec-ch-ua-mobile': '?0',
-                    'sec-ch-ua-platform': "macOS",
-                    'sec-fetch-dest': 'empty',
-                    'sec-fetch-mode': 'cors',
-                    'sec-fetch-site': 'cross-site',
-                    'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36'
-                }
-
-                WAIT_TIME = random.choice([0.6, 0.7, 0.8, 0.9])
+                WAIT_TIME = 2#random.choice([0.6, 0.7, 0.8, 0.9])
 
                 get_msToken_url = 'https://ec.snssdk.com/index/getNewAbUiParams?token=aweme&b_type_new=0&device_id=0&is_outside=1'
                 rsp = requests.get(get_msToken_url, headers=pseudo_header)
                 msToken = rsp.headers.get('Set-Cookie', '').split(';')[0]
                 pseudo_header.update({'cookie':msToken})
 
-                # staticitem_url = 'https://ec.snssdk.com/product/fxgajaxstaticitem?b_type_new=0&device_id=0&is_outside=1&id={0}&preview=0'.format(product_id)
-                staticitem_url = 'https://ec.snssdk.com/product/fxgajaxstaticitem?id={0}'.format(product_id)
-                #staticitem_url = 'https://ec.snssdk.com/product/fxgajaxstaticitem?b_type_new=0&device_id=0&is_outside=1&id={0}&preview=0&is_native_h5=1'.format(product_id)
+                # staticitem_url = 'https://ec.snssdk.com/product/fxgajaxstaticitem?id={0}'.format(product_id)
+                staticitem_url = 'https://ec.snssdk.com/product/fxgajaxstaticitem?b_type_new=0&device_id=0&is_outside=1&id={0}&preview=0&is_native_h5=1'.format(product_id)
                 Retry_times = 3
                 continue_next_flag = False
                 while 1:
