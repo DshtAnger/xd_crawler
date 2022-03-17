@@ -30,10 +30,11 @@ sys.excepthook = handle_exception
 
 async def login(USERNAME, PASSWORD):
 
-    browser = await launch(headless=True,options={'args': ['--no-sandbox']},ignoreDefaultArgs=['--enable-automation']) # 关闭无头浏览器
+    browser = await launch(headless=True,options={'args': ['--no-sandbox','--window-size=2000,2000']},ignoreDefaultArgs=['--enable-automation']) # 关闭无头浏览器
     page = await browser.newPage()
+    await page.setViewport({'width': 2000, 'height': 2000})
     await page.setJavaScriptEnabled(enabled=True)
-    await page.setUserAgent('5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36')
+    await page.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36')
     await page.evaluateOnNewDocument('''() =>{ Object.defineProperties(navigator,{ webdriver:{ get: () => false } }) }''')
     await page.evaluateOnNewDocument('''() =>{ window.navigator.chrome = { runtime: {},  }; }''')
     await page.evaluateOnNewDocument('''() =>{ Object.defineProperty(navigator, 'languages', { get: () => ['en-US', 'en'] }); }''')
