@@ -110,7 +110,7 @@ for current_taks in Entry_list:
             while 1:
                 try:
                     rsp = requests.post(promotionList_url, headers=headers, data=json.dumps(post_data))
-                    promotion_data = json.loads(rsp.text).get('data',[])
+                    promotion_data = json.loads(rsp.text).get('data') if json.loads(rsp.text).get('data') else []
                 except:
                     Retry_times -= 1
                     logging.info(
