@@ -73,8 +73,7 @@ for current_taks in Entry_list:
             while 1:
                 try:
                     rsp = requests.post(liveStreamDetail_url, headers=headers, data=json.dumps(post_data))
-                    data = json.loads(rsp.text).get('data')
-                    data_list = data.get('videoVOList') if data else []
+                    data_list = json.loads(rsp.text).get('data').get('videoVOList') if json.loads(rsp.text).get('data') else []
                 except:
                     Retry_times -= 1
                     logging.info('[%s] Get zbjl_yrsp liveStreamDetail_url data failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (current_taks, type, one_record.num_zb, one_record.url_zbjl, get_current_time()))

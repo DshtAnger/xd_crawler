@@ -75,7 +75,7 @@ for current_taks in Entry_list:
             while 1:
                 try:
                     rsp = requests.post(userSourceInfo_url, headers=headers, data=json.dumps(post_data))
-                    data_list = json.loads(rsp.text).get('data').get('trend')
+                    data_list = json.loads(rsp.text).get('data').get('trend') if json.loads(rsp.text).get('data') else []
                 except:
                     Retry_times -= 1
                     logging.info('[*] Get zbjl_rc userSourceInfo_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))

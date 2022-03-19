@@ -102,7 +102,7 @@ for current_taks in Entry_list:
             while 1:
                 try:
                     rsp = requests.post(webcastList_url, headers=headers, data=json.dumps(post_data))
-                    data_list = json.loads(rsp.text).get('data').get('list')
+                    data_list = json.loads(rsp.text).get('data').get('list') if json.loads(rsp.text).get('data') else []
                 except:
                     Retry_times -= 1
                     logging.info('[%s] Get zbjl webcastList_url data failed. type:%s, num_zb:%s, url_zb:%s at %s' % (current_taks, type, one_record.num_zb, one_record.url_zb, get_current_time()))
@@ -170,7 +170,7 @@ for current_taks in Entry_list:
                 while 1:
                     try:
                         rsp = requests.post(popularData_url, headers=headers, data=json.dumps(post_data))
-                        data = json.loads(rsp.text).get('data')
+                        data = json.loads(rsp.text).get('data') if json.loads(rsp.text).get('data') else {}
                     except:
                         Retry_times -= 1
                         logging.info('[%s] Get zbjl popularData_url data failed. type:%s, num_zb:%s, url_zb:%s at %s' % (current_taks, type, one_record.num_zb, one_record.url_zb, get_current_time()))
@@ -199,7 +199,7 @@ for current_taks in Entry_list:
                 while 1:
                     try:
                         rsp = requests.post(sellInfo_url, headers=headers, data=json.dumps(post_data))
-                        data = json.loads(rsp.text).get('data')
+                        data = json.loads(rsp.text).get('data') if json.loads(rsp.text).get('data') else {}
                     except:
                         Retry_times -= 1
                         logging.info('[%s] Get zbjl sellInfo_url data failed. type:%s, num_zb:%s, url_zb:%s at %s' % (current_taks, type, one_record.num_zb, one_record.url_zb, get_current_time()))
