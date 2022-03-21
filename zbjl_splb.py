@@ -113,8 +113,7 @@ for current_taks in Entry_list:
                     promotion_data = json.loads(rsp.text).get('data') if json.loads(rsp.text).get('data') else []
                 except:
                     Retry_times -= 1
-                    logging.info(
-                        '[%s] Get zbjl_splb promotionList_url data failed. type:%s, num_zb:%s, url_zb:%s at %s' % (current_taks, type, one_record.num_zb, one_record.url_zb, get_current_time()))
+                    logging.info('[%s] Get zbjl_splb promotionList_url data failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (current_taks, type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
                     if Retry_times == 0:
                         continue_next_flag = True
                         break
