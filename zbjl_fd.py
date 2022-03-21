@@ -73,7 +73,10 @@ for current_taks in Entry_list:
             while 1:
                 try:
                     rsp = requests.post(lotteryMelonList_url, headers=headers, data=json.dumps(post_data))
-                    data = json.loads(rsp.text).get('data',[])
+                    data = json.loads(rsp.text).get('data')
+                    if isinstance(data,str):
+                        logging.info('[%s] Get zbjl_fd lotteryMelonList_url data failed. type:%s, num_zb:%s, url_zbjl:%s, data:%s, at %s' % (current_taks, type, one_record.num_zb, one_record.url_zbjl, data, get_current_time()))
+                    data = data if isinstance(data,list) else []
                 except:
                     Retry_times -= 1
                     logging.info('[%s] Get zbjl_fd lotteryMelonList_url data failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (current_taks, type, one_record.num_zb, one_record.url_zbjl, get_current_time()))

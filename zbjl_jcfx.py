@@ -93,62 +93,159 @@ for current_taks in Entry_list:
                 'startTime': start_time,
                 'endTime': end_time
             }
+
             Retry_times = 10
             continue_next_flag = False
             while 1:
-                rsp_status = [None] * 7
                 try:
                     rsp = requests.post(trendUser_url, headers=headers, data=json.dumps(post_data))
                     data = json.loads(rsp.text).get('data')
-                    trendUser_list = data.get('trend') if data else []
-                    rsp_status[0] = 'Done'
+                    trendUser_list = data.get('trend') if isinstance(data,dict) and isinstance(data.get('trend'),list) else []
+                except:
+                    Retry_times -= 1
+                    logging.info('[%s] Get zbjl_jcfx trendUser_url data failed. rsp_code:%s, type:%s, num_zb:%s, url_zbjl:%s at %s' % (current_taks, rsp.status_code, type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                    if Retry_times == 0:
+                        continue_next_flag = True
+                        break
+                    time.sleep(3)
+                else:
+                    break
+            if continue_next_flag:
+                logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_jcfx', one_record.num_zb, one_record.name_zb,'trendUser_url Error at', get_current_time()]))
+                continue
 
+
+            Retry_times = 10
+            continue_next_flag = False
+            while 1:
+                try:
                     rsp = requests.post(trendInteraction_url, headers=headers, data=json.dumps(post_data))
                     data = json.loads(rsp.text).get('data')
-                    trendInteraction_list = data.get('trend') if data else []
-                    rsp_status[1] = 'Done'
+                    trendInteraction_list = data.get('trend') if isinstance(data,dict) and isinstance(data.get('trend'),list) else []
+                except:
+                    Retry_times -= 1
+                    logging.info('[%s] Get zbjl_jcfx trendInteraction_url data failed. rsp_code:%s, type:%s, num_zb:%s, url_zbjl:%s at %s' % (current_taks, rsp.status_code, type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                    if Retry_times == 0:
+                        continue_next_flag = True
+                        break
+                    time.sleep(3)
+                else:
+                    break
+            if continue_next_flag:
+                logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_jcfx', one_record.num_zb, one_record.name_zb,'trendInteraction_url Error at', get_current_time()]))
+                continue
 
+
+            Retry_times = 10
+            continue_next_flag = False
+            while 1:
+                try:
                     rsp = requests.post(trendBuy_url, headers=headers, data=json.dumps(post_data))
                     data = json.loads(rsp.text).get('data')
-                    trendBuy_list = data.get('trend') if data else []
-                    rsp_status[2] = 'Done'
+                    trendBuy_list = data.get('trend') if isinstance(data,dict) and isinstance(data.get('trend'),list) else []
+                except:
+                    Retry_times -= 1
+                    logging.info('[%s] Get zbjl_jcfx trendBuy_url data failed. rsp_code:%s, type:%s, num_zb:%s, url_zbjl:%s at %s' % (current_taks, rsp.status_code, type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                    if Retry_times == 0:
+                        continue_next_flag = True
+                        break
+                    time.sleep(3)
+                else:
+                    break
+            if continue_next_flag:
+                logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_jcfx', one_record.num_zb, one_record.name_zb,'trendBuy_url Error at', get_current_time()]))
+                continue
 
+
+            Retry_times = 10
+            continue_next_flag = False
+            while 1:
+                try:
                     rsp = requests.post(trendFansclub_url, headers=headers, data=json.dumps(post_data))
                     data = json.loads(rsp.text).get('data')
-                    trendFansclub_list = data.get('trend') if data else []
-                    rsp_status[3] = 'Done'
+                    trendFansclub_list = data.get('trend') if isinstance(data,dict) and isinstance(data.get('trend'),list) else []
+                except:
+                    Retry_times -= 1
+                    logging.info('[%s] Get zbjl_jcfx trendFansclub_url data failed. rsp_code:%s, type:%s, num_zb:%s, url_zbjl:%s at %s' % (current_taks, rsp.status_code, type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                    if Retry_times == 0:
+                        continue_next_flag = True
+                        break
+                    time.sleep(3)
+                else:
+                    break
+            if continue_next_flag:
+                logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_jcfx', one_record.num_zb, one_record.name_zb,'trendFansclub_url Error at', get_current_time()]))
+                continue
 
+
+            Retry_times = 10
+            continue_next_flag = False
+            while 1:
+                try:
                     rsp = requests.post(newPromotionEventRecord_url, headers=headers, data=json.dumps(post_data))
                     data = json.loads(rsp.text).get('data')
-                    newPromotionEventRecord_list = data.get('record') if data else []
-                    rsp_status[4] = 'Done'
+                    newPromotionEventRecord_list = data.get('record') if isinstance(data,dict) and isinstance(data.get('record'),list) else []
+                except:
+                    Retry_times -= 1
+                    logging.info('[%s] Get zbjl_jcfx newPromotionEventRecord_url data failed. rsp_code:%s, type:%s, num_zb:%s, url_zbjl:%s at %s' % (current_taks, rsp.status_code, type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                    if Retry_times == 0:
+                        continue_next_flag = True
+                        break
+                    time.sleep(3)
+                else:
+                    break
+            if continue_next_flag:
+                logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_jcfx', one_record.num_zb, one_record.name_zb,'newPromotionEventRecord_url Error at', get_current_time()]))
+                continue
 
+
+            Retry_times = 10
+            continue_next_flag = False
+            while 1:
+                try:
                     rsp = requests.post(explainPromotionEventRecord_url, headers=headers, data=json.dumps(post_data))
                     data = json.loads(rsp.text).get('data')
-                    explainPromotionEventRecord_list = data.get('record') if data else []
-                    rsp_status[5] = 'Done'
+                    explainPromotionEventRecord_list = data.get('record') if isinstance(data,dict) and isinstance(data.get('record'),list) else []
+                except:
+                    Retry_times -= 1
+                    logging.info('[%s] Get zbjl_jcfx explainPromotionEventRecord_url data failed. rsp_code:%s, type:%s, num_zb:%s, url_zbjl:%s at %s' % (current_taks, rsp.status_code, type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                    if Retry_times == 0:
+                        continue_next_flag = True
+                        break
+                    time.sleep(3)
+                else:
+                    break
+            if continue_next_flag:
+                logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_jcfx', one_record.num_zb, one_record.name_zb,'explainPromotionEventRecord_url Error at', get_current_time()]))
+                continue
 
+
+            Retry_times = 10
+            continue_next_flag = False
+            while 1:
+                try:
                     post_data = {
                         'roomId': webcast_id
                     }
                     rsp = requests.post(promotionList_url, headers=headers, data=json.dumps(post_data))
                     data = json.loads(rsp.text).get('data')
-                    promotion_list = data if data else []
-                    rsp_status[6] = 'Done'
-
-
+                    if isinstance(data, str):
+                        logging.info('[%s] Get zbjl_jcfx promotionList_url data failed. type:%s, num_zb:%s, url_zbjl:%s, data:%s, at %s' % (current_taks, type, one_record.num_zb, one_record.url_zbjl, data, get_current_time()))
+                    promotion_list = data if isinstance(data,list) else []
                 except:
                     Retry_times -= 1
-                    logging.info('[%s] Get zbjl_jcfx urls data failed. rsp_status:%s, type:%s, num_zb:%s, url_zbjl:%s at %s' % (current_taks, rsp_status, type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                    logging.info('[%s] Get zbjl_jcfx promotionList_url data failed. rsp_code:%s, type:%s, num_zb:%s, url_zbjl:%s at %s' % (current_taks, rsp.status_code, type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
                     if Retry_times == 0:
                         continue_next_flag = True
                         break
-                    time.sleep(5)
+                    time.sleep(3)
                 else:
                     break
             if continue_next_flag:
-                logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_jcfx', one_record.num_zb, one_record.name_zb,'urls Error at', get_current_time()]))
+                logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_jcfx', one_record.num_zb, one_record.name_zb,'promotionList_url Error at', get_current_time()]))
                 continue
+
+
 
             current_node_time = calc_next_time(start_time, 1) #'2022-02-18 10:53:54'
 
