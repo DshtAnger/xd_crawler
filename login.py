@@ -98,11 +98,19 @@ if __name__ == '__main__':
     server_type = sys.argv[1]
     main_account, backup_account = account_list.get(server_type)
 
-    main_result = asyncio.get_event_loop().run_until_complete(login(main_account[0],main_account[1]))
+    while 1:
 
-    if main_result == '':
-        time.sleep(3)
-        backup_result = asyncio.get_event_loop().run_until_complete(login(backup_account[0], backup_account[1]))
+        backup_result = ''
+        main_result = asyncio.get_event_loop().run_until_complete(login(main_account[0],main_account[1]))
+
+        if main_result == '':
+            time.sleep(3)
+            backup_result = asyncio.get_event_loop().run_until_complete(login(backup_account[0], backup_account[1]))
+
+        if main_result or backup_result:
+            break
+        else:
+            time.sleep(60*2)
 
 # await page.hover('#nr-pro-header > div._Wd5iasy8 > div._3WBnyna6 > span > span > span > img')
 # time.sleep(3)
