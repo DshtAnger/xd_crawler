@@ -229,9 +229,11 @@ for current_taks in Entry_list:
                     }
                     rsp = requests.post(promotionList_url, headers=headers, data=json.dumps(post_data))
                     data = json.loads(rsp.text).get('data')
-                    if isinstance(data, str):
-                        logging.info('[%s] Get zbjl_jcfx promotionList_url data failed. type:%s, num_zb:%s, url_zbjl:%s, data:%s, at %s' % (current_taks, type, one_record.num_zb, one_record.url_zbjl, data, get_current_time()))
                     promotion_list = data if isinstance(data,list) else []
+
+                    if isinstance(data, str):
+                        logging.info('[%s] Get zbjl_jcfx promotionList_url data failed. type:%s, num_zb:%s, url_zbjl:%s, status_code:%s, data:%s, at %s' % (current_taks, type, one_record.num_zb, one_record.url_zbjl, rsp.status_code, data, get_current_time()))
+
                 except:
                     Retry_times -= 1
                     logging.info('[%s] Get zbjl_jcfx promotionList_url data failed. rsp_code:%s, type:%s, num_zb:%s, url_zbjl:%s at %s' % (current_taks, rsp.status_code, type, one_record.num_zb, one_record.url_zbjl, get_current_time()))

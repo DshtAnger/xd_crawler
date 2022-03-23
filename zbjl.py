@@ -102,7 +102,8 @@ for current_taks in Entry_list:
             while 1:
                 try:
                     rsp = requests.post(webcastList_url, headers=headers, data=json.dumps(post_data))
-                    data_list = json.loads(rsp.text).get('data').get('list') if json.loads(rsp.text).get('data') else []
+                    data = json.loads(rsp.text).get('data')
+                    data_list = data.get('list') if isinstance(data, dict) and isinstance(data.get('list'), list) else []
                 except:
                     Retry_times -= 1
                     logging.info('[%s] Get zbjl webcastList_url data failed. type:%s, num_zb:%s, url_zb:%s at %s' % (current_taks, type, one_record.num_zb, one_record.url_zb, get_current_time()))

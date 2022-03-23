@@ -96,7 +96,8 @@ for current_taks in Entry_list:
             while 1:
                 try:
                     rsp = requests.post(userSourceInfo_url, headers=headers, data=json.dumps(post_data))
-                    data = json.loads(rsp.text).get('data').get('compostion') if json.loads(rsp.text).get('data') else {}
+                    data = json.loads(rsp.text).get('data')
+                    data_list = data.get('compostion') if isinstance(data, dict) and isinstance(data.get('compostion'), dict)  else {}
                 except:
                     Retry_times -= 1
                     logging.info('[%s] Get zbjl_sx userSourceInfo_url data failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (current_taks, type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
@@ -110,7 +111,7 @@ for current_taks in Entry_list:
                 logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_sx', one_record.num_zb, one_record.name_zb,'userSourceInfo_url Error at', get_current_time()]))
                 continue
 
-            for item in data:
+            for item in data_list:
                 if item.get('key') == '关注':
                     Table_obj.guanzhu = str(item.get('rate'))
                 elif item.get('key') == '视频推荐':
@@ -128,9 +129,10 @@ for current_taks in Entry_list:
             while 1:
                 try:
                     rsp = requests.post(watchUserInfo_url, headers=headers, data=json.dumps(post_data))
-                    data = json.loads(rsp.text).get('data') if json.loads(rsp.text).get('data') else {}
-                    gender_data = data.get('watchUserGender') if data else {}
-                    province_data = data.get('watchUserProvince') if data else {}
+                    data = json.loads(rsp.text).get('data')
+                    data_obj = data if isinstance(data, dict) else {}
+                    gender_data = data.get('watchUserGender') if data_obj else {}
+                    province_data = data.get('watchUserProvince') if data_obj else {}
                 except:
                     Retry_times -= 1
                     logging.info('[%s] Get zbjl_sx watchUserInfo_url data failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (current_taks, type, one_record.num_zb, one_record.url_zbjl, get_current_time()))

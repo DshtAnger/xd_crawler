@@ -112,8 +112,10 @@ for current_taks in Entry_list:
                     rsp = requests.post(promotionList_url, headers=headers, data=json.dumps(post_data))
                     data = json.loads(rsp.text).get('data')
                     promotion_data = data if isinstance(data, list) else []
-                    if isinstance(data,  str):
+
+                    if isinstance(data, str):
                         logging.info('[%s] Get zbjl_splb promotionList_url data failed. type:%s, num_zb:%s, url_zbjl:%s, status_code:%s, data:%s at %s' % (current_taks, type, one_record.num_zb, one_record.url_zbjl, rsp.status_code, data, get_current_time()))
+
                 except:
                     Retry_times -= 1
                     logging.info('[%s] Get zbjl_splb promotionList_url data failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (current_taks, type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
@@ -130,6 +132,9 @@ for current_taks in Entry_list:
 
             splb_count = 0
             for product in promotion_data:
+
+                if not isinstance(product, dict):
+                    continue
 
                 if REPEAT_CHECK_FLAG:
                     repeat_detect_cmd = "list_%s_zbjl_splb.select().where(list_%s_zbjl_splb.url_zbjl=='%s',list_%s_zbjl_splb.store_url=='%s',list_%s_zbjl_splb.time_update.startswith('%s'))" % (type, type, one_record.url_zbjl ,type, product.get('detail_url'), type, today_date)
@@ -188,8 +193,8 @@ for current_taks in Entry_list:
                         if rsp.text == '':
                             data = None
                         else:
-                            data = json.loads(rsp.text)
-                            data = data.get('data') if isinstance(data,dict) else {}
+                            data = json.loads(rsp.text).get('data')
+                            data = data if isinstance(data,dict) else {}
                     except:
                         Retry_times -= 1
                         logging.info('[*] Get zbjl_splb staticitem_url failed. type:%s, num_zb:%s, url_zbjl:%s product_id:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, product_id, get_current_time()))
