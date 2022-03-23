@@ -110,7 +110,10 @@ for current_taks in Entry_list:
             while 1:
                 try:
                     rsp = requests.post(promotionList_url, headers=headers, data=json.dumps(post_data))
-                    promotion_data = json.loads(rsp.text).get('data') if json.loads(rsp.text).get('data') else []
+                    data = json.loads(rsp.text).get('data')
+                    promotion_data = data if isinstance(data, list) else []
+                    if isinstance(data,  str):
+                        logging.info('[%s] Get zbjl_splb promotionList_url data failed. type:%s, num_zb:%s, url_zbjl:%s, status_code:%s, data:%s at %s' % (current_taks, type, one_record.num_zb, one_record.url_zbjl, rsp.status_code, data, get_current_time()))
                 except:
                     Retry_times -= 1
                     logging.info('[%s] Get zbjl_splb promotionList_url data failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (current_taks, type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
@@ -164,7 +167,7 @@ for current_taks in Entry_list:
 
                 product_id = product.get('productId')
 
-                WAIT_TIME = 3#random.choice([0.6, 0.7, 0.8, 0.9])
+                WAIT_TIME = random.choice([0.5, 0.6, 0.7, 0.8])
 
                 # get_msToken_url = 'https://ec.snssdk.com/index/getNewAbUiParams?token=aweme&b_type_new=0&device_id=0&is_outside=1'
                 # rsp = requests.get(get_msToken_url, headers=pseudo_header)
