@@ -9,7 +9,7 @@ import datetime,time
 account_list = {
     'ms':[('wanghongpeng','Wanghongpeng1'),('changzhao','duqianzhou@1907')],
     'yl':[('fsx456','123456'),('pangruhuan','duqianzhou@1907')],
-    'gx':[('liuyuanyuan','duqianzhou@1907'),('zhudingye','duqianzhou@1907')]
+    'gx':[('liuyuanyuan','duqianzhou@1907'),('liuyuanyuan','duqianzhou@1907')] # Error ('zhudingye','duqianzhou@1907')
 }
 
 
