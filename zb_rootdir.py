@@ -65,7 +65,7 @@ for type in input_type:
             name_search_error_tag = False
             identify_search_error_tag = False
 
-            num_zb = str(douyin_id_list.index(id_zb) + 1) + type
+            num_zb = type + str(douyin_id_list.index(id_zb) + 1)
             name_zb = douyin_name_list[douyin_id_list.index(id_zb)]
             while 1:
                 try:
