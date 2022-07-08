@@ -6,7 +6,7 @@ import pymysql
 from warnings import filterwarnings
 filterwarnings('ignore', category=pymysql.Warning)
 
-db = MySQLDatabase('xd', user='root', password='Wanghongpeng1', host='127.0.0.1',port=3306)  # ,charset='utf8mb4')
+db = MySQLDatabase('xd_new', user='root', password='Wanghongpeng1', host='127.0.0.1',port=3306)  # ,charset='utf8mb4')
 db.connection()
 
 class BaseModel(Model):
