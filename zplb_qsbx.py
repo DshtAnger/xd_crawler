@@ -60,17 +60,23 @@ for type in input_type:
 
     query_cmd = "list_%s_zplb_qsbx_support.select().order_by(-list_%s_zplb_qsbx_support.time_update).limit(10)" % (type, type)
     query_result = eval(query_cmd)
-    url_works = list(query_result)[0].url_works
-    query_cmd = "list_%s_zplb.select().where(list_%s_zplb.url_works=='%s')" % (type, type, url_works)
-    query_result = eval(query_cmd)
-    time_release = list(query_result)[0].time_release.split(' ')[0]
-
-    for i in range(1,100):
-        update_date = (datetime.datetime.strptime(time_release, "%Y-%m-%d") + datetime.timedelta(days=i)).strftime("%Y-%m-%d")
-        query_cmd = "list_%s_zplb.select().where(list_%s_zplb.time_release.startswith('%s'))" % (type,type,update_date)
+    if len(list(query_result)) != 0:
+        url_works = list(query_result)[0].url_works
+        query_cmd = "list_%s_zplb.select().where(list_%s_zplb.url_works=='%s')" % (type, type, url_works)
         query_result = eval(query_cmd)
-        if bool(query_result):
-            break
+        time_release = list(query_result)[0].time_release.split(' ')[0]
+
+        for i in range(1,100):
+            update_date = (datetime.datetime.strptime(time_release, "%Y-%m-%d") + datetime.timedelta(days=i)).strftime("%Y-%m-%d")
+            query_cmd = "list_%s_zplb.select().where(list_%s_zplb.time_release.startswith('%s'))" % (type,type,update_date)
+            query_result = eval(query_cmd)
+            if bool(query_result):
+                break
+
+    else:
+        query_cmd = "list_%s_zplb.select().where(list_%s_zplb.time_release.startswith('%s'))" % (type, type, update_date)
+        query_result = eval(query_cmd)
+
 
     for one_record in query_result:
         qsbx_support_count = 0
