@@ -6,29 +6,35 @@ import requests
 import json
 import datetime
 import time
-import os,sys
+import os, sys
 import logging
-#from DB import *
+# from DB import *
 from multiprocessing import Pool
+
 
 def get_current_time():
     return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
+
 def calc_next_time(livestraming_time, duration):
-    return (datetime.datetime.strptime(livestraming_time, "%Y-%m-%d %H:%M:%S") + datetime.timedelta(minutes=float(duration))).strftime("%Y-%m-%d %H:%M:%S")
+    return (datetime.datetime.strptime(livestraming_time, "%Y-%m-%d %H:%M:%S") + datetime.timedelta(
+        minutes=float(duration))).strftime("%Y-%m-%d %H:%M:%S")
+
 
 def time_comparison(left_time, right_time):
-    return datetime.datetime.strptime(left_time, "%Y-%m-%d %H:%M:%S") <= datetime.datetime.strptime(right_time, "%Y-%m-%d %H:%M:%S")
+    return datetime.datetime.strptime(left_time, "%Y-%m-%d %H:%M:%S") <= datetime.datetime.strptime(right_time,
+                                                                                                    "%Y-%m-%d %H:%M:%S")
+
 
 today_date = datetime.datetime.now().strftime("%Y-%m-%d")
-lastday_date = (datetime.datetime.now()+datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
-first_crawl_date = (datetime.datetime.now()+datetime.timedelta(days=-121)).strftime("%Y-%m-%d")
+lastday_date = (datetime.datetime.now() + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
+first_crawl_date = (datetime.datetime.now() + datetime.timedelta(days=-121)).strftime("%Y-%m-%d")
 
-with open('/root/xd_crawler/cookie','r') as f:
+with open('/root/xd_crawler/cookie', 'r') as f:
     cookie = f.read().strip()
-with open('/root/xd_crawler/token','r') as f:
+with open('/root/xd_crawler/token', 'r') as f:
     token = f.read().strip()
-with open('/root/xd_crawler/type','r') as f:
+with open('/root/xd_crawler/type', 'r') as f:
     input_type = f.read().strip().split()
 
 headers = {
@@ -41,6 +47,7 @@ headers = {
     'origin': 'https://xd.newrank.cn',
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36',
 }
+
 
 # def calc_userAvgDuration(start_time,end_time,point_list, type,num_zb,url_zbjl):
 #     try:
@@ -77,8 +84,7 @@ headers = {
 
 
 def run_crawler_task(type, current_taks):
-
-    #for type in input_type:
+    # for type in input_type:
 
     from peewee import MySQLDatabase
     from peewee import Model, CharField
@@ -86,7 +92,8 @@ def run_crawler_task(type, current_taks):
     from warnings import filterwarnings
     filterwarnings('ignore', category=pymysql.Warning)
 
-    db1 = MySQLDatabase('xd', user='root', password='Wanghongpeng1', host='127.0.0.1', port=3306)  # ,charset='utf8mb4')
+    db1 = MySQLDatabase('xd_new', user='root', password='Wanghongpeng1', host='127.0.0.1',
+                        port=3306)  # ,charset='utf8mb4')
     db1.connection()
 
     class BaseModel(Model):
@@ -467,24 +474,29 @@ def run_crawler_task(type, current_taks):
     today_log_dir = '/root/xd_crawler/log/%s' % today_date
     if not os.path.exists(today_log_dir):
         os.mkdir(today_log_dir)
-    logging.basicConfig(format='%(message)s', filename=today_log_dir + '/zbjl_tlsc_%s_%s.log'%(type,suffix), level=logging.INFO)
+    logging.basicConfig(format='%(message)s', filename=today_log_dir + '/zbjl_tlsc_%s_%s.log' % (type, suffix),
+                        level=logging.INFO)
 
     def handle_exception(exc_type, exc_value, exc_traceback):
         if issubclass(exc_type, KeyboardInterrupt):
             sys.__excepthook__(exc_type, exc_value, exc_traceback)
             return
-        logging.info("--------------------Uncaught Exception--------------------",exc_info=(exc_type, exc_value, exc_traceback))
+        logging.info("--------------------Uncaught Exception--------------------",
+                     exc_info=(exc_type, exc_value, exc_traceback))
+
     sys.excepthook = handle_exception
 
     today_tlsc_count = 0
 
     if current_taks == ' Daily ':
 
-        query_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.time_update.startswith('%s'),~list_%s_zbjl.time_update.endswith('History'))" % (type, type, today_date, type)
+        query_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.time_update.startswith('%s'),~list_%s_zbjl.time_update.endswith('History'))" % (
+        type, type, today_date, type)
 
     elif current_taks == 'History':
 
-        query_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.time_update.startswith('%s'),list_%s_zbjl.time_update.endswith('History'))" % (type, type, today_date, type)
+        query_cmd = "list_%s_zbjl.select().where(list_%s_zbjl.time_update.startswith('%s'),list_%s_zbjl.time_update.endswith('History'))" % (
+        type, type, today_date, type)
 
     for one_record in eval(query_cmd):
 
@@ -501,7 +513,7 @@ def run_crawler_task(type, current_taks):
             "finishTime": finishTime,
             "startTime": "",
             "endTime": ""
-         }
+        }
 
         current_node_time = calc_next_time(createTime, 1)
         count = 0
@@ -511,7 +523,7 @@ def run_crawler_task(type, current_taks):
             if not time_comparison(endTime, finishTime):
                 endTime = finishTime
 
-            post_data.update({'startTime':current_node_time, 'endTime':endTime})
+            post_data.update({'startTime': current_node_time, 'endTime': endTime})
 
             Retry_times = 3
             continue_next_flag = False
@@ -521,7 +533,9 @@ def run_crawler_task(type, current_taks):
                     data = str(json.loads(rsp.text).get('data'))
                 except:
                     Retry_times -= 1
-                    logging.info('[*] Get zbjl_tlsc userAvgDurationNew_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
+                    logging.info(
+                        '[*] Get zbjl_tlsc userAvgDurationNew_url failed. type:%s, num_zb:%s, url_zbjl:%s at %s' % (
+                        type, one_record.num_zb, one_record.url_zbjl, get_current_time()))
                     if Retry_times == 0:
                         continue_next_flag = True
                         break
@@ -529,7 +543,9 @@ def run_crawler_task(type, current_taks):
                 else:
                     break
             if continue_next_flag:
-                logging.info(' '.join(['[%s]' % current_taks, type, 'zbjl_tlsc', one_record.num_zb, one_record.name_zb, webcast_id,one_record.livestraming_time, 'userAvgDurationNew_url Error at', get_current_time()]))
+                logging.info(' '.join(
+                    ['[%s]' % current_taks, type, 'zbjl_tlsc', one_record.num_zb, one_record.name_zb, webcast_id,
+                     one_record.livestraming_time, 'userAvgDurationNew_url Error at', get_current_time()]))
                 continue
 
             # print(current_node_time, data)
@@ -555,11 +571,16 @@ def run_crawler_task(type, current_taks):
             today_tlsc_count += 1
             current_node_time = calc_next_time(current_node_time, 1)
 
-        logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_tlsc', one_record.num_zb, one_record.name_zb, webcast_id, one_record.livestraming_time, '[ tlsc_count: %d ]'%count, 'Done at', get_current_time()]))
+        logging.info(' '.join(
+            ['[%s]' % current_taks, type, 'zbjl_tlsc', one_record.num_zb, one_record.name_zb, webcast_id,
+             one_record.livestraming_time, '[ tlsc_count: %d ]' % count, 'Done at', get_current_time()]))
 
-    logging.info(' '.join(['[%s]'%current_taks, type, 'zbjl_tlsc', '[ today_tlsc_count: %d ]' % today_tlsc_count, 'Done at', get_current_time()]))
-    logging.info('-'*100)
+    logging.info(' '.join(
+        ['[%s]' % current_taks, type, 'zbjl_tlsc', '[ today_tlsc_count: %d ]' % today_tlsc_count, 'Done at',
+         get_current_time()]))
+    logging.info('-' * 100)
     db1.close()
+
 
 Entry_list = {
     ' Daily ': True,
