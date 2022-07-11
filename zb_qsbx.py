@@ -69,6 +69,7 @@ for type in input_type:
             try:
                 rsp = requests.post(trend_url, headers=headers, data=json.dumps(post_data))
                 data = json.loads(rsp.text).get('data')
+                data = data if isinstance(data, list) else []
                 Retry_times -= 1
             except:
                 logging.info('[*] Get zb_qsbx trend_url failed. type:%s, num_zb:%s, url_zb:%s at %s' % (type, one_record.num_zb, one_record.url_zb, get_current_time()))
